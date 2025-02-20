@@ -6,6 +6,7 @@ local Players = game:GetService("Players")
 local StarterGui = game:GetService("StarterGui")
 
 local JustHub = {}
+
 JustHub.Themes = {
 	Darker = {
 		["Color Hub 1"] = ColorSequence.new({
@@ -30,6 +31,66 @@ JustHub.Themes = {
 		["Color Theme"] = Color3.fromRGB(65,150,255),
 		["Color Text"] = Color3.fromRGB(245,245,245),
 		["Color Dark Text"] = Color3.fromRGB(190,190,190)
+	},
+	Purple = {
+		["Color Hub 1"] = ColorSequence.new({
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(28,25,30)),
+			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(32,32,32)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(28,25,30))
+		}),
+		["Color Hub 2"] = Color3.fromRGB(30,30,30),
+		["Color Stroke"] = Color3.fromRGB(40,40,40),
+		["Color Theme"] = Color3.fromRGB(150,0,255),
+		["Color Text"] = Color3.fromRGB(240,240,240),
+		["Color Dark Text"] = Color3.fromRGB(180,180,180)
+	},
+	Light = {
+		["Color Hub 1"] = ColorSequence.new({
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(230,230,230)),
+			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(245,245,245)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(230,230,230))
+		}),
+		["Color Hub 2"] = Color3.fromRGB(240,240,240),
+		["Color Stroke"] = Color3.fromRGB(200,200,200),
+		["Color Theme"] = Color3.fromRGB(0,120,255),
+		["Color Text"] = Color3.fromRGB(30,30,30),
+		["Color Dark Text"] = Color3.fromRGB(80,80,80)
+	},
+	Neon = {
+		["Color Hub 1"] = ColorSequence.new({
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(10,10,10)),
+			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0,200,200)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(10,10,10))
+		}),
+		["Color Hub 2"] = Color3.fromRGB(15,15,15),
+		["Color Stroke"] = Color3.fromRGB(0,255,255),
+		["Color Theme"] = Color3.fromRGB(0,255,0),
+		["Color Text"] = Color3.fromRGB(255,255,255),
+		["Color Dark Text"] = Color3.fromRGB(200,200,200)
+	},
+	Forest = {
+		["Color Hub 1"] = ColorSequence.new({
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(0,50,0)),
+			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0,80,0)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(0,50,0))
+		}),
+		["Color Hub 2"] = Color3.fromRGB(0,60,0),
+		["Color Stroke"] = Color3.fromRGB(0,80,0),
+		["Color Theme"] = Color3.fromRGB(0,120,0),
+		["Color Text"] = Color3.fromRGB(220,220,220),
+		["Color Dark Text"] = Color3.fromRGB(160,160,160)
+	},
+	Aqua = {
+		["Color Hub 1"] = ColorSequence.new({
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(0,100,100)),
+			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0,150,150)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(0,100,100))
+		}),
+		["Color Hub 2"] = Color3.fromRGB(0,110,110),
+		["Color Stroke"] = Color3.fromRGB(0,180,180),
+		["Color Theme"] = Color3.fromRGB(0,220,220),
+		["Color Text"] = Color3.fromRGB(255,255,255),
+		["Color Dark Text"] = Color3.fromRGB(200,200,200)
 	}
 }
 JustHub.Info = {Version="1.1.0"}
@@ -668,10 +729,6 @@ function JustHub:UpdateTheme(nt)
 			fl.TextColor3=th["Color Text"]
 		end
 	end
-end
-
-function JustHub:RegisterTheme(name,definition)
-	self.Themes[name]=definition
 end
 
 function JustHub:SetTheme(nt)
