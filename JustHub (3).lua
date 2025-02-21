@@ -100,23 +100,21 @@ local function ButtonFrame(parent, title, desc, holderSize)
 	local frame = createInstance("Frame", {
 		Name="Option",
 		Size=UDim2.new(1,0,0,25),
-		BackgroundTransparency=0.1,
-		BackgroundColor3=theme["Color Stroke"],
-		ZIndex=2
+		BackgroundTransparency=0
 	}, parent)
 	frame.MouseEnter:Connect(function()
-		tweenProperty(frame, {BackgroundTransparency=0}, 0.15)
+		tweenProperty(frame, {BackgroundTransparency=0.3}, 0.15)
 	end)
 	frame.MouseLeave:Connect(function()
-		tweenProperty(frame, {BackgroundTransparency=0.1}, 0.15)
+		tweenProperty(frame, {BackgroundTransparency=0}, 0.15)
 	end)
+	frame.BackgroundColor3 = theme["Color Hub 2"]
 	createInstance("UICorner",{CornerRadius=UDim.new(0,6)}, frame)
 	local labelHolder = createInstance("Frame", {
 		Name="LabelHolder",
 		Size=holderSize or UDim2.new(1,-20,1,0),
 		Position=UDim2.new(0,10,0,0),
-		BackgroundTransparency=1,
-		ZIndex=2
+		BackgroundTransparency=1
 	}, frame)
 	local layout = createInstance("UIListLayout", {
 		SortOrder=Enum.SortOrder.LayoutOrder,
@@ -132,8 +130,7 @@ local function ButtonFrame(parent, title, desc, holderSize)
 		TextColor3=theme["Color Text"],
 		Font=Enum.Font.GothamBold,
 		TextSize=12,
-		TextXAlignment=Enum.TextXAlignment.Left,
-		ZIndex=2
+		TextXAlignment=Enum.TextXAlignment.Left
 	}, labelHolder)
 	local descLabel = createInstance("TextLabel", {
 		Name="Description",
@@ -144,8 +141,7 @@ local function ButtonFrame(parent, title, desc, holderSize)
 		TextWrapped=true,
 		TextSize=10,
 		TextXAlignment=Enum.TextXAlignment.Left,
-		TextColor3=theme["Color Dark Text"],
-		ZIndex=2
+		TextColor3=theme["Color Dark Text"]
 	}, labelHolder)
 	local function setTitle(txt)
 		titleLabel.Text = txt
@@ -181,16 +177,14 @@ function SectionMethods:addToggle(opts)
 		Size=UDim2.new(0,35,0,18),
 		Position=UDim2.new(1,-10,0.5),
 		AnchorPoint=Vector2.new(1,0.5),
-		BackgroundColor3=theme["Color Theme"],
-		ZIndex=3
+		BackgroundColor3=theme["Color Stroke"]
 	}, frame)
 	createInstance("UICorner",{CornerRadius=UDim.new(0,9)}, toggleHolder)
 	local toggleCircle = createInstance("Frame", {
 		Size=UDim2.new(0,14,0,14),
 		Position=default and UDim2.new(1,-16,0.5,-7) or UDim2.new(0,2,0.5,-7),
 		BackgroundColor3=Color3.fromRGB(255,255,255),
-		BorderSizePixel=0,
-		ZIndex=3
+		BorderSizePixel=0
 	}, toggleHolder)
 	createInstance("UICorner",{CornerRadius=UDim.new(1,0)}, toggleCircle)
 	local state=default
@@ -201,7 +195,7 @@ function SectionMethods:addToggle(opts)
 			tweenProperty(toggleHolder, {BackgroundColor3=Color3.fromRGB(0,200,0)}, 0.2)
 		else
 			tweenProperty(toggleCircle, {Position=UDim2.new(0,2,0.5,-7)}, 0.2)
-			tweenProperty(toggleHolder, {BackgroundColor3=theme["Color Theme"]}, 0.2)
+			tweenProperty(toggleHolder, {BackgroundColor3=theme["Color Stroke"]}, 0.2)
 		end
 		callback(state)
 	end
@@ -245,23 +239,20 @@ function SectionMethods:addSlider(opts)
 		Size=UDim2.new(0,150,0,18),
 		Position=UDim2.new(1,-10,0.5),
 		AnchorPoint=Vector2.new(1,0.5),
-		BackgroundColor3=theme["Color Stroke"],
-		ZIndex=3
+		BackgroundColor3=theme["Color Stroke"]
 	}, frame)
 	createInstance("UICorner",{CornerRadius=UDim.new(0,4)}, sliderHolder)
 	local sliderBar = createInstance("Frame", {
 		Size=UDim2.new(0.8,-10,0,4),
 		Position=UDim2.new(0,10,0.5,-2),
 		BackgroundColor3=theme["Color Stroke"],
-		AnchorPoint=Vector2.new(0,0.5),
-		ZIndex=3
+		AnchorPoint=Vector2.new(0,0.5)
 	}, sliderHolder)
 	createInstance("UICorner",{CornerRadius=UDim.new(0,2)}, sliderBar)
 	local fill = createInstance("Frame", {
 		Size=UDim2.new(0,(default-min)/(max-min)*sliderBar.AbsoluteSize.X,1,0),
 		BackgroundColor3=theme["Color Theme"],
-		BorderSizePixel=0,
-		ZIndex=3
+		BorderSizePixel=0
 	}, sliderBar)
 	createInstance("UICorner",{CornerRadius=UDim.new(0,2)}, fill)
 	local handle = createInstance("Frame", {
@@ -269,8 +260,7 @@ function SectionMethods:addSlider(opts)
 		Position=UDim2.new((default-min)/(max-min),-3,0.5,-6),
 		BackgroundColor3=Color3.fromRGB(220,220,220),
 		BorderSizePixel=0,
-		AnchorPoint=Vector2.new(0,0.5),
-		ZIndex=3
+		AnchorPoint=Vector2.new(0,0.5)
 	}, sliderBar)
 	createInstance("UICorner",{CornerRadius=UDim.new(0,3)}, handle)
 	local valLabel = createInstance("TextLabel", {
@@ -281,8 +271,7 @@ function SectionMethods:addSlider(opts)
 		TextSize=10,
 		Font=Enum.Font.GothamBold,
 		Text=tostring(default),
-		TextXAlignment=Enum.TextXAlignment.Right,
-		ZIndex=3
+		TextXAlignment=Enum.TextXAlignment.Right
 	}, sliderHolder)
 	local function setValue(x)
 		local ratio=math.clamp(x,0,1)
@@ -352,8 +341,7 @@ function SectionMethods:addTextBox(opts)
 		Size=UDim2.new(0,150,0,18),
 		Position=UDim2.new(1,-10,0.5),
 		AnchorPoint=Vector2.new(1,0.5),
-		BackgroundColor3=theme["Color Stroke"],
-		ZIndex=3
+		BackgroundColor3=theme["Color Stroke"]
 	}, frame)
 	createInstance("UICorner",{CornerRadius=UDim.new(0,4)}, textHolder)
 	local box = createInstance("TextBox", {
@@ -365,8 +353,7 @@ function SectionMethods:addTextBox(opts)
 		Font=Enum.Font.GothamBold,
 		TextSize=12,
 		Text=default,
-		PlaceholderText="Input",
-		ZIndex=4
+		PlaceholderText="Input"
 	}, textHolder)
 	box.FocusLost:Connect(function()
 		callback(box.Text)
@@ -404,8 +391,7 @@ function SectionMethods:addDropdown(opts)
 		Size=UDim2.new(0,150,0,18),
 		Position=UDim2.new(1,-10,0.5),
 		AnchorPoint=Vector2.new(1,0.5),
-		BackgroundColor3=theme["Color Stroke"],
-		ZIndex=3
+		BackgroundColor3=theme["Color Stroke"]
 	}, frame)
 	createInstance("UICorner",{CornerRadius=UDim.new(0,4)}, dropHolder)
 	local dropBtn = createInstance("TextButton", {
@@ -416,8 +402,7 @@ function SectionMethods:addDropdown(opts)
 		BackgroundTransparency=1,
 		TextColor3=theme["Color Text"],
 		Font=Enum.Font.GothamBold,
-		TextSize=12,
-		ZIndex=4
+		TextSize=12
 	}, dropHolder)
 	local screenGui=frame:FindFirstAncestorWhichIsA("ScreenGui")
 	local listFrame
@@ -428,8 +413,7 @@ function SectionMethods:addDropdown(opts)
 			BackgroundColor3=theme["Color Hub 2"],
 			Visible=false,
 			ClipsDescendants=true,
-			ScrollBarThickness=4,
-			ZIndex=5
+			ScrollBarThickness=4
 		}, screenGui)
 	else
 		listFrame=createInstance("ScrollingFrame", {
@@ -438,8 +422,7 @@ function SectionMethods:addDropdown(opts)
 			BackgroundColor3=theme["Color Hub 2"],
 			Visible=false,
 			ClipsDescendants=true,
-			ScrollBarThickness=4,
-			ZIndex=5
+			ScrollBarThickness=4
 		})
 	end
 	createInstance("UICorner",{CornerRadius=UDim.new(0,4)}, listFrame)
@@ -485,8 +468,7 @@ function SectionMethods:addDropdown(opts)
 				BackgroundTransparency=1,
 				TextColor3=Color3.fromRGB(255,255,255),
 				Font=Enum.Font.Gotham,
-				TextSize=10,
-				ZIndex=6
+				TextSize=10
 			}, listFrame)
 			btn.MouseButton1Click:Connect(function()
 				dropBtn.Text=val.." ▼"
@@ -535,8 +517,7 @@ function SectionMethods:addButton(opts)
 		BackgroundColor3=theme["Color Theme"],
 		TextColor3=theme["Color Text"],
 		Font=Enum.Font.GothamBold,
-		TextSize=12,
-		ZIndex=4
+		TextSize=12
 	}, frame)
 	createInstance("UICorner",{CornerRadius=UDim.new(0,6)}, actBtn)
 	actBtn.MouseButton1Click:Connect(function()
@@ -560,104 +541,6 @@ function SectionMethods:addButton(opts)
 	return buttonObj
 end
 
-function JustHub:Notify(opts)
-	opts=opts or {}
-	local title=opts.Title or "Title"
-	local msg=opts.Message or "Message"
-	local dur=opts.Duration or 5
-	local theme=getCurrentTheme()
-	if not self.NotificationContainer then
-		warn("Notification container not found.")
-		return
-	end
-	local nf=createInstance("Frame", {
-		Size=UDim2.new(0,300,0,0),
-		BackgroundColor3=theme["Color Hub 2"],
-		ClipsDescendants=true,
-		ZIndex=100
-	}, self.NotificationContainer)
-	createInstance("UICorner",{CornerRadius=UDim.new(0,8)}, nf)
-	addBorder(nf, theme["Color Stroke"],2)
-	local ttl=createInstance("TextLabel", {
-		Text=title,
-		Size=UDim2.new(1,-10,0,20),
-		Position=UDim2.new(0,5,0,5),
-		BackgroundTransparency=1,
-		TextColor3=theme["Color Text"],
-		Font=Enum.Font.GothamBold,
-		TextSize=14,
-		TextXAlignment=Enum.TextXAlignment.Left,
-		ZIndex=101
-	}, nf)
-	local body=createInstance("TextLabel", {
-		Text=msg,
-		Size=UDim2.new(1,-10,0,0),
-		Position=UDim2.new(0,5,0,25),
-		BackgroundTransparency=1,
-		TextColor3=theme["Color Dark Text"],
-		Font=Enum.Font.Gotham,
-		TextSize=12,
-		TextXAlignment=Enum.TextXAlignment.Left,
-		TextWrapped=true,
-		AutomaticSize=Enum.AutomaticSize.Y,
-		ZIndex=101
-	}, nf)
-	RunService.Heartbeat:Wait()
-	local totalH=body.AbsolutePosition.Y+body.AbsoluteSize.Y - nf.AbsolutePosition.Y + 10
-	nf.Size=UDim2.new(0,300,0,totalH)
-	local twIn=TweenService:Create(nf, TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out), {Size=UDim2.new(0,300,0,totalH)})
-	twIn:Play()
-	spawn(function()
-		wait(dur)
-		local twOut=TweenService:Create(nf, TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.In), {BackgroundTransparency=1,Size=UDim2.new(0,300,0,0)})
-		twOut:Play()
-		twOut.Completed:Connect(function()
-			nf:Destroy()
-		end)
-	end)
-end
-
-function JustHub:addSection(secName, secHeight)
-	local theme=getCurrentTheme()
-	local sName=secName or "Section"
-	local sHeight=secHeight or 80
-	local secFrame=createInstance("Frame", {
-		Name=sName,
-		Size=UDim2.new(1,0,0,sHeight),
-		BackgroundColor3=theme["Color Stroke"],
-		BackgroundTransparency=0.2,
-		ZIndex=2
-	}, nil)
-	addBorder(secFrame, theme["Color Stroke"],2)
-	createInstance("UICorner",{CornerRadius=UDim.new(0,6)}, secFrame)
-	local secTitle=createInstance("TextLabel", {
-		Name="SectionTitle",
-		Text=sName,
-		Size=UDim2.new(1,0,0,30),
-		BackgroundTransparency=1,
-		TextColor3=theme["Color Text"],
-		Font=Enum.Font.GothamBold,
-		TextSize=16,
-		TextXAlignment=Enum.TextXAlignment.Left,
-		ZIndex=3
-	}, secFrame)
-	local secContent=createInstance("Frame", {
-		Name="SectionContent",
-		Size=UDim2.new(1,0,1,-30),
-		Position=UDim2.new(0,0,0,30),
-		BackgroundTransparency=1,
-		ZIndex=3
-	}, secFrame)
-	createInstance("UIListLayout", {
-		FillDirection=Enum.FillDirection.Vertical,
-		Padding=UDim.new(0,5),
-		SortOrder=Enum.SortOrder.LayoutOrder
-	}, secContent)
-	local sObj={Frame=secFrame,Title=secTitle,Content=secContent}
-	setmetatable(sObj,{__index=SectionMethods})
-	return sObj
-end
-
 function JustHub:CreateWindow(options)
 	options=options or {}
 	local wName=options.Name or "JustHub Window"
@@ -665,7 +548,6 @@ function JustHub:CreateWindow(options)
 	local player=Players.LocalPlayer
 	local pg=player:WaitForChild("PlayerGui")
 	local sg=createInstance("ScreenGui",{Name="JustHub",ResetOnSpawn=false}, pg)
-	sg.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	self.ScreenGui=sg
 	local uiW=JustHub.Save.UISize[1]
 	local uiH=JustHub.Save.UISize[2]
@@ -674,16 +556,14 @@ function JustHub:CreateWindow(options)
 		AnchorPoint=Vector2.new(0.5,0.5),
 		Position=UDim2.new(0.5,0,0.5,0),
 		Size=UDim2.new(0,uiW,0,uiH),
-		BackgroundColor3=theme["Color Hub 2"],
-		ZIndex=1
+		BackgroundColor3=theme["Color Hub 2"]
 	}, sg)
 	createInstance("UICorner",{CornerRadius=UDim.new(0,6)}, mainFrame)
 	addBorder(mainFrame, theme["Color Stroke"], 2)
 	local topBar=createInstance("Frame", {
 		Name="TopBar",
 		Size=UDim2.new(1,0,0,28),
-		BackgroundColor3=theme["Color Hub 2"],
-		ZIndex=2
+		BackgroundColor3=theme["Color Hub 2"]
 	}, mainFrame)
 	createInstance("UICorner",{CornerRadius=UDim.new(0,6)}, topBar)
 	local titleLabel=createInstance("TextLabel", {
@@ -695,8 +575,7 @@ function JustHub:CreateWindow(options)
 		TextColor3=theme["Color Text"],
 		Font=Enum.Font.GothamBold,
 		TextSize=14,
-		TextXAlignment=Enum.TextXAlignment.Left,
-		ZIndex=3
+		TextXAlignment=Enum.TextXAlignment.Left
 	}, topBar)
 	local subTitle=createInstance("TextLabel", {
 		Name="SubTitle",
@@ -707,8 +586,7 @@ function JustHub:CreateWindow(options)
 		TextColor3=theme["Color Dark Text"],
 		Font=Enum.Font.Gotham,
 		TextSize=12,
-		TextXAlignment=Enum.TextXAlignment.Right,
-		ZIndex=3
+		TextXAlignment=Enum.TextXAlignment.Right
 	}, topBar)
 	local function makeBtn(n,txt,pos)
 		return createInstance("TextButton", {
@@ -719,8 +597,7 @@ function JustHub:CreateWindow(options)
 			BackgroundTransparency=1,
 			TextColor3=theme["Color Text"],
 			Font=Enum.Font.GothamBold,
-			TextSize=14,
-			ZIndex=4
+			TextSize=14
 		}, topBar)
 	end
 	local closeBtn=makeBtn("CloseBtn","X",UDim2.new(1,-30,0,2))
@@ -747,8 +624,7 @@ function JustHub:CreateWindow(options)
 		BackgroundColor3=theme["Color Hub 2"],
 		ScrollBarThickness=4,
 		CanvasSize=UDim2.new(),
-		AutomaticCanvasSize=Enum.AutomaticSize.Y,
-		ZIndex=2
+		AutomaticCanvasSize=Enum.AutomaticSize.Y
 	}, mainFrame)
 	createInstance("UICorner",{CornerRadius=UDim.new(0,4)}, sidebar)
 	local layoutSide=createInstance("UIListLayout", {
@@ -759,16 +635,14 @@ function JustHub:CreateWindow(options)
 		Name="Containers",
 		Size=UDim2.new(1,-sideW,1,-28),
 		Position=UDim2.new(0,sideW,0,28),
-		BackgroundColor3=theme["Color Hub 2"],
-		ZIndex=2
+		BackgroundColor3=theme["Color Hub 2"]
 	}, mainFrame)
 	createInstance("UICorner",{CornerRadius=UDim.new(0,4)}, container)
 	local scroller=createInstance("ScrollingFrame", {
 		Size=UDim2.new(1,0,1,0),
 		ScrollBarThickness=4,
 		BackgroundTransparency=1,
-		AutomaticCanvasSize=Enum.AutomaticSize.Y,
-		ZIndex=2
+		AutomaticCanvasSize=Enum.AutomaticSize.Y
 	}, container)
 	local layoutMain=createInstance("UIListLayout", {
 		Padding=UDim.new(0,5),
@@ -802,8 +676,7 @@ function JustHub:CreateWindow(options)
 		Position=UDim2.new(1,-10,1,-10),
 		Size=UDim2.new(0,300,1,-20),
 		BackgroundTransparency=1,
-		ClipsDescendants=false,
-		ZIndex=100
+		ClipsDescendants=false
 	}, sg)
 	local notiLayout=createInstance("UIListLayout", {
 		Padding=UDim.new(0,8),
@@ -830,8 +703,7 @@ function JustHub:CreateWindow(options)
 			TextColor3=theme["Color Text"],
 			Font=Enum.Font.GothamBold,
 			TextSize=12,
-			AutoButtonColor=false,
-			ZIndex=3
+			AutoButtonColor=false
 		}, self.Sidebar)
 		createInstance("UICorner",{CornerRadius=UDim.new(0,4)}, tabBtn)
 		local icon
@@ -841,8 +713,7 @@ function JustHub:CreateWindow(options)
 				Position=UDim2.new(0,4,0.5,0),
 				AnchorPoint=Vector2.new(0,0.5),
 				BackgroundTransparency=1,
-				Image=iconId,
-				ZIndex=4
+				Image=iconId
 			}, tabBtn)
 		end
 		local tabLabel=createInstance("TextLabel", {
@@ -854,8 +725,7 @@ function JustHub:CreateWindow(options)
 			TextColor3=theme["Color Text"],
 			Font=Enum.Font.GothamBold,
 			TextSize=12,
-			TextXAlignment=Enum.TextXAlignment.Left,
-			ZIndex=4
+			TextXAlignment=Enum.TextXAlignment.Left
 		}, tabBtn)
 		local tabContent=createInstance("ScrollingFrame", {
 			Name=tName.."Content",
@@ -864,8 +734,7 @@ function JustHub:CreateWindow(options)
 			ScrollingDirection=Enum.ScrollingDirection.Y,
 			BackgroundTransparency=1,
 			Visible=false,
-			ScrollBarThickness=4,
-			ZIndex=2
+			ScrollBarThickness=4
 		}, self.ContentContainer)
 		local layoutTab=createInstance("UIListLayout", {
 			Padding=UDim.new(0,5),
@@ -887,11 +756,11 @@ function JustHub:CreateWindow(options)
 		end
 		function tabObj:addSection(secName)
 			local sName=secName or "Section"
+			-- Perbaikan: gunakan ukuran awal 0 dengan AutomaticSize agar container mengembang sesuai isinya
 			local secFrame=createInstance("Frame", {
-				Size=UDim2.new(1,0,0,20),
-				BackgroundColor3=theme["Color Stroke"],
-				BackgroundTransparency=0.2,
-				ZIndex=2
+				Size=UDim2.new(1,0,0,0),
+				AutomaticSize = Enum.AutomaticSize.Y,
+				BackgroundColor3=theme["Color Hub 2"]
 			}, tabContent)
 			createInstance("UICorner",{CornerRadius=UDim.new(0,4)}, secFrame)
 			addBorder(secFrame, theme["Color Stroke"],1)
@@ -903,15 +772,13 @@ function JustHub:CreateWindow(options)
 				TextColor3=theme["Color Text"],
 				Font=Enum.Font.GothamBold,
 				TextSize=14,
-				TextXAlignment=Enum.TextXAlignment.Left,
-				ZIndex=3
+				TextXAlignment=Enum.TextXAlignment.Left
 			}, secFrame)
 			local secContent=createInstance("Frame", {
 				Size=UDim2.new(1,0,0,0),
 				Position=UDim2.new(0,0,0,20),
 				BackgroundTransparency=1,
-				AutomaticSize=Enum.AutomaticSize.Y,
-				ZIndex=3
+				AutomaticSize=Enum.AutomaticSize.Y
 			}, secFrame)
 			local layoutSec=createInstance("UIListLayout", {
 				Padding=UDim.new(0,4),
