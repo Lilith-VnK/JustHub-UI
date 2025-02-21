@@ -742,43 +742,43 @@ function JustHub:ToggleUIVisibility()
 end
 
 function JustHub:Notify(o)
-	o=o or {}
-	local t=o.Title or ""
-	local m=o.Message or ""
-	local d=o.Duration or 5
-	local showProgress=o.ShowProgress or false
-	local theme=getCurrentTheme(JustHub.Save.Theme)
+	o = o or {}
+	local t = o.Title or ""
+	local m = o.Message or ""
+	local d = o.Duration or 5
+	local showProgress = o.ShowProgress or false
+	local theme = getCurrentTheme(JustHub.Save.Theme)
 	if not self.NotificationContainer then
 		return
 	end
-	local nf=createInstance("Frame",{Size=UDim2.new(0,300,0,0),BackgroundTransparency=0,ClipsDescendants=true},self.NotificationContainer)
-	local corner=createInstance("UICorner",{CornerRadius=UDim.new(0,8)},nf)
-	local stroke=addBorder(nf,theme["Color Stroke"],2)
-	local grad=createInstance("UIGradient",{Color=theme["Color Hub 1"]},nf)
-	local tLabel=createInstance("TextLabel",{Text=t,Size=UDim2.new(1,-10,0,20),Position=UDim2.new(0,5,0,5),BackgroundTransparency=1,TextColor3=theme["Color Text"],Font=Enum.Font.GothamBold,TextSize=14,TextXAlignment=Enum.TextXAlignment.Left},nf)
-	local mLabel=createInstance("TextLabel",{Text=m,Size=UDim2.new(1,-10,0,0),Position=UDim2.new(0,5,0,25),BackgroundTransparency=1,TextColor3=theme["Color Text"],Font=Enum.Font.Gotham,TextSize=12,TextWrapped=true,TextXAlignment=Enum.TextXAlignment.Left},nf)
-	mLabel.Size=UDim2.new(1,-10,0,mLabel.TextBounds.Y+5)
-	local fullHeight=mLabel.AbsolutePosition.Y+mLabel.AbsoluteSize.Y-nf.AbsolutePosition.Y+10
+	local nf = createInstance("Frame", {Size = UDim2.new(0,300,0,0), BackgroundTransparency = 0, ClipsDescendants = true}, self.NotificationContainer)
+	createInstance("UICorner", {CornerRadius = UDim.new(0,8)}, nf)
+	addBorder(nf, theme["Color Stroke"], 2)
+	createInstance("UIGradient", {Color = theme["Color Hub 1"]}, nf)
+	local tLabel = createInstance("TextLabel", {Text = t, Size = UDim2.new(1,-10,0,20), Position = UDim2.new(0,5,0,5), BackgroundTransparency = 1, TextColor3 = theme["Color Text"], Font = Enum.Font.GothamBold, TextSize = 14, TextXAlignment = Enum.TextXAlignment.Left}, nf)
+	local mLabel = createInstance("TextLabel", {Text = m, Size = UDim2.new(1,-10,0,0), Position = UDim2.new(0,5,0,25), BackgroundTransparency = 1, TextColor3 = theme["Color Text"], Font = Enum.Font.Gotham, TextSize = 12, TextWrapped = true, TextXAlignment = Enum.TextXAlignment.Left}, nf)
+	mLabel.Size = UDim2.new(1,-10,0, mLabel.TextBounds.Y+5)
+	local fullHeight = mLabel.AbsolutePosition.Y + mLabel.AbsoluteSize.Y - nf.AbsolutePosition.Y + 10
 	local progressFrame
 	if showProgress then
-		progressFrame=createInstance("Frame",{Size=UDim2.new(1,0,0,5),Position=UDim2.new(0,0,1,-5),BackgroundColor3=theme["Color Theme"]},nf)
-		createInstance("UICorner",{CornerRadius=UDim.new(0,3)},progressFrame)
-		fullHeight=fullHeight+5
+		progressFrame = createInstance("Frame", {Size = UDim2.new(1,0,0,5), Position = UDim2.new(0,0,1,-5), BackgroundColor3 = theme["Color Theme"]}, nf)
+		createInstance("UICorner", {CornerRadius = UDim.new(0,3)}, progressFrame)
+		fullHeight = fullHeight + 5
 	end
-	nf.Size=UDim2.new(0,300,0,fullHeight)
-	nf.BackgroundColor3=theme["Color Hub 2"]
-	nf.BackgroundTransparency=0.1
-	nf.Position=UDim2.new(1,0,1,0)
-	local inTween=TweenService:Create(nf,TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Size=UDim2.new(0,300,0,fullHeight)})
+	nf.Size = UDim2.new(0,300,0,fullHeight)
+	nf.BackgroundColor3 = theme["Color Hub 2"]
+	nf.BackgroundTransparency = 0.1
+	nf.Position = UDim2.new(1,0,1,0)
+	local inTween = TweenService:Create(nf, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0,300,0,fullHeight)})
 	inTween:Play()
 	spawn(function()
 		inTween.Completed:Wait()
 		if showProgress and progressFrame then
-			local tw=TweenService:Create(progressFrame,TweenInfo.new(d,Enum.EasingStyle.Linear,Enum.EasingDirection.Out),{Size=UDim2.new(0,0,0,5)})
+			local tw = TweenService:Create(progressFrame, TweenInfo.new(d, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Size = UDim2.new(0,0,0,5)})
 			tw:Play()
 		end
 		wait(d)
-		local outTween=TweenService:Create(nf,TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.In),{BackgroundTransparency=1,Size=UDim2.new(0,300,0,0)})
+		local outTween = TweenService:Create(nf, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {BackgroundTransparency = 1, Size = UDim2.new(0,300,0,0)})
 		outTween:Play()
 		outTween.Completed:Wait()
 		nf:Destroy()
