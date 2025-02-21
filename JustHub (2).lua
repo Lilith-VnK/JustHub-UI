@@ -566,17 +566,16 @@ function SectionMethods:addButton(o)
 	return c
 end
 
-function JustHub:addSection(sn,sh)
-	sn=sn or "Section"
-	sh=sh or 100
-	local sf=createInstance("Frame",{Name=sn,Size=UDim2.new(1,0,0,sh),BackgroundColor3=getCurrentTheme(JustHub.Save.Theme)["Color Hub 2"],BackgroundTransparency=0},nil)
-	addBorder(sf,getCurrentTheme(JustHub.Save.Theme)["Color Stroke"],2)
-	createInstance("UICorner",{CornerRadius=UDim.new(0,8)},sf)
-	local st=createInstance("TextLabel",{Name="SectionTitle",Text=sn,Size=UDim2.new(1,0,0,30),BackgroundTransparency=1,TextColor3=getCurrentTheme(JustHub.Save.Theme)["Color Text"],Font=Enum.Font.GothamBold,TextSize=16,TextXAlignment=Enum.TextXAlignment.Left},sf)
-	local sc=createInstance("Frame",{Name="SectionContent",Size=UDim2.new(1,0,1,-30),Position=UDim2.new(0,0,0,30),BackgroundTransparency=1},sf)
-	createInstance("UIListLayout",{FillDirection=Enum.FillDirection.Vertical,Padding=UDim.new(0,5),SortOrder=Enum.SortOrder.LayoutOrder,HorizontalAlignment=Enum.HorizontalAlignment.Left},sc)
-	local so={Frame=sf,Title=st,Content=sc}
-	setmetatable(so,{__index=SectionMethods})
+function JustHub:addSection(sn, sh)
+	sn = sn or "Section"
+	sh = sh or 100
+	local sf = createInstance("Frame", {Name = sn, Size = UDim2.new(1, 0, 0, sh), BackgroundColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Hub 2"], BackgroundTransparency = 0}, nil)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, sf)
+	local st = createInstance("TextLabel", {Name = "SectionTitle", Text = sn, Size = UDim2.new(1, 0, 0, 30), BackgroundTransparency = 1, TextColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Text"], Font = Enum.Font.GothamBold, TextSize = 16, TextXAlignment = Enum.TextXAlignment.Left}, sf)
+	local sc = createInstance("Frame", {Name = "SectionContent", Size = UDim2.new(1, 0, 1, -30), Position = UDim2.new(0, 0, 0, 30), BackgroundTransparency = 1}, sf)
+	createInstance("UIListLayout", {FillDirection = Enum.FillDirection.Vertical, Padding = UDim.new(0, 5), SortOrder = Enum.SortOrder.LayoutOrder, HorizontalAlignment = Enum.HorizontalAlignment.Left}, sc)
+	local so = {Frame = sf, Title = st, Content = sc}
+	setmetatable(so, {__index = SectionMethods})
 	return so
 end
 
@@ -762,18 +761,18 @@ function JustHub:CreateWindow(o)
 		if #wObj.Tabs==1 then
 			tObj.Content.Visible=true
 		end
-		function tObj:addSection(sn,sh)
-			sn=sn or "Section"
-			sh=sh or 80
-			local sframe=createInstance("Frame",{Name=sn,Size=UDim2.new(1,0,0,sh),BackgroundColor3=th["Color Hub 2"],BackgroundTransparency=0.0},tc)
-			createInstance("UICorner",{CornerRadius=UDim.new(0,8)},sframe)
-			addBorder(sframe,th["Color Stroke"],2)
-			local st=createInstance("TextLabel",{Name="SectionTitle",Text=sn,Size=UDim2.new(1,0,0,30),BackgroundTransparency=1,TextColor3=th["Color Text"],Font=Enum.Font.GothamBold,TextSize=14,TextXAlignment=Enum.TextXAlignment.Left},sframe)
-			local sc=createInstance("Frame",{Name="SectionContent",Size=UDim2.new(1,0,1,-30),Position=UDim2.new(0,0,0,30),BackgroundTransparency=1},sframe)
-			createInstance("UIListLayout",{FillDirection=Enum.FillDirection.Vertical,Padding=UDim.new(0,5),SortOrder=Enum.SortOrder.LayoutOrder,HorizontalAlignment=Enum.HorizontalAlignment.Left},sc)
-			local sObj={Frame=sframe,Title=st,Content=sc}
-			table.insert(tObj.Sections,sObj)
-			setmetatable(sObj,{__index=SectionMethods})
+		function tObj:addSection(sn, sh)
+			sn = sn or "Section"
+			sh = sh or 80
+			local sframe = createInstance("Frame", {Name = sn, Size = UDim2.new(1, 0, 0, sh), BackgroundColor3 = th["Color Hub 2"], BackgroundTransparency = 0.0}, tc)
+			createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, sframe)
+			addBorder(sframe, th["Color Stroke"], 2)
+			local st = createInstance("TextLabel", {Name = "SectionTitle", Text = sn, Size = UDim2.new(1, 0, 0, 30), BackgroundTransparency = 1, TextColor3 = th["Color Text"], Font = Enum.Font.GothamBold, TextSize = 14, TextXAlignment = Enum.TextXAlignment.Left}, sframe)
+			local sc = createInstance("Frame", {Name = "SectionContent", Size = UDim2.new(1, 0, 1, -30), Position = UDim2.new(0, 0, 0, 30), BackgroundTransparency = 1}, sframe)
+			createInstance("UIListLayout", {FillDirection = Enum.FillDirection.Vertical, Padding = UDim.new(0, 5), SortOrder = Enum.SortOrder.LayoutOrder, HorizontalAlignment = Enum.HorizontalAlignment.Left}, sc)
+			local sObj = {Frame = sframe, Title = st, Content = sc}
+			table.insert(tObj.Sections, sObj)
+			setmetatable(sObj, {__index = SectionMethods})
 			return sObj
 		end
 		return tObj
