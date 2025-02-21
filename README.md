@@ -266,14 +266,15 @@ JustHub:Notify({
     Message = "Your settings have been saved.",
     Duration = 5,
     ShowProgress = true
-})
+   })
 
- --[[
-     Title: The notification's title
+   --[[
+    Title: The notification's title
      Message: Main text content
      Duration: How long it remains on screen (in seconds)
      ShowProgress: Whether to show a small progress bar at the bottom
-  ]]```
+   ]]
+   ```
 
 ## Window Resizing
   The main window can be resized using the small grip in the bottom-right corner. This is built-in by default.
