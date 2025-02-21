@@ -287,6 +287,147 @@ function SectionMethods:addToggle(o)
 	return f
 end
 
+function SectionMethods:addSlider(o)
+	o=o or {}
+	local n=o.Name or "Slider"
+	local mi=o.Min or 0
+	local ma=o.Max or 100
+	local df=o.Default or mi
+	if JustHub.ConfigData[n]~=nil then
+		df=JustHub.ConfigData[n]
+	else
+		JustHub.ConfigData[n]=df
+	end
+	local cb=o.Callback or function(x)end
+	local f=createInstance("Frame",{Name=n.."Slider",Size=UDim2.new(1,0,0,25),BackgroundTransparency=1},self.Content)
+	addBorder(f,getCurrentTheme(JustHub.Save.Theme)["Color Stroke"],1)
+	local l=createInstance("TextLabel",{Name="Label",Text=n,Size=UDim2.new(0.7,0,1,0),Position=UDim2.new(0,0,0,0),BackgroundTransparency=1,TextColor3=getCurrentTheme(JustHub.Save.Theme)["Color Text"],Font=Enum.Font.Gotham,TextSize=10},f)
+	local sep=createInstance("Frame",{Size=UDim2.new(0,2,1,0),Position=UDim2.new(0.7,0,0,0),BackgroundColor3=Color3.fromRGB(255,255,255)},f)
+	createInstance("UICorner",{CornerRadius=UDim.new(0,1)},sep)
+	local sc=createInstance("Frame",{Name="SliderContainer",Size=UDim2.new(0.3,0,1,0),Position=UDim2.new(0.7,0,0,0),BackgroundTransparency=1},f)
+	local sb=createInstance("Frame",{Name="SliderBar",Size=UDim2.new(1,-20,0,4),Position=UDim2.new(0,10,0.5,-2),BackgroundColor3=getCurrentTheme(JustHub.Save.Theme)["Color Stroke"]},sc)
+	createInstance("UICorner",{CornerRadius=UDim.new(0,4)},sb)
+	local sh=createInstance("Frame",{Name="SliderHandle",Size=UDim2.new(0,12,0,12),BackgroundColor3=getCurrentTheme(JustHub.Save.Theme)["Color Theme"],Position=UDim2.new((df-mi)/(ma-mi),-6,0.5,-6)},sb)
+	createInstance("UICorner",{CornerRadius=UDim.new(0,4)},sh)
+	local drag=false
+	sh.InputBegan:Connect(function(i)
+		if i.UserInputType==Enum.UserInputType.MouseButton1 or i.UserInputType==Enum.UserInputType.Touch then drag=true end
+	end)
+	sh.InputEnded:Connect(function(i)
+		if i.UserInputType==Enum.UserInputType.MouseButton1 or i.UserInputType==Enum.UserInputType.Touch then drag=false end
+	end)
+	UserInputService.InputChanged:Connect(function(i)
+		if drag and (i.UserInputType==Enum.UserInputType.MouseMovement or i.UserInputType==Enum.UserInputType.Touch) then
+			local bp=sb.AbsolutePosition.X
+			local bw=sb.AbsoluteSize.X
+			local rp=math.clamp((i.Position.X-bp)/bw,0,1)
+			sh.Position=UDim2.new(rp,-6,sh.Position.Y.Scale,sh.Position.Y.Offset)
+			local val=mi+rp*(ma-mi)
+			JustHub.ConfigData[n]=val
+			cb(val)
+		end
+	end)
+	JustHub:RegisterControl(n,function(sv)
+		local nr=(sv-mi)/(ma-mi)
+		sh.Position=UDim2.new(nr,-6,0.5,-6)
+	end)
+	return f
+end
+
+function SectionMethods:addTextBox(o)
+	o=o or {}
+	local n=o.Name or "TextBox"
+	local d=o.Default or ""
+	local cb=o.Callback or function(x)end
+	local f=createInstance("Frame",{Name=n.."TextBox",Size=UDim2.new(1,0,0,20),BackgroundTransparency=1},self.Content)
+	addBorder(f,getCurrentTheme(JustHub.Save.Theme)["Color Stroke"],1)
+	local l=createInstance("TextLabel",{Name="Label",Text=n,Size=UDim2.new(0.7,0,1,0),Position=UDim2.new(0,0,0,0),BackgroundTransparency=1,TextColor3=getCurrentTheme(JustHub.Save.Theme)["Color Text"],Font=Enum.Font.Gotham,TextSize=10},f)
+	local tb=createInstance("TextBox",{Name="Input",Text=d,Size=UDim2.new(0.3,0,1,0),Position=UDim2.new(0.7,0,0,0),BackgroundColor3=getCurrentTheme(JustHub.Save.Theme)["Color Stroke"],TextColor3=getCurrentTheme(JustHub.Save.Theme)["Color Text"],Font=Enum.Font.Gotham,TextSize=10},f)
+	tb.FocusLost:Connect(function(e)
+		JustHub.ConfigData[n]=tb.Text
+		cb(tb.Text)
+	end)
+	JustHub:RegisterControl(n,function(sv)
+		tb.Text=sv
+	end)
+	return f
+end
+
+function SectionMethods:addDropdown(o)
+	o=o or {}
+	local t=o.Name or "Dropdown"
+	local df=o.Default or ""
+	local it=o.Items or {}
+	local cb=o.Callback or function(x)end
+	local ch=20
+	local oh=ch+(#it*20+((#it-1)*2))
+	local f=createInstance("Frame",{Name=t.."Dropdown",BackgroundTransparency=1},self.Content)
+	f.Size=UDim2.new(1,0,0,ch)
+	addBorder(f,getCurrentTheme(JustHub.Save.Theme)["Color Stroke"],1)
+	local l=createInstance("TextLabel",{Name="Label",Text=t,Size=UDim2.new(0.7,0,0,ch),Position=UDim2.new(0,0,0,0),BackgroundTransparency=1,TextColor3=getCurrentTheme(JustHub.Save.Theme)["Color Text"],Font=Enum.Font.Gotham,TextSize=10},f)
+	local b=createInstance("TextButton",{Name="DropdownButton",Text=(df~="" and (df.." ▼") or "Select ▼"),Size=UDim2.new(0.3,0,0,ch),Position=UDim2.new(0.7,0,0,0),BackgroundColor3=getCurrentTheme(JustHub.Save.Theme)["Color Stroke"],Font=Enum.Font.GothamBold,TextSize=10},f)
+	local lf=createInstance("Frame",{Name="DropdownList",BackgroundColor3=getCurrentTheme(JustHub.Save.Theme)["Color Hub 2"],Visible=false,Position=UDim2.new(0,0,0,ch)},f)
+	lf.Size=UDim2.new(1,0,0,#it*20+((#it-1)*2))
+	createInstance("UIListLayout",{Padding=UDim.new(0,2),SortOrder=Enum.SortOrder.LayoutOrder,HorizontalAlignment=Enum.HorizontalAlignment.Left},lf)
+	local dt=false
+	b.MouseButton1Click:Connect(function()
+		if dt then
+			tweenProperty(f,{Size=UDim2.new(1,0,0,ch)},0.2)
+			tweenProperty(b,{TextColor3=getCurrentTheme(JustHub.Save.Theme)["Color Text"]},0.2)
+			tweenProperty(lf,{Position=UDim2.new(0,0,0,ch-10)},0.2)
+			wait(0.2)
+			lf.Visible=false
+		else
+			lf.Position=UDim2.new(0,0,0,ch-10)
+			lf.Visible=true
+			tweenProperty(f,{Size=UDim2.new(1,0,0,oh)},0.2)
+			tweenProperty(b,{TextColor3=Color3.fromRGB(0,255,0)},0.2)
+			tweenProperty(lf,{Position=UDim2.new(0,0,0,ch)},0.2)
+		end
+		dt=not dt
+	end)
+	for _,op in ipairs(it) do
+		local btn=createInstance("TextButton",{Size=UDim2.new(1,0,0,20),Text=op,TextColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,Font=Enum.Font.Gotham,TextSize=10},lf)
+		btn.MouseButton1Click:Connect(function()
+			l.Text=t.." - "..op
+			JustHub.ConfigData[t]=op
+			pcall(cb,op)
+			tweenProperty(f,{Size=UDim2.new(1,0,0,ch)},0.2)
+			dt=false
+			wait(0.2)
+			lf.Visible=false
+		end)
+	end
+	JustHub.ConfigData[t]=df
+	JustHub:RegisterControl(t,function(sv)
+		l.Text=t.." - "..sv
+	end)
+	local upd={}
+	function upd:Clear()
+		for i,v in pairs(lf:GetChildren()) do
+			if v:IsA("TextButton") then
+				v:Destroy()
+				dt=false
+				l.Text=t
+				tweenProperty(f,{Size=UDim2.new(1,0,0,ch)},0.2)
+			end
+		end
+	end
+	function upd:Refresh(nl)
+		nl=nl or {}
+		for i,v in pairs(nl) do
+			local btn=createInstance("TextButton",{Size=UDim2.new(1,0,0,25),Text=v,TextColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,Font=Enum.Font.SourceSansSemibold,TextSize=12},lf)
+			btn.MouseButton1Click:Connect(function()
+				dt=false
+				l.Text=t.." - "..v
+				pcall(cb,v)
+				tweenProperty(f,{Size=UDim2.new(1,0,0,ch)},0.2)
+			end)
+		end
+	end
+	return upd
+end
+
 function SectionMethods:addColorPicker(o)
 	o=o or {}
 	local n=o.Name or "ColorPicker"
