@@ -78,12 +78,11 @@ JustHub:Notify({
     Message = "Welcome to JustHub!",
     Duration = 5
 })
-```
+   ```
 
 ## Core Concepts
 
 1. **Themes**
-
    JustHub includes multiple built-in themes (Darker, Dark, Purple, Light, Neon, Forest, Aqua). You can switch them via:
    ```lua
    JustHub:SetTheme("Darker")
