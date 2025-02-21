@@ -500,6 +500,47 @@ function SectionMethods:addDropdown(opts)
 	return dropObj
 end
 
+function SectionMethods:addButton(opts)
+	opts=opts or {}
+	local name=opts.Name or "Button"
+	local desc=opts.Desc or opts.Description or ""
+	local buttonText=opts.ButtonText or "Click"
+	local callback=opts.Callback or function()end
+	local frame, labelFunc = ButtonFrame(self.Content, name, desc, UDim2.new(1,-20,1,0))
+	local theme=getCurrentTheme()
+	local actBtn = createInstance("TextButton", {
+		Name="ActionButton",
+		Text=buttonText,
+		Size=UDim2.new(0,60,0,20),
+		Position=UDim2.new(1,-65,0.5,-10),
+		AnchorPoint=Vector2.new(1,0.5),
+		BackgroundColor3=theme["Color Theme"],
+		TextColor3=theme["Color Text"],
+		Font=Enum.Font.GothamBold,
+		TextSize=12
+	}, frame)
+	createInstance("UICorner",{CornerRadius=UDim.new(0,6)}, actBtn)
+	actBtn.MouseButton1Click:Connect(function()
+		callback()
+	end)
+	local buttonObj={}
+	function buttonObj:Set(val)
+		if type(val)=="string" then
+			labelFunc.SetTitle(val)
+		end
+	end
+	function buttonObj:SetDesc(txt)
+		labelFunc.SetDesc(txt)
+	end
+	function buttonObj:Callback(fn)
+		callback=fn
+	end
+	function buttonObj:Destroy()
+		frame:Destroy()
+	end
+	return buttonObj
+end
+
 function JustHub:Notify(opts)
 	opts=opts or {}
 	local title=opts.Title or "Title"
