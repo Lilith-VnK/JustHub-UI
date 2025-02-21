@@ -316,7 +316,7 @@ section:addButton({
          HELLO = "Bonjour",
          APPLY = "Appliquer"
       }
-  }
+    }
    ```   
 2. **Set the current language:**
   ```lua
