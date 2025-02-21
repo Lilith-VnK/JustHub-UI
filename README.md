@@ -88,6 +88,7 @@ JustHub:Notify({
    ```lua
    JustHub:SetTheme("Darker")
    ```
+   
    You can also register a custom theme:
    ```lua
    JustHub:RegisterTheme("MyCustomTheme", {
@@ -100,14 +101,12 @@ JustHub:Notify({
 })
 
 JustHub:SetTheme("MyCustomTheme")
-```
+   ```
 
 2. **Sections & Controls**
-
    After calling `JustHub:InitializeUI`, you have a window object. You can create tabs with `window:addTab("TabName")`. Each tab can have multiple sections (:addSection("SectionName")), and each section can have controls (e.g., toggle, slider, etc.).
 
 3. **Role-Based Permissions**
-
    Controls can be restricted to a specific role by providing a Role property:
    ```lua
    section:addToggle({
@@ -139,8 +138,7 @@ JustHub:SetLanguage("fr")
 print(JustHub:LocalizeText("HELLO")) -- "Bonjour"
    ```
 
-6. **Sound Effects**
-  
+6. **Sound Effects**  
    You can define asset IDs in:
    ```lua
    JustHub.Sounds = {
@@ -170,10 +168,9 @@ print(JustHub:LocalizeText("HELLO")) -- "Bonjour"
     Callback = function(state) end,
     Role = "admin" -- optional
 })
-```
+   ```
 
 3. **addSlider**
-
    A slider control for numeric values.
    ```lua
    section:addSlider({
@@ -181,7 +178,8 @@ print(JustHub:LocalizeText("HELLO")) -- "Bonjour"
     Min = 0,
     Max = 100,
     Default = 50,
-    Callback = function(value) end
+    Callback = function(value) 
+    end
 })
    ```
 
@@ -192,9 +190,10 @@ print(JustHub:LocalizeText("HELLO")) -- "Bonjour"
    section:addTextBox({
     Name = "Username",
     Default = "Player",
-    Callback = function(text) end
+    Callback = function(text)
+    end
 })
-```
+  ```
 
 5. **addDropdown + Change Theme**
    
@@ -210,8 +209,7 @@ print(JustHub:LocalizeText("HELLO")) -- "Bonjour"
 })
 ```
 
-6. **addButton + Save Config**
-   
+6. **addButton + Save Config**   
    A simple button with a callback.
    ```lua
    section:addButton({
@@ -221,10 +219,9 @@ print(JustHub:LocalizeText("HELLO")) -- "Bonjour"
         JustHub:SaveConfig("MyConfig.json")
     end
 })
-```
+   ```
 
-7. **addBind (KeyBind)**
-    
+7. **addBind (KeyBind)**    
    A keybind that runs a callback when the chosen key is pressed.
    ```lua
     section:addBind({
@@ -246,7 +243,7 @@ print(JustHub:LocalizeText("HELLO")) -- "Bonjour"
     Callback = function(color3)
         print("Color picked:", color3)
     end
-})
+    })
    ```
 
 9. **addScriptBox (Macro/Scripting)**
@@ -259,7 +256,7 @@ print(JustHub:LocalizeText("HELLO")) -- "Bonjour"
     Callback = function(scriptText)
         print("User typed script:", scriptText)
     end
-})
+    })
    ```
    
 9. **Notifications**
@@ -272,20 +269,19 @@ print(JustHub:LocalizeText("HELLO")) -- "Bonjour"
     Duration = 5,
     ShowProgress = true
 })
-```
- --[[
+
+--[[
   Title: The notification's title
   Message: Main text content
   Duration: How long it remains on screen (in seconds)
   ShowProgress: Whether to show a small progress bar at the bottom
   ]]
+  ```
 
 ## Window Resizing
-
   The main window can be resized using the small grip in the bottom-right corner. This is built-in by default.
 
 ## Undo/Redo Usage
-
   When a user changes certain controls (like toggles), JustHub automatically records the old and new values in the UndoStack. You can call:
   ```lua
   JustHub:Undo()
@@ -314,17 +310,17 @@ section:addButton({
 
 1. **Define text keys in multiple languages:**
    ```lua
-JustHub.Localization = {
-    en = {
-        HELLO = "Hello",
-        APPLY = "Apply"
-    },
-    fr = {
-        HELLO = "Bonjour",
-        APPLY = "Appliquer"
-    }
-}
-```
+   JustHub.Localization = {
+      en = {
+         HELLO = "Hello",
+         APPLY = "Apply"
+      },
+      fr = {
+         HELLO = "Bonjour",
+         APPLY = "Appliquer"
+      }
+  }
+   ```   
 2. **Set the current language:**
   ```lua
   JustHub:SetLanguage("fr")
