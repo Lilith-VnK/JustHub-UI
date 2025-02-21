@@ -98,9 +98,8 @@ JustHub:Notify({
     ["Color Theme"]  = Color3.fromRGB(...),
     ["Color Text"]   = Color3.fromRGB(...),
     ["Color Dark Text"] = Color3.fromRGB(...)
-})
-
-JustHub:SetTheme("MyCustomTheme")
+   })
+   JustHub:SetTheme("MyCustomTheme")
    ```
 
 2. **Sections & Controls**
@@ -115,8 +114,8 @@ JustHub:SetTheme("MyCustomTheme")
     Callback = function(state)
         print("Admin only toggle:", state)
     end
-})
-```
+   })
+   ```
    If JustHub.UserRole does not match the Role, that control is hidden.
 
 4. **Undo/Redo System**
@@ -133,9 +132,9 @@ JustHub:SetTheme("MyCustomTheme")
    JustHub.Localization = {
     en = { HELLO = "Hello" },
     fr = { HELLO = "Bonjour" }
-}
-JustHub:SetLanguage("fr")
-print(JustHub:LocalizeText("HELLO")) -- "Bonjour"
+    }
+    JustHub:SetLanguage("fr")
+    print(JustHub:LocalizeText("HELLO")) -- "Bonjour"
    ```
 
 6. **Sound Effects**  
@@ -144,7 +143,7 @@ print(JustHub:LocalizeText("HELLO")) -- "Bonjour"
    JustHub.Sounds = {
     ButtonClick = 912345678, --Change Your Assets ID
     SliderMove  = 912345679 --Change Your Assets ID
-}
+   }
    ```
    Then in your control logic, JustHub automatically calls `JustHub:PlaySound("ButtonClick")` or you can call it manually:
    ```lua
@@ -167,7 +166,7 @@ print(JustHub:LocalizeText("HELLO")) -- "Bonjour"
     Default = true,
     Callback = function(state) end,
     Role = "admin" -- optional
-})
+   })
    ```
 
 3. **addSlider**
@@ -180,7 +179,7 @@ print(JustHub:LocalizeText("HELLO")) -- "Bonjour"
     Default = 50,
     Callback = function(value) 
     end
-})
+   })
    ```
 
 4. **addTextBox**
@@ -192,8 +191,8 @@ print(JustHub:LocalizeText("HELLO")) -- "Bonjour"
     Default = "Player",
     Callback = function(text)
     end
-})
-  ```
+   })
+   ```
 
 5. **addDropdown + Change Theme**
    
@@ -206,8 +205,8 @@ print(JustHub:LocalizeText("HELLO")) -- "Bonjour"
     Callback = function(choice)
         JustHub:SetTheme(choice)
     end
-})
-```
+   })
+   ```
 
 6. **addButton + Save Config**   
    A simple button with a callback.
@@ -218,7 +217,7 @@ print(JustHub:LocalizeText("HELLO")) -- "Bonjour"
     Callback = function()
         JustHub:SaveConfig("MyConfig.json")
     end
-})
+   })
    ```
 
 7. **addBind (KeyBind)**    
@@ -270,13 +269,12 @@ print(JustHub:LocalizeText("HELLO")) -- "Bonjour"
     ShowProgress = true
 })
 
---[[
-  Title: The notification's title
-  Message: Main text content
-  Duration: How long it remains on screen (in seconds)
-  ShowProgress: Whether to show a small progress bar at the bottom
-  ]]
-  ```
+ --[[
+     Title: The notification's title
+     Message: Main text content
+     Duration: How long it remains on screen (in seconds)
+     ShowProgress: Whether to show a small progress bar at the bottom
+  ]]```
 
 ## Window Resizing
   The main window can be resized using the small grip in the bottom-right corner. This is built-in by default.
