@@ -1086,73 +1086,73 @@ function JustHub:CreateWindow(o)
 	
 	local wObj = {ScreenGui = sg, MainFrame = mf, TopBar = tb, Sidebar = sb, ContentContainer = cc, Tabs = {}}
 	function wObj:addTab(tn)
-		tn = tn or "Tab"
-		local b = createInstance("TextButton", {
-			Name = tn .. "Button",
-			Text = tn,
-			Size = UDim2.new(1, 0, 0, 20),
-			BackgroundColor3 = t["Color Stroke"],
-			TextColor3 = Color3.fromRGB(128, 0, 128),
-			Font = Enum.Font.GothamBold,
-			TextSize = 12
-		}, sb)
-		createInstance("UICorner", {CornerRadius = UDim.new(0, 10)}, b)
-		createInstance("UIStroke", {Color = t["Color Theme"], Thickness = 1}, b)
-		local tc = createInstance("Frame", {
-			Name = tn .. "Content",
-			Size = UDim2.new(1, 0, 1, 0),
+	tn = tn or "Tab"
+	local b = createInstance("TextButton", {
+		Name = tn .. "Button",
+		Text = tn,
+		Size = UDim2.new(1, 0, 0, 20),
+		BackgroundColor3 = th["Color Stroke"],
+		TextColor3 = Color3.fromRGB(128, 0, 128),
+		Font = Enum.Font.GothamBold,
+		TextSize = 12
+	}, sb)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 10)}, b)
+	createInstance("UIStroke", {Color = th["Color Theme"], Thickness = 1}, b)
+	local tc = createInstance("Frame", {
+		Name = tn .. "Content",
+		Size = UDim2.new(1, 0, 1, 0),
+		BackgroundTransparency = 1,
+		Visible = false
+	}, sf)
+	local tObj = {Name = tn, Button = b, Content = tc, Sections = {}}
+	table.insert(wObj.Tabs, tObj)
+	b.MouseButton1Click:Connect(function()
+		for _, tt in ipairs(wObj.Tabs) do
+			tt.Content.Visible = false
+		end
+		tObj.Content.Visible = true
+	end)
+	if #wObj.Tabs == 1 then
+		tObj.Content.Visible = true
+	end
+	function tObj:addSection(sn, sh)
+		sn = sn or "Section"
+		sh = sh or 80
+		local sframe = createInstance("Frame", {
+			Name = sn,
+			Size = UDim2.new(1, 0, 0, sh),
+			BackgroundColor3 = th["Color Hub 2"],
+			BackgroundTransparency = 0.0
+		}, tc)
+		createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, sframe)
+		addBorder(sframe, th["Color Stroke"], 2)
+		local st = createInstance("TextLabel", {
+			Name = "SectionTitle",
+			Text = sn,
+			Size = UDim2.new(1, 0, 0, 30),
 			BackgroundTransparency = 1,
-			Visible = false
-		}, sf)
-		local tObj = {Name = tn, Button = b, Content = tc, Sections = {}}
-		table.insert(wObj.Tabs, tObj)
-		b.MouseButton1Click:Connect(function()
-			for _, tt in ipairs(wObj.Tabs) do
-				tt.Content.Visible = false
-			end
-			tObj.Content.Visible = true
-		end)
-		if #wObj.Tabs == 1 then
-			tObj.Content.Visible = true
-		end
-		function tObj:addSection(sn, sh)
-			sn = sn or "Section"
-			sh = sh or 80
-			local sframe = createInstance("Frame", {
-				Name = sn,
-				Size = UDim2.new(1, 0, 0, sh),
-				BackgroundColor3 = t["Color Hub 2"],
-				BackgroundTransparency = 0.0
-			}, tc)
-			createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, sframe)
-			addBorder(sframe, t["Color Stroke"], 2)
-			local st = createInstance("TextLabel", {
-				Name = "SectionTitle",
-				Text = sn,
-				Size = UDim2.new(1, 0, 0, 30),
-				BackgroundTransparency = 1,
-				TextColor3 = t["Color Text"],
-				Font = Enum.Font.GothamBold,
-				TextSize = 14,
-				TextXAlignment = Enum.TextXAlignment.Left
-			}, sframe)
-			local sc = createInstance("Frame", {
-				Name = "SectionContent",
-				Size = UDim2.new(1, 0, 1, -30),
-				Position = UDim2.new(0, 0, 0, 30),
-				BackgroundTransparency = 1
-			}, sframe)
-			createInstance("UIListLayout", {
-				FillDirection = Enum.FillDirection.Vertical,
-				Padding = UDim.new(0, 5),
-				SortOrder = Enum.SortOrder.LayoutOrder,
-				HorizontalAlignment = Enum.HorizontalAlignment.Left
-			}, sc)
-			local sObj = {Frame = sframe, Title = st, Content = sc}
-			table.insert(tObj.Sections, sObj)
-			setmetatable(sObj, {__index = SectionMethods})
-			return sObj
-		end
+			TextColor3 = th["Color Text"],
+			Font = Enum.Font.GothamBold,
+			TextSize = 14,
+			TextXAlignment = Enum.TextXAlignment.Left
+		}, sframe)
+		local sc = createInstance("Frame", {
+			Name = "SectionContent",
+			Size = UDim2.new(1, 0, 1, -30),
+			Position = UDim2.new(0, 0, 0, 30),
+			BackgroundTransparency = 1
+		}, sframe)
+		createInstance("UIListLayout", {
+			FillDirection = Enum.FillDirection.Vertical,
+			Padding = UDim.new(0, 5),
+			SortOrder = Enum.SortOrder.LayoutOrder,
+			HorizontalAlignment = Enum.HorizontalAlignment.Left
+	    	}, sc)
+    		local sObj = {Frame = sframe, Title = st, Content = sc}
+    		table.insert(tObj.Sections, sObj)
+	     	setmetatable(sObj, {__index = SectionMethods})
+	     	return sObj
+        end
 		return tObj
 	end
 	return wObj
