@@ -55,12 +55,16 @@
    local JustHub = loadstring(game:HttpGet('https://raw.githubusercontent.com/Lilith-VnK/JustHub-UI/refs/heads/main/JustHub%20(2).lua'))()
 
 JustHub:InitializeUI({
-    Name = "My UI Window", 
+    Name = "JustHub Ui",
+    SubTitle = "version 1.0"
     Theme = "Darker"
 })
 
-wait(6) --Waiting Loading Screen
-
+task.spawn(function()
+   while not JustHub.Window do
+    print("Waiting JustHub.Window...")
+    task.wait()
+end
 local window = JustHub.Window
 local tab = window:addTab("Main")
 local section = tab:addSection("Settings")
@@ -83,7 +87,7 @@ JustHub:Notify({
 ## Core Concepts
 
 1. **Themes**
-   JustHub includes multiple built-in themes (Darker, Dark, Purple, Light, Neon, Forest, Aqua). You can switch them via:
+   JustHub includes multiple built-in themes (Darker, Dark, Purple, Light, Neon, Forest, Aqua, Crimson, Solar, Pastel, Cyber, Ocean, Desert, Vintage, Rainbow, Midnight). You can switch them via:
    ```lua
    JustHub:SetTheme("Darker")
    ```
