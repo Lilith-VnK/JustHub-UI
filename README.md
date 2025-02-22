@@ -86,7 +86,7 @@ JustHub:Notify({
 
 ## Core Concepts
 
-1. #**Themes**
+1. **Themes**
 
 JustHub includes multiple built-in themes (Darker, Dark, Purple, Light, Neon, Forest, Aqua, Crimson, Solar, Pastel, Cyber, Ocean, Desert, Vintage, Rainbow, Midnight). You can switch them via:
    ```lua
@@ -107,9 +107,11 @@ JustHub includes multiple built-in themes (Darker, Dark, Purple, Light, Neon, Fo
    ```
 
 2. #**Sections & Controls**
+
 After calling `JustHub:InitializeUI`, you have a window object. You can create tabs with `window:addTab("TabName")`. Each tab can have multiple sections (:addSection("SectionName")), and each section can have controls (e.g., toggle, slider, etc.).
 
-3. #**Role-Based Permissions**
+4. #**Role-Based Permissions**
+
 Controls can be restricted to a specific role by providing a Role property:
    ```lua
    section:addToggle({
@@ -122,16 +124,18 @@ Controls can be restricted to a specific role by providing a Role property:
    ```
    If JustHub.UserRole does not match the Role, that control is hidden.
 
-5. **Undo/Redo System**
-   Controls like toggles automatically register undo states when changed. You can call:
+6. **Undo/Redo System**
+
+Controls like toggles automatically register undo states when changed. You can call:
    ```lua
    JustHub:Undo()
    JustHub:Redo()
    ```
    to revert or re-apply the last change.
   
-6. **Localization**
-   You can store localized text in JustHub.Localization, specify JustHub.CurrentLang, and call `JustHub:LocalizeText("KEY")` to retrieve a localized string:
+7. **Localization**
+
+You can store localized text in JustHub.Localization, specify JustHub.CurrentLang, and call `JustHub:LocalizeText("KEY")` to retrieve a localized string:
    ```lua
    JustHub.Localization = {
     en = { HELLO = "Hello" },
@@ -141,8 +145,9 @@ Controls can be restricted to a specific role by providing a Role property:
     print(JustHub:LocalizeText("HELLO")) -- "Bonjour"
    ```
 
-7. **Sound Effects**  
-   You can define asset IDs in:
+8. **Sound Effects**  
+
+You can define asset IDs in:
    ```lua
    JustHub.Sounds = {
     ButtonClick = 912345678, --Change Your Assets ID
