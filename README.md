@@ -359,8 +359,16 @@ section:addButton({
   local JustHub = loadstring(game:HttpGet('https://raw.githubusercontent.com/Lilith-VnK/JustHub-UI/refs/heads/main/JustHub%20(2).lua'))()
 
 JustHub:SetUserRole("admin")
-JustHub:InitializeUI({Name="Advanced UI", Theme="Darker"})
+JustHub:InitializeUI({
+    Name = "Justhub UI",
+    SubTitle = "Version 1.0",
+    Theme = "Rainbow"
+})
 
+task.spawn(function()
+   while not JustHub.Window do
+      task.wait()
+end
 local window = JustHub.Window
 local tab = window:addTab("Main")
 local section = tab:addSection("Admin Settings", 120)
