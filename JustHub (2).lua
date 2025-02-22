@@ -797,76 +797,20 @@ function JustHub:CreateWindow(o)
 	self.ScreenGui = sg
 	local uw = JustHub.Save.UISize[1]
 	local uh = JustHub.Save.UISize[2]
-	local mf = createInstance("Frame", {
-		Name = "MainFrame",
-		AnchorPoint = Vector2.new(0.5, 0.5),
-		Position = UDim2.new(0.5, 0, -0.5, 0),
-		Size = UDim2.new(0, uw, 0, uh),
-		BackgroundColor3 = th["Color Hub 2"]
-	}, sg)
+	local mf = createInstance("Frame", {Name = "MainFrame", AnchorPoint = Vector2.new(0.5, 0.5), Position = UDim2.new(0.5, 0, -0.5, 0), Size = UDim2.new(0, uw, 0, uh), BackgroundColor3 = th["Color Hub 2"]}, sg)
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, mf)
 	addBorder(mf, th["Color Stroke"], 2)
 	local function initTopBar()
-		local tb = createInstance("Frame", {
-			Name = "TopBar",
-			Size = UDim2.new(1, 0, 0, 60),
-			BackgroundColor3 = th["Color Hub 2"]
-		}, mf)
+		local tb = createInstance("Frame", {Name = "TopBar", Size = UDim2.new(1, 0, 0, 60), BackgroundColor3 = th["Color Hub 2"]}, mf)
 		createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, tb)
-		local controlPanel = createInstance("Frame", {
-			Name = "ControlPanel",
-			Size = UDim2.new(0, 120, 1, 0),
-			Position = UDim2.new(1, -120, 0, 0),
-			BackgroundTransparency = 1
-		}, tb)
-		local tl = createInstance("TextLabel", {
-			Name = "TitleLabel",
-			Size = UDim2.new(1, -120, 1, 0),
-			Position = UDim2.new(0, 10, 0, 0),
-			BackgroundTransparency = 1,
-			Text = ft,
-			TextColor3 = th["Color Text"],
-			Font = Enum.Font.GothamBold,
-			TextSize = 18,
-			TextXAlignment = Enum.TextXAlignment.Left
-		}, tb)
-		local resetBtn = createInstance("TextButton", {
-			Name = "ResetButton",
-			Text = "Reset",
-			Size = UDim2.new(0, 60, 0, 30),
-			Position = UDim2.new(0, 0, 0.5, -15),
-			BackgroundColor3 = th["Color Hub 2"],
-			TextColor3 = th["Color Text"],
-			Font = Enum.Font.GothamBold,
-			TextSize = 14,
-			BackgroundTransparency = 0.2
-		}, controlPanel)
-		local lockBtn = createInstance("TextButton", {
-			Name = "LockButton",
-			Text = "Lock",
-			Size = UDim2.new(0, 60, 0, 30),
-			Position = UDim2.new(0, 60, 0.5, -15),
-			BackgroundColor3 = th["Color Hub 2"],
-			TextColor3 = th["Color Text"],
-			Font = Enum.Font.GothamBold,
-			TextSize = 14,
-			BackgroundTransparency = 0.2
-		}, controlPanel)
+		local controlPanel = createInstance("Frame", {Name = "ControlPanel", Size = UDim2.new(0, 120, 1, 0), Position = UDim2.new(1, -120, 0, 0), BackgroundTransparency = 1}, tb)
+		local tl = createInstance("TextLabel", {Name = "TitleLabel", Size = UDim2.new(1, -120, 1, 0), Position = UDim2.new(0, 10, 0, 0), BackgroundTransparency = 1, Text = ft, TextColor3 = th["Color Text"], Font = Enum.Font.GothamBold, TextSize = 18, TextXAlignment = Enum.TextXAlignment.Left}, tb)
+		local resetBtn = createInstance("TextButton", {Name = "ResetButton", Text = "Reset", Size = UDim2.new(0, 60, 0, 30), Position = UDim2.new(0, 0, 0.5, -15), BackgroundColor3 = th["Color Hub 2"], TextColor3 = th["Color Text"], Font = Enum.Font.GothamBold, TextSize = 14, BackgroundTransparency = 0.2}, controlPanel)
+		local lockBtn = createInstance("TextButton", {Name = "LockButton", Text = "Lock", Size = UDim2.new(0, 60, 0, 30), Position = UDim2.new(0, 60, 0.5, -15), BackgroundColor3 = th["Color Hub 2"], TextColor3 = th["Color Text"], Font = Enum.Font.GothamBold, TextSize = 14, BackgroundTransparency = 0.2}, controlPanel)
 		return tb, resetBtn, lockBtn
 	end
 	local tb, resetBtn, lockBtn = initTopBar()
-	local wl = createInstance("TextLabel", {
-		Name = "WelcomeLabel",
-		Size = UDim2.new(0, 150, 0, 20),
-		AnchorPoint = Vector2.new(0, 1),
-		Position = UDim2.new(0, 10, 1, -30),
-		BackgroundTransparency = 1,
-		Text = "Welcome, " .. pl.Name,
-		TextColor3 = th["Color Text"],
-		Font = Enum.Font.GothamBold,
-		TextSize = 16,
-		TextXAlignment = Enum.TextXAlignment.Left
-	}, mf)
+	local wl = createInstance("TextLabel", {Name = "WelcomeLabel", Size = UDim2.new(0, 150, 0, 20), AnchorPoint = Vector2.new(0, 1), Position = UDim2.new(0, 10, 1, -30), BackgroundTransparency = 1, Text = "Welcome, " .. pl.Name, TextColor3 = th["Color Text"], Font = Enum.Font.GothamBold, TextSize = 16, TextXAlignment = Enum.TextXAlignment.Left}, mf)
 	resetBtn.MouseButton1Click:Connect(function()
 		mf.Size = UDim2.new(0, uw, 0, uh)
 		mf.Position = UDim2.new(0.5, 0, -0.5, 0)
@@ -881,48 +825,14 @@ function JustHub:CreateWindow(o)
 		end
 	end)
 	local sw = JustHub.Save.TabSize
-	local sb = createInstance("Frame", {
-		Name = "Sidebar",
-		Size = UDim2.new(0, sw, 1, -60),
-		Position = UDim2.new(0, 0, 0, 60),
-		BackgroundColor3 = th["Color Hub 2"]
-	}, mf)
+	local sb = createInstance("Frame", {Name = "Sidebar", Size = UDim2.new(0, sw, 1, -60), Position = UDim2.new(0, 0, 0, 60), BackgroundColor3 = th["Color Hub 2"]}, mf)
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 10)}, sb)
-	createInstance("UIListLayout", {
-		FillDirection = Enum.FillDirection.Vertical,
-		Padding = UDim.new(0, 10),
-		HorizontalAlignment = Enum.HorizontalAlignment.Center,
-		VerticalAlignment = Enum.VerticalAlignment.Top
-	}, sb)
-	local cc = createInstance("Frame", {
-		Name = "ContentContainer",
-		Size = UDim2.new(1, -sw, 1, -60),
-		Position = UDim2.new(0, sw, 0, 60),
-		BackgroundColor3 = th["Color Hub 2"]
-	}, mf)
+	createInstance("UIListLayout", {FillDirection = Enum.FillDirection.Vertical, Padding = UDim.new(0, 10), HorizontalAlignment = Enum.HorizontalAlignment.Center, VerticalAlignment = Enum.VerticalAlignment.Top}, sb)
+	local cc = createInstance("Frame", {Name = "ContentContainer", Size = UDim2.new(1, -sw, 1, -60), Position = UDim2.new(0, sw, 0, 60), BackgroundColor3 = th["Color Hub 2"]}, mf)
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 10)}, cc)
-	local sf = createInstance("ScrollingFrame", {
-		Size = UDim2.new(1, 0, 1, 0),
-		BackgroundTransparency = 1,
-		ScrollBarThickness = 8,
-		BorderSizePixel = 0
-	}, cc)
-	createInstance("UIListLayout", {
-		SortOrder = Enum.SortOrder.LayoutOrder,
-		Padding = UDim.new(0, 10),
-		HorizontalAlignment = Enum.HorizontalAlignment.Left
-	}, sf)
-	local fl = createInstance("TextLabel", {
-		Name = "FPSLabel",
-		Size = UDim2.new(0, 100, 0, 20),
-		AnchorPoint = Vector2.new(1, 1),
-		Position = UDim2.new(1, -10, 1, -10),
-		BackgroundTransparency = 1,
-		TextColor3 = th["Color Text"],
-		Font = Enum.Font.Gotham,
-		TextSize = 14,
-		Text = "FPS: Calculating..."
-	}, mf)
+	local sf = createInstance("ScrollingFrame", {Size = UDim2.new(1, 0, 1, 0), BackgroundTransparency = 1, ScrollBarThickness = 8, BorderSizePixel = 0}, cc)
+	createInstance("UIListLayout", {SortOrder = Enum.SortOrder.LayoutOrder, Padding = UDim.new(0, 10), HorizontalAlignment = Enum.HorizontalAlignment.Left}, sf)
+	local fl = createInstance("TextLabel", {Name = "FPSLabel", Size = UDim2.new(0, 100, 0, 20), AnchorPoint = Vector2.new(1, 1), Position = UDim2.new(1, -10, 1, -10), BackgroundTransparency = 1, TextColor3 = th["Color Text"], Font = Enum.Font.Gotham, TextSize = 14, Text = "FPS: Calculating..."}, mf)
 	RunService.Heartbeat:Connect(function(d)
 		local fps = math.floor(1 / d)
 		fl.Text = "FPS: " .. fps
@@ -967,16 +877,7 @@ function JustHub:CreateWindow(o)
 			mf.Visible = false
 			local pg2 = Players.LocalPlayer:WaitForChild("PlayerGui")
 			local showUI = createInstance("ScreenGui", {Name = "ShowUI", ResetOnSpawn = false}, pg2)
-			local showBtn = createInstance("TextButton", {
-				Name = "ShowUIButton",
-				Size = UDim2.new(0, 100, 0, 30),
-				Position = UDim2.new(0.5, -50, 0, 10),
-				BackgroundColor3 = th["Color Hub 2"],
-				Text = "Show UI",
-				TextColor3 = Color3.fromRGB(128, 0, 128),
-				Font = Enum.Font.GothamBold,
-				TextSize = 20
-			}, showUI)
+			local showBtn = createInstance("TextButton", {Name = "ShowUIButton", Size = UDim2.new(0, 100, 0, 30), Position = UDim2.new(0.5, -50, 0, 10), BackgroundColor3 = th["Color Hub 2"], Text = "Show UI", TextColor3 = Color3.fromRGB(128, 0, 128), Font = Enum.Font.GothamBold, TextSize = 20}, showUI)
 			createInstance("UICorner", {CornerRadius = UDim.new(0, 25)}, showBtn)
 			createInstance("UIStroke", {Color = th["Color Theme"], Thickness = 1}, showBtn)
 			showBtn.MouseButton1Click:Connect(function()
