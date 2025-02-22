@@ -86,8 +86,9 @@ JustHub:Notify({
 
 ## Core Concepts
 
-1. **Themes**
-   JustHub includes multiple built-in themes (Darker, Dark, Purple, Light, Neon, Forest, Aqua, Crimson, Solar, Pastel, Cyber, Ocean, Desert, Vintage, Rainbow, Midnight). You can switch them via:
+1. #**Themes**
+
+JustHub includes multiple built-in themes (Darker, Dark, Purple, Light, Neon, Forest, Aqua, Crimson, Solar, Pastel, Cyber, Ocean, Desert, Vintage, Rainbow, Midnight). You can switch them via:
    ```lua
    JustHub:SetTheme("Darker")
    ```
@@ -105,11 +106,11 @@ JustHub:Notify({
    JustHub:SetTheme("MyCustomTheme")
    ```
 
-2. **Sections & Controls**
-   After calling `JustHub:InitializeUI`, you have a window object. You can create tabs with `window:addTab("TabName")`. Each tab can have multiple sections (:addSection("SectionName")), and each section can have controls (e.g., toggle, slider, etc.).
+2. #**Sections & Controls**
+After calling `JustHub:InitializeUI`, you have a window object. You can create tabs with `window:addTab("TabName")`. Each tab can have multiple sections (:addSection("SectionName")), and each section can have controls (e.g., toggle, slider, etc.).
 
-3. **Role-Based Permissions**
-   Controls can be restricted to a specific role by providing a Role property:
+3. #**Role-Based Permissions**
+Controls can be restricted to a specific role by providing a Role property:
    ```lua
    section:addToggle({
     Name = "Admin Toggle",
@@ -121,7 +122,7 @@ JustHub:Notify({
    ```
    If JustHub.UserRole does not match the Role, that control is hidden.
 
-4. **Undo/Redo System**
+5. **Undo/Redo System**
    Controls like toggles automatically register undo states when changed. You can call:
    ```lua
    JustHub:Undo()
@@ -129,7 +130,7 @@ JustHub:Notify({
    ```
    to revert or re-apply the last change.
   
-5. **Localization**
+6. **Localization**
    You can store localized text in JustHub.Localization, specify JustHub.CurrentLang, and call `JustHub:LocalizeText("KEY")` to retrieve a localized string:
    ```lua
    JustHub.Localization = {
@@ -140,7 +141,7 @@ JustHub:Notify({
     print(JustHub:LocalizeText("HELLO")) -- "Bonjour"
    ```
 
-6. **Sound Effects**  
+7. **Sound Effects**  
    You can define asset IDs in:
    ```lua
    JustHub.Sounds = {
