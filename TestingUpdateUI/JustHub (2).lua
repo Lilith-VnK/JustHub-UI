@@ -227,6 +227,430 @@ JustHub.Sounds = {
 	ButtonClick = 0,
 	SliderMove = 0
 }
+JustHub.Icons = (function()
+	local iconData = {
+		{"accessibility", 10709751939},
+		{"activity", 10709752035},
+		{"airvent", 10709752131},
+		{"airplay", 10709752254},
+		{"alarmcheck", 10709752405},
+		{"alarmclock", 10709752630},
+		{"alarmclockoff", 10709752508},
+		{"alarmminus", 10709752732},
+		{"alarmplus", 10709752825},
+		{"album", 10709752906},
+		{"alertcircle", 10709752996},
+		{"alertoctagon", 10709753064},
+		{"alerttriangle", 10709753149},
+		{"aligncenter", 10709753570},
+		{"aligncenterhorizontal", 10709753272},
+		{"aligncentervertical", 10709753421},
+		{"alignendhorizontal", 10709753692},
+		{"alignendvertical", 10709753808},
+		{"alignhorizontaldistributecenter", 10747779791},
+		{"alignhorizontaldistributeend", 10747784534},
+		{"alignhorizontaldistributestart", 10709754118},
+		{"alignhorizontaljustifycenter", 10709754204},
+		{"alignhorizontaljustifyend", 10709754317},
+		{"alignhorizontaljustifystart", 10709754436},
+		{"alignhorizontalspacearound", 10709754590},
+		{"alignhorizontalspacebetween", 10709754749},
+		{"alignjustify", 10709759610},
+		{"alignleft", 10709759764},
+		{"alignright", 10709759895},
+		{"alignstarthorizontal", 10709760051},
+		{"alignstartvertical", 10709760244},
+		{"alignverticaldistributecenter", 10709760351},
+		{"alignverticaldistributeend", 10709760434},
+		{"alignverticaldistributestart", 10709760612},
+		{"alignverticaljustifycenter", 10709760814},
+		{"alignverticaljustifyend", 10709761003},
+		{"alignverticaljustifystart", 10709761176},
+		{"alignverticalspacearound", 10709761324},
+		{"alignverticalspacebetween", 10709761434},
+		{"anchor", 10709761530},
+		{"angry", 10709761629},
+		{"annoyed", 10709761722},
+		{"aperture", 10709761813},
+		{"apple", 10709761889},
+		{"archive", 10709762233},
+		{"archiverestore", 10709762058},
+		{"armchair", 10709762327},
+		{"arrowbigdown", 10747796644},
+		{"arrowbigleft", 10709762574},
+		{"arrowbigright", 10709762727},
+		{"arrowbigup", 10709762879},
+		{"arrowdown", 10709767827},
+		{"arrowdowncircle", 10709763034},
+		{"arrowdownleft", 10709767656},
+		{"arrowdownright", 10709767750},
+		{"arrowleft", 10709768114},
+		{"arrowleftcircle", 10709767936},
+		{"arrowleftright", 10709768019},
+		{"arrowright", 10709768347},
+		{"arrowrightcircle", 10709768226},
+		{"arrowup", 10709768939},
+		{"arrowupcircle", 10709768432},
+		{"arrowupdown", 10709768538},
+		{"arrowupleft", 10709768661},
+		{"arrowupright", 10709768787},
+		{"asterisk", 10709769095},
+		{"atsign", 10709769286},
+		{"award", 10709769406},
+		{"axe", 10709769508},
+		{"axis3d", 10709769598},
+		{"baby", 10709769732},
+		{"backpack", 10709769841},
+		{"baggageclaim", 10709769935},
+		{"banana", 10709770005},
+		{"banknote", 10709770178},
+		{"barchart", 10709773755},
+		{"barchart2", 10709770317},
+		{"barchart3", 10709770431},
+		{"barchart4", 10709770560},
+		{"barcharthorizontal", 10709773669},
+		{"barcode", 10747360675},
+		{"baseline", 10709773863},
+		{"bath", 10709773963},
+		{"battery", 10709774640},
+		{"batterycharging", 10709774068},
+		{"batteryfull", 10709774206},
+		{"batterylow", 10709774370},
+		{"batterymedium", 10709774513},
+		{"beaker", 10709774756},
+		{"bed", 10709775036},
+		{"beddouble", 10709774864},
+		{"bedsingle", 10709774968},
+		{"beer", 10709775167},
+		{"bell", 10709775704},
+		{"bellminus", 10709775241},
+		{"belloff", 10709775320},
+		{"bellplus", 10709775448},
+		{"bellring", 10709775560},
+		{"bike", 10709775894},
+		{"binary", 10709776050},
+		{"bitcoin", 10709776126},
+		{"bluetooth", 10709776655},
+		{"bluetoothconnected", 10709776240},
+		{"bluetoothoff", 10709776344},
+		{"bluetoothsearching", 10709776501},
+		{"bold", 10747813908},
+		{"bomb", 10709781460},
+		{"bone", 10709781605},
+		{"book", 10709781824},
+		{"bookopen", 10709781717},
+		{"bookmark", 10709782154},
+		{"bookmarkminus", 10709781919},
+		{"bookmarkplus", 10709782044},
+		{"bot", 10709782230},
+		{"box", 10709782497},
+		{"boxselect", 10709782342},
+		{"boxes", 10709782582},
+		{"briefcase", 10709782662},
+		{"brush", 10709782758},
+		{"bug", 10709782845},
+		{"building", 10709783051},
+		{"building2", 10709782939},
+		{"bus", 10709783137},
+		{"cake", 10709783217},
+		{"calculator", 10709783311},
+		{"calendar", 10709789505},
+		{"calendarcheck", 10709783474},
+		{"calendarcheck2", 10709783392},
+		{"calendarclock", 10709783577},
+		{"calendardays", 10709783673},
+		{"calendarheart", 10709783835},
+		{"calendarminus", 10709783959},
+		{"calendaroff", 10709788784},
+		{"calendarplus", 10709788937},
+		{"calendarrange", 10709789053},
+		{"calendarsearch", 10709789200},
+		{"calendarx", 10709789407},
+		{"calendarx2", 10709789329},
+		{"camera", 10709789686},
+		{"cameraoff", 10747822677},
+		{"car", 10709789810},
+		{"carrot", 10709789960},
+		{"cast", 10709790097},
+		{"charge", 10709790202},
+		{"check", 10709790644},
+		{"checkcircle", 10709790387},
+		{"checkcircle2", 10709790298},
+		{"checksquare", 10709790537},
+		{"chefhat", 10709790757},
+		{"cherry", 10709790875},
+		{"chevrondown", 10709790948},
+		{"chevronfirst", 10709791015},
+		{"chevronlast", 10709791130},
+		{"chevronleft", 10709791281},
+		{"chevronright", 10709791437},
+		{"chevronup", 10709791523},
+		{"chevronsdown", 10709796864},
+		{"chevronsdownup", 10709791632},
+		{"chevronsleft", 10709797151},
+		{"chevronsleftright", 10709797006},
+		{"chevronsright", 10709797382},
+		{"chevronsrightleft", 10709797274},
+		{"chevronsup", 10709797622},
+		{"chevronsupdown", 10709797508},
+		{"chrome", 10709797725},
+		{"circle", 10709798174},
+		{"circledot", 10709797837},
+		{"circleellipsis", 10709797985},
+		{"circleslashed", 10709798100},
+		{"citrus", 10709798276},
+		{"clapperboard", 10709798350},
+		{"clipboard", 10709799288},
+		{"clipboardcheck", 10709798443},
+		{"clipboardcopy", 10709798574},
+		{"clipboardedit", 10709798682},
+		{"clipboardlist", 10709798792},
+		{"clipboardsignature", 10709798890},
+		{"clipboardtype", 10709798999},
+		{"clipboardx", 10709799124},
+		{"clock", 10709805144},
+		{"clock1", 10709799535},
+		{"clock10", 10709799718},
+		{"clock11", 10709799818},
+		{"clock12", 10709799962},
+		{"clock2", 10709803876},
+		{"clock3", 10709803989},
+		{"clock4", 10709804164},
+		{"clock5", 10709804291},
+		{"clock6", 10709804435},
+		{"clock7", 10709804599},
+		{"clock8", 10709804784},
+		{"clock9", 10709804996},
+		{"cloud", 10709806740},
+		{"cloudcog", 10709805262},
+		{"clouddrizzle", 10709805371},
+		{"cloudfog", 10709805477},
+		{"cloudhail", 10709805596},
+		{"cloudlightning", 10709805727},
+		{"cloudmoon", 10709805942},
+		{"cloudmoonrain", 10709805838},
+		{"cloudoff", 10709806060},
+		{"cloudrain", 10709806277},
+		{"cloudrainwind", 10709806166},
+		{"cloudsnow", 10709806374},
+		{"cloudsun", 10709806631},
+		{"cloudsunrain", 10709806475},
+		{"cloudy", 10709806859},
+		{"clover", 10709806995},
+		{"code", 10709810463},
+		{"code2", 10709807111},
+		{"codepen", 10709810534},
+		{"codesandbox", 10709810676},
+		{"coffee", 10709810814},
+		{"cog", 10709810948},
+		{"coins", 10709811110},
+		{"columns", 10709811261},
+		{"command", 10709811365},
+		{"compass", 10709811445},
+		{"component", 10709811595},
+		{"conciergebell", 10709811706},
+		{"connection", 10747361219},
+		{"contact", 10709811834},
+		{"contrast", 10709811939},
+		{"cookie", 10709812067},
+		{"copy", 10709812159},
+		{"copyleft", 10709812251},
+		{"copyright", 10709812311},
+		{"cornerdownleft", 10709812396},
+		{"cornerdownright", 10709812485},
+		{"cornerleftdown", 10709812632},
+		{"cornerleftup", 10709812784},
+		{"cornerrightdown", 10709812939},
+		{"cornerrightup", 10709813094},
+		{"cornerupleft", 10709813185},
+		{"cornerupright", 10709813281},
+		{"cpu", 10709813383},
+		{"croissant", 10709818125},
+		{"crop", 10709818245},
+		{"cross", 10709818399},
+		{"diamond", 10709819149},
+		{"dice1", 10709819266},
+		{"dice2", 10709819361},
+		{"dice3", 10709819508},
+		{"dice4", 10709819670},
+		{"dice5", 10709819801},
+		{"dice6", 10709819896},
+		{"dices", 10723343321},
+		{"diff", 10723343416},
+		{"disc", 10723343537},
+		{"divide", 10723343805},
+		{"dividecircle", 10723343636},
+		{"dividesquare", 10723343737},
+		{"dollarsign", 10723343958},
+		{"download", 10723344270},
+		{"downloadcloud", 10723344088},
+		{"droplet", 10723344432},
+		{"droplets", 10734883356},
+		{"drumstick", 10723344737},
+		{"edit", 10734883598},
+		{"edit2", 10723344885},
+		{"edit3", 10723345088},
+		{"egg", 10723345518},
+		{"eggfried", 10723345347},
+		{"electricity", 10723345749},
+		{"electricityoff", 10723345643},
+		{"equal", 10723345990},
+		{"equalnot", 10723345866},
+		{"eraser", 10723346158},
+		{"euro", 10723346372},
+		{"expand", 10723346553},
+		{"externallink", 10723346684},
+		{"eye", 10723346959},
+		{"eyeoff", 10723346871},
+		{"factory", 10723347051},
+		{"fan", 10723354359},
+		{"fastforward", 10723354521},
+		{"feather", 10723354671},
+		{"figma", 10723354801},
+		{"file", 10723374641},
+		{"filearchive", 10723354921},
+		{"fileaudio", 10723355148},
+		{"fileaudio2", 10723355026},
+		{"fileaxis3d", 10723355272},
+		{"filebadge", 10723355622},
+		{"filebadge2", 10723355451},
+		{"filebarchart", 10723355887},
+		{"filebarchart2", 10723355746},
+		{"filebox", 10723355989},
+		{"filecheck", 10723356210},
+		{"filecheck2", 10723356100},
+		{"fileclock", 10723356329},
+		{"filecode", 10723356507},
+		{"filecog", 10723356830},
+		{"filecog2", 10723356676},
+		{"filediff", 10723357039},
+		{"filedigit", 10723357151},
+		{"filedown", 10723357322},
+		{"fileedit", 10723357495},
+		{"fileheart", 10723357637},
+		{"fileimage", 10723357790},
+		{"fileinput", 10723357933},
+		{"filejson", 10723364435},
+		{"filejson2", 10723364361},
+		{"filekey", 10723364605},
+		{"filekey2", 10723364515},
+		{"filelinechart", 10723364725},
+		{"filelock", 10723364957},
+		{"filelock2", 10723364861},
+		{"fileminus", 10723365254},
+		{"fileminus2", 10723365086},
+		{"fileoutput", 10723365457},
+		{"filepiechart", 10723365598},
+		{"fileplus", 10723365877},
+		{"fileplus2", 10723365766},
+		{"filequestion", 10723365987},
+		{"filescan", 10723366167},
+		{"filesearch", 10723366550},
+		{"filesearch2", 10723366340},
+		{"filesignature", 10723366741},
+		{"filespreadsheet", 10723366962},
+		{"filesymlink", 10723367098},
+		{"fileterminal", 10723367244},
+		{"filetext", 10723367380},
+		{"filetype", 10723367606},
+		{"filetype2", 10723367509},
+		{"fileup", 10723367734},
+		{"filevideo", 10723373884},
+		{"filevideo2", 10723367834},
+		{"filevolume", 10723374172},
+		{"filevolume2", 10723374030},
+		{"filewarning", 10723374276},
+		{"filex", 10723374544},
+		{"filex2", 10723374378},
+		{"files", 10723374759},
+		{"film", 10723374981},
+		{"filter", 10723375128},
+		{"fingerprint", 10723375250},
+		{"flag", 10723375890},
+		{"flagoff", 10723375443},
+		{"flagtriangleleft", 10723375608},
+		{"flagtriangleright", 10723375727},
+		{"flame", 10723376114},
+		{"flashlight", 10723376471},
+		{"flashlightoff", 10723376365},
+		{"flaskconical", 10734883986},
+		{"flaskround", 10723376614},
+		{"fliphorizontal", 10723376884},
+		{"fliphorizontal2", 10723376745},
+		{"flipvertical", 10723377138},
+		{"flipvertical2", 10723377026},
+		{"flower", 10747830374},
+		{"flower2", 10723377305},
+		{"focus", 10723377537},
+		{"folder", 10723387563},
+		{"folderarchive", 10723384478},
+		{"foldercheck", 10723384605},
+		{"folderclock", 10723384731},
+		{"folderclosed", 10723384893},
+		{"foldercog", 10723385213},
+		{"foldercog2", 10723385036},
+		{"folderdown", 10723385338},
+		{"folderedit", 10723385445},
+		{"folderheart", 10723385545},
+		{"folderinput", 10723385721},
+		{"folderkey", 10723385848},
+		{"folderlock", 10723386005},
+		{"folderminus", 10723386127},
+		{"folderopen", 10723386277},
+		{"folderoutput", 10723386386},
+		{"folderplus", 10723386531},
+		{"foldersearch", 10723386787},
+		{"foldersearch2", 10723386674},
+		{"foldersymlink", 10723386930},
+		{"foldertree", 10723387085},
+		{"folderup", 10723387265},
+		{"folderx", 10723387448},
+		{"folders", 10723387721},
+		{"forminput", 10723387841},
+		{"forward", 10723388016},
+		{"frame", 10723394389},
+		{"framer", 10723394565},
+		{"frown", 10723394681},
+		{"fuel", 10723394846},
+		{"functionsquare", 10723395041},
+		{"gamepad", 10723395457},
+		{"gamepad2", 10723395215},
+		{"gauge", 10723395708},
+		{"gavel", 10723395896},
+		{"gem", 10723396000},
+		{"ghost", 10723396107},
+		{"gift", 10723396402},
+		{"giftcard", 10723396225},
+		{"gitbranch", 10723396676},
+		{"gitbranchplus", 10723396542},
+		{"gitcommit", 10723396812},
+		{"gitcompare", 10723396954},
+		{"gitfork", 10723397049},
+		{"gitmerge", 10723397165},
+		{"gitpullrequest", 10723397431},
+		{"gitpullrequestclosed", 10723397268},
+		{"gitpullrequestdraft", 10734884302},
+		{"glass", 10723397788},
+		{"glass2", 10723397529},
+		{"glasswater", 10723397678},
+		{"glasses", 10723397895},
+		{"globe", 10723404337},
+		{"globe2", 10723398002},
+		{"grab", 10723404472},
+		{"graduationcap", 10723404691},
+		{"grape", 10723404822},
+		{"grid", 10723404936},
+		{"griphorizontal", 10723405089},
+		{"gripvertical", 10723405236},
+		{"hammer", 10723405360},
+		{"hand", 10723405649}
+	}
+	local icons = {}
+	for _, pair in ipairs(iconData) do
+		icons[pair[1]] = "rbxassetid://" .. tostring(pair[2])
+	end
+	return icons
+end)()
 
 local function createInstance(c,p,par)
 	local i=Instance.new(c)
@@ -814,9 +1238,15 @@ function JustHub:CreateWindow(o)
 		}, mf)
 		createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, tb)
 		addBorder(tb, th["Color Stroke"], 2)
+		local controlPanel = createInstance("Frame", {
+			Name = "ControlPanel",
+			Size = UDim2.new(0, 120, 1, 0),
+			Position = UDim2.new(1, -120, 0, 0),
+			BackgroundTransparency = 1
+		}, tb)
 		local tl = createInstance("TextLabel", {
 			Name = "TitleLabel",
-			Size = UDim2.new(1, -180, 1, 0),
+			Size = UDim2.new(1, -120, 1, 0),
 			Position = UDim2.new(0, 10, 0, 0),
 			BackgroundTransparency = 1,
 			Text = ft,
@@ -825,30 +1255,29 @@ function JustHub:CreateWindow(o)
 			TextSize = 18,
 			TextXAlignment = Enum.TextXAlignment.Left
 		}, tb)
-		addBorder(tl, th["Color Stroke"], 1)
 		local resetBtn = createInstance("TextButton", {
 			Name = "ResetButton",
 			Text = "Reset",
 			Size = UDim2.new(0, 50, 0, 30),
-			Position = UDim2.new(0, 10, 0, -29),
+			Position = UDim2.new(0, 10, 0, 0),
 			BackgroundColor3 = th["Color Hub 2"],
 			TextColor3 = th["Color Text"],
 			Font = Enum.Font.GothamBold,
 			TextSize = 14,
 			BackgroundTransparency = 0.2
-		}, tb)
+		}, controlPanel)
 		addBorder(resetBtn, th["Color Stroke"], 1)
 		local lockBtn = createInstance("TextButton", {
 			Name = "LockButton",
 			Text = "Lock",
 			Size = UDim2.new(0, 50, 0, 30),
-			Position = UDim2.new(0, 70, 0, -29),
+			Position = UDim2.new(0, 60, 0, 0),
 			BackgroundColor3 = th["Color Hub 2"],
 			TextColor3 = th["Color Text"],
 			Font = Enum.Font.GothamBold,
 			TextSize = 14,
 			BackgroundTransparency = 0.2
-		}, tb)
+		}, controlPanel)
 		addBorder(lockBtn, th["Color Stroke"], 1)
 		return tb, resetBtn, lockBtn
 	end
@@ -932,6 +1361,7 @@ function JustHub:CreateWindow(o)
 	hb.MouseButton1Click:Connect(function()
 		if not minimized then
 			tweenProperty(mf, {Size = UDim2.new(originalSize.X.Scale, originalSize.X.Offset, 0, 60 + footerHeight)}, 0.3)
+			wl.Visible = false
 			sb.Visible = false
 			cc.Visible = false
 			footer.Visible = false
@@ -939,6 +1369,7 @@ function JustHub:CreateWindow(o)
 		else
 			tweenProperty(mf, {Size = originalSize}, 0.3)
 			wait(0.3)
+			wl.Visible = true
 			sb.Visible = true
 			cc.Visible = true
 			footer.Visible = true
@@ -961,8 +1392,16 @@ function JustHub:CreateWindow(o)
 			mf.Visible = false
 			local pg2 = Players.LocalPlayer:WaitForChild("PlayerGui")
 			local showUI = createInstance("ScreenGui", {Name = "ShowUI", ResetOnSpawn = false}, pg2)
-			local showBtn = createControlButton("ShowUIButton", "Show UI", UDim2.new(0.5, -75, 0, -20))
-			showBtn.Parent = showUI
+			local showBtn = createInstance("TextButton", {
+				Name = "ShowUIButton",
+				Size = UDim2.new(0, 100, 0, 30),
+				Position = UDim2.new(0.5, -50, 0, 0),
+				BackgroundColor3 = th["Color Hub 2"],
+				Text = "Show UI",
+				TextColor3 = Color3.fromRGB(128, 0, 128),
+				Font = Enum.Font.GothamBold,
+				TextSize = 20
+			}, showUI)
 			createInstance("UICorner", {CornerRadius = UDim.new(0, 25)}, showBtn)
 			createInstance("UIStroke", {Color = th["Color Theme"], Thickness = 1}, showBtn)
 			showBtn.MouseButton1Click:Connect(function()
@@ -973,60 +1412,65 @@ function JustHub:CreateWindow(o)
 		end)
 	end)
 	mf.Active = true
-	local dragging = false
-	local dragStart, startPos
-	mf.InputBegan:Connect(function(inp)
-		if (inp.UserInputType == Enum.UserInputType.MouseButton1 or inp.UserInputType == Enum.UserInputType.Touch) and not isLocked then
-			dragging = true
-			dragStart = inp.Position
-			startPos = mf.Position
-		end
-	end)
-	mf.InputChanged:Connect(function(inp)
-		if dragging and (inp.UserInputType == Enum.UserInputType.MouseMovement or inp.UserInputType == Enum.UserInputType.Touch) then
-			local delta = inp.Position - dragStart
-			local newPos = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-			newPos = clampPosition(newPos, Vector2.new(sg.AbsoluteSize.X, sg.AbsoluteSize.Y))
-			mf.Position = newPos
-		end
-	end)
-	UserInputService.InputEnded:Connect(function(inp)
-		if inp.UserInputType == Enum.UserInputType.MouseButton1 or inp.UserInputType == Enum.UserInputType.Touch then
-			dragging = false
-		end
-	end)
-	local resizeGrip = Instance.new("Frame")
-	resizeGrip.Name = "ResizeGrip"
-	resizeGrip.Size = UDim2.new(0, 20, 0, 20)
-	resizeGrip.Position = UDim2.new(1, -20, 1, -20)
-	resizeGrip.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-	resizeGrip.BackgroundTransparency = 0.3
-	resizeGrip.BorderSizePixel = 0
-	resizeGrip.Parent = mf
-	local resizeCorner = Instance.new("UICorner", resizeGrip)
-	resizeCorner.CornerRadius = UDim.new(0, 5)
-	local resizing = false
-	local startSize
-	resizeGrip.InputBegan:Connect(function(inp)
-		if inp.UserInputType == Enum.UserInputType.MouseButton1 or inp.UserInputType == Enum.UserInputType.Touch then
-			resizing = true
-			dragStart = inp.Position
-			startSize = mf.Size
-		end
-	end)
-	resizeGrip.InputChanged:Connect(function(inp)
-		if resizing and (inp.UserInputType == Enum.UserInputType.MouseMovement or inp.UserInputType == Enum.UserInputType.Touch) then
-			local delta = inp.Position - dragStart
-			local newW = math.max(300, startSize.X.Offset + delta.X)
-			local newH = math.max(200, startSize.Y.Offset + delta.Y)
-			mf.Size = UDim2.new(0, newW, 0, newH)
-		end
-	end)
-	UserInputService.InputEnded:Connect(function(inp)
-		if inp.UserInputType == Enum.UserInputType.MouseButton1 or inp.UserInputType == Enum.UserInputType.Touch then
-			resizing = false
-		end
-	end)
+	local function enableDrag(frame)
+		local isDragging = false
+		local dragStartPos, startPos
+		frame.InputBegan:Connect(function(input)
+			if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and not isLocked then
+				isDragging = true
+				dragStartPos = input.Position
+				startPos = frame.Position
+			end
+		end)
+		frame.InputChanged:Connect(function(input)
+			if isDragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+				local delta = input.Position - dragStartPos
+				local newPos = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+				newPos = clampPosition(newPos, Vector2.new(sg.AbsoluteSize.X, sg.AbsoluteSize.Y))
+				frame.Position = newPos
+			end
+		end)
+		UserInputService.InputEnded:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+				isDragging = false
+			end
+		end)
+	end
+	enableDrag(mf)
+	local function enableResize(frame, grip)
+		local isResizing = false
+		local dragStartPos, startSize
+		grip.InputBegan:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+				isResizing = true
+				dragStartPos = input.Position
+				startSize = frame.Size
+			end
+		end)
+		grip.InputChanged:Connect(function(input)
+			if isResizing and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+				local delta = input.Position - dragStartPos
+				local newWidth = math.max(300, startSize.X.Offset + delta.X)
+				local newHeight = math.max(200, startSize.Y.Offset + delta.Y)
+				frame.Size = UDim2.new(0, newWidth, 0, newHeight)
+			end
+		end)
+		UserInputService.InputEnded:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+				isResizing = false
+			end
+		end)
+	end
+	local resizeGrip = createInstance("Frame", {
+		Name = "ResizeGrip",
+		Size = UDim2.new(0, 20, 0, 20),
+		Position = UDim2.new(1, -20, 1, -20),
+		BackgroundColor3 = Color3.fromRGB(50, 50, 50),
+		BackgroundTransparency = 0.3,
+		BorderSizePixel = 0
+	}, mf)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 5)}, resizeGrip)
+	enableResize(mf, resizeGrip)
 	local notiContainer = createInstance("Frame", {
 		Name = "NotificationContainer",
 		AnchorPoint = Vector2.new(1, 1),
