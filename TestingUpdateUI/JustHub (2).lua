@@ -872,28 +872,36 @@ function SectionMethods:addSlider(o)
 		JustHub.ConfigData[n] = df
 	end
 	local cb = o.Callback or function(x) end
-	local f = createInstance("Frame", {Name = n.."Slider", Size = UDim2.new(1,0,0,25), BackgroundTransparency = 1}, self.Content)
+	local TweenService = game:GetService("TweenService")
+	local f = createInstance("Frame", {Name = n.."Slider", Size = UDim2.new(1,0,0,25), BackgroundTransparency = 0, BackgroundColor3 = Color3.fromRGB(40,40,40)}, self.Content)
+	createInstance("UICorner", {CornerRadius = UDim.new(0,20)}, f)
 	addBorder(f, getCurrentTheme(JustHub.Save.Theme)["Color Stroke"], 1)
 	local l = createInstance("TextLabel", {
 		Name = "Label",
 		Text = n,
-		Size = UDim2.new(0.7,0,1,0),
+		Size = UDim2.new(0.5,0,1,0),
 		Position = UDim2.new(0,0,0,0),
 		BackgroundTransparency = 1,
 		TextColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Text"],
-		Font = Enum.Font.Gotham,
-		TextSize = 10
+		Font = Enum.Font.GothamBold,
+		TextSize = 12,
+		TextXAlignment = Enum.TextXAlignment.Left
 	}, f)
-	local sep = createInstance("Frame", {
-		Size = UDim2.new(0,2,1,0),
-		Position = UDim2.new(0.7,0,0,0),
-		BackgroundColor3 = Color3.fromRGB(255,255,255)
+	local vl = createInstance("TextLabel", {
+		Name = "ValueLabel",
+		Text = tostring(math.floor(df)),
+		Size = UDim2.new(0.15,0,1,0),
+		Position = UDim2.new(0.5,0,0,0),
+		BackgroundTransparency = 1,
+		TextColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Text"],
+		Font = Enum.Font.GothamBold,
+		TextSize = 12,
+		TextXAlignment = Enum.TextXAlignment.Center
 	}, f)
-	createInstance("UICorner", {CornerRadius = UDim.new(0,1)}, sep)
 	local sc = createInstance("Frame", {
 		Name = "SliderContainer",
-		Size = UDim2.new(0.3,0,1,0),
-		Position = UDim2.new(0.7,0,0,0),
+		Size = UDim2.new(0.35,0,1,0),
+		Position = UDim2.new(0.65,0,0,0),
 		BackgroundTransparency = 1
 	}, f)
 	local sb = createInstance("Frame", {
@@ -920,6 +928,10 @@ function SectionMethods:addSlider(o)
 	sh.InputEnded:Connect(function(i)
 		if i.UserInputType == Enum.UserInputType.MouseButton1 or i.UserInputType == Enum.UserInputType.Touch then
 			drag = false
+			local currentValue = JustHub.ConfigData[n]
+			local finalRatio = math.clamp((currentValue - mi) / (ma - mi), 0, 1)
+			local tween = TweenService:Create(sh, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(finalRatio, -6, 0.5, -6)})
+			tween:Play()
 		end
 	end)
 	UserInputService.InputChanged:Connect(function(i)
@@ -927,15 +939,18 @@ function SectionMethods:addSlider(o)
 			local bp = sb.AbsolutePosition.X
 			local bw = sb.AbsoluteSize.X
 			local rp = math.clamp((i.Position.X - bp) / bw, 0, 1)
-			sh.Position = UDim2.new(rp, -6, sh.Position.Y.Scale, sh.Position.Y.Offset)
+			sh.Position = UDim2.new(rp, -6, 0.5, -6)
 			local val = mi + rp * (ma - mi)
+			vl.Text = tostring(math.floor(val))
 			JustHub.ConfigData[n] = val
 			cb(val)
 		end
 	end)
 	JustHub:RegisterControl(n, function(sv)
-		local nr = (sv - mi) / (ma - mi)
-		sh.Position = UDim2.new(nr, -6, 0.5, -6)
+		local nr = math.clamp((sv - mi) / (ma - mi), 0, 1)
+		local tween = TweenService:Create(sh, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(nr, -6, 0.5, -6)})
+		tween:Play()
+		vl.Text = tostring(math.floor(sv))
 	end)
 	return f
 end
