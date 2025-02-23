@@ -1230,7 +1230,6 @@ function JustHub:CreateWindow(o)
 	}, sg)
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, mf)
 	addBorder(mf, th["Color Stroke"], 2)
-	
 	local function initTopBar()
 		local tb = createInstance("Frame", {
 			Name = "TopBar",
@@ -1277,7 +1276,6 @@ function JustHub:CreateWindow(o)
 		addBorder(lockBtn, th["Color Stroke"], 1)
 		return tb, resetBtn, lockBtn
 	end
-	
 	local tb, resetBtn, lockBtn = initTopBar()
 	local headerSeparator = createInstance("Frame", {
 		Size = UDim2.new(1, 0, 0, 2),
@@ -1295,6 +1293,13 @@ function JustHub:CreateWindow(o)
 	}, mf)
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 10)}, sb)
 	addBorder(sb, th["Color Stroke"], 2)
+	createInstance("UIListLayout", {
+		SortOrder = Enum.SortOrder.LayoutOrder,
+		Padding = UDim.new(0, 5),
+		FillDirection = Enum.FillDirection.Vertical,
+		HorizontalAlignment = Enum.HorizontalAlignment.Center,
+		VerticalAlignment = Enum.VerticalAlignment.Top
+	}, sb)
 	local verticalSeparator = createInstance("Frame", {
 		Size = UDim2.new(0, 2, 1, -(60 + footerHeight)),
 		Position = UDim2.new(0, sbWidth, 0, 60),
@@ -1370,8 +1375,6 @@ function JustHub:CreateWindow(o)
 	local hb = createControlButton("HideButton", "–", UDim2.new(1, -110, 0, 10))
 	local xb = createControlButton("MaxButton", "□", UDim2.new(1, -70, 0, 10))
 	local closeb = createControlButton("CloseButton", "X", UDim2.new(1, -30, 0, 10))
-	
-	-- Perbaikan: Menghapus referensi ke 'wl' karena variabel tersebut tidak didefinisikan
 	hb.MouseButton1Click:Connect(function()
 		if not minimized then
 			tweenProperty(mf, {Size = UDim2.new(originalSize.X.Scale, originalSize.X.Offset, 0, 60 + footerHeight)}, 0.3)
@@ -1615,7 +1618,7 @@ function JustHub:SaveConfig(f)
 	if writefile then
 		local j = HttpService:JSONEncode(JustHub.ConfigData)
 		writefile(f, j)
-		StarterGui:SetCore("SendNotification", {Title = "Save Config", Text = "Config berhasil disimpan ke " .. f, Duration = 5})
+		StarterGui:SetCore("SendNotification", {Title = "Save Config", Text = "Config Success Save At " .. f, Duration = 5})
 	else
 		warn("Saving config is not supported in this environment.")
 	end
