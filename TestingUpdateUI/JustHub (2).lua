@@ -1498,7 +1498,19 @@ function JustHub:CreateWindow(o)
 	local wObj = {ScreenGui = sg, MainFrame = mf, TopBar = tb, Sidebar = sb, ContentContainer = cc, Tabs = {}}
 	function wObj:addTab(tn)
 		tn = tn or "Tab"
-		local b = createControlButton(tn .. "Button", tn, UDim2.new(0, 0, 0, 0))
+		local b = createInstance("TextButton", {
+			Name = tn .. "Button",
+			Text = tn,
+			Size = UDim2.new(1, 0, 0, 20),
+			BackgroundColor3 = th["Color Stroke"],
+			TextColor3 = Color3.fromRGB(128, 0, 128),
+			Font = Enum.Font.GothamBold,
+			TextSize = 12,
+			TextScaled = true,
+			TextTruncate = Enum.TextTruncate.AtEnd
+		}, sb)
+		createInstance("UICorner", {CornerRadius = UDim.new(0, 10)}, b)
+		createInstance("UIStroke", {Color = th["Color Theme"], Thickness = 1}, b)
 		local tc = createInstance("Frame", {
 			Name = tn .. "Content",
 			Size = UDim2.new(1, 0, 1, 0),
@@ -1526,7 +1538,6 @@ function JustHub:CreateWindow(o)
 				BackgroundTransparency = 0
 			}, tc)
 			createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, sframe)
-			addBorder(sframe, th["Color Stroke"], 2)
 			local st = createInstance("TextLabel", {
 				Name = "SectionTitle",
 				Text = sn,
