@@ -863,9 +863,9 @@ end
 function SectionMethods:addSlider(o)
 	o = o or {}
 	local n = o.Name or "Slider"
-	local mi = o.Min or 0
+	local mi = o.Min or 16
 	local ma = o.Max or 100
-	local df = o.Default or mi
+	local df = o.Default or Min
 	if JustHub.ConfigData[n] ~= nil then
 		df = JustHub.ConfigData[n]
 	else
@@ -879,29 +879,18 @@ function SectionMethods:addSlider(o)
 	local l = createInstance("TextLabel", {
 		Name = "Label",
 		Text = n,
-		Size = UDim2.new(0.5,0,1,0),
-		Position = UDim2.new(0,0,0,0),
+		Size = UDim2.new(0.4,0,1,0),
+		Position = UDim2.new(0,5,0,0),
 		BackgroundTransparency = 1,
 		TextColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Text"],
 		Font = Enum.Font.GothamBold,
 		TextSize = 12,
 		TextXAlignment = Enum.TextXAlignment.Left
 	}, f)
-	local vl = createInstance("TextLabel", {
-		Name = "ValueLabel",
-		Text = tostring(math.floor(df)),
-		Size = UDim2.new(0.15,0,1,0),
-		Position = UDim2.new(0.5,0,0,0),
-		BackgroundTransparency = 1,
-		TextColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Text"],
-		Font = Enum.Font.GothamBold,
-		TextSize = 12,
-		TextXAlignment = Enum.TextXAlignment.Center
-	}, f)
 	local sc = createInstance("Frame", {
 		Name = "SliderContainer",
-		Size = UDim2.new(0.35,0,1,0),
-		Position = UDim2.new(0.65,0,0,0),
+		Size = UDim2.new(0.45,0,1,0),
+		Position = UDim2.new(0.4,5,0,0),
 		BackgroundTransparency = 1
 	}, f)
 	local sb = createInstance("Frame", {
@@ -919,6 +908,19 @@ function SectionMethods:addSlider(o)
 		Position = UDim2.new(defaultRatio, -6, 0.5, -6)
 	}, sb)
 	createInstance("UICorner", {CornerRadius = UDim.new(0,4)}, sh)
+	local vl = createInstance("TextBox", {
+		Name = "ValueBox",
+		Text = tostring(math.floor(df)),
+		Size = UDim2.new(0.15,0,1,0),
+		Position = UDim2.new(0.85,-5,0,0),
+		BackgroundTransparency = 0,
+		BackgroundColor3 = Color3.fromRGB(50,50,50),
+		TextColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Text"],
+		Font = Enum.Font.GothamBold,
+		TextSize = 12,
+		TextXAlignment = Enum.TextXAlignment.Center,
+		ClearTextOnFocus = false
+	}, f)
 	local drag = false
 	sh.InputBegan:Connect(function(i)
 		if i.UserInputType == Enum.UserInputType.MouseButton1 or i.UserInputType == Enum.UserInputType.Touch then
@@ -951,6 +953,21 @@ function SectionMethods:addSlider(o)
 		local tween = TweenService:Create(sh, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(nr, -6, 0.5, -6)})
 		tween:Play()
 		vl.Text = tostring(math.floor(sv))
+	end)
+	vl.Focused:Connect(function() end)
+	vl.FocusLost:Connect(function(enterPressed)
+		local newVal = tonumber(vl.Text)
+		if newVal then
+			newVal = math.clamp(newVal, mi, ma)
+			local newRatio = (newVal - mi) / (ma - mi)
+			local tween = TweenService:Create(sh, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(newRatio, -6, 0.5, -6)})
+			tween:Play()
+			vl.Text = tostring(math.floor(newVal))
+			JustHub.ConfigData[n] = newVal
+			cb(newVal)
+		else
+			vl.Text = tostring(math.floor(JustHub.ConfigData[n]))
+		end
 	end)
 	return f
 end
