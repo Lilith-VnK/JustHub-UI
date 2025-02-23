@@ -1238,15 +1238,9 @@ function JustHub:CreateWindow(o)
 		}, mf)
 		createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, tb)
 		addBorder(tb, th["Color Stroke"], 2)
-		local controlPanel = createInstance("Frame", {
-			Name = "ControlPanel",
-			Size = UDim2.new(0, 120, 1, 0),
-			Position = UDim2.new(1, -120, 0, 0),
-			BackgroundTransparency = 1
-		}, tb)
 		local tl = createInstance("TextLabel", {
 			Name = "TitleLabel",
-			Size = UDim2.new(1, -120, 1, 0),
+			Size = UDim2.new(1, -180, 1, 0),
 			Position = UDim2.new(0, 10, 0, 0),
 			BackgroundTransparency = 1,
 			Text = ft,
@@ -1255,29 +1249,30 @@ function JustHub:CreateWindow(o)
 			TextSize = 18,
 			TextXAlignment = Enum.TextXAlignment.Left
 		}, tb)
+		addBorder(tl, th["Color Stroke"], 1)
 		local resetBtn = createInstance("TextButton", {
 			Name = "ResetButton",
 			Text = "Reset",
 			Size = UDim2.new(0, 50, 0, 30),
-			Position = UDim2.new(0, 10, 0, 0),
+			Position = UDim2.new(0, 10, 0, -29),
 			BackgroundColor3 = th["Color Hub 2"],
 			TextColor3 = th["Color Text"],
 			Font = Enum.Font.GothamBold,
 			TextSize = 14,
 			BackgroundTransparency = 0.2
-		}, controlPanel)
+		}, tb)
 		addBorder(resetBtn, th["Color Stroke"], 1)
 		local lockBtn = createInstance("TextButton", {
 			Name = "LockButton",
 			Text = "Lock",
 			Size = UDim2.new(0, 50, 0, 30),
-			Position = UDim2.new(0, 60, 0, 0),
+			Position = UDim2.new(0, 70, 0, -29),
 			BackgroundColor3 = th["Color Hub 2"],
 			TextColor3 = th["Color Text"],
 			Font = Enum.Font.GothamBold,
 			TextSize = 14,
 			BackgroundTransparency = 0.2
-		}, controlPanel)
+		}, tb)
 		addBorder(lockBtn, th["Color Stroke"], 1)
 		return tb, resetBtn, lockBtn
 	end
@@ -1358,6 +1353,21 @@ function JustHub:CreateWindow(o)
 	local isLocked = false
 	local minimized = false
 	local maximized = false
+	local function createControlButton(name, text, pos)
+		return createInstance("TextButton", {
+			Name = name,
+			Text = text,
+			Size = UDim2.new(0, 40, 0, 40),
+			Position = pos,
+			BackgroundTransparency = 1,
+			TextColor3 = th["Color Text"],
+			Font = Enum.Font.GothamBold,
+			TextSize = 24
+		}, tb)
+	end
+	local hb = createControlButton("HideButton", "–", UDim2.new(1, -110, 0, 10))
+	local xb = createControlButton("MaxButton", "□", UDim2.new(1, -70, 0, 10))
+	local closeb = createControlButton("CloseButton", "X", UDim2.new(1, -30, 0, 10))
 	hb.MouseButton1Click:Connect(function()
 		if not minimized then
 			tweenProperty(mf, {Size = UDim2.new(originalSize.X.Scale, originalSize.X.Offset, 0, 60 + footerHeight)}, 0.3)
@@ -1395,7 +1405,7 @@ function JustHub:CreateWindow(o)
 			local showBtn = createInstance("TextButton", {
 				Name = "ShowUIButton",
 				Size = UDim2.new(0, 100, 0, 30),
-				Position = UDim2.new(0.5, -50, 0, 0),
+				Position = UDim2.new(0.5, -50, 0, 10),
 				BackgroundColor3 = th["Color Hub 2"],
 				Text = "Show UI",
 				TextColor3 = Color3.fromRGB(128, 0, 128),
