@@ -1230,6 +1230,7 @@ function JustHub:CreateWindow(o)
 	}, sg)
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, mf)
 	addBorder(mf, th["Color Stroke"], 2)
+	
 	local function initTopBar()
 		local tb = createInstance("Frame", {
 			Name = "TopBar",
@@ -1276,6 +1277,7 @@ function JustHub:CreateWindow(o)
 		addBorder(lockBtn, th["Color Stroke"], 1)
 		return tb, resetBtn, lockBtn
 	end
+	
 	local tb, resetBtn, lockBtn = initTopBar()
 	local headerSeparator = createInstance("Frame", {
 		Size = UDim2.new(1, 0, 0, 2),
@@ -1368,65 +1370,59 @@ function JustHub:CreateWindow(o)
 	local hb = createControlButton("HideButton", "–", UDim2.new(1, -110, 0, 10))
 	local xb = createControlButton("MaxButton", "□", UDim2.new(1, -70, 0, 10))
 	local closeb = createControlButton("CloseButton", "X", UDim2.new(1, -30, 0, 10))
-	if hb then
-		hb.MouseButton1Click:Connect(function()
-			if not minimized then
-				tweenProperty(mf, {Size = UDim2.new(originalSize.X.Scale, originalSize.X.Offset, 0, 60 + footerHeight)}, 0.3)
-				wl.Visible = false
-				sb.Visible = false
-				cc.Visible = false
-				footer.Visible = false
-				minimized = true
-			else
-				tweenProperty(mf, {Size = originalSize}, 0.3)
-				wait(0.3)
-				wl.Visible = true
-				sb.Visible = true
-				cc.Visible = true
-				footer.Visible = true
-				minimized = false
-			end
-		end)
-	end
-	if xb then
-		xb.MouseButton1Click:Connect(function()
-			if not maximized then
-				tweenProperty(mf, {Size = UDim2.new(1, 0, 1, 0), Position = UDim2.new(0.5, 0, 0.5, 0)}, 0.3)
-				maximized = true
-			else
-				tweenProperty(mf, {Size = originalSize, Position = originalPosition}, 0.3)
-				maximized = false
-			end
-		end)
-	end
-	if closeb then
-		closeb.MouseButton1Click:Connect(function()
-			local closeTween = TweenService:Create(mf, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.In), {Position = UDim2.new(0.5, 0, -0.5, 0)})
-			closeTween:Play()
-			closeTween.Completed:Connect(function()
-				mf.Visible = false
-				local pg2 = Players.LocalPlayer:WaitForChild("PlayerGui")
-				local showUI = createInstance("ScreenGui", {Name = "ShowUI", ResetOnSpawn = false}, pg2)
-				local showBtn = createInstance("TextButton", {
-					Name = "ShowUIButton",
-					Size = UDim2.new(0, 100, 0, 30),
-					Position = UDim2.new(0.5, -50, 0, 10),
-					BackgroundColor3 = th["Color Hub 2"],
-					Text = "Show UI",
-					TextColor3 = Color3.fromRGB(128, 0, 128),
-					Font = Enum.Font.GothamBold,
-					TextSize = 20
-				}, showUI)
-				createInstance("UICorner", {CornerRadius = UDim.new(0, 25)}, showBtn)
-				createInstance("UIStroke", {Color = th["Color Theme"], Thickness = 1}, showBtn)
-				showBtn.MouseButton1Click:Connect(function()
-					mf.Visible = true
-					tweenProperty(mf, {Position = UDim2.new(0.5, 0, 0.5, 0)}, 0.5)
-					showUI:Destroy()
-				end)
+	
+	-- Perbaikan: Menghapus referensi ke 'wl' karena variabel tersebut tidak didefinisikan
+	hb.MouseButton1Click:Connect(function()
+		if not minimized then
+			tweenProperty(mf, {Size = UDim2.new(originalSize.X.Scale, originalSize.X.Offset, 0, 60 + footerHeight)}, 0.3)
+			sb.Visible = false
+			cc.Visible = false
+			footer.Visible = false
+			minimized = true
+		else
+			tweenProperty(mf, {Size = originalSize}, 0.3)
+			wait(0.3)
+			sb.Visible = true
+			cc.Visible = true
+			footer.Visible = true
+			minimized = false
+		end
+	end)
+	xb.MouseButton1Click:Connect(function()
+		if not maximized then
+			tweenProperty(mf, {Size = UDim2.new(1, 0, 1, 0), Position = UDim2.new(0.5, 0, 0.5, 0)}, 0.3)
+			maximized = true
+		else
+			tweenProperty(mf, {Size = originalSize, Position = originalPosition}, 0.3)
+			maximized = false
+		end
+	end)
+	closeb.MouseButton1Click:Connect(function()
+		local closeTween = TweenService:Create(mf, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.In), {Position = UDim2.new(0.5, 0, -0.5, 0)})
+		closeTween:Play()
+		closeTween.Completed:Connect(function()
+			mf.Visible = false
+			local pg2 = Players.LocalPlayer:WaitForChild("PlayerGui")
+			local showUI = createInstance("ScreenGui", {Name = "ShowUI", ResetOnSpawn = false}, pg2)
+			local showBtn = createInstance("TextButton", {
+				Name = "ShowUIButton",
+				Size = UDim2.new(0, 100, 0, 30),
+				Position = UDim2.new(0.5, -50, 0, 10),
+				BackgroundColor3 = th["Color Hub 2"],
+				Text = "Show UI",
+				TextColor3 = Color3.fromRGB(128, 0, 128),
+				Font = Enum.Font.GothamBold,
+				TextSize = 20
+			}, showUI)
+			createInstance("UICorner", {CornerRadius = UDim.new(0, 25)}, showBtn)
+			createInstance("UIStroke", {Color = th["Color Theme"], Thickness = 1}, showBtn)
+			showBtn.MouseButton1Click:Connect(function()
+				mf.Visible = true
+				tweenProperty(mf, {Position = UDim2.new(0.5, 0, 0.5, 0)}, 0.5)
+				showUI:Destroy()
 			end)
 		end)
-	end
+	end)
 	mf.Active = true
 	local function enableDrag(frame)
 		local isDragging = false
@@ -1504,7 +1500,19 @@ function JustHub:CreateWindow(o)
 	local wObj = {ScreenGui = sg, MainFrame = mf, TopBar = tb, Sidebar = sb, ContentContainer = cc, Tabs = {}}
 	function wObj:addTab(tn)
 		tn = tn or "Tab"
-		local b = createControlButton(tn .. "Button", tn, UDim2.new(0, 0, 0, 0))
+		local b = createInstance("TextButton", {
+			Name = tn .. "Button",
+			Text = tn,
+			Size = UDim2.new(1, 0, 0, 20),
+			BackgroundColor3 = th["Color Stroke"],
+			TextColor3 = Color3.fromRGB(128, 0, 128),
+			Font = Enum.Font.GothamBold,
+			TextSize = 12,
+			TextScaled = true,
+			TextTruncate = Enum.TextTruncate.AtEnd
+		}, sb)
+		createInstance("UICorner", {CornerRadius = UDim.new(0, 10)}, b)
+		createInstance("UIStroke", {Color = th["Color Theme"], Thickness = 1}, b)
 		local tc = createInstance("Frame", {
 			Name = tn .. "Content",
 			Size = UDim2.new(1, 0, 1, 0),
@@ -1513,14 +1521,12 @@ function JustHub:CreateWindow(o)
 		}, sf)
 		local tObj = {Name = tn, Button = b, Content = tc, Sections = {}}
 		table.insert(wObj.Tabs, tObj)
-		if b then
-			b.MouseButton1Click:Connect(function()
-				for _, tt in ipairs(wObj.Tabs) do
-					tt.Content.Visible = false
-				end
-				tObj.Content.Visible = true
-			end)
-		end
+		b.MouseButton1Click:Connect(function()
+			for _, tt in ipairs(wObj.Tabs) do
+				tt.Content.Visible = false
+			end
+			tObj.Content.Visible = true
+		end)
 		if #wObj.Tabs == 1 then
 			tObj.Content.Visible = true
 		end
