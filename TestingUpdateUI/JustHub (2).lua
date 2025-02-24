@@ -992,74 +992,137 @@ function SectionMethods:addTextBox(o)
 end
 
 function SectionMethods:addDropdown(o)
-	o=o or {}
-	local t=o.Name or "Dropdown"
-	local df=o.Default or ""
-	local it=o.Items or {}
-	local cb=o.Callback or function(x)end
-	local ch=20
-	local oh=ch+(#it*20+((#it-1)*2))
-	local f=createInstance("Frame",{Name=t.."Dropdown",BackgroundTransparency=1},self.Content)
-	f.Size=UDim2.new(1,0,0,ch)
-	addBorder(f,getCurrentTheme(JustHub.Save.Theme)["Color Stroke"],1)
-	local l=createInstance("TextLabel",{Name="Label",Text=t,Size=UDim2.new(0.7,0,0,ch),Position=UDim2.new(0,0,0,0),BackgroundTransparency=1,TextColor3=getCurrentTheme(JustHub.Save.Theme)["Color Text"],Font=Enum.Font.Gotham,TextSize=10},f)
-	local b=createInstance("TextButton",{Name="DropdownButton",Text=(df~="" and (df.." ▼") or "Select ▼"),Size=UDim2.new(0.3,0,0,ch),Position=UDim2.new(0.7,0,0,0),BackgroundColor3=getCurrentTheme(JustHub.Save.Theme)["Color Stroke"],Font=Enum.Font.GothamBold,TextSize=10},f)
-	local lf=createInstance("Frame",{Name="DropdownList",BackgroundColor3=getCurrentTheme(JustHub.Save.Theme)["Color Hub 2"],Visible=false,Position=UDim2.new(0,0,0,ch)},f)
-	lf.Size=UDim2.new(1,0,0,#it*20+((#it-1)*2))
-	createInstance("UIListLayout",{Padding=UDim.new(0,2),SortOrder=Enum.SortOrder.LayoutOrder,HorizontalAlignment=Enum.HorizontalAlignment.Left},lf)
-	local dt=false
+	o = o or {}
+	local t = o.Name or "Dropdown"
+	local df = o.Default or ""
+	local it = o.Items or {}
+	local presets = o.Presets or {}
+	local cb = o.Callback or function(x) end
+	local ch = 20
+	local searchH = 25
+	local itemsCount = #it
+	local itemListHeight = (itemsCount > 0 and (itemsCount * 20 + ((itemsCount - 1) * 2)) or 0)
+	local iconsH = 25
+	local oh = ch + searchH + itemListHeight + iconsH
+	local f = createInstance("Frame", {Name = t.."Dropdown", BackgroundTransparency = 0, BackgroundColor3 = Color3.fromRGB(40,40,40)}, self.Content)
+	f.Size = UDim2.new(1, 0, 0, ch)
+	createInstance("UICorner", {CornerRadius = UDim.new(0,20)}, f)
+	addBorder(f, getCurrentTheme(JustHub.Save.Theme)["Color Stroke"], 1)
+	local l = createInstance("TextLabel", {Name = "Label", Text = t, Size = UDim2.new(0.7, 0, 0, ch), Position = UDim2.new(0, 5, 0, 0), BackgroundTransparency = 1, TextColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Text"], Font = Enum.Font.GothamBold, TextSize = 12, TextXAlignment = Enum.TextXAlignment.Left}, f)
+	local b = createInstance("TextButton", {Name = "DropdownButton", Text = (df ~= "" and (df.." ▼") or "Select ▼"), Size = UDim2.new(0.3, 0, 0, ch), Position = UDim2.new(0.7, -5, 0, 0), BackgroundTransparency = 0, BackgroundColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Stroke"], Font = Enum.Font.GothamBold, TextSize = 12, TextColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Text"]}, f)
+	createInstance("UICorner", {CornerRadius = UDim.new(0,20)}, b)
+	local lf = createInstance("Frame", {Name = "DropdownList", BackgroundTransparency = 0, BackgroundColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Hub 2"], Visible = false, Position = UDim2.new(0, 0, 0, ch)}, f)
+	lf.Size = UDim2.new(1, 0, 0, oh - ch)
+	createInstance("UIListLayout", {SortOrder = Enum.SortOrder.LayoutOrder, Padding = UDim.new(0, 5)}, lf)
+	local dt = false
 	b.MouseButton1Click:Connect(function()
 		if dt then
-			tweenProperty(f,{Size=UDim2.new(1,0,0,ch)},0.2)
-			tweenProperty(b,{TextColor3=getCurrentTheme(JustHub.Save.Theme)["Color Text"]},0.2)
-			tweenProperty(lf,{Position=UDim2.new(0,0,0,ch-10)},0.2)
+			tweenProperty(f, {Size = UDim2.new(1, 0, 0, ch)}, 0.2)
+			tweenProperty(b, {TextColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Text"]}, 0.2)
+			tweenProperty(lf, {Position = UDim2.new(0, 0, 0, ch - 10)}, 0.2)
 			wait(0.2)
-			lf.Visible=false
+			lf.Visible = false
 		else
-			lf.Position=UDim2.new(0,0,0,ch-10)
-			lf.Visible=true
-			tweenProperty(f,{Size=UDim2.new(1,0,0,oh)},0.2)
-			tweenProperty(b,{TextColor3=Color3.fromRGB(0,255,0)},0.2)
-			tweenProperty(lf,{Position=UDim2.new(0,0,0,ch)},0.2)
+			lf.Position = UDim2.new(0, 0, 0, ch - 10)
+			lf.Visible = true
+			tweenProperty(f, {Size = UDim2.new(1, 0, 0, oh)}, 0.2)
+			tweenProperty(b, {TextColor3 = Color3.fromRGB(0, 255, 0)}, 0.2)
+			tweenProperty(lf, {Position = UDim2.new(0, 0, 0, ch)}, 0.2)
 		end
-		dt=not dt
+		dt = not dt
 	end)
-	for _,op in ipairs(it) do
-		local btn=createInstance("TextButton",{Size=UDim2.new(1,0,0,20),Text=op,TextColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,Font=Enum.Font.Gotham,TextSize=10},lf)
-		btn.MouseButton1Click:Connect(function()
-			l.Text=t.." - "..op
-			JustHub.ConfigData[t]=op
-			pcall(cb,op)
-			tweenProperty(f,{Size=UDim2.new(1,0,0,ch)},0.2)
-			dt=false
-			wait(0.2)
-			lf.Visible=false
-		end)
+	local searchBox = createInstance("TextBox", {Name = "SearchBox", Text = "", PlaceholderText = "Search...", Size = UDim2.new(1, -10, 0, searchH), Position = UDim2.new(0, 5, 0, 5), BackgroundTransparency = 0, BackgroundColor3 = Color3.fromRGB(30,30,30), TextColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Text"], Font = Enum.Font.GothamBold, TextSize = 12, ClearTextOnFocus = false}, lf)
+	createInstance("UICorner", {CornerRadius = UDim.new(0,5)}, searchBox)
+	local itemsContainer = createInstance("Frame", {Name = "ItemsContainer", Size = UDim2.new(1, 0, 0, itemListHeight), Position = UDim2.new(0, 0, 0, searchH + 10), BackgroundTransparency = 1}, lf)
+	createInstance("UIListLayout", {Padding = UDim.new(0, 2), SortOrder = Enum.SortOrder.LayoutOrder, HorizontalAlignment = Enum.HorizontalAlignment.Left}, itemsContainer)
+	local function populateItems()
+		for _, child in ipairs(itemsContainer:GetChildren()) do
+			if child:IsA("TextButton") then
+				child:Destroy()
+			end
+		end
+		for _, op in ipairs(it) do
+			local btn = createInstance("TextButton", {Size = UDim2.new(1, 0, 0, 20), Text = op, TextColor3 = Color3.fromRGB(255,255,255), BackgroundTransparency = 0, BackgroundColor3 = Color3.fromRGB(40,40,40), Font = Enum.Font.GothamBold, TextSize = 12}, itemsContainer)
+			createInstance("UICorner", {CornerRadius = UDim.new(0,5)}, btn)
+			addBorder(btn, getCurrentTheme(JustHub.Save.Theme)["Color Stroke"], 1)
+			btn.MouseButton1Click:Connect(function()
+				l.Text = t.." - "..op
+				JustHub.ConfigData[t] = op
+				pcall(cb, op)
+				tweenProperty(f, {Size = UDim2.new(1, 0, 0, ch)}, 0.2)
+				dt = false
+				wait(0.2)
+				lf.Visible = false
+			end)
+		end
 	end
-	JustHub.ConfigData[t]=df
-	JustHub:RegisterControl(t,function(sv)
-		l.Text=t.." - "..sv
+	populateItems()
+	searchBox:GetPropertyChangedSignal("Text"):Connect(function()
+		local filter = string.lower(searchBox.Text)
+		for _, btn in ipairs(itemsContainer:GetChildren()) do
+			if btn:IsA("TextButton") then
+				local txt = string.lower(btn.Text)
+				btn.Visible = txt:find(filter) and true or false
+			end
+		end
 	end)
-	local upd={}
+	local iconsContainer = createInstance("Frame", {Name = "IconsContainer", Size = UDim2.new(1, 0, 0, iconsH), Position = UDim2.new(0, 0, 0, searchH + 10 + itemListHeight), BackgroundTransparency = 0, BackgroundColor3 = Color3.fromRGB(30,30,30)}, lf)
+	local leftIcons = createInstance("Frame", {Name = "LeftIcons", Size = UDim2.new(1, -30, 1, 0), Position = UDim2.new(0, 5, 0, 0), BackgroundTransparency = 1}, iconsContainer)
+	createInstance("UIListLayout", {Padding = UDim.new(0, 5), FillDirection = Enum.FillDirection.Horizontal, SortOrder = Enum.SortOrder.LayoutOrder, HorizontalAlignment = Enum.HorizontalAlignment.Left}, leftIcons)
+	local rightIcons = createInstance("Frame", {Name = "RightIcons", Size = UDim2.new(0, 25, 1, 0), Position = UDim2.new(1, -30, 0, 0), BackgroundTransparency = 1}, iconsContainer)
+	if #presets > 0 then
+		for _, preset in ipairs(presets) do
+			local pbtn = createInstance("TextButton", {Size = UDim2.new(0,25,1,0), Text = "★", TextColor3 = Color3.fromRGB(255,255,255), BackgroundTransparency = 0, BackgroundColor3 = Color3.fromRGB(40,40,40), Font = Enum.Font.GothamBold, TextSize = 12}, leftIcons)
+			createInstance("UICorner", {CornerRadius = UDim.new(0,5)}, pbtn)
+			addBorder(pbtn, getCurrentTheme(JustHub.Save.Theme)["Color Stroke"], 1)
+			pbtn.MouseButton1Click:Connect(function()
+				l.Text = t.." - "..preset
+				JustHub.ConfigData[t] = preset
+				pcall(cb, preset)
+				tweenProperty(f, {Size = UDim2.new(1, 0, 0, ch)}, 0.2)
+				dt = false
+				wait(0.2)
+				lf.Visible = false
+			end)
+		end
+	end
+	local resetButton = createInstance("TextButton", {Name = "ResetButton", Text = "↺", Size = UDim2.new(1, 0, 1, 0), BackgroundTransparency = 0, BackgroundColor3 = Color3.fromRGB(40,40,40), Font = Enum.Font.GothamBold, TextSize = 12, TextColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Text"]}, rightIcons)
+	createInstance("UICorner", {CornerRadius = UDim.new(0,5)}, resetButton)
+	resetButton.MouseButton1Click:Connect(function()
+		l.Text = t.." - "..df
+		JustHub.ConfigData[t] = df
+		pcall(cb, df)
+		tweenProperty(f, {Size = UDim2.new(1, 0, 0, ch)}, 0.2)
+		dt = false
+		wait(0.2)
+		lf.Visible = false
+	end)
+	JustHub.ConfigData[t] = df
+	JustHub:RegisterControl(t, function(sv)
+		l.Text = t.." - "..sv
+	end)
+	local upd = {}
 	function upd:Clear()
-		for i,v in pairs(lf:GetChildren()) do
-			if v:IsA("TextButton") then
+		for i, v in pairs(lf:GetChildren()) do
+			if v:IsA("TextButton") and v.Name ~= "ResetButton" then
 				v:Destroy()
-				dt=false
-				l.Text=t
-				tweenProperty(f,{Size=UDim2.new(1,0,0,ch)},0.2)
+				dt = false
+				l.Text = t
+				tweenProperty(f, {Size = UDim2.new(1, 0, 0, ch)}, 0.2)
 			end
 		end
 	end
 	function upd:Refresh(nl)
-		nl=nl or {}
-		for i,v in pairs(nl) do
-			local btn=createInstance("TextButton",{Size=UDim2.new(1,0,0,25),Text=v,TextColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,Font=Enum.Font.SourceSansSemibold,TextSize=12},lf)
+		nl = nl or {}
+		for i, v in pairs(nl) do
+			local btn = createInstance("TextButton", {Size = UDim2.new(1, 0, 0, 25), Text = v, TextColor3 = Color3.fromRGB(255,255,255), BackgroundTransparency = 0, BackgroundColor3 = Color3.fromRGB(40,40,40), Font = Enum.Font.GothamBold, TextSize = 12}, lf)
+			createInstance("UICorner", {CornerRadius = UDim.new(0,5)}, btn)
+			addBorder(btn, getCurrentTheme(JustHub.Save.Theme)["Color Stroke"], 1)
 			btn.MouseButton1Click:Connect(function()
-				dt=false
-				l.Text=t.." - "..v
-				pcall(cb,v)
-				tweenProperty(f,{Size=UDim2.new(1,0,0,ch)},0.2)
+				dt = false
+				l.Text = t.." - "..v
+				pcall(cb, v)
+				tweenProperty(f, {Size = UDim2.new(1, 0, 0, ch)}, 0.2)
 			end)
 		end
 	end
