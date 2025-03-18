@@ -1288,20 +1288,13 @@ function JustHub:CreateWindow(o)
 	local pg = pl:WaitForChild("PlayerGui")
 	local sg = createInstance("ScreenGui", {Name = "JustHub", ResetOnSpawn = false}, pg)
 	self.ScreenGui = sg
-
-	local bgSound = createInstance("Sound", {
-		SoundId = "rbxassetid://131396974",
-		Volume = 0.5,
-		Looped = true
-	}, sg)
-	bgSound:Play()
-
+	local currentSoundId = "rbxassetid://673605737"
 	local fallbackAssetIds = {
 		"rbxassetid://7551431783",
 		"rbxassetid://8026236684",
 		"rbxassetid://7308941449",
 		"rbxassetid://926493242",
-		"rbxassetid://673605737",
+		"rbxassetid://131396974",
 		"rbxassetid://1841274964",
 		"rbxassetid://14145626111",
 		"rbxassetid://1837015626",
@@ -1309,21 +1302,84 @@ function JustHub:CreateWindow(o)
 		"rbxassetid://1846368080"
 	}
 	local currentFallbackIndex = 1
-
+	local bgSound = createInstance("Sound", {
+		SoundId = currentSoundId,
+		Volume = 0.5,
+		Looped = true
+	}, sg)
+	bgSound:Play()
 	local function tryPlaySound(sound)
 		delay(3, function()
 			if sound.TimePosition < 0.1 then
 				if currentFallbackIndex <= #fallbackAssetIds then
-					sound.SoundId = fallbackAssetIds[currentFallbackIndex]
+					currentSoundId = fallbackAssetIds[currentFallbackIndex]
 					currentFallbackIndex = currentFallbackIndex + 1
+					sound.SoundId = currentSoundId
 					sound:Play()
 					tryPlaySound(sound)
+					soundLabel.Text = "Playing: " .. currentSoundId
+					playPauseButton.Text = "❚❚"
 				end
 			end
 		end)
 	end
 	tryPlaySound(bgSound)
-
+	local soundControlFrame = createInstance("Frame", {
+		Size = UDim2.new(0, 200, 0, 30),
+		Position = UDim2.new(0, 10, 1, -40),
+		BackgroundTransparency = 0.5,
+		BackgroundColor3 = Color3.fromRGB(0,0,0),
+		BorderSizePixel = 0,
+		AnchorPoint = Vector2.new(0,1)
+	}, sg)
+	local soundLabel = createInstance("TextLabel", {
+		Size = UDim2.new(0.6,0,1,0),
+		Position = UDim2.new(0,0,0,0),
+		Text = "Playing: " .. currentSoundId,
+		TextColor3 = th["Color Text"],
+		BackgroundTransparency = 1,
+		Font = Enum.Font.GothamBold,
+		TextSize = 14,
+		TextXAlignment = Enum.TextXAlignment.Left
+	}, soundControlFrame)
+	local playPauseButton = createInstance("TextButton", {
+		Size = UDim2.new(0.2,0,1,0),
+		Position = UDim2.new(0.6,0,0,0),
+		Text = "❚❚",
+		TextColor3 = th["Color Text"],
+		BackgroundTransparency = 1,
+		Font = Enum.Font.GothamBold,
+		TextSize = 14
+	}, soundControlFrame)
+	local nextButton = createInstance("TextButton", {
+		Size = UDim2.new(0.2,0,1,0),
+		Position = UDim2.new(0.8,0,0,0),
+		Text = "⏭",
+		TextColor3 = th["Color Text"],
+		BackgroundTransparency = 1,
+		Font = Enum.Font.GothamBold,
+		TextSize = 14
+	}, soundControlFrame)
+	playPauseButton.MouseButton1Click:Connect(function()
+		if bgSound.IsPlaying then
+			bgSound:Pause()
+			playPauseButton.Text = "▶"
+		else
+			bgSound:Play()
+			playPauseButton.Text = "❚❚"
+		end
+	end)
+	nextButton.MouseButton1Click:Connect(function()
+		if currentFallbackIndex > #fallbackAssetIds then
+			currentFallbackIndex = 1
+		end
+		currentSoundId = fallbackAssetIds[currentFallbackIndex]
+		currentFallbackIndex = currentFallbackIndex + 1
+		bgSound.SoundId = currentSoundId
+		bgSound:Play()
+		playPauseButton.Text = "❚❚"
+		soundLabel.Text = "Playing: " .. currentSoundId
+	end)
 	local uw = JustHub.Save.UISize[1]
 	local uh = JustHub.Save.UISize[2]
 	local mf = createInstance("Frame", {
