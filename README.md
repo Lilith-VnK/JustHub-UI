@@ -15,53 +15,58 @@
    - [Localization](#localization)  
    - [Sound Effects](#sound-effects)  
 4. [Available Controls](#available-controls)  
-5. [Music Player UI](#music-player-ui)  
-6. [Notifications](#notifications)  
-7. [Window Resizing](#window-resizing)  
-8. [Undo/Redo Usage](#undoredo-usage)  
-9. [Custom Themes](#custom-themes)  
-10. [Localization Setup](#localization-setup)  
-11. [Role/Permissions Setup](#rolepermissions-setup)  
-12. [License](#license)  
+   - [addMenu](#addmenu)  
+   - [addToggle](#addtoggle)  
+   - [addSlider](#addslider)  
+   - [addTextBox](#addtextbox)  
+   - [addDropdown](#adddropdown)  
+   - [addButton](#addbutton)  
+   - [addBind (KeyBind)](#addbind-keybind)  
+   - [addColorPicker](#addcolorpicker)  
+   - [addScriptBox (Macro/Scripting)](#addscriptbox-macroscripting)  
+5. [Notifications](#notifications)  
+6. [Window Resizing](#window-resizing)  
+7. [Undo/Redo Usage](#undoredo-usage)  
+8. [Custom Themes](#custom-themes)  
+9. [Localization Setup](#localization-setup)  
+10. [Role/Permissions Setup](#rolepermissions-setup)  
+11. [Sound Effects Setup](#sound-effects-setup)  
+12. [Advanced Example](#advanced-example)  
+13. [License](#license)
 
 ---
 
 ## New Update
-- **Added:** Background Loading Screen  
-- **Added:** Background Sound  
-- **Added:** Music Player UI  
+
+- **[+] Background Loading Screen**  
+- **[+] Background Sound**  
+- **[+] Music Control UI (Play, Stop, Next)**
 
 ---
 
 ## Installation
 
 1. **Obtain the Module**  
-   Place the `JustHub.lua` file in your desired location within **ReplicatedStorage** or **ServerScriptService**.
+   Place the `JustHub.lua` file in your desired location within **ReplicatedStorage** or **ServerScriptService** (commonly `ReplicatedStorage`).
 
 2. **Require the Module**  
    ```lua
-   local JustHub = loadstring(game:HttpGet('https://raw.githubusercontent.com/Lilith-VnK/JustHub-UI/refs/heads/main/JustHub%20(2).lua'))()
+   local JustHub = loadstring(game:HttpGet('https://raw.githubusercontent.com/Lilith-VnK/JustHub-UI/main/JustHub.lua'))()
    ```
 
-3. **Initialize**
-   ```lua
-   JustHub:InitializeUI({
-       Name = "JustHub UI",
-       SubTitle = "Version 1.0",
-       Theme = "Darker"
-   })
-   ```
+3. **Initialize**  
+   Call `JustHub:InitializeUI` with your preferred settings.
 
 ---
 
 ## Quick Start
 
 ```lua
-local JustHub = loadstring(game:HttpGet('https://raw.githubusercontent.com/Lilith-VnK/JustHub-UI/refs/heads/main/JustHub%20(2).lua'))()
+local JustHub = loadstring(game:HttpGet('https://raw.githubusercontent.com/Lilith-VnK/JustHub-UI/main/JustHub.lua'))()
 
 JustHub:InitializeUI({
     Name = "JustHub UI",
-    SubTitle = "Version 1.0",
+    SubTitle = "version 1.0",
     Theme = "Darker"
 })
 
@@ -96,120 +101,40 @@ end)
 
 ---
 
-## Music Player UI
+## Music Control UI
 
-JustHub now includes a **Music Player UI** located in the **bottom-left corner**. This UI includes:
-- A **label** displaying the currently playing song.
-- A **Start/Stop button** that syncs with the song state.
-- A **Next button** to change to the next song in the list.
-- The default state automatically starts playing the first song.
+A music control UI has been added to the bottom left corner. It includes Play, Stop, and Next buttons.
 
-### **Example Implementation**
 ```lua
-local musicUI = JustHub.Window:addSection("Music Player", { Position = "BottomLeft" })
-local isPlaying = true
-local currentSongIndex = 1
-local songList = {
-    "rbxassetid://1234567890",
-    "rbxassetid://0987654321"
-}
-
-local songLabel = musicUI:addLabel({
-    Text = "Now Playing: Song 1"
+local musicUI = JustHub.Window:addUIElement({
+    Type = "Frame",
+    Name = "MusicControl",
+    Position = UDim2.new(0, 10, 1, -60),
+    Size = UDim2.new(0, 150, 0, 50)
 })
 
-local startStopButton = musicUI:addButton({
-    Name = "Start/Stop",
-    ButtonText = "⏸",
+musicUI:addButton({
+    Name = "Play",
+    ButtonText = "â–¶",
     Callback = function()
-        if isPlaying then
-            JustHub:StopSound("BackgroundMusic")
-            startStopButton:SetText("▶")
-        else
-            JustHub:PlaySound("BackgroundMusic")
-            startStopButton:SetText("⏸")
-        end
-        isPlaying = not isPlaying
+        JustHub:PlaySound("BackgroundMusic")
     end
 })
 
-local nextButton = musicUI:addButton({
+musicUI:addButton({
+    Name = "Stop",
+    ButtonText = "â– ",
+    Callback = function()
+        JustHub:StopSound("BackgroundMusic")
+    end
+})
+
+musicUI:addButton({
     Name = "Next",
-    ButtonText = "⏭",
+    ButtonText = "â­",
     Callback = function()
-        currentSongIndex = currentSongIndex % #songList + 1
-        JustHub:PlaySound(songList[currentSongIndex])
-        songLabel:SetText("Now Playing: Song " .. currentSongIndex)
+        JustHub:NextSound("BackgroundMusic")
     end
-})
-
-JustHub:PlaySound(songList[currentSongIndex])
-```
-
----
-
-## Notifications
-
-```lua
-JustHub:Notify({
-    Title = "Notification",
-    Message = "Your settings have been saved.",
-    Duration = 5
-})
-```
-
----
-
-## Undo/Redo Usage
-
-```lua
-JustHub:Undo()
-JustHub:Redo()
-```
-
-Adding buttons for undo/redo:
-```lua
-section:addButton({
-    Name = "Undo",
-    ButtonText = "Undo",
-    Callback = function()
-        JustHub:Undo()
-    end
-})
-
-section:addButton({
-    Name = "Redo",
-    ButtonText = "Redo",
-    Callback = function()
-        JustHub:Redo()
-    end
-})
-```
-
----
-
-## Localization Setup
-
-```lua
-JustHub.Localization = {
-    en = { HELLO = "Hello" },
-    fr = { HELLO = "Bonjour" }
-}
-JustHub:SetLanguage("fr")
-print(JustHub:LocalizeText("HELLO")) -- "Bonjour"
-```
-
----
-
-## Role/Permissions Setup
-
-```lua
-JustHub:SetUserRole("admin")
-
-section:addToggle({
-    Name = "Admin Toggle",
-    Role = "admin",
-    Callback = function(state) end
 })
 ```
 
@@ -217,4 +142,6 @@ section:addToggle({
 
 ## License
 
-This library is **free to use** in your Roblox projects. If you make improvements, consider sharing them with the community.
+**This library is free to use in your Roblox projects.**
+
+Enjoy building with JustHub! If you have any questions, feel free to open an issue or submit a pull request.
