@@ -865,7 +865,7 @@ function SectionMethods:addSlider(o)
 	local n = o.Name or "Slider"
 	local mi = o.Min or 16
 	local ma = o.Max or 100
-	local df = o.Default or Min
+	local df = o.Default or mi
 	if JustHub.ConfigData[n] ~= nil then
 		df = JustHub.ConfigData[n]
 	else
@@ -901,6 +901,13 @@ function SectionMethods:addSlider(o)
 	}, sc)
 	createInstance("UICorner", {CornerRadius = UDim.new(0,4)}, sb)
 	local defaultRatio = (df - mi) / (ma - mi)
+	local progressFill = createInstance("Frame", {
+		Name = "ProgressFill",
+		Size = UDim2.new(defaultRatio,0,1,0),
+		Position = UDim2.new(0,0,0,0),
+		BackgroundColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Theme"],
+		BorderSizePixel = 0
+	}, sb)
 	local sh = createInstance("Frame", {
 		Name = "SliderHandle",
 		Size = UDim2.new(0,12,0,12),
@@ -942,6 +949,7 @@ function SectionMethods:addSlider(o)
 			local bw = sb.AbsoluteSize.X
 			local rp = math.clamp((i.Position.X - bp) / bw, 0, 1)
 			sh.Position = UDim2.new(rp, -6, 0.5, -6)
+			progressFill.Size = UDim2.new(rp, 0, 1, 0)
 			local val = mi + rp * (ma - mi)
 			vl.Text = tostring(math.floor(val))
 			JustHub.ConfigData[n] = val
@@ -953,6 +961,8 @@ function SectionMethods:addSlider(o)
 		local tween = TweenService:Create(sh, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(nr, -6, 0.5, -6)})
 		tween:Play()
 		vl.Text = tostring(math.floor(sv))
+		local tween2 = TweenService:Create(progressFill, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(nr, 0, 1, 0)})
+		tween2:Play()
 	end)
 	vl.Focused:Connect(function() end)
 	vl.FocusLost:Connect(function(enterPressed)
@@ -962,6 +972,8 @@ function SectionMethods:addSlider(o)
 			local newRatio = (newVal - mi) / (ma - mi)
 			local tween = TweenService:Create(sh, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(newRatio, -6, 0.5, -6)})
 			tween:Play()
+			local tween2 = TweenService:Create(progressFill, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(newRatio, 0, 1, 0)})
+			tween2:Play()
 			vl.Text = tostring(math.floor(newVal))
 			JustHub.ConfigData[n] = newVal
 			cb(newVal)
@@ -1661,13 +1673,11 @@ function JustHub:ShowLoadingScreen(d, cb)
 	cb = cb or function() end
 	local pl = Players.LocalPlayer
 	local pg = pl:WaitForChild("PlayerGui")
-
 	local lg = createInstance("ScreenGui", {
 		Name = "LoadingScreen",
 		ResetOnSpawn = false,
 		IgnoreGuiInset = true
 	}, pg)
-
 	local bgImage = createInstance("ImageLabel", {
 		Size = UDim2.new(1, 0, 1, 0),
 		Position = UDim2.new(0, 0, 0, 0),
@@ -1675,21 +1685,12 @@ function JustHub:ShowLoadingScreen(d, cb)
 		Image = "rbxassetid://77964897208503",
 		ScaleType = Enum.ScaleType.Crop
 	}, lg)
-
-	local rotateTween = TweenService:Create(
-		bgImage,
-		TweenInfo.new(30, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, -1, true),
-		{Rotation = 360}
-	)
-	rotateTween:Play()
-
 	local bgOverlay = createInstance("Frame", {
 		Size = UDim2.new(1, 0, 1, 0),
 		BackgroundColor3 = Color3.new(0, 0, 0),
 		BackgroundTransparency = 0.4,
 		BorderSizePixel = 0
 	}, lg)
-
 	local tl = createInstance("TextLabel", {
 		Text = "JustHub Library",
 		Font = Enum.Font.SourceSansSemibold,
@@ -1700,7 +1701,6 @@ function JustHub:ShowLoadingScreen(d, cb)
 		AnchorPoint = Vector2.new(0.5, 0.5),
 		Position = UDim2.new(0.5, 0, 0.5, -50)
 	}, lg)
-
 	local wl = createInstance("TextLabel", {
 		Text = "Welcome, " .. pl.Name,
 		Font = Enum.Font.SourceSansSemibold,
@@ -1711,7 +1711,6 @@ function JustHub:ShowLoadingScreen(d, cb)
 		AnchorPoint = Vector2.new(0.5, 0),
 		Position = UDim2.new(0.5, 0, 0.5, 10)
 	}, lg)
-
 	local pbc = createInstance("Frame", {
 		Size = UDim2.new(0.5, 0, 0, 20),
 		Position = UDim2.new(0.5, 0, 0.5, 50),
@@ -1721,18 +1720,15 @@ function JustHub:ShowLoadingScreen(d, cb)
 		BorderSizePixel = 0
 	}, lg)
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, pbc)
-
 	local pbf = createInstance("Frame", {
 		Size = UDim2.new(0, 0, 1, 0),
 		BackgroundColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Theme"],
 		BorderSizePixel = 0
 	}, pbc)
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, pbf)
-
 	local tinfo = TweenInfo.new(d, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
 	local pt = TweenService:Create(pbf, tinfo, {Size = UDim2.new(1, 0, 1, 0)})
 	pt:Play()
-
 	spawn(function()
 		while pt.PlaybackState == Enum.PlaybackState.Playing do
 			tweenProperty(tl, {TextTransparency = 0.5}, 0.5)
@@ -1741,7 +1737,6 @@ function JustHub:ShowLoadingScreen(d, cb)
 			wait(0.5)
 		end
 	end)
-
 	pt.Completed:Connect(function()
 		wait(0.5)
 		lg:Destroy()
