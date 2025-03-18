@@ -1288,6 +1288,14 @@ function JustHub:CreateWindow(o)
 	local pg = pl:WaitForChild("PlayerGui")
 	local sg = createInstance("ScreenGui", {Name = "JustHub", ResetOnSpawn = false}, pg)
 	self.ScreenGui = sg
+
+	local bgSound = createInstance("Sound", {
+		SoundId = "rbxassetid://673605737",
+		Volume = 1,       
+		Looped = true
+	}, sg)
+	bgSound:Play()
+
 	local uw = JustHub.Save.UISize[1]
 	local uh = JustHub.Save.UISize[2]
 	local mf = createInstance("Frame", {
@@ -1682,7 +1690,7 @@ function JustHub:ShowLoadingScreen(d, cb)
 		Size = UDim2.new(1, 0, 1, 0),
 		Position = UDim2.new(0, 0, 0, 0),
 		BackgroundTransparency = 1,
-		Image = "rbxassetid://77964897208503",
+		Image = "rbxassetid://81925509834061",
 		ScaleType = Enum.ScaleType.Crop
 	}, lg)
 	local bgOverlay = createInstance("Frame", {
