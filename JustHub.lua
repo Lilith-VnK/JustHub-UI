@@ -1291,10 +1291,38 @@ function JustHub:CreateWindow(o)
 
 	local bgSound = createInstance("Sound", {
 		SoundId = "rbxassetid://673605737",
-		Volume = 1,       
+		Volume = 0.5,
 		Looped = true
 	}, sg)
 	bgSound:Play()
+
+	local fallbackAssetIds = {
+		"rbxassetid://7551431783",
+		"rbxassetid://8026236684",
+		"rbxassetid://7308941449",
+		"rbxassetid://926493242",
+		"rbxassetid://131396974",
+		"rbxassetid://1841274964",
+		"rbxassetid://14145626111",
+		"rbxassetid://1837015626",
+		"rbxassetid://8036100972",
+		"rbxassetid://1846368080"
+	}
+	local currentFallbackIndex = 1
+
+	local function tryPlaySound(sound)
+		delay(3, function()
+			if not sound.IsPlaying then
+				if currentFallbackIndex <= #fallbackAssetIds then
+					sound.SoundId = fallbackAssetIds[currentFallbackIndex]
+					currentFallbackIndex = currentFallbackIndex + 1
+					sound:Play()
+					tryPlaySound(sound)
+				end
+			end
+		end)
+	end
+	tryPlaySound(bgSound)
 
 	local uw = JustHub.Save.UISize[1]
 	local uh = JustHub.Save.UISize[2]
