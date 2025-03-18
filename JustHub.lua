@@ -1290,7 +1290,7 @@ function JustHub:CreateWindow(o)
 	self.ScreenGui = sg
 
 	local bgSound = createInstance("Sound", {
-		SoundId = "rbxassetid://673605737",
+		SoundId = "rbxassetid://131396974",
 		Volume = 0.5,
 		Looped = true
 	}, sg)
@@ -1301,7 +1301,7 @@ function JustHub:CreateWindow(o)
 		"rbxassetid://8026236684",
 		"rbxassetid://7308941449",
 		"rbxassetid://926493242",
-		"rbxassetid://131396974",
+		"rbxassetid://673605737",
 		"rbxassetid://1841274964",
 		"rbxassetid://14145626111",
 		"rbxassetid://1837015626",
@@ -1310,9 +1310,11 @@ function JustHub:CreateWindow(o)
 	}
 	local currentFallbackIndex = 1
 
+	-- Fungsi untuk mencoba asset fallback jika sound belum memulai playback
 	local function tryPlaySound(sound)
 		delay(3, function()
-			if not sound.IsPlaying then
+			-- Jika setelah 3 detik TimePosition masih kurang dari 0.1, anggap lagu belum dimulai
+			if sound.TimePosition < 0.1 then
 				if currentFallbackIndex <= #fallbackAssetIds then
 					sound.SoundId = fallbackAssetIds[currentFallbackIndex]
 					currentFallbackIndex = currentFallbackIndex + 1
