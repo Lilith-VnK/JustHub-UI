@@ -1009,7 +1009,7 @@ function SectionMethods:addDropdown(o)
 	createInstance("UICorner", {CornerRadius = UDim.new(0,20)}, f)
 	addBorder(f, getCurrentTheme(JustHub.Save.Theme)["Color Stroke"], 1)
 	local l = createInstance("TextLabel", {Name = "Label", Text = t, Size = UDim2.new(0.7, 0, 0, ch), Position = UDim2.new(0, 5, 0, 0), BackgroundTransparency = 1, TextColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Text"], Font = Enum.Font.GothamBold, TextSize = 12, TextXAlignment = Enum.TextXAlignment.Left}, f)
-	local b = createInstance("TextButton", {Name = "DropdownButton", Text = (df ~= "" and (df.." ▼") or "Select ▼"), Size = UDim2.new(0.3, 0, 0, ch), Position = UDim2.new(0.7, -5, 0, 0), BackgroundTransparency = 0, BackgroundColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Stroke"], Font = Enum.Font.GothamBold, TextSize = 12, TextColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Text"]}, f)
+	local b = createInstance("TextButton", {Name = "DropdownButton", Text = (df ~= "" and (df .. " ▼") or "Select ▼"), Size = UDim2.new(0.3, 0, 0, ch), Position = UDim2.new(0.7, -5, 0, 0), BackgroundTransparency = 0, BackgroundColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Stroke"], Font = Enum.Font.GothamBold, TextSize = 12, TextColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Text"]}, f)
 	createInstance("UICorner", {CornerRadius = UDim.new(0,20)}, b)
 	local lf = createInstance("Frame", {Name = "DropdownList", BackgroundTransparency = 0, BackgroundColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Hub 2"], Visible = false, Position = UDim2.new(0, 0, 0, ch)}, f)
 	lf.Size = UDim2.new(1, 0, 0, oh - ch)
@@ -1267,49 +1267,11 @@ function SectionMethods:addButton(o)
 	return c
 end
 
-function JustHub:addSection(sn, sh)
-	sn = sn or "Section"
-	sh = sh or 100
-	local sf = createInstance("Frame", {
-		Name = sn,
-		Size = UDim2.new(1, 0, 0, sh),
-		BackgroundColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Hub 2"],
-		BackgroundTransparency = 0
-	}, nil)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, sf)
-	local st = createInstance("TextLabel", {
-		Name = "SectionTitle",
-		Text = sn,
-		Size = UDim2.new(1, 0, 0, 30),
-		BackgroundTransparency = 1,
-		TextColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Text"],
-		Font = Enum.Font.GothamBold,
-		TextSize = 16,
-		TextXAlignment = Enum.TextXAlignment.Left
-	}, sf)
-	local sc = createInstance("Frame", {
-		Name = "SectionContent",
-		Size = UDim2.new(1, 0, 1, -30),
-		Position = UDim2.new(0, 0, 0, 30),
-		BackgroundTransparency = 1
-	}, sf)
-	createInstance("UIListLayout", {
-		FillDirection = Enum.FillDirection.Vertical,
-		Padding = UDim.new(0, 5),
-		SortOrder = Enum.SortOrder.LayoutOrder,
-		HorizontalAlignment = Enum.HorizontalAlignment.Left
-	}, sc)
-	local so = {Frame = sf, Title = st, Content = sc}
-	setmetatable(so, {__index = SectionMethods})
-	return so
-end
-
 function JustHub:CreateWindow(o)
 	o = o or {}
 	local wn = o.Name or "JustHub Window"
 	local th = getCurrentTheme(o.Theme)
 	local subTitle = o.SubTitle or "SubTitle"
-	local ft = wn .. " - " .. subTitle
 	local pl = Players.LocalPlayer
 	local pg = pl:WaitForChild("PlayerGui")
 	local sg = createInstance("ScreenGui", {Name = "JustHub", ResetOnSpawn = false}, pg)
@@ -1335,43 +1297,31 @@ function JustHub:CreateWindow(o)
 		addBorder(tb, th["Color Stroke"], 2)
 		local tl = createInstance("TextLabel", {
 			Name = "TitleLabel",
-			Size = UDim2.new(1, -180, 1, 0),
+			Size = UDim2.new(1, -20, 0.6, 0),
 			Position = UDim2.new(0, 10, 0, 0),
 			BackgroundTransparency = 1,
-			Text = ft,
+			Text = wn,
 			TextColor3 = th["Color Text"],
 			Font = Enum.Font.GothamBold,
 			TextSize = 18,
 			TextXAlignment = Enum.TextXAlignment.Left
 		}, tb)
 		addBorder(tl, th["Color Stroke"], 1)
-		local resetBtn = createInstance("TextButton", {
-			Name = "ResetButton",
-			Text = "Reset",
-			Size = UDim2.new(0, 50, 0, 30),
-			Position = UDim2.new(0, 10, 0, -29),
-			BackgroundColor3 = th["Color Hub 2"],
-			TextColor3 = th["Color Text"],
-			Font = Enum.Font.GothamBold,
+		local st = createInstance("TextLabel", {
+			Name = "SubtitleLabel",
+			Size = UDim2.new(1, -20, 0.4, 0),
+			Position = UDim2.new(0, 10, 0.6, 0),
+			BackgroundTransparency = 1,
+			Text = subTitle,
+			TextColor3 = Color3.fromRGB(150, 150, 150),
+			Font = Enum.Font.Gotham,
 			TextSize = 14,
-			BackgroundTransparency = 0.2
+			TextXAlignment = Enum.TextXAlignment.Left
 		}, tb)
-		addBorder(resetBtn, th["Color Stroke"], 1)
-		local lockBtn = createInstance("TextButton", {
-			Name = "LockButton",
-			Text = "Lock",
-			Size = UDim2.new(0, 50, 0, 30),
-			Position = UDim2.new(0, 70, 0, -29),
-			BackgroundColor3 = th["Color Hub 2"],
-			TextColor3 = th["Color Text"],
-			Font = Enum.Font.GothamBold,
-			TextSize = 14,
-			BackgroundTransparency = 0.2
-		}, tb)
-		addBorder(lockBtn, th["Color Stroke"], 1)
-		return tb, resetBtn, lockBtn
+		addBorder(st, th["Color Stroke"], 1)
+		return tb
 	end
-	local tb, resetBtn, lockBtn = initTopBar()
+	local tb = initTopBar()
 	local headerSeparator = createInstance("Frame", {
 		Size = UDim2.new(1, 0, 0, 2),
 		Position = UDim2.new(0, 0, 0, 60),
@@ -1444,9 +1394,21 @@ function JustHub:CreateWindow(o)
 	}, footer)
 	fl.AnchorPoint = Vector2.new(1, 0.5)
 	fl.Position = UDim2.new(1, -10, 0.5, 0)
+	local fpsAccumulator = 0
+	local fpsCount = 0
+	local updateInterval = 0.5
+	spawn(function()
+		while true do
+			wait(updateInterval)
+			local avgFPS = fpsCount / fpsAccumulator
+			fl.Text = "FPS: " .. math.floor(avgFPS)
+			fpsAccumulator = 0
+			fpsCount = 0
+		end
+	end)
 	RunService.Heartbeat:Connect(function(d)
-		local fps = math.floor(1 / d)
-		fl.Text = "FPS: " .. fps
+		fpsAccumulator = fpsAccumulator + d
+		fpsCount = fpsCount + 1
 	end)
 	local windowTween = TweenService:Create(mf, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Position = UDim2.new(0.5, 0, 0.5, 0)})
 	windowTween:Play()
@@ -1455,11 +1417,14 @@ function JustHub:CreateWindow(o)
 	local isLocked = false
 	local minimized = false
 	local maximized = false
+	local controlButtonSize = UDim2.new(0, 40, 0, 40)
+	local buttonSpacing = 10
+	local basePosX = -30
 	local function createControlButton(name, text, pos)
 		return createInstance("TextButton", {
 			Name = name,
 			Text = text,
-			Size = UDim2.new(0, 40, 0, 40),
+			Size = controlButtonSize,
 			Position = pos,
 			BackgroundTransparency = 1,
 			TextColor3 = th["Color Text"],
@@ -1467,9 +1432,9 @@ function JustHub:CreateWindow(o)
 			TextSize = 24
 		}, tb)
 	end
-	local hb = createControlButton("HideButton", "–", UDim2.new(1, -110, 0, 10))
-	local xb = createControlButton("MaxButton", "□", UDim2.new(1, -70, 0, 10))
-	local closeb = createControlButton("CloseButton", "X", UDim2.new(1, -30, 0, 10))
+	local hb = createControlButton("HideButton", "–", UDim2.new(1, basePosX - (controlButtonSize.X.Offset + buttonSpacing)*2, 0, 10))
+	local xb = createControlButton("MaxButton", "□", UDim2.new(1, basePosX - (controlButtonSize.X.Offset + buttonSpacing), 0, 10))
+	local closeb = createControlButton("CloseButton", "X", UDim2.new(1, basePosX, 0, 10))
 	hb.MouseButton1Click:Connect(function()
 		if not minimized then
 			tweenProperty(mf, {Size = UDim2.new(originalSize.X.Scale, originalSize.X.Offset, 0, 60 + footerHeight)}, 0.3)
