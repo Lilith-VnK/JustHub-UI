@@ -1288,7 +1288,7 @@ function JustHub:CreateWindow(o)
 	local pg = pl:WaitForChild("PlayerGui")
 	local sg = createInstance("ScreenGui", {Name = "JustHub", ResetOnSpawn = false}, pg)
 	self.ScreenGui = sg
-	local currentSoundId = "rbxassetid://673605737"
+	local currentSoundId = "rbxassetid://116896498238234"
 	local fallbackAssetIds = {
 		"rbxassetid://7551431783",
 		"rbxassetid://8026236684",
@@ -1299,7 +1299,27 @@ function JustHub:CreateWindow(o)
 		"rbxassetid://14145626111",
 		"rbxassetid://1837015626",
 		"rbxassetid://8036100972",
-		"rbxassetid://1846368080"
+		"rbxassetid://1846368080",
+		"rbxassetid://6991661856",
+		"rbxassetid://4551648646",
+		"rbxassetid://135055100",
+		"rbxassetid://5410085763",
+		"rbxassetid://7795812961",
+		"rbxassetid://6070263388",
+		"rbxassetid://6841685130",
+		"rbxassetid://2106186490",
+		"rbxassetid://136209425",
+		"rbxassetid://5410082273",
+		"rbxassetid://7024233823",
+		"rbxassetid://5569815928",
+		"rbxassetid://5422507571",
+		"rbxassetid://4642779401",
+		"rbxassetid://5569300394",
+		"rbxassetid://5077810864",
+		"rbxassetid://5020637545",
+		"rbxassetid://15689451063",
+		"rbxassetid://673605737",
+		"rbxassetid://17422168798"
 	}
 	local currentFallbackIndex = 1
 	local bgSound = createInstance("Sound", {
@@ -1947,6 +1967,20 @@ function JustHub:Notify(o)
 		outTween:Play()
 		outTween.Completed:Wait()
 		nf:Destroy()
+	end)
+end
+
+function JustHub:PromoNotify()
+	spawn(function()
+		while true do
+			self:Notify({
+				Title = "JustHub UI Promotion",
+				Message = "Check out JustHub-UI at:\nhttps://github.com/Lilith-VnK/JustHub-UI/",
+				Duration = 3,
+				ShowProgress = false
+			})
+			wait(30)
+		end
 	end)
 end
 
