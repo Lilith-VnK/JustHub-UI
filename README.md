@@ -21,35 +21,34 @@
 7. [Advanced Example](#advanced-example)
 8. [License](#license)
 
----
-
 ## New Update
 
 - **[+] Background Loading Screen**
 - **[+] Background Sound**
 - **[+] Music Control UI (Play, Stop, Next)**
 
----
 
 ## Installation
 
-1. **Obtain the Module**  
+1. **Obtain the Module**
+
    Place the `JustHub.lua` file in your desired location within **ReplicatedStorage** or **ServerScriptService** (commonly `ReplicatedStorage`).
 
-2. **Require the Module**  
+3. **Require the Module**  
+
    ```lua
    local JustHub = loadstring(game:HttpGet('https://raw.githubusercontent.com/Lilith-VnK/JustHub-UI/main/JustHub.lua'))()
+   ```
 
-3. Initialize
+4. Initialize
 Call JustHub:InitializeUI with your preferred settings.
 
 
 
 
----
+## Quick Start
 
-Quick Start
-
+   ```lua
 local JustHub = loadstring(game:HttpGet('https://raw.githubusercontent.com/Lilith-VnK/JustHub-UI/main/JustHub.lua'))()
 
 JustHub:InitializeUI({
@@ -85,14 +84,14 @@ task.spawn(function()
         Duration = 5
     })
 end)
+  ```
 
 
----
-
-Music Control UI
+## Music Control UI
 
 A music control UI has been added to the bottom left corner. It includes Play, Stop, and Next buttons.
 
+```lua
 local musicUI = JustHub.Window:addUIElement({
     Type = "Frame",
     Name = "MusicControl",
@@ -123,20 +122,22 @@ musicUI:addButton({
         JustHub:NextSound("BackgroundMusic")
     end
 })
+  ```
 
+## Core Concepts
 
----
-
-Core Concepts
-
-Themes
+  1.Themes
 
 JustHub includes multiple built-in themes (Darker, Dark, Purple, Light, Neon, Forest, Aqua, Crimson, Solar, Pastel, Cyber, Ocean, Desert, Vintage, Rainbow, Midnight). You can switch themes via:
 
+  ```lua
+
 JustHub:SetTheme("Darker")
+  ```
 
 To register a custom theme:
 
+  ```lua
 JustHub:RegisterTheme("MyCustomTheme", {
     ["Color Hub 1"]   = ColorSequence.new(...),
     ["Color Hub 2"]   = Color3.fromRGB(...),
@@ -146,23 +147,30 @@ JustHub:RegisterTheme("MyCustomTheme", {
     ["Color Dark Text"] = Color3.fromRGB(...)
 })
 JustHub:SetTheme("MyCustomTheme")
+  ```
 
-Sections & Controls
+## Sections & Controls
 
 After calling JustHub:InitializeUI, you obtain a window object. You can create tabs using:
 
+```lua
 local tab = window:addTab("TabName")
+```
 
 Each tab can contain one or more sections:
 
+```lua
 local section = tab:addSection("SectionName")
+```
 
 Inside sections, you can add various controls (toggles, sliders, text boxes, etc.).
 
-Role-Based Permissions
+
+## Role-Based Permissions
 
 You can restrict controls to specific roles by providing a Role property. For example:
 
+```lua
 section:addToggle({
     Name = "Admin Toggle",
     Role = "admin",
@@ -197,55 +205,67 @@ section:addButton({
         JustHub:Redo()
     end
 })
+```
 
-Localization
+## Localization
 
 JustHub supports localization by storing text keys in JustHub.Localization and setting a current language. For example:
 
+```lua
 JustHub.Localization = {
     en = { HELLO = "Hello", APPLY = "Apply" },
     fr = { HELLO = "Bonjour", APPLY = "Appliquer" }
 }
 JustHub:SetLanguage("fr")
 print(JustHub:LocalizeText("HELLO"))  -- Outputs "Bonjour"
+```
 
-Sound Effects
+## Sound Effects
 
 Define asset IDs for sound effects in JustHub.Sounds:
 
+```lua
 JustHub.Sounds = {
     ButtonClick = 912345678, -- Replace with your asset ID
     SliderMove  = 912345679  -- Replace with your asset ID
-}
+} 
+```
 
 You can trigger these sounds automatically via control logic or manually:
 
+```lua
 JustHub:PlaySound("ButtonClick")
+```
 
 
 ---
 
-Available Controls
+## Available Controls
 
 1. Menu (Header-like element)
 
+```lua
 local menu = section:addMenu("Menu Title")
+```
 
 
 2. Toggle
 A boolean switch.
 
+```lua
 section:addToggle({
     Name = "Music",
     Default = true,
     Callback = function(state) end,
     Role = "admin" -- Optional
 })
+```
 
 
 3. Slider
 A numeric slider.
 
+```lua
 section:addSlider({
     Name = "Volume",
     Min = 0,
@@ -253,21 +273,25 @@ section:addSlider({
     Default = 50,
     Callback = function(value) end
 })
+```
 
 
 4. TextBox
 A single-line text input.
 
+```lua
 section:addTextBox({
     Name = "Username",
     Default = "Player",
     Callback = function(text) end
 })
+```
 
 
 5. Dropdown
 A dropdown list. For example, to change themes:
 
+```lua
 section:addDropdown({
     Name = "Theme",
     Items = {"Darker", "Dark", "Purple", "Light", "Neon", "Forest", "Aqua"},
@@ -276,11 +300,12 @@ section:addDropdown({
         JustHub:SetTheme(choice)
     end
 })
-
+```
 
 6. Button
 A clickable button.
 
+```lua
 section:addButton({
     Name = "SaveConfig",
     ButtonText = "Save",
@@ -288,11 +313,12 @@ section:addButton({
         JustHub:SaveConfig("MyConfig.json")
     end
 })
-
+```
 
 7. KeyBind
 A control to assign a key to an action.
 
+```lua
 section:addBind({
     Name = "UI Key",
     Default = "RightShift",
@@ -300,11 +326,12 @@ section:addBind({
         JustHub:ToggleUIVisibility()
     end
 })
-
+```
 
 8. ColorPicker
 Allows color selection.
 
+```lua
 section:addColorPicker({
     Name = "Background Color",
     Default = Color3.fromRGB(128, 128, 255),
@@ -312,11 +339,12 @@ section:addColorPicker({
         print("Color picked:", color3)
     end
 })
-
+```
 
 9. ScriptBox (Macro/Scripting)
 A multi-line text input with a run button.
 
+```lua
 section:addScriptBox({
     Name = "Macro",
     Default = "-- type script here",
@@ -324,45 +352,46 @@ section:addScriptBox({
         print("User typed script:", scriptText)
     end
 })
-
+```
 
 10. Notifications
 Display notifications using:
 
+```lua
 JustHub:Notify({
     Title = "Title",
     Message = "Your settings have been saved.",
     Duration = 5,
     ShowProgress = true
 })
+```
 
 Parameters:
 
+```
 Title: Notification title.
-
 Message: Main text content.
-
 Duration: Time (in seconds) the notification stays on screen.
-
 ShowProgress: Display a progress bar.
 
-
+```
 
 
 
 ---
 
-Window Resizing
+## Window Resizing
 
 The main window can be resized using the small grip in the bottom-right corner. This functionality is built in by default.
 
 
 ---
 
-Advanced Example
+## Advanced Example
 
 This example demonstrates using multiple features together:
 
+```lua
 local JustHub = loadstring(game:HttpGet('https://raw.githubusercontent.com/Lilith-VnK/JustHub-UI/refs/heads/main/JustHub%20(2).lua'))()
 
 JustHub:SetUserRole("admin")
@@ -437,24 +466,15 @@ task.spawn(function()
         ShowProgress = true
     })
 end)
+```
 
 
 ---
 
-License
+## License
 
 This library is free to use in your Roblox projects.
 
 Enjoy building with JustHub! If you have any questions, feel free to open an issue or submit a pull request.
 
 ---
-
-### Explanation of Changes
-
-- **Consolidated Content:** Removed the duplicated "Core Concepts" section and merged all related topics into a single, cohesive section.
-- **Consistent Headings:** Adjusted heading levels and numbering in the table of contents to ensure consistency.
-- **Logical Grouping:** Grouped related sections (like controls, localization, sound effects) together to improve readability.
-- **Comments and Formatting:** Cleaned up the code blocks and comments for clarity.
-
-This should provide a cleaner, easier-to-read structure for your README.md file. Let me know if you need further adjustments!
-
