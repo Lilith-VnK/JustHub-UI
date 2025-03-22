@@ -1340,10 +1340,10 @@ function JustHub:CreateWindow(o)
         end)
     end
     tryPlaySound(bgSound)
-    local soundControlFrame = createInstance("Frame", {Size = UDim2.new(0, 250, 0, 40), Position = UDim2.new(1, -260, 0, 10), BackgroundTransparency = 0.4, BackgroundColor3 = Color3.fromRGB(20,20,20), BorderSizePixel = 0}, sg)
-    local soundLabel = createInstance("TextLabel", {Size = UDim2.new(0.65, 0, 1, 0), Position = UDim2.new(0, 5, 0, 0), Text = "Playing: " .. currentSoundId, TextColor3 = th["Color Text"], BackgroundTransparency = 1, Font = Enum.Font.GothamBold, TextSize = 14, TextXAlignment = Enum.TextXAlignment.Left}, soundControlFrame)
-    local playPauseButton = createInstance("TextButton", {Size = UDim2.new(0.15, 0, 1, 0), Position = UDim2.new(0.7, 0, 0, 0), Text = "❚❚", TextColor3 = th["Color Text"], BackgroundTransparency = 1, Font = Enum.Font.GothamBold, TextSize = 14}, soundControlFrame)
-    local nextButton = createInstance("TextButton", {Size = UDim2.new(0.15, 0, 1, 0), Position = UDim2.new(0.85, 0, 0, 0), Text = "⏭", TextColor3 = th["Color Text"], BackgroundTransparency = 1, Font = Enum.Font.GothamBold, TextSize = 14}, soundControlFrame)
+    local soundControlFrame = createInstance("Frame", {Size = UDim2.new(0, 180, 0, 30), Position = UDim2.new(1, -190, 0, 10), BackgroundTransparency = 0.5, BackgroundColor3 = Color3.fromRGB(30,30,30), BorderSizePixel = 0}, sg)
+    local soundLabel = createInstance("TextLabel", {Size = UDim2.new(0.65, 0, 1, 0), Position = UDim2.new(0, 5, 0, 0), Text = "Playing: " .. currentSoundId, TextColor3 = th["Color Text"], BackgroundTransparency = 1, Font = Enum.Font.GothamBold, TextSize = 12, TextXAlignment = Enum.TextXAlignment.Left}, soundControlFrame)
+    local playPauseButton = createInstance("TextButton", {Size = UDim2.new(0, 30, 0, 30), Position = UDim2.new(0.68, 0, 0, 0), Text = "❚❚", TextColor3 = th["Color Text"], BackgroundTransparency = 1, Font = Enum.Font.GothamBold, TextSize = 12}, soundControlFrame)
+    local nextButton = createInstance("TextButton", {Size = UDim2.new(0, 30, 0, 30), Position = UDim2.new(0.85, 0, 0, 0), Text = "⏭", TextColor3 = th["Color Text"], BackgroundTransparency = 1, Font = Enum.Font.GothamBold, TextSize = 12}, soundControlFrame)
     playPauseButton.MouseButton1Click:Connect(function()
         if bgSound.IsPlaying then
             bgSound:Pause()
@@ -1364,28 +1364,27 @@ function JustHub:CreateWindow(o)
         playPauseButton.Text = "❚❚"
         soundLabel.Text = "Playing: " .. currentSoundId
     end)
-    local uw = JustHub.Save.UISize[1]
-    local uh = JustHub.Save.UISize[2]
+    local uw = 350
+    local uh = 500
     local mf = createInstance("Frame", {Name = "MainFrame", AnchorPoint = Vector2.new(0.5, 0.5), Position = UDim2.new(0.5, 0, 0.5, 0), Size = UDim2.new(0, uw, 0, uh), BackgroundColor3 = th["Color Hub 2"]}, sg)
-    createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, mf)
-    addBorder(mf, th["Color Stroke"], 2)
-    local topBar = createInstance("Frame", {Name = "TopBar", Size = UDim2.new(1, 0, 0, 70), BackgroundColor3 = th["Color Hub 2"]}, mf)
-    createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, topBar)
-    addBorder(topBar, th["Color Stroke"], 2)
-    local titleLabel = createInstance("TextLabel", {Name = "TitleLabel", Size = UDim2.new(1, -20, 0.6, 0), Position = UDim2.new(0, 10, 0, 0), BackgroundTransparency = 1, Text = wn, TextColor3 = th["Color Text"], Font = Enum.Font.GothamBold, TextSize = 20, TextXAlignment = Enum.TextXAlignment.Left}, topBar)
-    local subtitleLabel = createInstance("TextLabel", {Name = "SubtitleLabel", Size = UDim2.new(1, -20, 0.4, 0), Position = UDim2.new(0, 10, 0.6, 0), BackgroundTransparency = 1, Text = subTitle, TextColor3 = Color3.fromRGB(180, 180, 180), Font = Enum.Font.Gotham, TextSize = 16, TextXAlignment = Enum.TextXAlignment.Left}, topBar)
-    local sideBar = createInstance("Frame", {Name = "Sidebar", Size = UDim2.new(0, 200, 1, -70), Position = UDim2.new(0, 0, 0, 70), BackgroundColor3 = th["Color Hub 2"]}, mf)
-    createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, sideBar)
-    addBorder(sideBar, th["Color Stroke"], 2)
-    createInstance("UIListLayout", {SortOrder = Enum.SortOrder.LayoutOrder, Padding = UDim.new(0, 10), FillDirection = Enum.FillDirection.Vertical, HorizontalAlignment = Enum.HorizontalAlignment.Center, VerticalAlignment = Enum.VerticalAlignment.Top}, sideBar)
-    local contentContainer = createInstance("Frame", {Name = "ContentContainer", Size = UDim2.new(1, -200, 1, -70), Position = UDim2.new(0, 200, 0, 70), BackgroundColor3 = th["Color Hub 2"]}, mf)
-    createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, contentContainer)
-    addBorder(contentContainer, th["Color Stroke"], 2)
-    local scrollingFrame = createInstance("ScrollingFrame", {Size = UDim2.new(1, 0, 1, 0), BackgroundTransparency = 1, ScrollBarThickness = 8, BorderSizePixel = 0}, contentContainer)
-    createInstance("UIListLayout", {SortOrder = Enum.SortOrder.LayoutOrder, Padding = UDim.new(0, 15), HorizontalAlignment = Enum.HorizontalAlignment.Left}, scrollingFrame)
-    local footer = createInstance("Frame", {Name = "Footer", Size = UDim2.new(1, 0, 0, 40), Position = UDim2.new(0, 0, 1, -40), BackgroundColor3 = th["Color Hub 2"]}, mf)
-    addBorder(footer, th["Color Stroke"], 2)
-    local fpsLabel = createInstance("TextLabel", {Name = "FPSLabel", Size = UDim2.new(0, 120, 1, 0), BackgroundTransparency = 1, TextColor3 = th["Color Text"], Font = Enum.Font.Gotham, TextSize = 14, Text = "FPS: Calculating..."}, footer)
+    createInstance("UICorner", {CornerRadius = UDim.new(0, 10)}, mf)
+    addBorder(mf, th["Color Stroke"], 1)
+    local topBar = createInstance("Frame", {Name = "TopBar", Size = UDim2.new(1, 0, 0, 40), BackgroundColor3 = th["Color Hub 2"]}, mf)
+    createInstance("UICorner", {CornerRadius = UDim.new(0, 10)}, topBar)
+    addBorder(topBar, th["Color Stroke"], 1)
+    local titleLabel = createInstance("TextLabel", {Name = "TitleLabel", Size = UDim2.new(1, 0, 1, 0), BackgroundTransparency = 1, Text = wn, TextColor3 = th["Color Text"], Font = Enum.Font.GothamBold, TextSize = 16, TextXAlignment = Enum.TextXAlignment.Center}, topBar)
+    local tabBar = createInstance("Frame", {Name = "TabBar", Size = UDim2.new(1, 0, 0, 30), Position = UDim2.new(0, 40, 0, 40), BackgroundColor3 = th["Color Hub 2"]}, mf)
+    createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, tabBar)
+    addBorder(tabBar, th["Color Stroke"], 1)
+    createInstance("UIListLayout", {FillDirection = Enum.FillDirection.Horizontal, Padding = UDim.new(0, 5), SortOrder = Enum.SortOrder.LayoutOrder, HorizontalAlignment = Enum.HorizontalAlignment.Center, VerticalAlignment = Enum.VerticalAlignment.Center}, tabBar)
+    local contentContainer = createInstance("Frame", {Name = "ContentContainer", Size = UDim2.new(1, 0, 1, -70), Position = UDim2.new(0, 0, 0, 70), BackgroundColor3 = th["Color Hub 2"]}, mf)
+    createInstance("UICorner", {CornerRadius = UDim.new(0, 10)}, contentContainer)
+    addBorder(contentContainer, th["Color Stroke"], 1)
+    local scrollingFrame = createInstance("ScrollingFrame", {Size = UDim2.new(1, 0, 1, 0), BackgroundTransparency = 1, ScrollBarThickness = 6, BorderSizePixel = 0}, contentContainer)
+    createInstance("UIListLayout", {FillDirection = Enum.FillDirection.Vertical, Padding = UDim.new(0, 10), SortOrder = Enum.SortOrder.LayoutOrder, HorizontalAlignment = Enum.HorizontalAlignment.Left}, scrollingFrame)
+    local footer = createInstance("Frame", {Name = "Footer", Size = UDim2.new(1, 0, 0, 30), Position = UDim2.new(0, 0, 1, -30), BackgroundColor3 = th["Color Hub 2"]}, mf)
+    addBorder(footer, th["Color Stroke"], 1)
+    local fpsLabel = createInstance("TextLabel", {Name = "FPSLabel", Size = UDim2.new(0, 80, 1, 0), BackgroundTransparency = 1, TextColor3 = th["Color Text"], Font = Enum.Font.Gotham, TextSize = 12, Text = "FPS: Calculating..."}, footer)
     fpsLabel.AnchorPoint = Vector2.new(1, 0.5)
     fpsLabel.Position = UDim2.new(1, -10, 0.5, 0)
     local fpsAccumulator = 0
@@ -1404,33 +1403,33 @@ function JustHub:CreateWindow(o)
         fpsAccumulator = fpsAccumulator + d
         fpsCount = fpsCount + 1
     end)
-    local windowTween = TweenService:Create(mf, TweenInfo.new(0.6, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Position = UDim2.new(0.5, 0, 0.5, 0)})
+    local windowTween = TweenService:Create(mf, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Position = UDim2.new(0.5, 0, 0.5, 0)})
     windowTween:Play()
     local originalSize = mf.Size
     local originalPosition = mf.Position
     local isLocked = false
     local minimized = false
     local maximized = false
-    local controlButtonSize = UDim2.new(0, 40, 0, 40)
-    local buttonSpacing = 10
-    local basePosX = -30
+    local controlButtonSize = UDim2.new(0, 30, 0, 30)
+    local buttonSpacing = 5
+    local basePosX = -10
     local function createControlButton(name, text, pos)
-        return createInstance("TextButton", {Name = name, Text = text, Size = controlButtonSize, Position = pos, BackgroundTransparency = 1, TextColor3 = th["Color Text"], Font = Enum.Font.GothamBold, TextSize = 24}, topBar)
+        return createInstance("TextButton", {Name = name, Text = text, Size = controlButtonSize, Position = pos, BackgroundTransparency = 1, TextColor3 = th["Color Text"], Font = Enum.Font.GothamBold, TextSize = 14}, topBar)
     end
-    local hideButton = createControlButton("HideButton", "–", UDim2.new(1, basePosX - (controlButtonSize.X.Offset + buttonSpacing)*2, 0, 15))
-    local maxButton = createControlButton("MaxButton", "□", UDim2.new(1, basePosX - (controlButtonSize.X.Offset + buttonSpacing), 0, 15))
-    local closeButton = createControlButton("CloseButton", "X", UDim2.new(1, basePosX, 0, 15))
+    local hideButton = createControlButton("HideButton", "–", UDim2.new(1, basePosX - (controlButtonSize.X.Offset + buttonSpacing)*2, 0, 5))
+    local maxButton = createControlButton("MaxButton", "□", UDim2.new(1, basePosX - (controlButtonSize.X.Offset + buttonSpacing), 0, 5))
+    local closeButton = createControlButton("CloseButton", "X", UDim2.new(1, basePosX, 0, 5))
     hideButton.MouseButton1Click:Connect(function()
         if not minimized then
-            tweenProperty(mf, {Size = UDim2.new(originalSize.X.Scale, originalSize.X.Offset, 0, 70)}, 0.3)
-            sideBar.Visible = false
+            tweenProperty(mf, {Size = UDim2.new(originalSize.X.Scale, originalSize.X.Offset, 0, 40)}, 0.3)
+            tabBar.Visible = false
             contentContainer.Visible = false
             footer.Visible = false
             minimized = true
         else
             tweenProperty(mf, {Size = originalSize}, 0.3)
             wait(0.3)
-            sideBar.Visible = true
+            tabBar.Visible = true
             contentContainer.Visible = true
             footer.Visible = true
             minimized = false
@@ -1452,7 +1451,7 @@ function JustHub:CreateWindow(o)
             mf.Visible = false
             local pg2 = Players.LocalPlayer:WaitForChild("PlayerGui")
             local showUI = createInstance("ScreenGui", {Name = "ShowUI", ResetOnSpawn = false}, pg2)
-            local showBtn = createInstance("TextButton", {Name = "ShowUIButton", Size = UDim2.new(0, 120, 0, 40), Position = UDim2.new(0.5, -60, 0, 20), BackgroundColor3 = th["Color Hub 2"], Text = "Show UI", TextColor3 = Color3.fromRGB(128, 0, 128), Font = Enum.Font.GothamBold, TextSize = 20}, showUI)
+            local showBtn = createInstance("TextButton", {Name = "ShowUIButton", Size = UDim2.new(0, 100, 0, 30), Position = UDim2.new(0.5, -50, 0, 10), BackgroundColor3 = th["Color Hub 2"], Text = "Show UI", TextColor3 = Color3.fromRGB(128, 0, 128), Font = Enum.Font.GothamBold, TextSize = 20}, showUI)
             createInstance("UICorner", {CornerRadius = UDim.new(0, 25)}, showBtn)
             createInstance("UIStroke", {Color = th["Color Theme"], Thickness = 1}, showBtn)
             showBtn.MouseButton1Click:Connect(function()
@@ -1515,14 +1514,14 @@ function JustHub:CreateWindow(o)
     local resizeGrip = createInstance("Frame", {Name = "ResizeGrip", Size = UDim2.new(0, 20, 0, 20), Position = UDim2.new(1, -20, 1, -20), BackgroundColor3 = Color3.fromRGB(50, 50, 50), BackgroundTransparency = 0.3, BorderSizePixel = 0}, mf)
     createInstance("UICorner", {CornerRadius = UDim.new(0, 5)}, resizeGrip)
     enableResize(mf, resizeGrip)
-    local notiContainer = createInstance("Frame", {Name = "NotificationContainer", AnchorPoint = Vector2.new(1, 1), Position = UDim2.new(1, -10, 1, -10), Size = UDim2.new(0, 300, 1, -20), BackgroundTransparency = 1}, sg)
-    createInstance("UIListLayout", {Padding = UDim.new(0, 8), HorizontalAlignment = Enum.HorizontalAlignment.Right, VerticalAlignment = Enum.VerticalAlignment.Bottom, SortOrder = Enum.SortOrder.LayoutOrder}, notiContainer)
+    local notiContainer = createInstance("Frame", {Name = "NotificationContainer", AnchorPoint = Vector2.new(1, 1), Position = UDim2.new(1, -10, 1, -10), Size = UDim2.new(0, 250, 1, -20), BackgroundTransparency = 1}, sg)
+    createInstance("UIListLayout", {Padding = UDim.new(0, 5), HorizontalAlignment = Enum.HorizontalAlignment.Right, VerticalAlignment = Enum.VerticalAlignment.Bottom, SortOrder = Enum.SortOrder.LayoutOrder}, notiContainer)
     self.NotificationContainer = notiContainer
-    local wObj = {ScreenGui = sg, MainFrame = mf, TopBar = topBar, Sidebar = sideBar, ContentContainer = contentContainer, Tabs = {}}
+    local wObj = {ScreenGui = sg, MainFrame = mf, TopBar = topBar, Sidebar = tabBar, ContentContainer = contentContainer, Tabs = {}}
     function wObj:addTab(tn)
         tn = tn or "Tab"
-        local b = createInstance("TextButton", {Name = tn .. "Button", Text = tn, Size = UDim2.new(1, 0, 0, 30), BackgroundColor3 = th["Color Stroke"], TextColor3 = Color3.fromRGB(128, 0, 128), Font = Enum.Font.GothamBold, TextSize = 14, TextScaled = true, TextTruncate = Enum.TextTruncate.AtEnd}, sideBar)
-        createInstance("UICorner", {CornerRadius = UDim.new(0, 10)}, b)
+        local b = createInstance("TextButton", {Name = tn .. "Button", Text = tn, Size = UDim2.new(0, 80, 1, 0), BackgroundColor3 = th["Color Stroke"], TextColor3 = Color3.fromRGB(128, 0, 128), Font = Enum.Font.GothamBold, TextSize = 12, TextScaled = true, TextTruncate = Enum.TextTruncate.AtEnd}, tabBar)
+        createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, b)
         createInstance("UIStroke", {Color = th["Color Theme"], Thickness = 1}, b)
         local tc = createInstance("Frame", {Name = tn .. "Content", Size = UDim2.new(1, 0, 1, 0), BackgroundTransparency = 1, Visible = false}, scrollingFrame)
         local tObj = {Name = tn, Button = b, Content = tc, Sections = {}}
@@ -1541,7 +1540,7 @@ function JustHub:CreateWindow(o)
             sh = sh or 80
             local sframe = createInstance("Frame", {Name = sn, Size = UDim2.new(1, 0, 0, sh), BackgroundColor3 = th["Color Hub 2"], BackgroundTransparency = 0}, tc)
             createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, sframe)
-            local st = createInstance("TextLabel", {Name = "SectionTitle", Text = sn, Size = UDim2.new(1, 0, 0, 30), BackgroundTransparency = 1, TextColor3 = th["Color Text"], Font = Enum.Font.GothamBold, TextSize = 14, TextXAlignment = Enum.TextXAlignment.Left}, sframe)
+            local st = createInstance("TextLabel", {Name = "SectionTitle", Text = sn, Size = UDim2.new(1, 0, 0, 30), BackgroundTransparency = 1, TextColor3 = th["Color Text"], Font = Enum.Font.GothamBold, TextSize = 12, TextXAlignment = Enum.TextXAlignment.Left}, sframe)
             local sc = createInstance("Frame", {Name = "SectionContent", Size = UDim2.new(1, 0, 1, -30), Position = UDim2.new(0, 0, 0, 30), BackgroundTransparency = 1}, sframe)
             createInstance("UIListLayout", {FillDirection = Enum.FillDirection.Vertical, Padding = UDim.new(0, 5), SortOrder = Enum.SortOrder.LayoutOrder, HorizontalAlignment = Enum.HorizontalAlignment.Left}, sc)
             local sObj = {Frame = sframe, Title = st, Content = sc}
