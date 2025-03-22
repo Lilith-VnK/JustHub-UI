@@ -1280,483 +1280,278 @@ function SectionMethods:addButton(o)
 end
 
 function JustHub:CreateWindow(o)
-	o = o or {}
-	local wn = o.Name or "JustHub Window"
-	local th = getCurrentTheme(o.Theme)
-	local subTitle = o.SubTitle or "SubTitle"
-	local pl = Players.LocalPlayer
-	local pg = pl:WaitForChild("PlayerGui")
-	local sg = createInstance("ScreenGui", {Name = "JustHub", ResetOnSpawn = false}, pg)
-	self.ScreenGui = sg
-	local currentSoundId = "rbxassetid://116896498238234"
-	local fallbackAssetIds = {
-		"rbxassetid://7551431783",
-		"rbxassetid://8026236684",
-		"rbxassetid://7308941449",
-		"rbxassetid://926493242",
-		"rbxassetid://131396974",
-		"rbxassetid://1841274964",
-		"rbxassetid://14145626111",
-		"rbxassetid://1837015626",
-		"rbxassetid://8036100972",
-		"rbxassetid://1846368080",
-		"rbxassetid://6991661856",
-		"rbxassetid://4551648646",
-		"rbxassetid://135055100",
-		"rbxassetid://5410085763",
-		"rbxassetid://7795812961",
-		"rbxassetid://6070263388",
-		"rbxassetid://6841685130",
-		"rbxassetid://2106186490",
-		"rbxassetid://136209425",
-		"rbxassetid://5410082273",
-		"rbxassetid://7024233823",
-		"rbxassetid://5569815928",
-		"rbxassetid://5422507571",
-		"rbxassetid://4642779401",
-		"rbxassetid://5569300394",
-		"rbxassetid://5077810864",
-		"rbxassetid://5020637545",
-		"rbxassetid://15689451063",
-		"rbxassetid://673605737",
-		"rbxassetid://17422168798"
-	}
-	local currentFallbackIndex = 1
-	local bgSound = createInstance("Sound", {
-		SoundId = currentSoundId,
-		Volume = 0.5,
-		Looped = true
-	}, sg)
-	bgSound:Play()
-	local function tryPlaySound(sound)
-		delay(3, function()
-			if sound.TimePosition < 0.1 then
-				if currentFallbackIndex <= #fallbackAssetIds then
-					currentSoundId = fallbackAssetIds[currentFallbackIndex]
-					currentFallbackIndex = currentFallbackIndex + 1
-					sound.SoundId = currentSoundId
-					sound:Play()
-					tryPlaySound(sound)
-					soundLabel.Text = "Playing: " .. currentSoundId
-					playPauseButton.Text = "❚❚"
-				end
-			end
-		end)
-	end
-	tryPlaySound(bgSound)
-	local soundControlFrame = createInstance("Frame", {
-		Size = UDim2.new(0, 200, 0, 30),
-		Position = UDim2.new(0, 10, 1, -40),
-		BackgroundTransparency = 0.5,
-		BackgroundColor3 = Color3.fromRGB(0,0,0),
-		BorderSizePixel = 0,
-		AnchorPoint = Vector2.new(0,1)
-	}, sg)
-	local soundLabel = createInstance("TextLabel", {
-		Size = UDim2.new(0.6,0,1,0),
-		Position = UDim2.new(0,0,0,0),
-		Text = "Playing: " .. currentSoundId,
-		TextColor3 = th["Color Text"],
-		BackgroundTransparency = 1,
-		Font = Enum.Font.GothamBold,
-		TextSize = 14,
-		TextXAlignment = Enum.TextXAlignment.Left
-	}, soundControlFrame)
-	local playPauseButton = createInstance("TextButton", {
-		Size = UDim2.new(0.2,0,1,0),
-		Position = UDim2.new(0.6,0,0,0),
-		Text = "❚❚",
-		TextColor3 = th["Color Text"],
-		BackgroundTransparency = 1,
-		Font = Enum.Font.GothamBold,
-		TextSize = 14
-	}, soundControlFrame)
-	local nextButton = createInstance("TextButton", {
-		Size = UDim2.new(0.2,0,1,0),
-		Position = UDim2.new(0.8,0,0,0),
-		Text = "⏭",
-		TextColor3 = th["Color Text"],
-		BackgroundTransparency = 1,
-		Font = Enum.Font.GothamBold,
-		TextSize = 14
-	}, soundControlFrame)
-	playPauseButton.MouseButton1Click:Connect(function()
-		if bgSound.IsPlaying then
-			bgSound:Pause()
-			playPauseButton.Text = "▶"
-		else
-			bgSound:Play()
-			playPauseButton.Text = "❚❚"
-		end
-	end)
-	nextButton.MouseButton1Click:Connect(function()
-		if currentFallbackIndex > #fallbackAssetIds then
-			currentFallbackIndex = 1
-		end
-		currentSoundId = fallbackAssetIds[currentFallbackIndex]
-		currentFallbackIndex = currentFallbackIndex + 1
-		bgSound.SoundId = currentSoundId
-		bgSound:Play()
-		playPauseButton.Text = "❚❚"
-		soundLabel.Text = "Playing: " .. currentSoundId
-	end)
-	local uw = JustHub.Save.UISize[1]
-	local uh = JustHub.Save.UISize[2]
-	local mf = createInstance("Frame", {
-		Name = "MainFrame",
-		AnchorPoint = Vector2.new(0.5, 0.5),
-		Position = UDim2.new(0.5, 0, -0.5, 0),
-		Size = UDim2.new(0, uw, 0, uh),
-		BackgroundColor3 = th["Color Hub 2"]
-	}, sg)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, mf)
-	addBorder(mf, th["Color Stroke"], 2)
-	local function initTopBar()
-		local tb = createInstance("Frame", {
-			Name = "TopBar",
-			Size = UDim2.new(1, 0, 0, 60),
-			BackgroundColor3 = th["Color Hub 2"]
-		}, mf)
-		createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, tb)
-		addBorder(tb, th["Color Stroke"], 2)
-		local tl = createInstance("TextLabel", {
-			Name = "TitleLabel",
-			Size = UDim2.new(1, -20, 0.6, 0),
-			Position = UDim2.new(0, 10, 0, 0),
-			BackgroundTransparency = 1,
-			Text = wn,
-			TextColor3 = th["Color Text"],
-			Font = Enum.Font.GothamBold,
-			TextSize = 18,
-			TextXAlignment = Enum.TextXAlignment.Left
-		}, tb)
-		addBorder(tl, th["Color Stroke"], 1)
-		local st = createInstance("TextLabel", {
-			Name = "SubtitleLabel",
-			Size = UDim2.new(1, -20, 0.4, 0),
-			Position = UDim2.new(0, 10, 0.6, 0),
-			BackgroundTransparency = 1,
-			Text = subTitle,
-			TextColor3 = Color3.fromRGB(150, 150, 150),
-			Font = Enum.Font.Gotham,
-			TextSize = 14,
-			TextXAlignment = Enum.TextXAlignment.Left
-		}, tb)
-		addBorder(st, th["Color Stroke"], 1)
-		return tb
-	end
-	local tb = initTopBar()
-	local headerSeparator = createInstance("Frame", {
-		Size = UDim2.new(1, 0, 0, 2),
-		Position = UDim2.new(0, 0, 0, 60),
-		BackgroundColor3 = th["Color Stroke"],
-		BorderSizePixel = 0
-	}, mf)
-	local footerHeight = 30
-	local sbWidth = JustHub.Save.TabSize
-	local sb = createInstance("Frame", {
-		Name = "Sidebar",
-		Size = UDim2.new(0, sbWidth, 1, -(60 + footerHeight)),
-		Position = UDim2.new(0, 0, 0, 60),
-		BackgroundColor3 = th["Color Hub 2"]
-	}, mf)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 10)}, sb)
-	addBorder(sb, th["Color Stroke"], 2)
-	createInstance("UIListLayout", {
-		SortOrder = Enum.SortOrder.LayoutOrder,
-		Padding = UDim.new(0, 5),
-		FillDirection = Enum.FillDirection.Vertical,
-		HorizontalAlignment = Enum.HorizontalAlignment.Center,
-		VerticalAlignment = Enum.VerticalAlignment.Top
-	}, sb)
-	local verticalSeparator = createInstance("Frame", {
-		Size = UDim2.new(0, 2, 1, -(60 + footerHeight)),
-		Position = UDim2.new(0, sbWidth, 0, 60),
-		BackgroundColor3 = th["Color Stroke"],
-		BorderSizePixel = 0
-	}, mf)
-	local cc = createInstance("Frame", {
-		Name = "ContentContainer",
-		Size = UDim2.new(1, -sbWidth - 2, 1, -(60 + footerHeight)),
-		Position = UDim2.new(0, sbWidth + 2, 0, 60),
-		BackgroundColor3 = th["Color Hub 2"]
-	}, mf)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 10)}, cc)
-	addBorder(cc, th["Color Stroke"], 2)
-	local sf = createInstance("ScrollingFrame", {
-		Size = UDim2.new(1, 0, 1, 0),
-		BackgroundTransparency = 1,
-		ScrollBarThickness = 8,
-		BorderSizePixel = 0
-	}, cc)
-	createInstance("UIListLayout", {
-		SortOrder = Enum.SortOrder.LayoutOrder,
-		Padding = UDim.new(0, 10),
-		HorizontalAlignment = Enum.HorizontalAlignment.Left
-	}, sf)
-	local footer = createInstance("Frame", {
-		Name = "Footer",
-		Size = UDim2.new(1, 0, 0, footerHeight),
-		Position = UDim2.new(0, 0, 1, -footerHeight),
-		BackgroundColor3 = th["Color Hub 2"]
-	}, mf)
-	addBorder(footer, th["Color Stroke"], 2)
-	local footerSeparator = createInstance("Frame", {
-		Size = UDim2.new(1, 0, 0, 2),
-		Position = UDim2.new(0, 0, 1, -footerHeight - 2),
-		BackgroundColor3 = th["Color Stroke"],
-		BorderSizePixel = 0
-	}, mf)
-	local fl = createInstance("TextLabel", {
-		Name = "FPSLabel",
-		Size = UDim2.new(0, 100, 1, 0),
-		BackgroundTransparency = 1,
-		TextColor3 = th["Color Text"],
-		Font = Enum.Font.Gotham,
-		TextSize = 14,
-		Text = "FPS: Calculating..."
-	}, footer)
-	fl.AnchorPoint = Vector2.new(1, 0.5)
-	fl.Position = UDim2.new(1, -10, 0.5, 0)
-	local fpsAccumulator = 0
-	local fpsCount = 0
-	local updateInterval = 0.5
-	spawn(function()
-		while true do
-			wait(updateInterval)
-			local avgFPS = fpsCount / fpsAccumulator
-			fl.Text = "FPS: " .. math.floor(avgFPS)
-			fpsAccumulator = 0
-			fpsCount = 0
-		end
-	end)
-	RunService.Heartbeat:Connect(function(d)
-		fpsAccumulator = fpsAccumulator + d
-		fpsCount = fpsCount + 1
-	end)
-	local windowTween = TweenService:Create(mf, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Position = UDim2.new(0.5, 0, 0.5, 0)})
-	windowTween:Play()
-	local originalSize = mf.Size
-	local originalPosition = mf.Position
-	local isLocked = false
-	local minimized = false
-	local maximized = false
-	local controlButtonSize = UDim2.new(0, 40, 0, 40)
-	local buttonSpacing = 10
-	local basePosX = -30
-	local function createControlButton(name, text, pos)
-		return createInstance("TextButton", {
-			Name = name,
-			Text = text,
-			Size = controlButtonSize,
-			Position = pos,
-			BackgroundTransparency = 1,
-			TextColor3 = th["Color Text"],
-			Font = Enum.Font.GothamBold,
-			TextSize = 24
-		}, tb)
-	end
-	local hb = createControlButton("HideButton", "–", UDim2.new(1, basePosX - (controlButtonSize.X.Offset + buttonSpacing)*2, 0, 10))
-	local xb = createControlButton("MaxButton", "□", UDim2.new(1, basePosX - (controlButtonSize.X.Offset + buttonSpacing), 0, 10))
-	local closeb = createControlButton("CloseButton", "X", UDim2.new(1, basePosX, 0, 10))
-	hb.MouseButton1Click:Connect(function()
-		if not minimized then
-			tweenProperty(mf, {Size = UDim2.new(originalSize.X.Scale, originalSize.X.Offset, 0, 60 + footerHeight)}, 0.3)
-			sb.Visible = false
-			cc.Visible = false
-			footer.Visible = false
-			minimized = true
-		else
-			tweenProperty(mf, {Size = originalSize}, 0.3)
-			wait(0.3)
-			sb.Visible = true
-			cc.Visible = true
-			footer.Visible = true
-			minimized = false
-		end
-	end)
-	xb.MouseButton1Click:Connect(function()
-		if not maximized then
-			tweenProperty(mf, {Size = UDim2.new(1, 0, 1, 0), Position = UDim2.new(0.5, 0, 0.5, 0)}, 0.3)
-			maximized = true
-		else
-			tweenProperty(mf, {Size = originalSize, Position = originalPosition}, 0.3)
-			maximized = false
-		end
-	end)
-	closeb.MouseButton1Click:Connect(function()
-		local closeTween = TweenService:Create(mf, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.In), {Position = UDim2.new(0.5, 0, -0.5, 0)})
-		closeTween:Play()
-		closeTween.Completed:Connect(function()
-			mf.Visible = false
-			local pg2 = Players.LocalPlayer:WaitForChild("PlayerGui")
-			local showUI = createInstance("ScreenGui", {Name = "ShowUI", ResetOnSpawn = false}, pg2)
-			local showBtn = createInstance("TextButton", {
-				Name = "ShowUIButton",
-				Size = UDim2.new(0, 100, 0, 30),
-				Position = UDim2.new(0.5, -50, 0, 10),
-				BackgroundColor3 = th["Color Hub 2"],
-				Text = "Show UI",
-				TextColor3 = Color3.fromRGB(128, 0, 128),
-				Font = Enum.Font.GothamBold,
-				TextSize = 20
-			}, showUI)
-			createInstance("UICorner", {CornerRadius = UDim.new(0, 25)}, showBtn)
-			createInstance("UIStroke", {Color = th["Color Theme"], Thickness = 1}, showBtn)
-			showBtn.MouseButton1Click:Connect(function()
-				mf.Visible = true
-				tweenProperty(mf, {Position = UDim2.new(0.5, 0, 0.5, 0)}, 0.5)
-				showUI:Destroy()
-			end)
-		end)
-	end)
-	mf.Active = true
-	local function enableDrag(frame)
-		local isDragging = false
-		local dragStartPos, startPos
-		frame.InputBegan:Connect(function(input)
-			if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and not isLocked then
-				isDragging = true
-				dragStartPos = input.Position
-				startPos = frame.Position
-			end
-		end)
-		frame.InputChanged:Connect(function(input)
-			if isDragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
-				local delta = input.Position - dragStartPos
-				local newPos = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-				newPos = clampPosition(newPos, Vector2.new(sg.AbsoluteSize.X, sg.AbsoluteSize.Y))
-				frame.Position = newPos
-			end
-		end)
-		UserInputService.InputEnded:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-				isDragging = false
-			end
-		end)
-	end
-	enableDrag(mf)
-	local function enableResize(frame, grip)
-		local isResizing = false
-		local dragStartPos, startSize
-		grip.InputBegan:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-				isResizing = true
-				dragStartPos = input.Position
-				startSize = frame.Size
-			end
-		end)
-		grip.InputChanged:Connect(function(input)
-			if isResizing and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
-				local delta = input.Position - dragStartPos
-				local newWidth = math.max(300, startSize.X.Offset + delta.X)
-				local newHeight = math.max(200, startSize.Y.Offset + delta.Y)
-				frame.Size = UDim2.new(0, newWidth, 0, newHeight)
-			end
-		end)
-		UserInputService.InputEnded:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-				isResizing = false
-			end
-		end)
-	end
-	local resizeGrip = createInstance("Frame", {
-		Name = "ResizeGrip",
-		Size = UDim2.new(0, 20, 0, 20),
-		Position = UDim2.new(1, -20, 1, -20),
-		BackgroundColor3 = Color3.fromRGB(50, 50, 50),
-		BackgroundTransparency = 0.3,
-		BorderSizePixel = 0
-	}, mf)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 5)}, resizeGrip)
-	enableResize(mf, resizeGrip)
-	local notiContainer = createInstance("Frame", {
-		Name = "NotificationContainer",
-		AnchorPoint = Vector2.new(1, 1),
-		Position = UDim2.new(1, -10, 1, -10),
-		Size = UDim2.new(0, 300, 1, -20),
-		BackgroundTransparency = 1
-	}, sg)
-	createInstance("UIListLayout", {
-		Padding = UDim.new(0, 8),
-		HorizontalAlignment = Enum.HorizontalAlignment.Right,
-		VerticalAlignment = Enum.VerticalAlignment.Bottom,
-		SortOrder = Enum.SortOrder.LayoutOrder
-	}, notiContainer)
-	self.NotificationContainer = notiContainer
-	local wObj = {ScreenGui = sg, MainFrame = mf, TopBar = tb, Sidebar = sb, ContentContainer = cc, Tabs = {}}
-	function wObj:addTab(tn)
-		tn = tn or "Tab"
-		local b = createInstance("TextButton", {
-			Name = tn .. "Button",
-			Text = tn,
-			Size = UDim2.new(1, 0, 0, 20),
-			BackgroundColor3 = th["Color Stroke"],
-			TextColor3 = Color3.fromRGB(128, 0, 128),
-			Font = Enum.Font.GothamBold,
-			TextSize = 12,
-			TextScaled = true,
-			TextTruncate = Enum.TextTruncate.AtEnd
-		}, sb)
-		createInstance("UICorner", {CornerRadius = UDim.new(0, 10)}, b)
-		createInstance("UIStroke", {Color = th["Color Theme"], Thickness = 1}, b)
-		local tc = createInstance("Frame", {
-			Name = tn .. "Content",
-			Size = UDim2.new(1, 0, 1, 0),
-			BackgroundTransparency = 1,
-			Visible = false
-		}, sf)
-		local tObj = {Name = tn, Button = b, Content = tc, Sections = {}}
-		table.insert(wObj.Tabs, tObj)
-		b.MouseButton1Click:Connect(function()
-			for _, tt in ipairs(wObj.Tabs) do
-				tt.Content.Visible = false
-			end
-			tObj.Content.Visible = true
-		end)
-		if #wObj.Tabs == 1 then
-			tObj.Content.Visible = true
-		end
-		function tObj:addSection(sn, sh)
-			sn = sn or "Section"
-			sh = sh or 80
-			local sframe = createInstance("Frame", {
-				Name = sn,
-				Size = UDim2.new(1, 0, 0, sh),
-				BackgroundColor3 = th["Color Hub 2"],
-				BackgroundTransparency = 0
-			}, tc)
-			createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, sframe)
-			local st = createInstance("TextLabel", {
-				Name = "SectionTitle",
-				Text = sn,
-				Size = UDim2.new(1, 0, 0, 30),
-				BackgroundTransparency = 1,
-				TextColor3 = th["Color Text"],
-				Font = Enum.Font.GothamBold,
-				TextSize = 14,
-				TextXAlignment = Enum.TextXAlignment.Left
-			}, sframe)
-			local sc = createInstance("Frame", {
-				Name = "SectionContent",
-				Size = UDim2.new(1, 0, 1, -30),
-				Position = UDim2.new(0, 0, 0, 30),
-				BackgroundTransparency = 1
-			}, sframe)
-			createInstance("UIListLayout", {
-				FillDirection = Enum.FillDirection.Vertical,
-				Padding = UDim.new(0, 5),
-				SortOrder = Enum.SortOrder.LayoutOrder,
-				HorizontalAlignment = Enum.HorizontalAlignment.Left
-			}, sc)
-			local sObj = {Frame = sframe, Title = st, Content = sc}
-			table.insert(tObj.Sections, sObj)
-			setmetatable(sObj, {__index = SectionMethods})
-			return sObj
-		end
-		return tObj
-	end
-	return wObj
+    o = o or {}
+    local wn = o.Name or "JustHub Window"
+    local th = getCurrentTheme(o.Theme)
+    local subTitle = o.SubTitle or "SubTitle"
+    local pl = Players.LocalPlayer
+    local pg = pl:WaitForChild("PlayerGui")
+    local sg = createInstance("ScreenGui", {Name = "JustHub", ResetOnSpawn = false}, pg)
+    self.ScreenGui = sg
+    local currentSoundId = "rbxassetid://116896498238234"
+    local fallbackAssetIds = {
+        "rbxassetid://7551431783",
+        "rbxassetid://8026236684",
+        "rbxassetid://7308941449",
+        "rbxassetid://926493242",
+        "rbxassetid://131396974",
+        "rbxassetid://1841274964",
+        "rbxassetid://14145626111",
+        "rbxassetid://1837015626",
+        "rbxassetid://8036100972",
+        "rbxassetid://1846368080",
+        "rbxassetid://6991661856",
+        "rbxassetid://4551648646",
+        "rbxassetid://135055100",
+        "rbxassetid://5410085763",
+        "rbxassetid://7795812961",
+        "rbxassetid://6070263388",
+        "rbxassetid://6841685130",
+        "rbxassetid://2106186490",
+        "rbxassetid://136209425",
+        "rbxassetid://5410082273",
+        "rbxassetid://7024233823",
+        "rbxassetid://5569815928",
+        "rbxassetid://5422507571",
+        "rbxassetid://4642779401",
+        "rbxassetid://5569300394",
+        "rbxassetid://5077810864",
+        "rbxassetid://5020637545",
+        "rbxassetid://15689451063",
+        "rbxassetid://673605737",
+        "rbxassetid://17422168798"
+    }
+    local currentFallbackIndex = 1
+    local bgSound = createInstance("Sound", {SoundId = currentSoundId, Volume = 0.5, Looped = true}, sg)
+    bgSound:Play()
+    local function tryPlaySound(sound)
+        delay(3, function()
+            if sound.TimePosition < 0.1 then
+                if currentFallbackIndex <= #fallbackAssetIds then
+                    currentSoundId = fallbackAssetIds[currentFallbackIndex]
+                    currentFallbackIndex = currentFallbackIndex + 1
+                    sound.SoundId = currentSoundId
+                    sound:Play()
+                    tryPlaySound(sound)
+                    soundLabel.Text = "Playing: " .. currentSoundId
+                    playPauseButton.Text = "❚❚"
+                end
+            end
+        end)
+    end
+    tryPlaySound(bgSound)
+    local soundControlFrame = createInstance("Frame", {Size = UDim2.new(0, 250, 0, 40), Position = UDim2.new(1, -260, 0, 10), BackgroundTransparency = 0.4, BackgroundColor3 = Color3.fromRGB(20,20,20), BorderSizePixel = 0}, sg)
+    local soundLabel = createInstance("TextLabel", {Size = UDim2.new(0.65, 0, 1, 0), Position = UDim2.new(0, 5, 0, 0), Text = "Playing: " .. currentSoundId, TextColor3 = th["Color Text"], BackgroundTransparency = 1, Font = Enum.Font.GothamBold, TextSize = 14, TextXAlignment = Enum.TextXAlignment.Left}, soundControlFrame)
+    local playPauseButton = createInstance("TextButton", {Size = UDim2.new(0.15, 0, 1, 0), Position = UDim2.new(0.7, 0, 0, 0), Text = "❚❚", TextColor3 = th["Color Text"], BackgroundTransparency = 1, Font = Enum.Font.GothamBold, TextSize = 14}, soundControlFrame)
+    local nextButton = createInstance("TextButton", {Size = UDim2.new(0.15, 0, 1, 0), Position = UDim2.new(0.85, 0, 0, 0), Text = "⏭", TextColor3 = th["Color Text"], BackgroundTransparency = 1, Font = Enum.Font.GothamBold, TextSize = 14}, soundControlFrame)
+    playPauseButton.MouseButton1Click:Connect(function()
+        if bgSound.IsPlaying then
+            bgSound:Pause()
+            playPauseButton.Text = "▶"
+        else
+            bgSound:Play()
+            playPauseButton.Text = "❚❚"
+        end
+    end)
+    nextButton.MouseButton1Click:Connect(function()
+        if currentFallbackIndex > #fallbackAssetIds then
+            currentFallbackIndex = 1
+        end
+        currentSoundId = fallbackAssetIds[currentFallbackIndex]
+        currentFallbackIndex = currentFallbackIndex + 1
+        bgSound.SoundId = currentSoundId
+        bgSound:Play()
+        playPauseButton.Text = "❚❚"
+        soundLabel.Text = "Playing: " .. currentSoundId
+    end)
+    local uw = JustHub.Save.UISize[1]
+    local uh = JustHub.Save.UISize[2]
+    local mf = createInstance("Frame", {Name = "MainFrame", AnchorPoint = Vector2.new(0.5, 0.5), Position = UDim2.new(0.5, 0, 0.5, 0), Size = UDim2.new(0, uw, 0, uh), BackgroundColor3 = th["Color Hub 2"]}, sg)
+    createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, mf)
+    addBorder(mf, th["Color Stroke"], 2)
+    local topBar = createInstance("Frame", {Name = "TopBar", Size = UDim2.new(1, 0, 0, 70), BackgroundColor3 = th["Color Hub 2"]}, mf)
+    createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, topBar)
+    addBorder(topBar, th["Color Stroke"], 2)
+    local titleLabel = createInstance("TextLabel", {Name = "TitleLabel", Size = UDim2.new(1, -20, 0.6, 0), Position = UDim2.new(0, 10, 0, 0), BackgroundTransparency = 1, Text = wn, TextColor3 = th["Color Text"], Font = Enum.Font.GothamBold, TextSize = 20, TextXAlignment = Enum.TextXAlignment.Left}, topBar)
+    local subtitleLabel = createInstance("TextLabel", {Name = "SubtitleLabel", Size = UDim2.new(1, -20, 0.4, 0), Position = UDim2.new(0, 10, 0.6, 0), BackgroundTransparency = 1, Text = subTitle, TextColor3 = Color3.fromRGB(180, 180, 180), Font = Enum.Font.Gotham, TextSize = 16, TextXAlignment = Enum.TextXAlignment.Left}, topBar)
+    local sideBar = createInstance("Frame", {Name = "Sidebar", Size = UDim2.new(0, 200, 1, -70), Position = UDim2.new(0, 0, 0, 70), BackgroundColor3 = th["Color Hub 2"]}, mf)
+    createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, sideBar)
+    addBorder(sideBar, th["Color Stroke"], 2)
+    createInstance("UIListLayout", {SortOrder = Enum.SortOrder.LayoutOrder, Padding = UDim.new(0, 10), FillDirection = Enum.FillDirection.Vertical, HorizontalAlignment = Enum.HorizontalAlignment.Center, VerticalAlignment = Enum.VerticalAlignment.Top}, sideBar)
+    local contentContainer = createInstance("Frame", {Name = "ContentContainer", Size = UDim2.new(1, -200, 1, -70), Position = UDim2.new(0, 200, 0, 70), BackgroundColor3 = th["Color Hub 2"]}, mf)
+    createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, contentContainer)
+    addBorder(contentContainer, th["Color Stroke"], 2)
+    local scrollingFrame = createInstance("ScrollingFrame", {Size = UDim2.new(1, 0, 1, 0), BackgroundTransparency = 1, ScrollBarThickness = 8, BorderSizePixel = 0}, contentContainer)
+    createInstance("UIListLayout", {SortOrder = Enum.SortOrder.LayoutOrder, Padding = UDim.new(0, 15), HorizontalAlignment = Enum.HorizontalAlignment.Left}, scrollingFrame)
+    local footer = createInstance("Frame", {Name = "Footer", Size = UDim2.new(1, 0, 0, 40), Position = UDim2.new(0, 0, 1, -40), BackgroundColor3 = th["Color Hub 2"]}, mf)
+    addBorder(footer, th["Color Stroke"], 2)
+    local fpsLabel = createInstance("TextLabel", {Name = "FPSLabel", Size = UDim2.new(0, 120, 1, 0), BackgroundTransparency = 1, TextColor3 = th["Color Text"], Font = Enum.Font.Gotham, TextSize = 14, Text = "FPS: Calculating..."}, footer)
+    fpsLabel.AnchorPoint = Vector2.new(1, 0.5)
+    fpsLabel.Position = UDim2.new(1, -10, 0.5, 0)
+    local fpsAccumulator = 0
+    local fpsCount = 0
+    local updateInterval = 0.5
+    spawn(function()
+        while true do
+            wait(updateInterval)
+            local avgFPS = fpsCount / fpsAccumulator
+            fpsLabel.Text = "FPS: " .. math.floor(avgFPS)
+            fpsAccumulator = 0
+            fpsCount = 0
+        end
+    end)
+    RunService.Heartbeat:Connect(function(d)
+        fpsAccumulator = fpsAccumulator + d
+        fpsCount = fpsCount + 1
+    end)
+    local windowTween = TweenService:Create(mf, TweenInfo.new(0.6, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Position = UDim2.new(0.5, 0, 0.5, 0)})
+    windowTween:Play()
+    local originalSize = mf.Size
+    local originalPosition = mf.Position
+    local isLocked = false
+    local minimized = false
+    local maximized = false
+    local controlButtonSize = UDim2.new(0, 40, 0, 40)
+    local buttonSpacing = 10
+    local basePosX = -30
+    local function createControlButton(name, text, pos)
+        return createInstance("TextButton", {Name = name, Text = text, Size = controlButtonSize, Position = pos, BackgroundTransparency = 1, TextColor3 = th["Color Text"], Font = Enum.Font.GothamBold, TextSize = 24}, topBar)
+    end
+    local hideButton = createControlButton("HideButton", "–", UDim2.new(1, basePosX - (controlButtonSize.X.Offset + buttonSpacing)*2, 0, 15))
+    local maxButton = createControlButton("MaxButton", "□", UDim2.new(1, basePosX - (controlButtonSize.X.Offset + buttonSpacing), 0, 15))
+    local closeButton = createControlButton("CloseButton", "X", UDim2.new(1, basePosX, 0, 15))
+    hideButton.MouseButton1Click:Connect(function()
+        if not minimized then
+            tweenProperty(mf, {Size = UDim2.new(originalSize.X.Scale, originalSize.X.Offset, 0, 70)}, 0.3)
+            sideBar.Visible = false
+            contentContainer.Visible = false
+            footer.Visible = false
+            minimized = true
+        else
+            tweenProperty(mf, {Size = originalSize}, 0.3)
+            wait(0.3)
+            sideBar.Visible = true
+            contentContainer.Visible = true
+            footer.Visible = true
+            minimized = false
+        end
+    end)
+    maxButton.MouseButton1Click:Connect(function()
+        if not maximized then
+            tweenProperty(mf, {Size = UDim2.new(1, 0, 1, 0), Position = UDim2.new(0.5, 0, 0.5, 0)}, 0.3)
+            maximized = true
+        else
+            tweenProperty(mf, {Size = originalSize, Position = originalPosition}, 0.3)
+            maximized = false
+        end
+    end)
+    closeButton.MouseButton1Click:Connect(function()
+        local closeTween = TweenService:Create(mf, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.In), {Position = UDim2.new(0.5, 0, -0.5, 0)})
+        closeTween:Play()
+        closeTween.Completed:Connect(function()
+            mf.Visible = false
+            local pg2 = Players.LocalPlayer:WaitForChild("PlayerGui")
+            local showUI = createInstance("ScreenGui", {Name = "ShowUI", ResetOnSpawn = false}, pg2)
+            local showBtn = createInstance("TextButton", {Name = "ShowUIButton", Size = UDim2.new(0, 120, 0, 40), Position = UDim2.new(0.5, -60, 0, 20), BackgroundColor3 = th["Color Hub 2"], Text = "Show UI", TextColor3 = Color3.fromRGB(128, 0, 128), Font = Enum.Font.GothamBold, TextSize = 20}, showUI)
+            createInstance("UICorner", {CornerRadius = UDim.new(0, 25)}, showBtn)
+            createInstance("UIStroke", {Color = th["Color Theme"], Thickness = 1}, showBtn)
+            showBtn.MouseButton1Click:Connect(function()
+                mf.Visible = true
+                tweenProperty(mf, {Position = UDim2.new(0.5, 0, 0.5, 0)}, 0.5)
+                showUI:Destroy()
+            end)
+        end)
+    end)
+    mf.Active = true
+    local function enableDrag(frame)
+        local isDragging = false
+        local dragStartPos, startPos
+        frame.InputBegan:Connect(function(input)
+            if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and not isLocked then
+                isDragging = true
+                dragStartPos = input.Position
+                startPos = frame.Position
+            end
+        end)
+        frame.InputChanged:Connect(function(input)
+            if isDragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+                local delta = input.Position - dragStartPos
+                local newPos = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+                newPos = clampPosition(newPos, Vector2.new(sg.AbsoluteSize.X, sg.AbsoluteSize.Y))
+                frame.Position = newPos
+            end
+        end)
+        UserInputService.InputEnded:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+                isDragging = false
+            end
+        end)
+    end
+    enableDrag(mf)
+    local function enableResize(frame, grip)
+        local isResizing = false
+        local dragStartPos, startSize
+        grip.InputBegan:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+                isResizing = true
+                dragStartPos = input.Position
+                startSize = frame.Size
+            end
+        end)
+        grip.InputChanged:Connect(function(input)
+            if isResizing and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+                local delta = input.Position - dragStartPos
+                local newWidth = math.max(300, startSize.X.Offset + delta.X)
+                local newHeight = math.max(200, startSize.Y.Offset + delta.Y)
+                frame.Size = UDim2.new(0, newWidth, 0, newHeight)
+            end
+        end)
+        UserInputService.InputEnded:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+                isResizing = false
+            end
+        end)
+    end
+    local resizeGrip = createInstance("Frame", {Name = "ResizeGrip", Size = UDim2.new(0, 20, 0, 20), Position = UDim2.new(1, -20, 1, -20), BackgroundColor3 = Color3.fromRGB(50, 50, 50), BackgroundTransparency = 0.3, BorderSizePixel = 0}, mf)
+    createInstance("UICorner", {CornerRadius = UDim.new(0, 5)}, resizeGrip)
+    enableResize(mf, resizeGrip)
+    local notiContainer = createInstance("Frame", {Name = "NotificationContainer", AnchorPoint = Vector2.new(1, 1), Position = UDim2.new(1, -10, 1, -10), Size = UDim2.new(0, 300, 1, -20), BackgroundTransparency = 1}, sg)
+    createInstance("UIListLayout", {Padding = UDim.new(0, 8), HorizontalAlignment = Enum.HorizontalAlignment.Right, VerticalAlignment = Enum.VerticalAlignment.Bottom, SortOrder = Enum.SortOrder.LayoutOrder}, notiContainer)
+    self.NotificationContainer = notiContainer
+    local wObj = {ScreenGui = sg, MainFrame = mf, TopBar = topBar, Sidebar = sideBar, ContentContainer = contentContainer, Tabs = {}}
+    function wObj:addTab(tn)
+        tn = tn or "Tab"
+        local b = createInstance("TextButton", {Name = tn .. "Button", Text = tn, Size = UDim2.new(1, 0, 0, 30), BackgroundColor3 = th["Color Stroke"], TextColor3 = Color3.fromRGB(128, 0, 128), Font = Enum.Font.GothamBold, TextSize = 14, TextScaled = true, TextTruncate = Enum.TextTruncate.AtEnd}, sideBar)
+        createInstance("UICorner", {CornerRadius = UDim.new(0, 10)}, b)
+        createInstance("UIStroke", {Color = th["Color Theme"], Thickness = 1}, b)
+        local tc = createInstance("Frame", {Name = tn .. "Content", Size = UDim2.new(1, 0, 1, 0), BackgroundTransparency = 1, Visible = false}, scrollingFrame)
+        local tObj = {Name = tn, Button = b, Content = tc, Sections = {}}
+        table.insert(wObj.Tabs, tObj)
+        b.MouseButton1Click:Connect(function()
+            for _, tt in ipairs(wObj.Tabs) do
+                tt.Content.Visible = false
+            end
+            tObj.Content.Visible = true
+        end)
+        if #wObj.Tabs == 1 then
+            tObj.Content.Visible = true
+        end
+        function tObj:addSection(sn, sh)
+            sn = sn or "Section"
+            sh = sh or 80
+            local sframe = createInstance("Frame", {Name = sn, Size = UDim2.new(1, 0, 0, sh), BackgroundColor3 = th["Color Hub 2"], BackgroundTransparency = 0}, tc)
+            createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, sframe)
+            local st = createInstance("TextLabel", {Name = "SectionTitle", Text = sn, Size = UDim2.new(1, 0, 0, 30), BackgroundTransparency = 1, TextColor3 = th["Color Text"], Font = Enum.Font.GothamBold, TextSize = 14, TextXAlignment = Enum.TextXAlignment.Left}, sframe)
+            local sc = createInstance("Frame", {Name = "SectionContent", Size = UDim2.new(1, 0, 1, -30), Position = UDim2.new(0, 0, 0, 30), BackgroundTransparency = 1}, sframe)
+            createInstance("UIListLayout", {FillDirection = Enum.FillDirection.Vertical, Padding = UDim.new(0, 5), SortOrder = Enum.SortOrder.LayoutOrder, HorizontalAlignment = Enum.HorizontalAlignment.Left}, sc)
+            local sObj = {Frame = sframe, Title = st, Content = sc}
+            table.insert(tObj.Sections, sObj)
+            setmetatable(sObj, {__index = SectionMethods})
+            return sObj
+        end
+        return tObj
+    end
+    return wObj
 end
 
 local Players = game:GetService("Players")
