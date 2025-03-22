@@ -44,8 +44,6 @@
 Call JustHub:InitializeUI with your preferred settings.
 
 
-
-
 ## Quick Start
 
    ```lua
@@ -181,15 +179,20 @@ section:addToggle({
 
 If JustHub.UserRole does not match the specified role, the control is hidden.
 
-Undo/Redo System
+```
+
+## Undo/Redo System
 
 Controls automatically register undo states when changed. You can call:
 
+```lua
 JustHub:Undo()
 JustHub:Redo()
+```
 
 This allows you to revert or reapply changes. For added convenience, you might include buttons:
 
+```lua
 section:addButton({
     Name = "Undo",
     ButtonText = "Undo",
