@@ -1413,9 +1413,24 @@ function JustHub:CreateWindow(o)
     local controlButtonSize = UDim2.new(0, 30, 0, 30)
     local buttonSpacing = 5
     local basePosX = -10
-    local function createControlButton(name, text, pos)
-        return createInstance("TextButton", {Name = name, Text = text, Size = controlButtonSize, Position = pos, BackgroundTransparency = 1, TextColor3 = th["Color Text"], Font = Enum.Font.GothamBold, TextSize = 14}, topBar)
+
+    local function addHoverEffect(btn)
+        local origColor = btn.TextColor3
+        local hoverColor = Color3.fromRGB(math.min(origColor.R * 255 + 20, 255), math.min(origColor.G * 255 + 20, 255), math.min(origColor.B * 255 + 20, 255))
+        btn.MouseEnter:Connect(function()
+            TweenService:Create(btn, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextColor3 = hoverColor}):Play()
+        end)
+        btn.MouseLeave:Connect(function()
+            TweenService:Create(btn, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextColor3 = origColor}):Play()
+        end)
     end
+
+    local function createControlButton(name, text, pos)
+        local btn = createInstance("TextButton", {Name = name, Text = text, Size = controlButtonSize, Position = pos, BackgroundTransparency = 1, TextColor3 = th["Color Text"], Font = Enum.Font.GothamBold, TextSize = 14}, topBar)
+        addHoverEffect(btn)
+        return btn
+    end
+
     local hideButton = createControlButton("HideButton", "–", UDim2.new(1, basePosX - (controlButtonSize.X.Offset + buttonSpacing)*2, 0, 5))
     local maxButton = createControlButton("MaxButton", "□", UDim2.new(1, basePosX - (controlButtonSize.X.Offset + buttonSpacing), 0, 5))
     local closeButton = createControlButton("CloseButton", "X", UDim2.new(1, basePosX, 0, 5))
@@ -1454,6 +1469,7 @@ function JustHub:CreateWindow(o)
             local showBtn = createInstance("TextButton", {Name = "ShowUIButton", Size = UDim2.new(0, 100, 0, 30), Position = UDim2.new(0.5, -50, 0, 10), BackgroundColor3 = th["Color Hub 2"], Text = "Show UI", TextColor3 = Color3.fromRGB(128, 0, 128), Font = Enum.Font.GothamBold, TextSize = 20}, showUI)
             createInstance("UICorner", {CornerRadius = UDim.new(0, 25)}, showBtn)
             createInstance("UIStroke", {Color = th["Color Theme"], Thickness = 1}, showBtn)
+            addHoverEffect(showBtn)
             showBtn.MouseButton1Click:Connect(function()
                 mf.Visible = true
                 tweenProperty(mf, {Position = UDim2.new(0.5, 0, 0.5, 0)}, 0.5)
@@ -1523,6 +1539,7 @@ function JustHub:CreateWindow(o)
         local b = createInstance("TextButton", {Name = tn .. "Button", Text = tn, Size = UDim2.new(0, 80, 1, 0), BackgroundColor3 = th["Color Stroke"], TextColor3 = Color3.fromRGB(128, 0, 128), Font = Enum.Font.GothamBold, TextSize = 12, TextScaled = true, TextTruncate = Enum.TextTruncate.AtEnd}, tabBar)
         createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, b)
         createInstance("UIStroke", {Color = th["Color Theme"], Thickness = 1}, b)
+        addHoverEffect(b)
         local tc = createInstance("Frame", {Name = tn .. "Content", Size = UDim2.new(1, 0, 1, 0), BackgroundTransparency = 1, Visible = false}, scrollingFrame)
         local tObj = {Name = tn, Button = b, Content = tc, Sections = {}}
         table.insert(wObj.Tabs, tObj)
