@@ -1341,7 +1341,7 @@ end
 function JustHub:CreateWindow(o)
 	o = o or {}
 	local wn = o.Name or "JustHub Window"
-	local th = getCurrentTheme(o.Theme)
+	local themeName = o.Theme or "Darker"
 	local subTitle = o.SubTitle or "SubTitle"
 	local pl = Players.LocalPlayer
 	local pg = pl:WaitForChild("PlayerGui")
@@ -1351,40 +1351,42 @@ function JustHub:CreateWindow(o)
 	if not JustHub.Save then
 		JustHub.Save = {
 			UISize = {600, 400},
-			TabSize = 120
+			TabSize = 120,
+			Theme = "Darker"
 		}
 	end
 
-	-- Main Frame
+	JustHub.Save.Theme = themeName
+	local th = getCurrentTheme(themeName)
 	local mf = createInstance("Frame", {
 		Name = "MainFrame",
 		AnchorPoint = Vector2.new(0.5, 0.5),
-		Position = UDim2.new(0.5, 0, -0.5, 0),
+		Position = UDim2.new(0.5, 0, 0.5, 0),
 		Size = UDim2.new(0, JustHub.Save.UISize[1], 0, JustHub.Save.UISize[2]),
-		BackgroundColor3 = Color3.fromRGB(15, 15, 15),
+		BackgroundColor3 = th["Color Hub 2"],
 		BackgroundTransparency = 0,
-		BorderSizePixel = 0
+		BorderSizePixel = 0,
+		Active = true,
+		Selectable = false
 	}, sg)
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, mf)
 
-	-- Top Bar (Header)
 	local tb = createInstance("Frame", {
 		Name = "TopBar",
 		Size = UDim2.new(1, 0, 0, 40),
-		BackgroundColor3 = Color3.fromRGB(10, 10, 10),
+		BackgroundColor3 = th["Color Hub 1"].Color[1],
 		BackgroundTransparency = 0,
 		BorderSizePixel = 0
 	}, mf)
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, tb)
 
-	-- Title & Subtitle
 	local tl = createInstance("TextLabel", {
 		Name = "TitleLabel",
 		Text = wn,
 		Size = UDim2.new(0.7, 0, 1, 0),
 		Position = UDim2.new(0, 10, 0, 0),
 		BackgroundTransparency = 1,
-		TextColor3 = Color3.fromRGB(255, 255, 255),
+		TextColor3 = th["Color Text"],
 		Font = Enum.Font.GothamBold,
 		TextSize = 14,
 		TextXAlignment = Enum.TextXAlignment.Left
@@ -1395,20 +1397,19 @@ function JustHub:CreateWindow(o)
 		Size = UDim2.new(0.7, 0, 0.4, 0),
 		Position = UDim2.new(0, 10, 0.6, 0),
 		BackgroundTransparency = 1,
-		TextColor3 = Color3.fromRGB(120, 120, 120),
+		TextColor3 = th["Color Dark Text"],
 		Font = Enum.Font.Gotham,
 		TextSize = 12,
 		TextXAlignment = Enum.TextXAlignment.Left
 	}, tb)
 
-	-- Control Buttons (Minimize, Maximize, Close)
 	local hb = createInstance("TextButton", {
 		Name = "HideButton",
 		Text = "–",
 		Size = UDim2.new(0, 40, 0, 40),
 		Position = UDim2.new(1, -80, 0, 0),
 		BackgroundColor3 = Color3.fromRGB(20, 20, 20),
-		TextColor3 = Color3.fromRGB(255, 255, 255),
+		TextColor3 = th["Color Text"],
 		Font = Enum.Font.GothamBold,
 		TextSize = 16,
 		BackgroundTransparency = 0.5
@@ -1421,7 +1422,7 @@ function JustHub:CreateWindow(o)
 		Size = UDim2.new(0, 40, 0, 40),
 		Position = UDim2.new(1, -40, 0, 0),
 		BackgroundColor3 = Color3.fromRGB(20, 20, 20),
-		TextColor3 = Color3.fromRGB(255, 255, 255),
+		TextColor3 = th["Color Text"],
 		Font = Enum.Font.GothamBold,
 		TextSize = 16,
 		BackgroundTransparency = 0.5
@@ -1431,51 +1432,47 @@ function JustHub:CreateWindow(o)
 	local closeb = createInstance("TextButton", {
 		Name = "CloseButton",
 		Text = "×",
-		size = UDim2.new(0, 40, 0, 40),
+		Size = UDim2.new(0, 40, 0, 40),
 		Position = UDim2.new(1, 0, 0, 0),
 		BackgroundColor3 = Color3.fromRGB(20, 20, 20),
-		TextColor3 = Color3.fromRGB(255, 255, 255),
+		TextColor3 = th["Color Text"],
 		Font = Enum.Font.GothamBold,
 		TextSize = 16,
 		BackgroundTransparency = 0.5
 	}, tb)
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, closeb)
 
-	-- Separator
 	local headerSeparator = createInstance("Frame", {
-		size = UDim2.new(1, 0, 0, 2),
+		Size = UDim2.new(1, 0, 0, 2),
 		Position = UDim2.new(0, 0, 0, 40),
-		BackgroundColor3 = Color3.fromRGB(30, 30, 30),
+		BackgroundColor3 = th["Color Stroke"],
 		BorderSizePixel = 0
 	}, mf)
 
-	-- Sidebar
 	local sbWidth = JustHub.Save.TabSize
 	local sb = createInstance("Frame", {
 		Name = "Sidebar",
-		size = UDim2.new(0, sbWidth, 1, -(40 + 30)),
+		Size = UDim2.new(0, sbWidth, 1, -(40 + 30)),
 		Position = UDim2.new(0, 0, 0, 40),
-		BackgroundColor3 = Color3.fromRGB(15, 15, 15),
+		BackgroundColor3 = th["Color Hub 2"],
 		BackgroundTransparency = 0,
 		BorderSizePixel = 0
 	}, mf)
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 10)}, sb)
-	addBorder(sb, Color3.fromRGB(40, 40, 40), 1)
+	addBorder(sb, th["Color Stroke"], 1)
 
-	-- Content Container
 	local cc = createInstance("Frame", {
 		Name = "ContentContainer",
-		size = UDim2.new(1, -sbWidth - 2, 1, -(40 + 30)),
+		Size = UDim2.new(1, -sbWidth - 2, 1, -(40 + 30)),
 		Position = UDim2.new(0, sbWidth + 2, 0, 40),
-		BackgroundColor3 = Color3.fromRGB(15, 15, 15),
+		BackgroundColor3 = th["Color Hub 2"],
 		BackgroundTransparency = 0,
 		BorderSizePixel = 0
 	}, mf)
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 10)}, cc)
 
-	-- ScrollingFrame
 	local sf = createInstance("ScrollingFrame", {
-		size = UDim2.new(1, 0, 1, 0),
+		Size = UDim2.new(1, 0, 1, 0),
 		BackgroundTransparency = 1,
 		ScrollBarThickness = 8,
 		BorderSizePixel = 0
@@ -1486,24 +1483,22 @@ function JustHub:CreateWindow(o)
 		HorizontalAlignment = Enum.HorizontalAlignment.Left
 	}, sf)
 
-	-- Footer
 	local footer = createInstance("Frame", {
 		Name = "Footer",
-		size = UDim2.new(1, 0, 0, 30),
+		Size = UDim2.new(1, 0, 0, 30),
 		Position = UDim2.new(0, 0, 1, -30),
-		BackgroundColor3 = Color3.fromRGB(10, 10, 10),
+		BackgroundColor3 = th["Color Hub 2"],
 		BackgroundTransparency = 0,
 		BorderSizePixel = 0
 	}, mf)
-	addBorder(footer, Color3.fromRGB(40, 40, 40), 1)
+	addBorder(footer, th["Color Stroke"], 1)
 
-	-- FPS Label
 	local fl = createInstance("TextLabel", {
 		Name = "FPSLabel",
 		Text = "FPS: Calculating...",
-		size = UDim2.new(0, 100, 1, 0),
+		Size = UDim2.new(0, 100, 1, 0),
 		BackgroundTransparency = 1,
-		TextColor3 = Color3.fromRGB(120, 120, 120),
+		TextColor3 = th["Color Text"],
 		Font = Enum.Font.Gotham,
 		TextSize = 12,
 		TextXAlignment = Enum.TextXAlignment.Right
@@ -1511,16 +1506,29 @@ function JustHub:CreateWindow(o)
 	fl.AnchorPoint = Vector2.new(1, 0.5)
 	fl.Position = UDim2.new(1, -10, 0.5, 0)
 
-	-- Animasi window
 	local windowTween = TweenService:Create(mf, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Position = UDim2.new(0.5, 0, 0.5, 0)})
 	windowTween:Play()
 
-	-- Control Button Functionality
+	local originalSize = mf.Size
+	local originalPosition = mf.Position
+	local minimized = false
+	local maximized = false
+
 	hb.MouseButton1Click:Connect(function()
-		tweenProperty(mf, {Size = UDim2.new(mf.Size.X.Scale, mf.Size.X.Offset, 0, 40 + 30)}, 0.3)
-		sb.Visible = false
-		cc.Visible = false
-		footer.Visible = false
+		if not minimized then
+			tweenProperty(mf, {Size = UDim2.new(originalSize.X.Scale, originalSize.X.Offset, 0, 40 + 30)}, 0.3)
+			sb.Visible = false
+			cc.Visible = false
+			footer.Visible = false
+			minimized = true
+		else
+			tweenProperty(mf, {Size = originalSize}, 0.3)
+			wait(0.3)
+			sb.Visible = true
+			cc.Visible = true
+			footer.Visible = true
+			minimized = false
+		end
 	end)
 
 	xb.MouseButton1Click:Connect(function()
@@ -1541,10 +1549,10 @@ function JustHub:CreateWindow(o)
 			local showUI = createInstance("ScreenGui", {Name = "ShowUI", ResetOnSpawn = false}, pg)
 			local showBtn = createInstance("TextButton", {
 				Name = "ShowUIButton",
-				size = UDim2.new(0, 100, 0, 30),
+				Size = UDim2.new(0, 100, 0, 30),
 				Position = UDim2.new(0.5, -50, 0, 10),
-				BackgroundColor3 = Color3.fromRGB(40, 40, 40),
-				TextColor3 = Color3.fromRGB(255, 255, 255),
+				BackgroundColor3 = th["Color Hub 2"],
+				TextColor3 = th["Color Text"],
 				Font = Enum.Font.GothamBold,
 				TextSize = 20
 			}, showUI)
@@ -1560,47 +1568,74 @@ function JustHub:CreateWindow(o)
 	local function enableDrag(frame)
 		local isDragging = false
 		local dragStartPos, startPos
+
 		frame.InputBegan:Connect(function(input)
-			if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and not isLocked then
+			if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then
 				isDragging = true
 				dragStartPos = input.Position
 				startPos = frame.Position
 			end
 		end)
+
 		frame.InputChanged:Connect(function(input)
 			if isDragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
 				local delta = input.Position - dragStartPos
 				local newPos = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-				newPos = clampPosition(newPos, Vector2.new(sg.AbsoluteSize.X, sg.AbsoluteSize.Y))
 				frame.Position = newPos
 			end
 		end)
+
 		UserInputService.InputEnded:Connect(function(input)
 			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
 				isDragging = false
 			end
 		end)
 	end
-	enableDrag(tb)
 
-	-- Enable Resize
+	enableDrag(mf)
+
 	local resizeGrip = createInstance("Frame", {
 		Name = "ResizeGrip",
-		size = UDim2.new(0, 20, 0, 20),
+		Size = UDim2.new(0, 20, 0, 20),
 		Position = UDim2.new(1, -20, 1, -20),
-		BackgroundColor3 = Color3.fromRGB(30, 30, 30),
+		BackgroundColor3 = Color3.fromRGB(40, 40, 45),
 		BackgroundTransparency = 0.5,
 		BorderSizePixel = 0
 	}, mf)
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 5)}, resizeGrip)
+
+	local function enableResize(frame, grip)
+		local isResizing = false
+		local dragStartPos, startSize
+		grip.InputBegan:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+				isResizing = true
+				dragStartPos = input.Position
+				startSize = frame.Size
+			end
+		end)
+		grip.InputChanged:Connect(function(input)
+			if isResizing and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+				local delta = input.Position - dragStartPos
+				local newWidth = math.max(300, startSize.X.Offset + delta.X)
+				local newHeight = math.max(200, startSize.Y.Offset + delta.Y)
+				frame.Size = UDim2.new(0, newWidth, 0, newHeight)
+			end
+		end)
+		UserInputService.InputEnded:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+				isResizing = false
+			end
+		end)
+	end
+
 	enableResize(mf, resizeGrip)
 
-	-- Notification Container
 	local notiContainer = createInstance("Frame", {
 		Name = "NotificationContainer",
 		AnchorPoint = Vector2.new(1, 1),
 		Position = UDim2.new(1, -10, 1, -10),
-		size = UDim2.new(0, 300, 1, -20),
+		Size = UDim2.new(0, 300, 1, -20),
 		BackgroundTransparency = 1
 	}, sg)
 	createInstance("UIListLayout", {
@@ -1611,77 +1646,87 @@ function JustHub:CreateWindow(o)
 	}, notiContainer)
 	self.NotificationContainer = notiContainer
 
-	-- Return Object
 	local wObj = {ScreenGui = sg, MainFrame = mf, TopBar = tb, Sidebar = sb, ContentContainer = cc, Tabs = {}}
+
 	function wObj:addTab(tn)
 		tn = tn or "Tab"
 		local b = createInstance("TextButton", {
 			Name = tn .. "Button",
 			Text = tn,
-			size = UDim2.new(1, 0, 0, 20),
-			BackgroundColor3 = Color3.fromRGB(30, 30, 30),
-			TextColor3 = Color3.fromRGB(120, 120, 120),
+			Size = UDim2.new(1, 0, 0, 20),
+			BackgroundColor3 = th["Color Hub 2"],
+			TextColor3 = th["Color Text"],
 			Font = Enum.Font.GothamBold,
 			TextSize = 12,
 			TextScaled = true,
 			TextTruncate = Enum.TextTruncate.AtEnd
 		}, sb)
 		createInstance("UICorner", {CornerRadius = UDim.new(0, 10)}, b)
-		createInstance("UIStroke", {Color = Color3.fromRGB(60, 60, 60), Thickness = 1}, b)
+		createInstance("UIStroke", {Color = th["Color Stroke"], Thickness = 1}, b)
+
 		local tc = createInstance("Frame", {
 			Name = tn .. "Content",
-			size = UDim2.new(1, 0, 1, 0),
+			Size = UDim2.new(1, 0, 1, 0),
 			BackgroundTransparency = 1,
 			Visible = false
 		}, sf)
+
 		local tObj = {Name = tn, Button = b, Content = tc, Sections = {}}
 		table.insert(wObj.Tabs, tObj)
+
 		b.MouseButton1Click:Connect(function()
 			for _, tt in ipairs(wObj.Tabs) do
 				tt.Content.Visible = false
 			end
 			tObj.Content.Visible = true
 		end)
+
 		if #wObj.Tabs == 1 then
 			tObj.Content.Visible = true
 		end
+
 		function tObj:addSection(sn, sh)
 			sn = sn or "Section"
 			sh = sh or 80
 			local sframe = createInstance("Frame", {
 				Name = sn,
-				size = UDim2.new(1, 0, 0, sh),
-				BackgroundColor3 = Color3.fromRGB(20, 20, 20),
+				Size = UDim2.new(1, 0, 0, sh),
+				BackgroundColor3 = th["Color Hub 2"],
 				BackgroundTransparency = 0
 			}, tc)
 			createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, sframe)
+
 			local st = createInstance("TextLabel", {
 				Name = "SectionTitle",
 				Text = sn,
-				size = UDim2.new(1, 0, 0, 30),
+				Size = UDim2.new(1, 0, 0, 30),
 				BackgroundTransparency = 1,
-				TextColor3 = Color3.fromRGB(255, 255, 255),
+				TextColor3 = th["Color Text"],
 				Font = Enum.Font.GothamBold,
 				TextSize = 14,
 				TextXAlignment = Enum.TextXAlignment.Left
 			}, sframe)
+
 			local sc = createInstance("Frame", {
 				Name = "SectionContent",
-				size = UDim2.new(1, 0, 1, -30),
+				Size = UDim2.new(1, 0, 1, -30),
 				Position = UDim2.new(0, 0, 0, 30),
 				BackgroundTransparency = 1
 			}, sframe)
+
 			createInstance("UIListLayout", {
-				fillDirection = Enum.FillDirection.Vertical,
+				FillDirection = Enum.FillDirection.Vertical,
 				Padding = UDim.new(0, 5),
 				SortOrder = Enum.SortOrder.LayoutOrder,
 				HorizontalAlignment = Enum.HorizontalAlignment.Left
 			}, sc)
+
 			local sObj = {Frame = sframe, Title = st, Content = sc}
 			table.insert(tObj.Sections, sObj)
 			setmetatable(sObj, {__index = SectionMethods})
 			return sObj
 		end
+
 		return tObj
 	end
 
