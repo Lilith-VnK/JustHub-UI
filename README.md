@@ -113,44 +113,6 @@ task.spawn(function()
 end)
   ```
 
-
-## Music Control UI
-
-A music control UI has been added to the bottom left corner. It includes Play, Stop, and Next buttons.
-
-```lua
-local musicUI = JustHub.Window:addUIElement({
-    Type = "Frame",
-    Name = "MusicControl",
-    Position = UDim2.new(0, 10, 1, -60),
-    Size = UDim2.new(0, 150, 0, 50)
-})
-
-musicUI:addButton({
-    Name = "Play",
-    ButtonText = "⏵", -- Play icon
-    Callback = function()
-        JustHub:PlaySound("BackgroundMusic")
-    end
-})
-
-musicUI:addButton({
-    Name = "Stop",
-    ButtonText = "⏹", -- Stop icon
-    Callback = function()
-        JustHub:StopSound("BackgroundMusic")
-    end
-})
-
-musicUI:addButton({
-    Name = "Next",
-    ButtonText = "⏭", -- Next icon
-    Callback = function()
-        JustHub:NextSound("BackgroundMusic")
-    end
-})
-  ```
-
 ## Core Concepts
 
   1.Themes
@@ -499,14 +461,3 @@ task.spawn(function()
     })
 end)
 ```
-
-
----
-
-## License
-
-This library is free to use in your Roblox projects.
-
-Enjoy building with JustHub! If you have any questions, feel free to open an issue or submit a pull request.
-
----
