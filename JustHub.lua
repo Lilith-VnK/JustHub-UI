@@ -9,11 +9,7 @@ local JustHub = {}
 
 JustHub.Themes = {
 	Darker = {
-		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(20, 20, 25)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(30, 30, 35)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(20, 20, 25))
-		}),
+		["Color Hub 1"] = Color3.fromRGB(20, 20, 25),
 		["Color Hub 2"] = Color3.fromRGB(30, 30, 35),
 		["Color Stroke"] = Color3.fromRGB(50, 50, 55),
 		["Color Theme"] = Color3.fromRGB(100, 255, 150),
@@ -21,11 +17,7 @@ JustHub.Themes = {
 		["Color Dark Text"] = Color3.fromRGB(160, 160, 170)
 	},
 	Dark = {
-		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(35, 35, 40)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(45, 45, 50)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(35, 35, 40))
-		}),
+		["Color Hub 1"] = Color3.fromRGB(35, 35, 40),
 		["Color Hub 2"] = Color3.fromRGB(45, 45, 50),
 		["Color Stroke"] = Color3.fromRGB(70, 70, 80),
 		["Color Theme"] = Color3.fromRGB(80, 200, 255),
@@ -33,11 +25,7 @@ JustHub.Themes = {
 		["Color Dark Text"] = Color3.fromRGB(170, 170, 180)
 	},
 	Purple = {
-		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(30, 25, 40)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(40, 35, 50)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(30, 25, 40))
-		}),
+		["Color Hub 1"] = Color3.fromRGB(30, 25, 40),
 		["Color Hub 2"] = Color3.fromRGB(40, 35, 50),
 		["Color Stroke"] = Color3.fromRGB(60, 50, 75),
 		["Color Theme"] = Color3.fromRGB(150, 100, 255),
@@ -45,11 +33,7 @@ JustHub.Themes = {
 		["Color Dark Text"] = Color3.fromRGB(170, 160, 190)
 	},
 	Light = {
-		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(220, 220, 225)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(240, 240, 245)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(220, 220, 225))
-		}),
+		["Color Hub 1"] = Color3.fromRGB(220, 220, 225),
 		["Color Hub 2"] = Color3.fromRGB(235, 235, 240),
 		["Color Stroke"] = Color3.fromRGB(190, 190, 200),
 		["Color Theme"] = Color3.fromRGB(0, 140, 255),
@@ -57,11 +41,7 @@ JustHub.Themes = {
 		["Color Dark Text"] = Color3.fromRGB(90, 90, 100)
 	},
 	Neon = {
-		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(5, 5, 10)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 220, 220)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(5, 5, 10))
-		}),
+		["Color Hub 1"] = Color3.fromRGB(5, 5, 10),
 		["Color Hub 2"] = Color3.fromRGB(10, 10, 15),
 		["Color Stroke"] = Color3.fromRGB(0, 255, 255),
 		["Color Theme"] = Color3.fromRGB(0, 255, 100),
@@ -69,11 +49,7 @@ JustHub.Themes = {
 		["Color Dark Text"] = Color3.fromRGB(200, 255, 255)
 	},
 	Forest = {
-		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 40, 20)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 70, 30)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 40, 20))
-		}),
+		["Color Hub 1"] = Color3.fromRGB(0, 40, 20),
 		["Color Hub 2"] = Color3.fromRGB(0, 55, 25),
 		["Color Stroke"] = Color3.fromRGB(0, 90, 40),
 		["Color Theme"] = Color3.fromRGB(50, 205, 50),
@@ -81,11 +57,7 @@ JustHub.Themes = {
 		["Color Dark Text"] = Color3.fromRGB(170, 200, 170)
 	},
 	Aqua = {
-		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 90, 100)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 160, 180)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 90, 100))
-		}),
+		["Color Hub 1"] = Color3.fromRGB(0, 90, 100),
 		["Color Hub 2"] = Color3.fromRGB(0, 120, 130),
 		["Color Stroke"] = Color3.fromRGB(0, 190, 210),
 		["Color Theme"] = Color3.fromRGB(0, 230, 255),
@@ -93,11 +65,7 @@ JustHub.Themes = {
 		["Color Dark Text"] = Color3.fromRGB(200, 230, 240)
 	},
 	Crimson = {
-		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(50, 0, 10)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(100, 0, 20)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(50, 0, 10))
-		}),
+		["Color Hub 1"] = Color3.fromRGB(50, 0, 10),
 		["Color Hub 2"] = Color3.fromRGB(80, 0, 15),
 		["Color Stroke"] = Color3.fromRGB(140, 0, 30),
 		["Color Theme"] = Color3.fromRGB(255, 50, 80),
@@ -105,11 +73,7 @@ JustHub.Themes = {
 		["Color Dark Text"] = Color3.fromRGB(220, 180, 180)
 	},
 	Solar = {
-		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 210, 0)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255, 150, 0)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 210, 0))
-		}),
+		["Color Hub 1"] = Color3.fromRGB(255, 210, 0),
 		["Color Hub 2"] = Color3.fromRGB(255, 200, 0),
 		["Color Stroke"] = Color3.fromRGB(255, 130, 0),
 		["Color Theme"] = Color3.fromRGB(255, 80, 0),
@@ -117,11 +81,7 @@ JustHub.Themes = {
 		["Color Dark Text"] = Color3.fromRGB(70, 70, 70)
 	},
 	Pastel = {
-		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(220, 200, 230)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(240, 220, 250)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(220, 200, 230))
-		}),
+		["Color Hub 1"] = Color3.fromRGB(220, 200, 230),
 		["Color Hub 2"] = Color3.fromRGB(245, 230, 255),
 		["Color Stroke"] = Color3.fromRGB(190, 170, 210),
 		["Color Theme"] = Color3.fromRGB(170, 210, 240),
@@ -129,11 +89,7 @@ JustHub.Themes = {
 		["Color Dark Text"] = Color3.fromRGB(110, 110, 110)
 	},
 	Cyber = {
-		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(5, 5, 20)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 180, 255)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(5, 5, 20))
-		}),
+		["Color Hub 1"] = Color3.fromRGB(5, 5, 20),
 		["Color Hub 2"] = Color3.fromRGB(15, 15, 35),
 		["Color Stroke"] = Color3.fromRGB(0, 220, 255),
 		["Color Theme"] = Color3.fromRGB(0, 180, 255),
@@ -141,11 +97,7 @@ JustHub.Themes = {
 		["Color Dark Text"] = Color3.fromRGB(190, 230, 255)
 	},
 	Ocean = {
-		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 25, 50)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 80, 150)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 25, 50))
-		}),
+		["Color Hub 1"] = Color3.fromRGB(0, 25, 50),
 		["Color Hub 2"] = Color3.fromRGB(0, 45, 90),
 		["Color Stroke"] = Color3.fromRGB(0, 100, 180),
 		["Color Theme"] = Color3.fromRGB(0, 150, 255),
@@ -153,11 +105,7 @@ JustHub.Themes = {
 		["Color Dark Text"] = Color3.fromRGB(180, 210, 230)
 	},
 	Desert = {
-		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(200, 170, 130)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(240, 160, 90)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(200, 170, 130))
-		}),
+		["Color Hub 1"] = Color3.fromRGB(200, 170, 130),
 		["Color Hub 2"] = Color3.fromRGB(220, 180, 130),
 		["Color Stroke"] = Color3.fromRGB(150, 80, 40),
 		["Color Theme"] = Color3.fromRGB(220, 150, 30),
@@ -165,11 +113,7 @@ JustHub.Themes = {
 		["Color Dark Text"] = Color3.fromRGB(90, 80, 70)
 	},
 	Galaxy = {
-		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(10, 0, 40)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(70, 0, 130)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(10, 0, 40))
-		}),
+		["Color Hub 1"] = Color3.fromRGB(10, 0, 40),
 		["Color Hub 2"] = Color3.fromRGB(20, 0, 50),
 		["Color Stroke"] = Color3.fromRGB(90, 0, 150),
 		["Color Theme"] = Color3.fromRGB(140, 0, 255),
@@ -177,11 +121,7 @@ JustHub.Themes = {
 		["Color Dark Text"] = Color3.fromRGB(200, 200, 230)
 	},
 	Vintage = {
-		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(140, 110, 80)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(160, 130, 100)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(140, 110, 80))
-		}),
+		["Color Hub 1"] = Color3.fromRGB(140, 110, 80),
 		["Color Hub 2"] = Color3.fromRGB(150, 120, 90),
 		["Color Stroke"] = Color3.fromRGB(110, 80, 60),
 		["Color Theme"] = Color3.fromRGB(190, 150, 120),
@@ -189,12 +129,7 @@ JustHub.Themes = {
 		["Color Dark Text"] = Color3.fromRGB(100, 90, 80)
 	},
 	Rainbow = {
-		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 0, 0)),
-			ColorSequenceKeypoint.new(0.33, Color3.fromRGB(0, 255, 0)),
-			ColorSequenceKeypoint.new(0.66, Color3.fromRGB(0, 0, 255)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 0, 0))
-		}),
+		["Color Hub 1"] = Color3.fromRGB(255, 0, 0),
 		["Color Hub 2"] = Color3.fromRGB(230, 230, 230),
 		["Color Stroke"] = Color3.fromRGB(50, 50, 50),
 		["Color Theme"] = Color3.fromRGB(255, 100, 100),
@@ -202,11 +137,7 @@ JustHub.Themes = {
 		["Color Dark Text"] = Color3.fromRGB(90, 90, 90)
 	},
 	Midnight = {
-		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 0, 30)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 0, 80)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 30))
-		}),
+		["Color Hub 1"] = Color3.fromRGB(0, 0, 30),
 		["Color Hub 2"] = Color3.fromRGB(5, 5, 40),
 		["Color Stroke"] = Color3.fromRGB(0, 0, 100),
 		["Color Theme"] = Color3.fromRGB(50, 50, 255),
@@ -1358,6 +1289,7 @@ function JustHub:CreateWindow(o)
 
 	JustHub.Save.Theme = themeName
 	local th = getCurrentTheme(themeName)
+
 	local mf = createInstance("Frame", {
 		Name = "MainFrame",
 		AnchorPoint = Vector2.new(0.5, 0.5),
@@ -1374,7 +1306,7 @@ function JustHub:CreateWindow(o)
 	local tb = createInstance("Frame", {
 		Name = "TopBar",
 		Size = UDim2.new(1, 0, 0, 40),
-		BackgroundColor3 = th["Color Hub 1"].Color[1],
+		BackgroundColor3 = th["Color Hub 1"],
 		BackgroundTransparency = 0,
 		BorderSizePixel = 0
 	}, mf)
@@ -1568,7 +1500,6 @@ function JustHub:CreateWindow(o)
 	local function enableDrag(frame)
 		local isDragging = false
 		local dragStartPos, startPos
-
 		frame.InputBegan:Connect(function(input)
 			if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then
 				isDragging = true
@@ -1576,7 +1507,6 @@ function JustHub:CreateWindow(o)
 				startPos = frame.Position
 			end
 		end)
-
 		frame.InputChanged:Connect(function(input)
 			if isDragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
 				local delta = input.Position - dragStartPos
@@ -1584,7 +1514,6 @@ function JustHub:CreateWindow(o)
 				frame.Position = newPos
 			end
 		end)
-
 		UserInputService.InputEnded:Connect(function(input)
 			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
 				isDragging = false
