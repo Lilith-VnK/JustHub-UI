@@ -1348,19 +1348,26 @@ function JustHub:CreateWindow(o)
 	local sg = createInstance("ScreenGui", {Name = "JustHub", ResetOnSpawn = false}, pg)
 	self.ScreenGui = sg
 
+	if not JustHub.Save then
+		JustHub.Save = {
+			UISize = {600, 400},
+			TabSize = 120
+		}
+	end
+
 	-- Main Frame
 	local mf = createInstance("Frame", {
 		Name = "MainFrame",
 		AnchorPoint = Vector2.new(0.5, 0.5),
 		Position = UDim2.new(0.5, 0, -0.5, 0),
-		Size = UDim2.new(0, 600, 0, 400),
+		Size = UDim2.new(0, JustHub.Save.UISize[1], 0, JustHub.Save.UISize[2]),
 		BackgroundColor3 = Color3.fromRGB(15, 15, 15),
 		BackgroundTransparency = 0,
 		BorderSizePixel = 0
 	}, sg)
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, mf)
 
-	-- Top Bar (Windows-style)
+	-- Top Bar (Header)
 	local tb = createInstance("Frame", {
 		Name = "TopBar",
 		Size = UDim2.new(1, 0, 0, 40),
@@ -1424,7 +1431,7 @@ function JustHub:CreateWindow(o)
 	local closeb = createInstance("TextButton", {
 		Name = "CloseButton",
 		Text = "×",
-		Size = UDim2.new(0, 40, 0, 40),
+		size = UDim2.new(0, 40, 0, 40),
 		Position = UDim2.new(1, 0, 0, 0),
 		BackgroundColor3 = Color3.fromRGB(20, 20, 20),
 		TextColor3 = Color3.fromRGB(255, 255, 255),
@@ -1436,7 +1443,7 @@ function JustHub:CreateWindow(o)
 
 	-- Separator
 	local headerSeparator = createInstance("Frame", {
-		Size = UDim2.new(1, 0, 0, 2),
+		size = UDim2.new(1, 0, 0, 2),
 		Position = UDim2.new(0, 0, 0, 40),
 		BackgroundColor3 = Color3.fromRGB(30, 30, 30),
 		BorderSizePixel = 0
@@ -1446,7 +1453,7 @@ function JustHub:CreateWindow(o)
 	local sbWidth = JustHub.Save.TabSize
 	local sb = createInstance("Frame", {
 		Name = "Sidebar",
-		Size = UDim2.new(0, sbWidth, 1, -(40 + 30)),
+		size = UDim2.new(0, sbWidth, 1, -(40 + 30)),
 		Position = UDim2.new(0, 0, 0, 40),
 		BackgroundColor3 = Color3.fromRGB(15, 15, 15),
 		BackgroundTransparency = 0,
@@ -1458,7 +1465,7 @@ function JustHub:CreateWindow(o)
 	-- Content Container
 	local cc = createInstance("Frame", {
 		Name = "ContentContainer",
-		Size = UDim2.new(1, -sbWidth - 2, 1, -(40 + 30)),
+		size = UDim2.new(1, -sbWidth - 2, 1, -(40 + 30)),
 		Position = UDim2.new(0, sbWidth + 2, 0, 40),
 		BackgroundColor3 = Color3.fromRGB(15, 15, 15),
 		BackgroundTransparency = 0,
@@ -1468,7 +1475,7 @@ function JustHub:CreateWindow(o)
 
 	-- ScrollingFrame
 	local sf = createInstance("ScrollingFrame", {
-		Size = UDim2.new(1, 0, 1, 0),
+		size = UDim2.new(1, 0, 1, 0),
 		BackgroundTransparency = 1,
 		ScrollBarThickness = 8,
 		BorderSizePixel = 0
@@ -1482,7 +1489,7 @@ function JustHub:CreateWindow(o)
 	-- Footer
 	local footer = createInstance("Frame", {
 		Name = "Footer",
-		Size = UDim2.new(1, 0, 0, 30),
+		size = UDim2.new(1, 0, 0, 30),
 		Position = UDim2.new(0, 0, 1, -30),
 		BackgroundColor3 = Color3.fromRGB(10, 10, 10),
 		BackgroundTransparency = 0,
@@ -1494,7 +1501,7 @@ function JustHub:CreateWindow(o)
 	local fl = createInstance("TextLabel", {
 		Name = "FPSLabel",
 		Text = "FPS: Calculating...",
-		Size = UDim2.new(0, 100, 1, 0),
+		size = UDim2.new(0, 100, 1, 0),
 		BackgroundTransparency = 1,
 		TextColor3 = Color3.fromRGB(120, 120, 120),
 		Font = Enum.Font.Gotham,
@@ -1534,7 +1541,7 @@ function JustHub:CreateWindow(o)
 			local showUI = createInstance("ScreenGui", {Name = "ShowUI", ResetOnSpawn = false}, pg)
 			local showBtn = createInstance("TextButton", {
 				Name = "ShowUIButton",
-				Size = UDim2.new(0, 100, 0, 30),
+				size = UDim2.new(0, 100, 0, 30),
 				Position = UDim2.new(0.5, -50, 0, 10),
 				BackgroundColor3 = Color3.fromRGB(40, 40, 40),
 				TextColor3 = Color3.fromRGB(255, 255, 255),
@@ -1550,7 +1557,6 @@ function JustHub:CreateWindow(o)
 		end)
 	end)
 
-	-- Enable Drag
 	local function enableDrag(frame)
 		local isDragging = false
 		local dragStartPos, startPos
@@ -1580,7 +1586,7 @@ function JustHub:CreateWindow(o)
 	-- Enable Resize
 	local resizeGrip = createInstance("Frame", {
 		Name = "ResizeGrip",
-		Size = UDim2.new(0, 20, 0, 20),
+		size = UDim2.new(0, 20, 0, 20),
 		Position = UDim2.new(1, -20, 1, -20),
 		BackgroundColor3 = Color3.fromRGB(30, 30, 30),
 		BackgroundTransparency = 0.5,
@@ -1594,7 +1600,7 @@ function JustHub:CreateWindow(o)
 		Name = "NotificationContainer",
 		AnchorPoint = Vector2.new(1, 1),
 		Position = UDim2.new(1, -10, 1, -10),
-		Size = UDim2.new(0, 300, 1, -20),
+		size = UDim2.new(0, 300, 1, -20),
 		BackgroundTransparency = 1
 	}, sg)
 	createInstance("UIListLayout", {
@@ -1612,7 +1618,7 @@ function JustHub:CreateWindow(o)
 		local b = createInstance("TextButton", {
 			Name = tn .. "Button",
 			Text = tn,
-			Size = UDim2.new(1, 0, 0, 20),
+			size = UDim2.new(1, 0, 0, 20),
 			BackgroundColor3 = Color3.fromRGB(30, 30, 30),
 			TextColor3 = Color3.fromRGB(120, 120, 120),
 			Font = Enum.Font.GothamBold,
@@ -1624,7 +1630,7 @@ function JustHub:CreateWindow(o)
 		createInstance("UIStroke", {Color = Color3.fromRGB(60, 60, 60), Thickness = 1}, b)
 		local tc = createInstance("Frame", {
 			Name = tn .. "Content",
-			Size = UDim2.new(1, 0, 1, 0),
+			size = UDim2.new(1, 0, 1, 0),
 			BackgroundTransparency = 1,
 			Visible = false
 		}, sf)
@@ -1666,7 +1672,7 @@ function JustHub:CreateWindow(o)
 				BackgroundTransparency = 1
 			}, sframe)
 			createInstance("UIListLayout", {
-				FillDirection = Enum.FillDirection.Vertical,
+				fillDirection = Enum.FillDirection.Vertical,
 				Padding = UDim.new(0, 5),
 				SortOrder = Enum.SortOrder.LayoutOrder,
 				HorizontalAlignment = Enum.HorizontalAlignment.Left
