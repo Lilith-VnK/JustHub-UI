@@ -23,10 +23,39 @@
 
 ## New Update
 
-- **[+] Background Loading Screen**
-- **[+] Background Sound**
-- **[+] Music Control UI (Play, Stop, Next)**
+### ✨ [+] Visual & UX Upgrade
+- [+] Main UI (window, sidebar, topbar) redesigned with **modern gradients, soft shadows, and rounded corners**
+- [+] All components now feature **smooth hover & click animations** (using TweenService)
+- [+] Padding & spacing optimized for a **cleaner, more spacious, and professional layout**
+- [+] Font size increased to 13–14pt, using **GothamBold** for visual consistency
+- [+] Text and background colors adjusted for **high contrast and visual comfort**
 
+### 🧩 [+] UI Components Enhanced
+- [+] `addButton` — modern button with press/hover animations, zero sound
+- [+] `addBind` — keybind input with focus animation and auto-validation
+- [+] `addScriptBox` — script editor with “▶ Run” button and micro-interactions
+- [+] `addColorPicker` — live color preview + R/G/B inputs with channel-based colors
+- [+] `addDropdown` — animated slide-down menu, live search, preset stars, reset button
+- [+] `addTextBox` — clean text input with placeholder and focus feedback
+- [+] `addSlider` — draggable slider with expanding handle and editable value box
+- [+] `addToggle` — iOS-style toggle switch with smooth sliding animation
+- [+] `addMenu` — section header with gradient background and soft text shadow
+
+### 🎨 [+] Theme System Refined
+- [+] All 17 themes (Darker, Dark, Purple, Light, Neon, etc.) **visually harmonized** with modern UI
+- [+] Theme, text, and stroke colors optimized for **consistency and accessibility**
+- [+] Background gradients softened for elegance without visual distraction
+
+### 🚫 [-] Removed / Disabled Features
+- [-] **All sound/music systems completely removed** — no background audio or playback
+- [-] Deleted `bgSound`, `currentSoundId`, `fallbackAssetIds`, and `tryPlaySound` functions
+- [-] Music control UI (play/pause/next buttons) **fully removed from codebase**
+- [-] All `JustHub:PlaySound(...)` calls stripped from every component
+
+### 🧹 [+] Codebase Cleanup
+- [+] All internal comments removed — **pure functional code only**
+- [+] Zero variable, class, or structural name changes — **100% backward compatible**
+- [+] Redundant or legacy code eliminated — **more concise and efficient**
 
 ## Installation
 
