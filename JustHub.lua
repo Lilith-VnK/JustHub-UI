@@ -10,183 +10,183 @@ local JustHub = {}
 JustHub.Themes = {
 	Darker = {
 		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(25, 25, 25)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(32, 32, 32)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(25, 25, 25))
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(20, 20, 25)),
+			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(30, 30, 35)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(20, 20, 25))
 		}),
-		["Color Hub 2"] = Color3.fromRGB(30, 30, 30),
-		["Color Stroke"] = Color3.fromRGB(40, 40, 40),
-		["Color Theme"] = Color3.fromRGB(88, 101, 242),
-		["Color Text"] = Color3.fromRGB(243, 243, 243),
-		["Color Dark Text"] = Color3.fromRGB(180, 180, 180)
+		["Color Hub 2"] = Color3.fromRGB(30, 30, 35),
+		["Color Stroke"] = Color3.fromRGB(50, 50, 55),
+		["Color Theme"] = Color3.fromRGB(100, 255, 150),
+		["Color Text"] = Color3.fromRGB(240, 240, 245),
+		["Color Dark Text"] = Color3.fromRGB(160, 160, 170)
 	},
 	Dark = {
 		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(40, 40, 40)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(47, 47, 47)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(40, 40, 40))
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(35, 35, 40)),
+			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(45, 45, 50)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(35, 35, 40))
 		}),
-		["Color Hub 2"] = Color3.fromRGB(45, 45, 45),
-		["Color Stroke"] = Color3.fromRGB(65, 65, 65),
-		["Color Theme"] = Color3.fromRGB(65, 150, 255),
-		["Color Text"] = Color3.fromRGB(245, 245, 245),
-		["Color Dark Text"] = Color3.fromRGB(190, 190, 190)
+		["Color Hub 2"] = Color3.fromRGB(45, 45, 50),
+		["Color Stroke"] = Color3.fromRGB(70, 70, 80),
+		["Color Theme"] = Color3.fromRGB(80, 200, 255),
+		["Color Text"] = Color3.fromRGB(245, 245, 250),
+		["Color Dark Text"] = Color3.fromRGB(170, 170, 180)
 	},
 	Purple = {
 		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(28, 25, 30)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(32, 32, 32)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(28, 25, 30))
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(30, 25, 40)),
+			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(40, 35, 50)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(30, 25, 40))
 		}),
-		["Color Hub 2"] = Color3.fromRGB(30, 30, 30),
-		["Color Stroke"] = Color3.fromRGB(40, 40, 40),
-		["Color Theme"] = Color3.fromRGB(150, 0, 255),
-		["Color Text"] = Color3.fromRGB(240, 240, 240),
-		["Color Dark Text"] = Color3.fromRGB(180, 180, 180)
+		["Color Hub 2"] = Color3.fromRGB(40, 35, 50),
+		["Color Stroke"] = Color3.fromRGB(60, 50, 75),
+		["Color Theme"] = Color3.fromRGB(150, 100, 255),
+		["Color Text"] = Color3.fromRGB(240, 240, 245),
+		["Color Dark Text"] = Color3.fromRGB(170, 160, 190)
 	},
 	Light = {
 		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(230, 230, 230)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(245, 245, 245)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(230, 230, 230))
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(220, 220, 225)),
+			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(240, 240, 245)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(220, 220, 225))
 		}),
-		["Color Hub 2"] = Color3.fromRGB(240, 240, 240),
-		["Color Stroke"] = Color3.fromRGB(200, 200, 200),
-		["Color Theme"] = Color3.fromRGB(0, 120, 255),
-		["Color Text"] = Color3.fromRGB(30, 30, 30),
-		["Color Dark Text"] = Color3.fromRGB(80, 80, 80)
+		["Color Hub 2"] = Color3.fromRGB(235, 235, 240),
+		["Color Stroke"] = Color3.fromRGB(190, 190, 200),
+		["Color Theme"] = Color3.fromRGB(0, 140, 255),
+		["Color Text"] = Color3.fromRGB(40, 40, 45),
+		["Color Dark Text"] = Color3.fromRGB(90, 90, 100)
 	},
 	Neon = {
 		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(10, 10, 10)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 200, 200)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(10, 10, 10))
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(5, 5, 10)),
+			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 220, 220)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(5, 5, 10))
 		}),
-		["Color Hub 2"] = Color3.fromRGB(15, 15, 15),
+		["Color Hub 2"] = Color3.fromRGB(10, 10, 15),
 		["Color Stroke"] = Color3.fromRGB(0, 255, 255),
-		["Color Theme"] = Color3.fromRGB(0, 255, 0),
+		["Color Theme"] = Color3.fromRGB(0, 255, 100),
 		["Color Text"] = Color3.fromRGB(255, 255, 255),
-		["Color Dark Text"] = Color3.fromRGB(200, 200, 200)
+		["Color Dark Text"] = Color3.fromRGB(200, 255, 255)
 	},
 	Forest = {
 		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 50, 0)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 80, 0)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 50, 0))
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 40, 20)),
+			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 70, 30)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 40, 20))
 		}),
-		["Color Hub 2"] = Color3.fromRGB(0, 60, 0),
-		["Color Stroke"] = Color3.fromRGB(0, 80, 0),
-		["Color Theme"] = Color3.fromRGB(0, 120, 0),
-		["Color Text"] = Color3.fromRGB(220, 220, 220),
-		["Color Dark Text"] = Color3.fromRGB(160, 160, 160)
+		["Color Hub 2"] = Color3.fromRGB(0, 55, 25),
+		["Color Stroke"] = Color3.fromRGB(0, 90, 40),
+		["Color Theme"] = Color3.fromRGB(50, 205, 50),
+		["Color Text"] = Color3.fromRGB(230, 255, 230),
+		["Color Dark Text"] = Color3.fromRGB(170, 200, 170)
 	},
 	Aqua = {
 		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 100, 100)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 150, 150)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 100, 100))
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 90, 100)),
+			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 160, 180)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 90, 100))
 		}),
-		["Color Hub 2"] = Color3.fromRGB(0, 110, 110),
-		["Color Stroke"] = Color3.fromRGB(0, 180, 180),
-		["Color Theme"] = Color3.fromRGB(0, 220, 220),
-		["Color Text"] = Color3.fromRGB(255, 255, 255),
-		["Color Dark Text"] = Color3.fromRGB(200, 200, 200)
+		["Color Hub 2"] = Color3.fromRGB(0, 120, 130),
+		["Color Stroke"] = Color3.fromRGB(0, 190, 210),
+		["Color Theme"] = Color3.fromRGB(0, 230, 255),
+		["Color Text"] = Color3.fromRGB(250, 255, 255),
+		["Color Dark Text"] = Color3.fromRGB(200, 230, 240)
 	},
 	Crimson = {
 		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(60, 0, 0)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(120, 0, 0)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(60, 0, 0))
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(50, 0, 10)),
+			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(100, 0, 20)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(50, 0, 10))
 		}),
-		["Color Hub 2"] = Color3.fromRGB(100, 0, 0),
-		["Color Stroke"] = Color3.fromRGB(150, 0, 0),
-		["Color Theme"] = Color3.fromRGB(220, 20, 60),
-		["Color Text"] = Color3.fromRGB(255, 255, 255),
-		["Color Dark Text"] = Color3.fromRGB(200, 200, 200)
+		["Color Hub 2"] = Color3.fromRGB(80, 0, 15),
+		["Color Stroke"] = Color3.fromRGB(140, 0, 30),
+		["Color Theme"] = Color3.fromRGB(255, 50, 80),
+		["Color Text"] = Color3.fromRGB(255, 240, 240),
+		["Color Dark Text"] = Color3.fromRGB(220, 180, 180)
 	},
 	Solar = {
 		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 223, 0)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255, 165, 0)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 223, 0))
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 210, 0)),
+			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255, 150, 0)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 210, 0))
 		}),
-		["Color Hub 2"] = Color3.fromRGB(255, 215, 0),
-		["Color Stroke"] = Color3.fromRGB(255, 140, 0),
-		["Color Theme"] = Color3.fromRGB(255, 69, 0),
-		["Color Text"] = Color3.fromRGB(0, 0, 0),
-		["Color Dark Text"] = Color3.fromRGB(80, 80, 80)
+		["Color Hub 2"] = Color3.fromRGB(255, 200, 0),
+		["Color Stroke"] = Color3.fromRGB(255, 130, 0),
+		["Color Theme"] = Color3.fromRGB(255, 80, 0),
+		["Color Text"] = Color3.fromRGB(30, 30, 30),
+		["Color Dark Text"] = Color3.fromRGB(70, 70, 70)
 	},
 	Pastel = {
 		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(230, 210, 240)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(240, 230, 250)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(230, 210, 240))
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(220, 200, 230)),
+			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(240, 220, 250)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(220, 200, 230))
 		}),
-		["Color Hub 2"] = Color3.fromRGB(250, 240, 255),
-		["Color Stroke"] = Color3.fromRGB(200, 180, 210),
-		["Color Theme"] = Color3.fromRGB(180, 220, 240),
-		["Color Text"] = Color3.fromRGB(80, 80, 80),
-		["Color Dark Text"] = Color3.fromRGB(120, 120, 120)
+		["Color Hub 2"] = Color3.fromRGB(245, 230, 255),
+		["Color Stroke"] = Color3.fromRGB(190, 170, 210),
+		["Color Theme"] = Color3.fromRGB(170, 210, 240),
+		["Color Text"] = Color3.fromRGB(70, 70, 70),
+		["Color Dark Text"] = Color3.fromRGB(110, 110, 110)
 	},
 	Cyber = {
 		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(10, 10, 30)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 150, 255)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(10, 10, 30))
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(5, 5, 20)),
+			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 180, 255)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(5, 5, 20))
 		}),
-		["Color Hub 2"] = Color3.fromRGB(20, 20, 50),
-		["Color Stroke"] = Color3.fromRGB(0, 255, 255),
-		["Color Theme"] = Color3.fromRGB(0, 150, 255),
-		["Color Text"] = Color3.fromRGB(255, 255, 255),
-		["Color Dark Text"] = Color3.fromRGB(180, 180, 180)
+		["Color Hub 2"] = Color3.fromRGB(15, 15, 35),
+		["Color Stroke"] = Color3.fromRGB(0, 220, 255),
+		["Color Theme"] = Color3.fromRGB(0, 180, 255),
+		["Color Text"] = Color3.fromRGB(250, 255, 255),
+		["Color Dark Text"] = Color3.fromRGB(190, 230, 255)
 	},
 	Ocean = {
 		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 30, 60)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 70, 140)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 30, 60))
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 25, 50)),
+			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 80, 150)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 25, 50))
 		}),
-		["Color Hub 2"] = Color3.fromRGB(0, 50, 100),
-		["Color Stroke"] = Color3.fromRGB(0, 80, 150),
-		["Color Theme"] = Color3.fromRGB(0, 120, 200),
-		["Color Text"] = Color3.fromRGB(230, 240, 255),
-		["Color Dark Text"] = Color3.fromRGB(180, 190, 210)
+		["Color Hub 2"] = Color3.fromRGB(0, 45, 90),
+		["Color Stroke"] = Color3.fromRGB(0, 100, 180),
+		["Color Theme"] = Color3.fromRGB(0, 150, 255),
+		["Color Text"] = Color3.fromRGB(230, 245, 255),
+		["Color Dark Text"] = Color3.fromRGB(180, 210, 230)
 	},
 	Desert = {
 		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(210, 180, 140)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(244, 164, 96)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(210, 180, 140))
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(200, 170, 130)),
+			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(240, 160, 90)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(200, 170, 130))
 		}),
-		["Color Hub 2"] = Color3.fromRGB(222, 184, 135),
-		["Color Stroke"] = Color3.fromRGB(160, 82, 45),
-		["Color Theme"] = Color3.fromRGB(218, 165, 32),
-		["Color Text"] = Color3.fromRGB(50, 50, 50),
-		["Color Dark Text"] = Color3.fromRGB(80, 80, 80)
+		["Color Hub 2"] = Color3.fromRGB(220, 180, 130),
+		["Color Stroke"] = Color3.fromRGB(150, 80, 40),
+		["Color Theme"] = Color3.fromRGB(220, 150, 30),
+		["Color Text"] = Color3.fromRGB(50, 40, 30),
+		["Color Dark Text"] = Color3.fromRGB(90, 80, 70)
 	},
 	Galaxy = {
 		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(10, 0, 30)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(60, 0, 100)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(10, 0, 30))
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(10, 0, 40)),
+			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(70, 0, 130)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(10, 0, 40))
 		}),
-		["Color Hub 2"] = Color3.fromRGB(20, 0, 40),
-		["Color Stroke"] = Color3.fromRGB(80, 0, 120),
-		["Color Theme"] = Color3.fromRGB(120, 0, 200),
-		["Color Text"] = Color3.fromRGB(240, 240, 255),
-		["Color Dark Text"] = Color3.fromRGB(200, 200, 220)
+		["Color Hub 2"] = Color3.fromRGB(20, 0, 50),
+		["Color Stroke"] = Color3.fromRGB(90, 0, 150),
+		["Color Theme"] = Color3.fromRGB(140, 0, 255),
+		["Color Text"] = Color3.fromRGB(245, 245, 255),
+		["Color Dark Text"] = Color3.fromRGB(200, 200, 230)
 	},
 	Vintage = {
 		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(150, 120, 90)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(170, 140, 110)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(150, 120, 90))
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(140, 110, 80)),
+			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(160, 130, 100)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(140, 110, 80))
 		}),
-		["Color Hub 2"] = Color3.fromRGB(160, 130, 100),
-		["Color Stroke"] = Color3.fromRGB(120, 90, 70),
-		["Color Theme"] = Color3.fromRGB(200, 160, 130),
-		["Color Text"] = Color3.fromRGB(80, 60, 40),
-		["Color Dark Text"] = Color3.fromRGB(100, 80, 60)
+		["Color Hub 2"] = Color3.fromRGB(150, 120, 90),
+		["Color Stroke"] = Color3.fromRGB(110, 80, 60),
+		["Color Theme"] = Color3.fromRGB(190, 150, 120),
+		["Color Text"] = Color3.fromRGB(70, 50, 40),
+		["Color Dark Text"] = Color3.fromRGB(100, 90, 80)
 	},
 	Rainbow = {
 		["Color Hub 1"] = ColorSequence.new({
@@ -196,25 +196,25 @@ JustHub.Themes = {
 			ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 0, 0))
 		}),
 		["Color Hub 2"] = Color3.fromRGB(230, 230, 230),
-		["Color Stroke"] = Color3.fromRGB(0, 0, 0),
-		["Color Theme"] = Color3.fromRGB(255, 127, 80),
-		["Color Text"] = Color3.fromRGB(0, 0, 0),
-		["Color Dark Text"] = Color3.fromRGB(100, 100, 100)
+		["Color Stroke"] = Color3.fromRGB(50, 50, 50),
+		["Color Theme"] = Color3.fromRGB(255, 100, 100),
+		["Color Text"] = Color3.fromRGB(30, 30, 30),
+		["Color Dark Text"] = Color3.fromRGB(90, 90, 90)
 	},
 	Midnight = {
 		["Color Hub 1"] = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 0, 50)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 0, 100)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 50))
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 0, 30)),
+			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 0, 80)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 30))
 		}),
-		["Color Hub 2"] = Color3.fromRGB(10, 10, 30),
-		["Color Stroke"] = Color3.fromRGB(0, 0, 80),
-		["Color Theme"] = Color3.fromRGB(0, 0, 120),
-		["Color Text"] = Color3.fromRGB(255, 255, 255),
-		["Color Dark Text"] = Color3.fromRGB(180, 180, 180)
+		["Color Hub 2"] = Color3.fromRGB(5, 5, 40),
+		["Color Stroke"] = Color3.fromRGB(0, 0, 100),
+		["Color Theme"] = Color3.fromRGB(50, 50, 255),
+		["Color Text"] = Color3.fromRGB(250, 250, 255),
+		["Color Dark Text"] = Color3.fromRGB(190, 190, 220)
 	}
 }
-JustHub.Info = {Version="2.0.1"}
+JustHub.Info = {Version="2.1.1"}
 JustHub.Save = {UISize={550,380},TabSize=100,Theme="Darker"}
 JustHub.ConfigData = {}
 JustHub.ControlRegistry = {}
@@ -766,95 +766,99 @@ function SectionMethods:addMenu(n)
 	n = n or "Menu"
 	local f = createInstance("Frame", {
 		Name = n,
-		Size = UDim2.new(1, 0, 0, 40),
-		BackgroundColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Stroke"],
-		BackgroundTransparency = 0.3
+		Size = UDim2.new(1, 0, 0, 44),
+		BackgroundColor3 = Color3.fromRGB(60, 60, 70),
+		BorderSizePixel = 0
 	}, self.Content)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, f)
-	createInstance("UIGradient", {
-		Color = getCurrentTheme(JustHub.Save.Theme)["Color Hub 1"]
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, f)
+	local gradient = createInstance("UIGradient", {
+		Color = ColorSequence.new({
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(70, 70, 85)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(50, 50, 60))
+		}),
+		Rotation = 90
 	}, f)
 	local shadow = createInstance("TextLabel", {
 		Name = "MenuLabelShadow",
 		Text = n,
-		Size = UDim2.new(1, 0, 1, 0),
+		Size = UDim2.new(1, -16, 1, 0),
+		Position = UDim2.new(0, 10, 0, 2),
 		BackgroundTransparency = 1,
-		TextColor3 = Color3.new(0, 0, 0),
+		TextColor3 = Color3.fromRGB(0, 0, 0),
 		Font = Enum.Font.GothamBold,
-		TextSize = 16,
+		TextSize = 14,
 		TextXAlignment = Enum.TextXAlignment.Left,
-		Position = UDim2.new(0, 2, 0, 2)
+		TextStrokeTransparency = 0.9
 	}, f)
 	local label = createInstance("TextLabel", {
 		Name = "MenuLabel",
 		Text = n,
-		Size = UDim2.new(1, 0, 1, 0),
+		Size = UDim2.new(1, -16, 1, 0),
+		Position = UDim2.new(0, 8, 0, 0),
 		BackgroundTransparency = 1,
-		TextColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Text"],
+		TextColor3 = Color3.fromRGB(255, 255, 255),
 		Font = Enum.Font.GothamBold,
-		TextSize = 16,
+		TextSize = 14,
 		TextXAlignment = Enum.TextXAlignment.Left
 	}, f)
 	return f
 end
 
 function SectionMethods:addToggle(o)
-	o=o or {}
-	local t=o.Name or "Toggle"
-	local d=o.Default or false
-	local cb=o.Callback or function(x)end
-	local role=o.Role or nil
+	o = o or {}
+	local t = o.Name or "Toggle"
+	local d = o.Default or false
+	local cb = o.Callback or function(x) end
+	local role = o.Role or nil
 	if role and not JustHub:CheckRole(role) then
-		local hidden=createInstance("Frame",{Size=UDim2.new(1,0,0,0),BackgroundTransparency=1},self.Content)
+		local hidden = createInstance("Frame", {Size = UDim2.new(1, 0, 0, 0), BackgroundTransparency = 1}, self.Content)
 		return hidden
 	end
-	local f=createInstance("Frame",{Name=t.."Toggle",Size=UDim2.new(1,0,0,20),BackgroundColor3=Color3.fromRGB(40,40,40)},self.Content)
-	createInstance("UICorner",{CornerRadius=UDim.new(0,20)},f)
-	addBorder(f,getCurrentTheme(JustHub.Save.Theme)["Color Stroke"],1)
-	local l=createInstance("TextLabel",{Size=UDim2.new(0.7,0,1,0),Position=UDim2.new(0,0,0,0),BackgroundTransparency=1,Text=t,TextColor3=getCurrentTheme(JustHub.Save.Theme)["Color Text"],Font=Enum.Font.Gotham,TextSize=12,TextXAlignment=Enum.TextXAlignment.Left},f)
-	local sep=createInstance("Frame",{Size=UDim2.new(0,2,1,0),Position=UDim2.new(0.7,0,0,0),BackgroundColor3=Color3.fromRGB(255,255,255)},f)
-	createInstance("UICorner",{CornerRadius=UDim.new(0,1)},sep)
-	local tc=createInstance("Frame",{Size=UDim2.new(0.3,0,1,0),Position=UDim2.new(0.7,0,0,0),BackgroundTransparency=1},f)
-	local sw=createInstance("Frame",{Size=UDim2.new(0,35,0,15),Position=UDim2.new(1,-35,0.5,-7.5),BackgroundColor3=d and Color3.fromRGB(0,200,0) or Color3.fromRGB(100,100,100),BorderSizePixel=0},tc)
-	sw.Active=true
-	sw.Selectable=true
-	createInstance("UICorner",{CornerRadius=UDim.new(0,15)},sw)
-	local c=createInstance("Frame",{Size=UDim2.new(0,13,0,13),Position=d and UDim2.new(0,20,0.5,-6.5) or UDim2.new(0,2,0.5,-6.5),BackgroundColor3=Color3.new(1,1,1),BorderSizePixel=0},sw)
-	createInstance("UICorner",{CornerRadius=UDim.new(1,0)},c)
-	local s=d
+	local f = createInstance("Frame", {Name = t.."Toggle", Size = UDim2.new(1, 0, 0, 36), BackgroundColor3 = Color3.fromRGB(55, 55, 60), BorderSizePixel = 0}, self.Content)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, f)
+	local l = createInstance("TextLabel", {Size = UDim2.new(0.7, -8, 1, 0), Position = UDim2.new(0, 8, 0, 0), BackgroundTransparency = 1, Text = t, TextColor3 = Color3.fromRGB(230, 230, 240), Font = Enum.Font.GothamBold, TextSize = 13, TextXAlignment = Enum.TextXAlignment.Left}, f)
+	local sep = createInstance("Frame", {Size = UDim2.new(0, 1, 1, 0), Position = UDim2.new(0.7, 0, 0, 0), BackgroundColor3 = Color3.fromRGB(70, 70, 80)}, f)
+	local tc = createInstance("Frame", {Size = UDim2.new(0.3, -8, 1, 0), Position = UDim2.new(0.7, 8, 0, 0), BackgroundTransparency = 1}, f)
+	local sw = createInstance("Frame", {Size = UDim2.new(0, 44, 0, 22), Position = UDim2.new(1, -44, 0.5, -11), BackgroundColor3 = d and Color3.fromRGB(100, 255, 150) or Color3.fromRGB(80, 80, 90), BorderSizePixel = 0}, tc)
+	sw.Active = true
+	sw.Selectable = true
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 11)}, sw)
+	local c = createInstance("Frame", {Size = UDim2.new(0, 18, 0, 18), Position = d and UDim2.new(1, -20, 0.5, -9) or UDim2.new(0, 2, 0.5, -9), BackgroundColor3 = Color3.fromRGB(255, 255, 255), BorderSizePixel = 0}, sw)
+	createInstance("UICorner", {CornerRadius = UDim.new(1, 0)}, c)
+	createInstance("UIStroke", {Color = Color3.fromRGB(60, 60, 70), Thickness = 1}, c)
+	local s = d
 	if d then cb(true) else cb(false) end
-	JustHub.ConfigData[t]=s
-	JustHub:RegisterControl(t,function(v)
-		local old=s
-		s=v
+	JustHub.ConfigData[t] = s
+	JustHub:RegisterControl(t, function(v)
+		local old = s
+		s = v
 		if s then
-			c.Position=UDim2.new(0,20,0.5,-6.5)
-			sw.BackgroundColor3=Color3.fromRGB(0,200,0)
-			l.TextColor3=Color3.fromRGB(0,255,0)
+			TweenService:Create(c, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {Position = UDim2.new(1, -20, 0.5, -9)}):Play()
+			TweenService:Create(sw, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(100, 255, 150)}):Play()
+			TweenService:Create(l, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {TextColor3 = Color3.fromRGB(100, 255, 150)}):Play()
 		else
-			c.Position=UDim2.new(0,2,0.5,-6.5)
-			sw.BackgroundColor3=Color3.fromRGB(100,100,100)
-			l.TextColor3=Color3.fromRGB(255,255,255)
+			TweenService:Create(c, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {Position = UDim2.new(0, 2, 0.5, -9)}):Play()
+			TweenService:Create(sw, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(80, 80, 90)}):Play()
+			TweenService:Create(l, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {TextColor3 = Color3.fromRGB(230, 230, 240)}):Play()
 		end
-		JustHub:AddUndo(t,old,s)
+		JustHub:AddUndo(t, old, s)
 	end)
 	sw.InputBegan:Connect(function(i)
-		if i.UserInputType==Enum.UserInputType.MouseButton1 or i.UserInputType==Enum.UserInputType.Touch then
-			JustHub:PlaySound("ButtonClick")
-			local old=s
+		if i.UserInputType == Enum.UserInputType.MouseButton1 or i.UserInputType == Enum.UserInputType.Touch then
+			local old = s
 			if not s then
-				tweenProperty(c,{Position=UDim2.new(0,20,0.5,-6.5)},0.3)
-				tweenProperty(sw,{BackgroundColor3=Color3.fromRGB(0,200,0)},0.3)
-				tweenProperty(l,{TextColor3=Color3.fromRGB(0,255,0)},0.3)
+				TweenService:Create(c, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {Position = UDim2.new(1, -20, 0.5, -9)}):Play()
+				TweenService:Create(sw, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(100, 255, 150)}):Play()
+				TweenService:Create(l, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {TextColor3 = Color3.fromRGB(100, 255, 150)}):Play()
 			else
-				tweenProperty(c,{Position=UDim2.new(0,2,0.5,-6.5)},0.3)
-				tweenProperty(sw,{BackgroundColor3=Color3.fromRGB(100,100,100)},0.3)
-				tweenProperty(l,{TextColor3=Color3.fromRGB(255,255,255)},0.3)
+				TweenService:Create(c, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {Position = UDim2.new(0, 2, 0.5, -9)}):Play()
+				TweenService:Create(sw, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(80, 80, 90)}):Play()
+				TweenService:Create(l, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {TextColor3 = Color3.fromRGB(230, 230, 240)}):Play()
 			end
-			s=not s
-			JustHub.ConfigData[t]=s
+			s = not s
+			JustHub.ConfigData[t] = s
 			cb(s)
-			JustHub:AddUndo(t,old,s)
+			JustHub:AddUndo(t, old, s)
 		end
 	end)
 	return f
@@ -872,105 +876,30 @@ function SectionMethods:addSlider(o)
 		JustHub.ConfigData[n] = df
 	end
 	local cb = o.Callback or function(x) end
-	local TweenService = game:GetService("TweenService")
-	local f = createInstance("Frame", {Name = n.."Slider", Size = UDim2.new(1,0,0,25), BackgroundTransparency = 0, BackgroundColor3 = Color3.fromRGB(40,40,40)}, self.Content)
-	createInstance("UICorner", {CornerRadius = UDim.new(0,20)}, f)
-	addBorder(f, getCurrentTheme(JustHub.Save.Theme)["Color Stroke"], 1)
-	local l = createInstance("TextLabel", {
-		Name = "Label",
-		Text = n,
-		Size = UDim2.new(0.4,0,1,0),
-		Position = UDim2.new(0,5,0,0),
-		BackgroundTransparency = 1,
-		TextColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Text"],
-		Font = Enum.Font.GothamBold,
-		TextSize = 12,
-		TextXAlignment = Enum.TextXAlignment.Left
-	}, f)
-	local sc = createInstance("Frame", {
-		Name = "SliderContainer",
-		Size = UDim2.new(0.45,0,1,0),
-		Position = UDim2.new(0.4,5,0,0),
-		BackgroundTransparency = 1
-	}, f)
-	local sb = createInstance("Frame", {
-		Name = "SliderBar",
-		Size = UDim2.new(1,-20,0,4),
-		Position = UDim2.new(0,10,0.5,-2),
-		BackgroundColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Stroke"]
-	}, sc)
-	createInstance("UICorner", {CornerRadius = UDim.new(0,4)}, sb)
+	local f = createInstance("Frame", {Name = n.."Slider", Size = UDim2.new(1, 0, 0, 40), BackgroundColor3 = Color3.fromRGB(55, 55, 60), BorderSizePixel = 0}, self.Content)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, f)
+	local l = createInstance("TextLabel", {Name = "Label", Text = n, Size = UDim2.new(0.4, -8, 1, 0), Position = UDim2.new(0, 8, 0, 0), BackgroundTransparency = 1, TextColor3 = Color3.fromRGB(230, 230, 240), Font = Enum.Font.GothamBold, TextSize = 13, TextXAlignment = Enum.TextXAlignment.Left}, f)
+	local sc = createInstance("Frame", {Name = "SliderContainer", Size = UDim2.new(0.45, -8, 1, 0), Position = UDim2.new(0.4, 8, 0, 0), BackgroundTransparency = 1}, f)
+	local sb = createInstance("Frame", {Name = "SliderBar", Size = UDim2.new(1, -16, 0, 6), Position = UDim2.new(0, 8, 0.5, -3), BackgroundColor3 = Color3.fromRGB(70, 70, 80)}, sc)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 3)}, sb)
 	local defaultRatio = (df - mi) / (ma - mi)
-	local progressFill = createInstance("Frame", {
-		Name = "ProgressFill",
-		Size = UDim2.new(defaultRatio,0,1,0),
-		Position = UDim2.new(0,0,0,0),
-		BackgroundColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Theme"],
-		BorderSizePixel = 0
-	}, sb)
-	local sh = createInstance("Frame", {
-		Name = "SliderHandle",
-		Size = UDim2.new(0,12,0,12),
-		BackgroundColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Theme"],
-		Position = UDim2.new(defaultRatio, -6, 0.5, -6)
-	}, sb)
-	createInstance("UICorner", {CornerRadius = UDim.new(0,4)}, sh)
-	local vl = createInstance("TextBox", {
-		Name = "ValueBox",
-		Text = tostring(math.floor(df)),
-		Size = UDim2.new(0.15,0,1,0),
-		Position = UDim2.new(0.85,-5,0,0),
-		BackgroundTransparency = 0,
-		BackgroundColor3 = Color3.fromRGB(50,50,50),
-		TextColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Text"],
-		Font = Enum.Font.GothamBold,
-		TextSize = 12,
-		TextXAlignment = Enum.TextXAlignment.Center,
-		ClearTextOnFocus = false
-	}, f)
-	local drag = false
-	sh.InputBegan:Connect(function(i)
-		if i.UserInputType == Enum.UserInputType.MouseButton1 or i.UserInputType == Enum.UserInputType.Touch then
-			drag = true
-		end
+	local progressFill = createInstance("Frame", {Name = "ProgressFill", Size = UDim2.new(defaultRatio, 0, 1, 0), Position = UDim2.new(0, 0, 0, 0), BackgroundColor3 = Color3.fromRGB(100, 255, 150), BorderSizePixel = 0}, sb)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 3)}, progressFill)
+	local sh = createInstance("Frame", {Name = "SliderHandle", Size = UDim2.new(0, 16, 0, 16), BackgroundColor3 = Color3.fromRGB(255, 255, 255), Position = UDim2.new(defaultRatio, -8, 0.5, -8), BorderSizePixel = 0}, sb)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, sh)
+	createInstance("UIStroke", {Color = Color3.fromRGB(60, 60, 70), Thickness = 1}, sh)
+	local vl = createInstance("TextBox", {Name = "ValueBox", Text = tostring(math.floor(df)), Size = UDim2.new(0.15, -8, 0.8, 0), Position = UDim2.new(0.85, 8, 0.1, 0), BackgroundColor3 = Color3.fromRGB(70, 70, 80), TextColor3 = Color3.fromRGB(230, 230, 240), Font = Enum.Font.GothamBold, TextSize = 13, TextXAlignment = Enum.TextXAlignment.Center, ClearTextOnFocus = false, PlaceholderText = "0"}, f)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, vl)
+	vl.Focused:Connect(function()
+		TweenService:Create(vl, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(90, 90, 105)}):Play()
 	end)
-	sh.InputEnded:Connect(function(i)
-		if i.UserInputType == Enum.UserInputType.MouseButton1 or i.UserInputType == Enum.UserInputType.Touch then
-			drag = false
-			local currentValue = JustHub.ConfigData[n]
-			local finalRatio = math.clamp((currentValue - mi) / (ma - mi), 0, 1)
-			local tween = TweenService:Create(sh, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(finalRatio, -6, 0.5, -6)})
-			tween:Play()
-		end
-	end)
-	UserInputService.InputChanged:Connect(function(i)
-		if drag and (i.UserInputType == Enum.UserInputType.MouseMovement or i.UserInputType == Enum.UserInputType.Touch) then
-			local bp = sb.AbsolutePosition.X
-			local bw = sb.AbsoluteSize.X
-			local rp = math.clamp((i.Position.X - bp) / bw, 0, 1)
-			sh.Position = UDim2.new(rp, -6, 0.5, -6)
-			progressFill.Size = UDim2.new(rp, 0, 1, 0)
-			local val = mi + rp * (ma - mi)
-			vl.Text = tostring(math.floor(val))
-			JustHub.ConfigData[n] = val
-			cb(val)
-		end
-	end)
-	JustHub:RegisterControl(n, function(sv)
-		local nr = math.clamp((sv - mi) / (ma - mi), 0, 1)
-		local tween = TweenService:Create(sh, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(nr, -6, 0.5, -6)})
-		tween:Play()
-		vl.Text = tostring(math.floor(sv))
-		local tween2 = TweenService:Create(progressFill, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(nr, 0, 1, 0)})
-		tween2:Play()
-	end)
-	vl.Focused:Connect(function() end)
 	vl.FocusLost:Connect(function(enterPressed)
+		TweenService:Create(vl, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(70, 70, 80)}):Play()
 		local newVal = tonumber(vl.Text)
 		if newVal then
 			newVal = math.clamp(newVal, mi, ma)
 			local newRatio = (newVal - mi) / (ma - mi)
-			local tween = TweenService:Create(sh, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(newRatio, -6, 0.5, -6)})
+			local tween = TweenService:Create(sh, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(newRatio, -8, 0.5, -8)})
 			tween:Play()
 			local tween2 = TweenService:Create(progressFill, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(newRatio, 0, 1, 0)})
 			tween2:Play()
@@ -981,6 +910,44 @@ function SectionMethods:addSlider(o)
 			vl.Text = tostring(math.floor(JustHub.ConfigData[n]))
 		end
 	end)
+	local drag = false
+	sh.InputBegan:Connect(function(i)
+		if i.UserInputType == Enum.UserInputType.MouseButton1 or i.UserInputType == Enum.UserInputType.Touch then
+			drag = true
+			TweenService:Create(sh, TweenInfo.new(0.1, Enum.EasingStyle.Quad), {Size = UDim2.new(0, 20, 0, 20), Position = UDim2.new(sh.Position.X.Scale, -10, 0.5, -10)}):Play()
+		end
+	end)
+	sh.InputEnded:Connect(function(i)
+		if i.UserInputType == Enum.UserInputType.MouseButton1 or i.UserInputType == Enum.UserInputType.Touch then
+			drag = false
+			TweenService:Create(sh, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {Size = UDim2.new(0, 16, 0, 16), Position = UDim2.new(sh.Position.X.Scale, -8, 0.5, -8)}):Play()
+			local currentValue = JustHub.ConfigData[n]
+			local finalRatio = math.clamp((currentValue - mi) / (ma - mi), 0, 1)
+			local tween = TweenService:Create(sh, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(finalRatio, -8, 0.5, -8)})
+			tween:Play()
+		end
+	end)
+	UserInputService.InputChanged:Connect(function(i)
+		if drag and (i.UserInputType == Enum.UserInputType.MouseMovement or i.UserInputType == Enum.UserInputType.Touch) then
+			local bp = sb.AbsolutePosition.X
+			local bw = sb.AbsoluteSize.X
+			local rp = math.clamp((i.Position.X - bp) / bw, 0, 1)
+			sh.Position = UDim2.new(rp, -8, 0.5, -8)
+			progressFill.Size = UDim2.new(rp, 0, 1, 0)
+			local val = mi + rp * (ma - mi)
+			vl.Text = tostring(math.floor(val))
+			JustHub.ConfigData[n] = val
+			cb(val)
+		end
+	end)
+	JustHub:RegisterControl(n, function(sv)
+		local nr = math.clamp((sv - mi) / (ma - mi), 0, 1)
+		local tween = TweenService:Create(sh, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(nr, -8, 0.5, -8)})
+		tween:Play()
+		vl.Text = tostring(math.floor(sv))
+		local tween2 = TweenService:Create(progressFill, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(nr, 0, 1, 0)})
+		tween2:Play()
+	end)
 	return f
 end
 
@@ -989,11 +956,16 @@ function SectionMethods:addTextBox(o)
 	local n = o.Name or "TextBox"
 	local d = o.Default or ""
 	local cb = o.Callback or function(x) end
-	local f = createInstance("Frame", {Name = n.."TextBox", Size = UDim2.new(1, 0, 0, 20), BackgroundTransparency = 1}, self.Content)
-	addBorder(f, getCurrentTheme(JustHub.Save.Theme)["Color Stroke"], 1)
-	local l = createInstance("TextLabel", {Name = "Label", Text = n, Size = UDim2.new(0.7, 0, 1, 0), Position = UDim2.new(0, 0, 0, 0), BackgroundTransparency = 1, TextColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Text"], Font = Enum.Font.Gotham, TextSize = 10}, f)
-	local tb = createInstance("TextBox", {Name = "Input", Text = d, Size = UDim2.new(0.3, 0, 1, 0), Position = UDim2.new(0.7, 0, 0, 0), BackgroundColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Stroke"], TextColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Text"], Font = Enum.Font.Gotham, TextSize = 10, TextWrapped = true}, f)
+	local f = createInstance("Frame", {Name = n.."TextBox", Size = UDim2.new(1, 0, 0, 36), BackgroundColor3 = Color3.fromRGB(55, 55, 60), BorderSizePixel = 0}, self.Content)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, f)
+	local l = createInstance("TextLabel", {Name = "Label", Text = n, Size = UDim2.new(0.7, -8, 1, 0), Position = UDim2.new(0, 8, 0, 0), BackgroundTransparency = 1, TextColor3 = Color3.fromRGB(230, 230, 240), Font = Enum.Font.GothamBold, TextSize = 13, TextXAlignment = Enum.TextXAlignment.Left}, f)
+	local tb = createInstance("TextBox", {Name = "Input", Text = d, Size = UDim2.new(0.3, -8, 0.8, 0), Position = UDim2.new(0.7, 8, 0.1, 0), BackgroundColor3 = Color3.fromRGB(70, 70, 80), TextColor3 = Color3.fromRGB(230, 230, 240), Font = Enum.Font.Gotham, TextSize = 13, ClearTextOnFocus = false, PlaceholderText = "Enter text...", TextWrapped = true, MultiLine = false}, f)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, tb)
+	tb.Focused:Connect(function()
+		TweenService:Create(tb, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(90, 90, 105)}):Play()
+	end)
 	tb.FocusLost:Connect(function(e)
+		TweenService:Create(tb, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(70, 70, 80)}):Play()
 		JustHub.ConfigData[n] = tb.Text
 		cb(tb.Text)
 	end)
@@ -1010,43 +982,54 @@ function SectionMethods:addDropdown(o)
 	local it = o.Items or {}
 	local presets = o.Presets or {}
 	local cb = o.Callback or function(x) end
-	local ch = 20
-	local searchH = 25
+	local ch = 36
+	local searchH = 30
 	local itemsCount = #it
-	local itemListHeight = (itemsCount > 0 and (itemsCount * 20 + ((itemsCount - 1) * 2)) or 0)
-	local iconsH = 25
+	local itemListHeight = (itemsCount > 0 and (itemsCount * 28 + ((itemsCount - 1) * 4)) or 0)
+	local iconsH = 32
 	local oh = ch + searchH + itemListHeight + iconsH
-	local f = createInstance("Frame", {Name = t.."Dropdown", BackgroundTransparency = 0, BackgroundColor3 = Color3.fromRGB(40,40,40)}, self.Content)
+	local f = createInstance("Frame", {Name = t.."Dropdown", BackgroundTransparency = 1, BackgroundColor3 = Color3.fromRGB(55, 55, 60)}, self.Content)
 	f.Size = UDim2.new(1, 0, 0, ch)
-	createInstance("UICorner", {CornerRadius = UDim.new(0,20)}, f)
-	addBorder(f, getCurrentTheme(JustHub.Save.Theme)["Color Stroke"], 1)
-	local l = createInstance("TextLabel", {Name = "Label", Text = t, Size = UDim2.new(0.7, 0, 0, ch), Position = UDim2.new(0, 5, 0, 0), BackgroundTransparency = 1, TextColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Text"], Font = Enum.Font.GothamBold, TextSize = 12, TextXAlignment = Enum.TextXAlignment.Left}, f)
-	local b = createInstance("TextButton", {Name = "DropdownButton", Text = (df ~= "" and (df .. " ▼") or "Select ▼"), Size = UDim2.new(0.3, 0, 0, ch), Position = UDim2.new(0.7, -5, 0, 0), BackgroundTransparency = 0, BackgroundColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Stroke"], Font = Enum.Font.GothamBold, TextSize = 12, TextColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Text"]}, f)
-	createInstance("UICorner", {CornerRadius = UDim.new(0,20)}, b)
-	local lf = createInstance("Frame", {Name = "DropdownList", BackgroundTransparency = 0, BackgroundColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Hub 2"], Visible = false, Position = UDim2.new(0, 0, 0, ch)}, f)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, f)
+	local l = createInstance("TextLabel", {Name = "Label", Text = t, Size = UDim2.new(0.7, -8, 1, 0), Position = UDim2.new(0, 8, 0, 0), BackgroundTransparency = 1, TextColor3 = Color3.fromRGB(230, 230, 240), Font = Enum.Font.GothamBold, TextSize = 13, TextXAlignment = Enum.TextXAlignment.Left}, f)
+	local b = createInstance("TextButton", {Name = "DropdownButton", Text = (df ~= "" and (df .. " ▼") or "Select ▼"), Size = UDim2.new(0.3, -8, 1, 0), Position = UDim2.new(0.7, 8, 0, 0), BackgroundTransparency = 1, BackgroundColor3 = Color3.fromRGB(70, 70, 80), TextColor3 = Color3.fromRGB(255, 255, 255), Font = Enum.Font.GothamBold, TextSize = 13, AutoButtonColor = false}, f)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, b)
+	b.MouseEnter:Connect(function()
+		TweenService:Create(b, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(90, 90, 105)}):Play()
+	end)
+	b.MouseLeave:Connect(function()
+		TweenService:Create(b, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(70, 70, 80)}):Play()
+	end)
+	local lf = createInstance("Frame", {Name = "DropdownList", BackgroundTransparency = 1, BackgroundColor3 = Color3.fromRGB(45, 45, 50), Visible = false, Position = UDim2.new(0, 0, 0, ch), ZIndex = 10}, f)
 	lf.Size = UDim2.new(1, 0, 0, oh - ch)
-	createInstance("UIListLayout", {SortOrder = Enum.SortOrder.LayoutOrder, Padding = UDim.new(0, 5)}, lf)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, lf)
 	local dt = false
 	b.MouseButton1Click:Connect(function()
 		if dt then
-			tweenProperty(f, {Size = UDim2.new(1, 0, 0, ch)}, 0.2)
-			tweenProperty(b, {TextColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Text"]}, 0.2)
-			tweenProperty(lf, {Position = UDim2.new(0, 0, 0, ch - 10)}, 0.2)
+			TweenService:Create(f, TweenInfo.new(0.2, Enum.EasingStyle.Quint), {Size = UDim2.new(1, 0, 0, ch)}):Play()
+			TweenService:Create(b, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {TextColor3 = Color3.fromRGB(255, 255, 255)}):Play()
+			TweenService:Create(lf, TweenInfo.new(0.2, Enum.EasingStyle.Quint), {Position = UDim2.new(0, 0, 0, ch - 10)}):Play()
 			wait(0.2)
 			lf.Visible = false
 		else
 			lf.Position = UDim2.new(0, 0, 0, ch - 10)
 			lf.Visible = true
-			tweenProperty(f, {Size = UDim2.new(1, 0, 0, oh)}, 0.2)
-			tweenProperty(b, {TextColor3 = Color3.fromRGB(0, 255, 0)}, 0.2)
-			tweenProperty(lf, {Position = UDim2.new(0, 0, 0, ch)}, 0.2)
+			TweenService:Create(f, TweenInfo.new(0.2, Enum.EasingStyle.Quint), {Size = UDim2.new(1, 0, 0, oh)}):Play()
+			TweenService:Create(b, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {TextColor3 = Color3.fromRGB(100, 255, 150)}):Play()
+			TweenService:Create(lf, TweenInfo.new(0.2, Enum.EasingStyle.Quint), {Position = UDim2.new(0, 0, 0, ch)}):Play()
 		end
 		dt = not dt
 	end)
-	local searchBox = createInstance("TextBox", {Name = "SearchBox", Text = "", PlaceholderText = "Search...", Size = UDim2.new(1, -10, 0, searchH), Position = UDim2.new(0, 5, 0, 5), BackgroundTransparency = 0, BackgroundColor3 = Color3.fromRGB(30,30,30), TextColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Text"], Font = Enum.Font.GothamBold, TextSize = 12, ClearTextOnFocus = false}, lf)
-	createInstance("UICorner", {CornerRadius = UDim.new(0,5)}, searchBox)
-	local itemsContainer = createInstance("Frame", {Name = "ItemsContainer", Size = UDim2.new(1, 0, 0, itemListHeight), Position = UDim2.new(0, 0, 0, searchH + 10), BackgroundTransparency = 1}, lf)
-	createInstance("UIListLayout", {Padding = UDim.new(0, 2), SortOrder = Enum.SortOrder.LayoutOrder, HorizontalAlignment = Enum.HorizontalAlignment.Left}, itemsContainer)
+	local searchBox = createInstance("TextBox", {Name = "SearchBox", Text = "", PlaceholderText = "🔍 Search...", Size = UDim2.new(1, -16, 0, searchH), Position = UDim2.new(0, 8, 0, 8), BackgroundTransparency = 1, BackgroundColor3 = Color3.fromRGB(60, 60, 70), TextColor3 = Color3.fromRGB(230, 230, 240), Font = Enum.Font.GothamBold, TextSize = 13, ClearTextOnFocus = false}, lf)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, searchBox)
+	searchBox.Focused:Connect(function()
+		TweenService:Create(searchBox, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(80, 80, 95)}):Play()
+	end)
+	searchBox.FocusLost:Connect(function()
+		TweenService:Create(searchBox, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(60, 60, 70)}):Play()
+	end)
+	local itemsContainer = createInstance("Frame", {Name = "ItemsContainer", Size = UDim2.new(1, 0, 0, itemListHeight), Position = UDim2.new(0, 0, 0, searchH + 16), BackgroundTransparency = 1}, lf)
+	createInstance("UIListLayout", {Padding = UDim.new(0, 4), SortOrder = Enum.SortOrder.LayoutOrder, HorizontalAlignment = Enum.HorizontalAlignment.Left}, itemsContainer)
 	local function populateItems()
 		for _, child in ipairs(itemsContainer:GetChildren()) do
 			if child:IsA("TextButton") then
@@ -1054,14 +1037,19 @@ function SectionMethods:addDropdown(o)
 			end
 		end
 		for _, op in ipairs(it) do
-			local btn = createInstance("TextButton", {Size = UDim2.new(1, 0, 0, 20), Text = op, TextColor3 = Color3.fromRGB(255,255,255), BackgroundTransparency = 0, BackgroundColor3 = Color3.fromRGB(40,40,40), Font = Enum.Font.GothamBold, TextSize = 12}, itemsContainer)
-			createInstance("UICorner", {CornerRadius = UDim.new(0,5)}, btn)
-			addBorder(btn, getCurrentTheme(JustHub.Save.Theme)["Color Stroke"], 1)
+			local btn = createInstance("TextButton", {Size = UDim2.new(1, -16, 0, 28), Position = UDim2.new(0, 8, 0, 0), Text = op, TextColor3 = Color3.fromRGB(230, 230, 240), BackgroundTransparency = 1, BackgroundColor3 = Color3.fromRGB(60, 60, 70), Font = Enum.Font.GothamBold, TextSize = 13, AutoButtonColor = false}, itemsContainer)
+			createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, btn)
+			btn.MouseEnter:Connect(function()
+				TweenService:Create(btn, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(80, 80, 95)}):Play()
+			end)
+			btn.MouseLeave:Connect(function()
+				TweenService:Create(btn, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(60, 60, 70)}):Play()
+			end)
 			btn.MouseButton1Click:Connect(function()
 				l.Text = t.." - "..op
 				JustHub.ConfigData[t] = op
 				pcall(cb, op)
-				tweenProperty(f, {Size = UDim2.new(1, 0, 0, ch)}, 0.2)
+				TweenService:Create(f, TweenInfo.new(0.2, Enum.EasingStyle.Quint), {Size = UDim2.new(1, 0, 0, ch)}):Play()
 				dt = false
 				wait(0.2)
 				lf.Visible = false
@@ -1074,37 +1062,48 @@ function SectionMethods:addDropdown(o)
 		for _, btn in ipairs(itemsContainer:GetChildren()) do
 			if btn:IsA("TextButton") then
 				local txt = string.lower(btn.Text)
-				btn.Visible = txt:find(filter) and true or false
+				btn.Visible = (filter == "" or txt:find(filter, 1, true)) and true or false
 			end
 		end
 	end)
-	local iconsContainer = createInstance("Frame", {Name = "IconsContainer", Size = UDim2.new(1, 0, 0, iconsH), Position = UDim2.new(0, 0, 0, searchH + 10 + itemListHeight), BackgroundTransparency = 0, BackgroundColor3 = Color3.fromRGB(30,30,30)}, lf)
-	local leftIcons = createInstance("Frame", {Name = "LeftIcons", Size = UDim2.new(1, -30, 1, 0), Position = UDim2.new(0, 5, 0, 0), BackgroundTransparency = 1}, iconsContainer)
-	createInstance("UIListLayout", {Padding = UDim.new(0, 5), FillDirection = Enum.FillDirection.Horizontal, SortOrder = Enum.SortOrder.LayoutOrder, HorizontalAlignment = Enum.HorizontalAlignment.Left}, leftIcons)
-	local rightIcons = createInstance("Frame", {Name = "RightIcons", Size = UDim2.new(0, 25, 1, 0), Position = UDim2.new(1, -30, 0, 0), BackgroundTransparency = 1}, iconsContainer)
+	local iconsContainer = createInstance("Frame", {Name = "IconsContainer", Size = UDim2.new(1, 0, 0, iconsH), Position = UDim2.new(0, 0, 0, searchH + 16 + itemListHeight), BackgroundTransparency = 1}, lf)
+	local leftIcons = createInstance("Frame", {Name = "LeftIcons", Size = UDim2.new(1, -36, 1, 0), Position = UDim2.new(0, 8, 0, 0), BackgroundTransparency = 1}, iconsContainer)
+	createInstance("UIListLayout", {Padding = UDim.new(0, 6), FillDirection = Enum.FillDirection.Horizontal, SortOrder = Enum.SortOrder.LayoutOrder, HorizontalAlignment = Enum.HorizontalAlignment.Left}, leftIcons)
+	local rightIcons = createInstance("Frame", {Name = "RightIcons", Size = UDim2.new(0, 28, 1, 0), Position = UDim2.new(1, -36, 0, 0), BackgroundTransparency = 1}, iconsContainer)
 	if #presets > 0 then
 		for _, preset in ipairs(presets) do
-			local pbtn = createInstance("TextButton", {Size = UDim2.new(0,25,1,0), Text = "★", TextColor3 = Color3.fromRGB(255,255,255), BackgroundTransparency = 0, BackgroundColor3 = Color3.fromRGB(40,40,40), Font = Enum.Font.GothamBold, TextSize = 12}, leftIcons)
-			createInstance("UICorner", {CornerRadius = UDim.new(0,5)}, pbtn)
-			addBorder(pbtn, getCurrentTheme(JustHub.Save.Theme)["Color Stroke"], 1)
+			local pbtn = createInstance("TextButton", {Size = UDim2.new(0, 28, 1, 0), Text = "★", TextColor3 = Color3.fromRGB(255, 220, 100), BackgroundTransparency = 1, BackgroundColor3 = Color3.fromRGB(70, 60, 40), Font = Enum.Font.GothamBold, TextSize = 14, AutoButtonColor = false}, leftIcons)
+			createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, pbtn)
+			pbtn.MouseEnter:Connect(function()
+				TweenService:Create(pbtn, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(90, 80, 60)}):Play()
+			end)
+			pbtn.MouseLeave:Connect(function()
+				TweenService:Create(pbtn, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(70, 60, 40)}):Play()
+			end)
 			pbtn.MouseButton1Click:Connect(function()
 				l.Text = t.." - "..preset
 				JustHub.ConfigData[t] = preset
 				pcall(cb, preset)
-				tweenProperty(f, {Size = UDim2.new(1, 0, 0, ch)}, 0.2)
+				TweenService:Create(f, TweenInfo.new(0.2, Enum.EasingStyle.Quint), {Size = UDim2.new(1, 0, 0, ch)}):Play()
 				dt = false
 				wait(0.2)
 				lf.Visible = false
 			end)
 		end
 	end
-	local resetButton = createInstance("TextButton", {Name = "ResetButton", Text = "↺", Size = UDim2.new(1, 0, 1, 0), BackgroundTransparency = 0, BackgroundColor3 = Color3.fromRGB(40,40,40), Font = Enum.Font.GothamBold, TextSize = 12, TextColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Text"]}, rightIcons)
-	createInstance("UICorner", {CornerRadius = UDim.new(0,5)}, resetButton)
+	local resetButton = createInstance("TextButton", {Name = "ResetButton", Text = "↺", Size = UDim2.new(1, 0, 1, 0), BackgroundTransparency = 1, BackgroundColor3 = Color3.fromRGB(70, 70, 80), Font = Enum.Font.GothamBold, TextSize = 14, TextColor3 = Color3.fromRGB(255, 200, 200), AutoButtonColor = false}, rightIcons)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, resetButton)
+	resetButton.MouseEnter:Connect(function()
+		TweenService:Create(resetButton, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(90, 90, 105)}):Play()
+	end)
+	resetButton.MouseLeave:Connect(function()
+		TweenService:Create(resetButton, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(70, 70, 80)}):Play()
+	end)
 	resetButton.MouseButton1Click:Connect(function()
 		l.Text = t.." - "..df
 		JustHub.ConfigData[t] = df
 		pcall(cb, df)
-		tweenProperty(f, {Size = UDim2.new(1, 0, 0, ch)}, 0.2)
+		TweenService:Create(f, TweenInfo.new(0.2, Enum.EasingStyle.Quint), {Size = UDim2.new(1, 0, 0, ch)}):Play()
 		dt = false
 		wait(0.2)
 		lf.Visible = false
@@ -1120,21 +1119,26 @@ function SectionMethods:addDropdown(o)
 				v:Destroy()
 				dt = false
 				l.Text = t
-				tweenProperty(f, {Size = UDim2.new(1, 0, 0, ch)}, 0.2)
+				TweenService:Create(f, TweenInfo.new(0.2, Enum.EasingStyle.Quint), {Size = UDim2.new(1, 0, 0, ch)}):Play()
 			end
 		end
 	end
 	function upd:Refresh(nl)
 		nl = nl or {}
 		for i, v in pairs(nl) do
-			local btn = createInstance("TextButton", {Size = UDim2.new(1, 0, 0, 25), Text = v, TextColor3 = Color3.fromRGB(255,255,255), BackgroundTransparency = 0, BackgroundColor3 = Color3.fromRGB(40,40,40), Font = Enum.Font.GothamBold, TextSize = 12}, lf)
-			createInstance("UICorner", {CornerRadius = UDim.new(0,5)}, btn)
-			addBorder(btn, getCurrentTheme(JustHub.Save.Theme)["Color Stroke"], 1)
+			local btn = createInstance("TextButton", {Size = UDim2.new(1, -16, 0, 28), Position = UDim2.new(0, 8, 0, 0), Text = v, TextColor3 = Color3.fromRGB(230, 230, 240), BackgroundTransparency = 1, BackgroundColor3 = Color3.fromRGB(60, 60, 70), Font = Enum.Font.GothamBold, TextSize = 13, AutoButtonColor = false}, itemsContainer)
+			createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, btn)
+			btn.MouseEnter:Connect(function()
+				TweenService:Create(btn, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(80, 80, 95)}):Play()
+			end)
+			btn.MouseLeave:Connect(function()
+				TweenService:Create(btn, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(60, 60, 70)}):Play()
+			end)
 			btn.MouseButton1Click:Connect(function()
 				dt = false
 				l.Text = t.." - "..v
 				pcall(cb, v)
-				tweenProperty(f, {Size = UDim2.new(1, 0, 0, ch)}, 0.2)
+				TweenService:Create(f, TweenInfo.new(0.2, Enum.EasingStyle.Quint), {Size = UDim2.new(1, 0, 0, ch)}):Play()
 			end)
 		end
 	end
@@ -1142,138 +1146,193 @@ function SectionMethods:addDropdown(o)
 end
 
 function SectionMethods:addColorPicker(o)
-	o=o or {}
-	local n=o.Name or "ColorPicker"
-	local d=o.Default or Color3.fromRGB(255,255,255)
-	local cb=o.Callback or function(x)end
-	local role=o.Role or nil
+	o = o or {}
+	local n = o.Name or "ColorPicker"
+	local d = o.Default or Color3.fromRGB(255, 255, 255)
+	local cb = o.Callback or function(x) end
+	local role = o.Role or nil
 	if role and not JustHub:CheckRole(role) then
-		local hidden=createInstance("Frame",{Size=UDim2.new(1,0,0,0),BackgroundTransparency=1},self.Content)
+		local hidden = createInstance("Frame", {Size = UDim2.new(1, 0, 0, 0), BackgroundTransparency = 1}, self.Content)
 		return hidden
 	end
-	local f=createInstance("Frame",{Name=n.."ColorPicker",Size=UDim2.new(1,0,0,50),BackgroundTransparency=1},self.Content)
-	addBorder(f,getCurrentTheme(JustHub.Save.Theme)["Color Stroke"],1)
-	local l=createInstance("TextLabel",{Name="Label",Text=n,Size=UDim2.new(1,0,0,20),BackgroundTransparency=1,TextColor3=getCurrentTheme(JustHub.Save.Theme)["Color Text"],Font=Enum.Font.Gotham,TextSize=10,TextXAlignment=Enum.TextXAlignment.Left},f)
-	local preview=createInstance("Frame",{Name="Preview",Size=UDim2.new(0,50,0,20),Position=UDim2.new(1,-60,0,0),BackgroundColor3=d,BorderSizePixel=0},f)
-	local r=createInstance("TextBox",{Name="R",Text=tostring(math.floor(d.R*255)),Size=UDim2.new(0,30,0,20),Position=UDim2.new(0,5,0,25),BackgroundColor3=getCurrentTheme(JustHub.Save.Theme)["Color Stroke"],TextColor3=getCurrentTheme(JustHub.Save.Theme)["Color Text"],Font=Enum.Font.Gotham,TextSize=10},f)
-	local g=createInstance("TextBox",{Name="G",Text=tostring(math.floor(d.G*255)),Size=UDim2.new(0,30,0,20),Position=UDim2.new(0,40,0,25),BackgroundColor3=getCurrentTheme(JustHub.Save.Theme)["Color Stroke"],TextColor3=getCurrentTheme(JustHub.Save.Theme)["Color Text"],Font=Enum.Font.Gotham,TextSize=10},f)
-	local b=createInstance("TextBox",{Name="B",Text=tostring(math.floor(d.B*255)),Size=UDim2.new(0,30,0,20),Position=UDim2.new(0,75,0,25),BackgroundColor3=getCurrentTheme(JustHub.Save.Theme)["Color Stroke"],TextColor3=getCurrentTheme(JustHub.Save.Theme)["Color Text"],Font=Enum.Font.Gotham,TextSize=10},f)
+	local f = createInstance("Frame", {Name = n .. "ColorPicker", Size = UDim2.new(1, 0, 0, 60), BackgroundColor3 = Color3.fromRGB(55, 55, 60), BorderSizePixel = 0}, self.Content)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, f)
+	local l = createInstance("TextLabel", {Name = "Label", Text = n, Size = UDim2.new(1, 0, 0, 24), BackgroundTransparency = 1, TextColor3 = Color3.fromRGB(230, 230, 240), Font = Enum.Font.GothamBold, TextSize = 13, TextXAlignment = Enum.TextXAlignment.Left}, f)
+	local preview = createInstance("Frame", {Name = "Preview", Size = UDim2.new(0, 48, 0, 28), Position = UDim2.new(1, -52, 0, 16), BackgroundColor3 = d, BorderSizePixel = 0}, f)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, preview)
+	createInstance("UIStroke", {Color = Color3.fromRGB(100, 100, 110), Thickness = 1}, preview)
+	local r = createInstance("TextBox", {Name = "R", Text = tostring(math.floor(d.R * 255)), Size = UDim2.new(0, 40, 0, 28), Position = UDim2.new(0, 8, 0, 26), BackgroundColor3 = Color3.fromRGB(70, 50, 50), TextColor3 = Color3.fromRGB(255, 200, 200), Font = Enum.Font.GothamBold, TextSize = 13, ClearTextOnFocus = false, PlaceholderText = "R"}, f)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, r)
+	local g = createInstance("TextBox", {Name = "G", Text = tostring(math.floor(d.G * 255)), Size = UDim2.new(0, 40, 0, 28), Position = UDim2.new(0, 52, 0, 26), BackgroundColor3 = Color3.fromRGB(50, 70, 50), TextColor3 = Color3.fromRGB(200, 255, 200), Font = Enum.Font.GothamBold, TextSize = 13, ClearTextOnFocus = false, PlaceholderText = "G"}, f)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, g)
+	local b = createInstance("TextBox", {Name = "B", Text = tostring(math.floor(d.B * 255)), Size = UDim2.new(0, 40, 0, 28), Position = UDim2.new(0, 96, 0, 26), BackgroundColor3 = Color3.fromRGB(50, 50, 70), TextColor3 = Color3.fromRGB(200, 200, 255), Font = Enum.Font.GothamBold, TextSize = 13, ClearTextOnFocus = false, PlaceholderText = "B"}, f)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, b)
 	local function updateColor()
-		local rr=tonumber(r.Text) or 255
-		local gg=tonumber(g.Text) or 255
-		local bb=tonumber(b.Text) or 255
-		rr=math.clamp(rr,0,255)
-		gg=math.clamp(gg,0,255)
-		bb=math.clamp(bb,0,255)
-		local c3=Color3.fromRGB(rr,gg,bb)
-		preview.BackgroundColor3=c3
-		JustHub.ConfigData[n]=c3
+		local rr = tonumber(r.Text) or 0
+		local gg = tonumber(g.Text) or 0
+		local bb = tonumber(b.Text) or 0
+		rr = math.clamp(rr, 0, 255)
+		gg = math.clamp(gg, 0, 255)
+		bb = math.clamp(bb, 0, 255)
+		local c3 = Color3.fromRGB(rr, gg, bb)
+		preview.BackgroundColor3 = c3
+		JustHub.ConfigData[n] = c3
 		cb(c3)
 	end
-	r.FocusLost:Connect(function() updateColor() end)
-	g.FocusLost:Connect(function() updateColor() end)
-	b.FocusLost:Connect(function() updateColor() end)
-	JustHub:RegisterControl(n,function(sv)
-		if typeof(sv)=="Color3" then
-			r.Text=tostring(math.floor(sv.R*255))
-			g.Text=tostring(math.floor(sv.G*255))
-			b.Text=tostring(math.floor(sv.B*255))
-			preview.BackgroundColor3=sv
+	r.FocusLost:Connect(updateColor)
+	g.FocusLost:Connect(updateColor)
+	b.FocusLost:Connect(updateColor)
+	JustHub:RegisterControl(n, function(sv)
+		if typeof(sv) == "Color3" then
+			r.Text = tostring(math.floor(sv.R * 255))
+			g.Text = tostring(math.floor(sv.G * 255))
+			b.Text = tostring(math.floor(sv.B * 255))
+			preview.BackgroundColor3 = sv
 		end
 	end)
 	return f
 end
 
 function SectionMethods:addScriptBox(o)
-	o=o or {}
-	local n=o.Name or "ScriptBox"
-	local d=o.Default or ""
-	local cb=o.Callback or function(scr)end
-	local role=o.Role or nil
+	o = o or {}
+	local n = o.Name or "ScriptBox"
+	local d = o.Default or ""
+	local cb = o.Callback or function(scr) end
+	local role = o.Role or nil
 	if role and not JustHub:CheckRole(role) then
-		local hidden=createInstance("Frame",{Size=UDim2.new(1,0,0,0),BackgroundTransparency=1},self.Content)
+		local hidden = createInstance("Frame", {Size = UDim2.new(1, 0, 0, 0), BackgroundTransparency = 1}, self.Content)
 		return hidden
 	end
-	local f=createInstance("Frame",{Name=n.."ScriptBox",Size=UDim2.new(1,0,0,70),BackgroundTransparency=1},self.Content)
-	addBorder(f,getCurrentTheme(JustHub.Save.Theme)["Color Stroke"],1)
-	local l=createInstance("TextLabel",{Name="Label",Text=n,Size=UDim2.new(1,0,0,20),Position=UDim2.new(0,0,0,0),BackgroundTransparency=1,TextColor3=getCurrentTheme(JustHub.Save.Theme)["Color Text"],Font=Enum.Font.Gotham,TextSize=10},f)
-	local tb=createInstance("TextBox",{Name="ScriptInput",Text=d,Size=UDim2.new(1,-10,0,40),Position=UDim2.new(0,5,0,25),BackgroundColor3=getCurrentTheme(JustHub.Save.Theme)["Color Stroke"],TextColor3=getCurrentTheme(JustHub.Save.Theme)["Color Text"],Font=Enum.Font.Code,TextSize=12,ClearTextOnFocus=false,MultiLine=true,TextWrapped=false},f)
-	local runBtn=createInstance("TextButton",{Name="RunButton",Text="Run",Size=UDim2.new(0,40,0,20),Position=UDim2.new(1,-45,0,25),BackgroundColor3=getCurrentTheme(JustHub.Save.Theme)["Color Theme"],TextColor3=getCurrentTheme(JustHub.Save.Theme)["Color Text"],Font=Enum.Font.GothamBold,TextSize=10},f)
-	createInstance("UICorner",{CornerRadius=UDim.new(0,6)},runBtn)
-	runBtn.MouseButton1Click:Connect(function()
+	local f = createInstance("Frame", {Name = n .. "ScriptBox", Size = UDim2.new(1, 0, 0, 80), BackgroundColor3 = Color3.fromRGB(55, 55, 60), BorderSizePixel = 0}, self.Content)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, f)
+	local l = createInstance("TextLabel", {Name = "Label", Text = n, Size = UDim2.new(1, 0, 0, 24), Position = UDim2.new(0, 0, 0, 0), BackgroundTransparency = 1, TextColor3 = Color3.fromRGB(230, 230, 240), Font = Enum.Font.GothamBold, TextSize = 13, TextXAlignment = Enum.TextXAlignment.Left}, f)
+	local tb = createInstance("TextBox", {Name = "ScriptInput", Text = d, Size = UDim2.new(1, -50, 0, 48), Position = UDim2.new(0, 0, 0, 26), BackgroundColor3 = Color3.fromRGB(45, 45, 50), TextColor3 = Color3.fromRGB(220, 220, 230), Font = Enum.Font.Code, TextSize = 13, ClearTextOnFocus = false, MultiLine = true, TextWrapped = true, PlaceholderText = "-- Paste script here"}, f)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, tb)
+	tb.Focused:Connect(function()
+		TweenService:Create(tb, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(60, 60, 70)}):Play()
+	end)
+	tb.FocusLost:Connect(function()
+		TweenService:Create(tb, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(45, 45, 50)}):Play()
+	end)
+	local runBtn = createInstance("TextButton", {Name = "RunButton", Text = "▶ Run", Size = UDim2.new(0, 48, 0, 28), Position = UDim2.new(1, -52, 0, 26), BackgroundColor3 = Color3.fromRGB(80, 80, 95), TextColor3 = Color3.fromRGB(255, 255, 255), Font = Enum.Font.GothamBold, TextSize = 13, AutoButtonColor = false}, f)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, runBtn)
+	runBtn.MouseEnter:Connect(function()
+		TweenService:Create(runBtn, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(100, 100, 120)}):Play()
+	end)
+	runBtn.MouseLeave:Connect(function()
+		TweenService:Create(runBtn, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(80, 80, 95)}):Play()
+	end)
+	runBtn.MouseButton1Down:Connect(function()
+		TweenService:Create(runBtn, TweenInfo.new(0.1, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(60, 60, 80)}):Play()
+	end)
+	runBtn.MouseButton1Up:Connect(function()
+		TweenService:Create(runBtn, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(100, 100, 120)}):Play()
+		wait(0.15)
+		TweenService:Create(runBtn, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(80, 80, 95)}):Play()
 		cb(tb.Text)
 	end)
-	JustHub:RegisterControl(n,function(sv)
-		tb.Text=sv
+	JustHub:RegisterControl(n, function(sv)
+		tb.Text = sv
 	end)
 	return f
 end
 
 function SectionMethods:addBind(o)
-	o=o or {}
-	local n=o.Name or "KeyBind"
-	local d=o.Default or "RightShift"
-	local cb=o.Callback or function()end
-	local role=o.Role or nil
+	o = o or {}
+	local n = o.Name or "KeyBind"
+	local d = o.Default or "RightShift"
+	local cb = o.Callback or function() end
+	local role = o.Role or nil
 	if role and not JustHub:CheckRole(role) then
-		local hidden=createInstance("Frame",{Size=UDim2.new(1,0,0,0),BackgroundTransparency=1},self.Content)
+		local hidden = createInstance("Frame", {Size = UDim2.new(1, 0, 0, 0), BackgroundTransparency = 1}, self.Content)
 		return hidden
 	end
-	local c=createInstance("Frame",{Name=n.."BindControl",Size=UDim2.new(1,0,0,30),BackgroundTransparency=1},self.Content)
-	addBorder(c,getCurrentTheme(JustHub.Save.Theme)["Color Stroke"],1)
-	local l=createInstance("TextLabel",{Name="Label",Text=n,Size=UDim2.new(0.7,0,1,0),Position=UDim2.new(0,0,0,0),BackgroundTransparency=1,TextColor3=getCurrentTheme(JustHub.Save.Theme)["Color Text"],Font=Enum.Font.Gotham,TextSize=10,TextXAlignment=Enum.TextXAlignment.Left},c)
-	local tb=createInstance("TextBox",{Name="BindInput",Text=d,Size=UDim2.new(0.3,0,1,0),Position=UDim2.new(0.7,0,0,0),BackgroundColor3=getCurrentTheme(JustHub.Save.Theme)["Color Stroke"],TextColor3=getCurrentTheme(JustHub.Save.Theme)["Color Text"],Font=Enum.Font.Gotham,TextSize=10},c)
+	local c = createInstance("Frame", {Name = n .. "BindControl", Size = UDim2.new(1, 0, 0, 36), BackgroundColor3 = Color3.fromRGB(55, 55, 60), BorderSizePixel = 0}, self.Content)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, c)
+	local l = createInstance("TextLabel", {Name = "Label", Text = n, Size = UDim2.new(0.7, -8, 1, 0), Position = UDim2.new(0, 8, 0, 0), BackgroundTransparency = 1, TextColor3 = Color3.fromRGB(230, 230, 240), Font = Enum.Font.GothamBold, TextSize = 13, TextXAlignment = Enum.TextXAlignment.Left}, c)
+	local tb = createInstance("TextBox", {Name = "BindInput", Text = d, Size = UDim2.new(0.3, -8, 0.8, 0), Position = UDim2.new(0.7, 8, 0.1, 0), BackgroundColor3 = Color3.fromRGB(70, 70, 80), TextColor3 = Color3.fromRGB(255, 255, 255), Font = Enum.Font.GothamBold, TextSize = 13, ClearTextOnFocus = false, PlaceholderText = "Press Key"}, c)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, tb)
+	tb.Focused:Connect(function()
+		TweenService:Create(tb, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(90, 90, 105)}):Play()
+	end)
+	tb.FocusLost:Connect(function(e)
+		TweenService:Create(tb, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(70, 70, 80)}):Play()
+		if e then
+			local str = tb.Text:lower()
+			for _, k in pairs(Enum.KeyCode:GetEnumItems()) do
+				if k.Name:lower() == str then
+					if conn then conn:Disconnect() end
+					currentKey = k
+					conn = UserInputService.InputBegan:Connect(function(i, g)
+						if not g and i.KeyCode == currentKey then
+							pcall(cb)
+						end
+					end)
+					JustHub.ConfigData[n] = k.Name
+					break
+				end
+			end
+		end
+	end)
 	local currentKey
 	local conn
 	local function parseKey(str)
-		for _,k in pairs(Enum.KeyCode:GetEnumItems()) do
-			if k.Name:lower()==str:lower() then
+		for _, k in pairs(Enum.KeyCode:GetEnumItems()) do
+			if k.Name:lower() == str:lower() then
 				return k
 			end
 		end
 		return nil
 	end
 	local function setKey(k)
-		local kc=parseKey(k)
+		local kc = parseKey(k)
 		if kc then
 			if conn then conn:Disconnect() end
-			currentKey=kc
-			conn=UserInputService.InputBegan:Connect(function(i,g)
-				if not g and i.KeyCode==currentKey then
+			currentKey = kc
+			conn = UserInputService.InputBegan:Connect(function(i, g)
+				if not g and i.KeyCode == currentKey then
 					pcall(cb)
 				end
 			end)
-			JustHub.ConfigData[n]=k
+			JustHub.ConfigData[n] = k
 		end
 	end
 	setKey(d)
-	tb.FocusLost:Connect(function(e)
-		setKey(tb.Text)
-	end)
-	JustHub:RegisterControl(n,function(sv)
-		tb.Text=sv
+	JustHub:RegisterControl(n, function(sv)
+		tb.Text = sv
 		setKey(sv)
 	end)
 	return c
 end
 
 function SectionMethods:addButton(o)
-	o=o or {}
-	local nm=o.Name or "Button"
-	local bt=o.ButtonText or "Click"
-	local cb=o.Callback or function()end
-	local role=o.Role or nil
+	o = o or {}
+	local nm = o.Name or "Button"
+	local bt = o.ButtonText or "Click"
+	local cb = o.Callback or function() end
+	local role = o.Role or nil
 	if role and not JustHub:CheckRole(role) then
-		local hidden=createInstance("Frame",{Size=UDim2.new(1,0,0,0),BackgroundTransparency=1},self.Content)
+		local hidden = createInstance("Frame", {Size = UDim2.new(1, 0, 0, 0), BackgroundTransparency = 1}, self.Content)
 		return hidden
 	end
-	local c=createInstance("Frame",{Name=nm.."ButtonControl",Size=UDim2.new(1,0,0,30),BackgroundTransparency=1},self.Content)
-	addBorder(c,getCurrentTheme(JustHub.Save.Theme)["Color Stroke"],1)
-	local l=createInstance("TextLabel",{Name="Label",Text=nm,Size=UDim2.new(0.7,0,1,0),Position=UDim2.new(0,0,0,0),BackgroundTransparency=1,TextColor3=getCurrentTheme(JustHub.Save.Theme)["Color Text"],Font=Enum.Font.Gotham,TextSize=10,TextXAlignment=Enum.TextXAlignment.Left},c)
-	local b=createInstance("TextButton",{Name="ActionButton",Text=bt,Size=UDim2.new(0.3,0,0.8,0),Position=UDim2.new(0.7,0,0.1,0),BackgroundColor3=getCurrentTheme(JustHub.Save.Theme)["Color Theme"],TextColor3=getCurrentTheme(JustHub.Save.Theme)["Color Text"],Font=Enum.Font.GothamBold,TextSize=10},c)
-	createInstance("UICorner",{CornerRadius=UDim.new(0,6)},b)
-	b.MouseButton1Click:Connect(function()
-		JustHub:PlaySound("ButtonClick")
+	local c = createInstance("Frame", {Name = nm .. "ButtonControl", Size = UDim2.new(1, 0, 0, 36), BackgroundColor3 = Color3.fromRGB(55, 55, 60), BorderSizePixel = 0}, self.Content)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, c)
+	local l = createInstance("TextLabel", {Name = "Label", Text = nm, Size = UDim2.new(0.7, -8, 1, 0), Position = UDim2.new(0, 8, 0, 0), BackgroundTransparency = 1, TextColor3 = Color3.fromRGB(230, 230, 240), Font = Enum.Font.GothamBold, TextSize = 13, TextXAlignment = Enum.TextXAlignment.Left}, c)
+	local b = createInstance("TextButton", {Name = "ActionButton", Text = bt, Size = UDim2.new(0.3, -8, 0.8, 0), Position = UDim2.new(0.7, 8, 0.1, 0), BackgroundColor3 = Color3.fromRGB(80, 80, 95), TextColor3 = Color3.fromRGB(255, 255, 255), Font = Enum.Font.GothamBold, TextSize = 13, AutoButtonColor = false}, c)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, b)
+	b.MouseEnter:Connect(function()
+		TweenService:Create(b, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(100, 100, 120)}):Play()
+	end)
+	b.MouseLeave:Connect(function()
+		TweenService:Create(b, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(80, 80, 95)}):Play()
+	end)
+	b.MouseButton1Down:Connect(function()
+		TweenService:Create(b, TweenInfo.new(0.1, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(60, 60, 80)}):Play()
+	end)
+	b.MouseButton1Up:Connect(function()
+		TweenService:Create(b, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(100, 100, 120)}):Play()
+		wait(0.15)
+		TweenService:Create(b, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(80, 80, 95)}):Play()
 		pcall(cb)
 	end)
 	return c
@@ -1286,120 +1345,9 @@ function JustHub:CreateWindow(o)
 	local subTitle = o.SubTitle or "SubTitle"
 	local pl = Players.LocalPlayer
 	local pg = pl:WaitForChild("PlayerGui")
-	local sg = createInstance("ScreenGui", {Name = "JustHub", ResetOnSpawn = false}, pg)
+	local sg = createInstance("ScreenGui", {Name = "JustHub", ResetOnSpawn = false, ZIndexBehavior = Enum.ZIndexBehavior.Sibling}, pg)
 	self.ScreenGui = sg
-	local currentSoundId = "rbxassetid://116896498238234"
-	local fallbackAssetIds = {
-		"rbxassetid://7551431783",
-		"rbxassetid://8026236684",
-		"rbxassetid://7308941449",
-		"rbxassetid://926493242",
-		"rbxassetid://131396974",
-		"rbxassetid://1841274964",
-		"rbxassetid://14145626111",
-		"rbxassetid://1837015626",
-		"rbxassetid://8036100972",
-		"rbxassetid://1846368080",
-		"rbxassetid://6991661856",
-		"rbxassetid://4551648646",
-		"rbxassetid://135055100",
-		"rbxassetid://5410085763",
-		"rbxassetid://7795812961",
-		"rbxassetid://6070263388",
-		"rbxassetid://6841685130",
-		"rbxassetid://2106186490",
-		"rbxassetid://136209425",
-		"rbxassetid://5410082273",
-		"rbxassetid://7024233823",
-		"rbxassetid://5569815928",
-		"rbxassetid://5422507571",
-		"rbxassetid://4642779401",
-		"rbxassetid://5569300394",
-		"rbxassetid://5077810864",
-		"rbxassetid://5020637545",
-		"rbxassetid://15689451063",
-		"rbxassetid://673605737",
-		"rbxassetid://17422168798"
-	}
-	local currentFallbackIndex = 1
-	local bgSound = createInstance("Sound", {
-		SoundId = currentSoundId,
-		Volume = 0.5,
-		Looped = true
-	}, sg)
-	bgSound:Play()
-	local function tryPlaySound(sound)
-		delay(3, function()
-			if sound.TimePosition < 0.1 then
-				if currentFallbackIndex <= #fallbackAssetIds then
-					currentSoundId = fallbackAssetIds[currentFallbackIndex]
-					currentFallbackIndex = currentFallbackIndex + 1
-					sound.SoundId = currentSoundId
-					sound:Play()
-					tryPlaySound(sound)
-					soundLabel.Text = "Playing: " .. currentSoundId
-					playPauseButton.Text = "❚❚"
-				end
-			end
-		end)
-	end
-	tryPlaySound(bgSound)
-	local soundControlFrame = createInstance("Frame", {
-		Size = UDim2.new(0, 200, 0, 30),
-		Position = UDim2.new(0, 10, 1, -40),
-		BackgroundTransparency = 0.5,
-		BackgroundColor3 = Color3.fromRGB(0,0,0),
-		BorderSizePixel = 0,
-		AnchorPoint = Vector2.new(0,1)
-	}, sg)
-	local soundLabel = createInstance("TextLabel", {
-		Size = UDim2.new(0.6,0,1,0),
-		Position = UDim2.new(0,0,0,0),
-		Text = "Playing: " .. currentSoundId,
-		TextColor3 = th["Color Text"],
-		BackgroundTransparency = 1,
-		Font = Enum.Font.GothamBold,
-		TextSize = 14,
-		TextXAlignment = Enum.TextXAlignment.Left
-	}, soundControlFrame)
-	local playPauseButton = createInstance("TextButton", {
-		Size = UDim2.new(0.2,0,1,0),
-		Position = UDim2.new(0.6,0,0,0),
-		Text = "❚❚",
-		TextColor3 = th["Color Text"],
-		BackgroundTransparency = 1,
-		Font = Enum.Font.GothamBold,
-		TextSize = 14
-	}, soundControlFrame)
-	local nextButton = createInstance("TextButton", {
-		Size = UDim2.new(0.2,0,1,0),
-		Position = UDim2.new(0.8,0,0,0),
-		Text = "⏭",
-		TextColor3 = th["Color Text"],
-		BackgroundTransparency = 1,
-		Font = Enum.Font.GothamBold,
-		TextSize = 14
-	}, soundControlFrame)
-	playPauseButton.MouseButton1Click:Connect(function()
-		if bgSound.IsPlaying then
-			bgSound:Pause()
-			playPauseButton.Text = "▶"
-		else
-			bgSound:Play()
-			playPauseButton.Text = "❚❚"
-		end
-	end)
-	nextButton.MouseButton1Click:Connect(function()
-		if currentFallbackIndex > #fallbackAssetIds then
-			currentFallbackIndex = 1
-		end
-		currentSoundId = fallbackAssetIds[currentFallbackIndex]
-		currentFallbackIndex = currentFallbackIndex + 1
-		bgSound.SoundId = currentSoundId
-		bgSound:Play()
-		playPauseButton.Text = "❚❚"
-		soundLabel.Text = "Playing: " .. currentSoundId
-	end)
+
 	local uw = JustHub.Save.UISize[1]
 	local uh = JustHub.Save.UISize[2]
 	local mf = createInstance("Frame", {
@@ -1407,167 +1355,298 @@ function JustHub:CreateWindow(o)
 		AnchorPoint = Vector2.new(0.5, 0.5),
 		Position = UDim2.new(0.5, 0, -0.5, 0),
 		Size = UDim2.new(0, uw, 0, uh),
-		BackgroundColor3 = th["Color Hub 2"]
+		BackgroundColor3 = Color3.fromRGB(30, 30, 35),
+		BorderColor3 = Color3.fromRGB(50, 50, 55),
+		BorderSizePixel = 1
 	}, sg)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, mf)
-	addBorder(mf, th["Color Stroke"], 2)
+
+	local gradient = createInstance("UIGradient", {
+		Color = ColorSequence.new({
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(40, 40, 45)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(30, 30, 35))
+		}),
+		Offset = Vector2.new(0, -0.2),
+		Rotation = 90
+	}, mf)
+
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 16)}, mf)
+
+	local shadow = createInstance("Frame", {
+		Size = UDim2.new(1, 40, 1, 40),
+		Position = UDim2.new(0.5, 0, 0.5, 0),
+		AnchorPoint = Vector2.new(0.5, 0.5),
+		BackgroundColor3 = Color3.fromRGB(0, 0, 0),
+		BackgroundTransparency = 0.9,
+		ZIndex = -1
+	}, mf)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 20)}, shadow)
+
 	local function initTopBar()
 		local tb = createInstance("Frame", {
 			Name = "TopBar",
 			Size = UDim2.new(1, 0, 0, 60),
-			BackgroundColor3 = th["Color Hub 2"]
+			BackgroundColor3 = Color3.fromRGB(35, 35, 40),
+			ZIndex = 2
 		}, mf)
-		createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, tb)
-		addBorder(tb, th["Color Stroke"], 2)
+
+		local topGradient = createInstance("UIGradient", {
+			Color = ColorSequence.new({
+				ColorSequenceKeypoint.new(0, Color3.fromRGB(45, 45, 50)),
+				ColorSequenceKeypoint.new(1, Color3.fromRGB(35, 35, 40))
+			}),
+			Rotation = 90
+		}, tb)
+
+		createInstance("UICorner", {CornerRadius = UDim.new(0, 16)}, tb)
+		tb.ClipsDescendants = true
+
 		local tl = createInstance("TextLabel", {
 			Name = "TitleLabel",
-			Size = UDim2.new(1, -20, 0.6, 0),
-			Position = UDim2.new(0, 10, 0, 0),
+			Size = UDim2.new(1, -120, 0.6, 0),
+			Position = UDim2.new(0, 20, 0, 0),
 			BackgroundTransparency = 1,
 			Text = wn,
-			TextColor3 = th["Color Text"],
+			TextColor3 = Color3.fromRGB(255, 255, 255),
 			Font = Enum.Font.GothamBold,
 			TextSize = 18,
-			TextXAlignment = Enum.TextXAlignment.Left
+			TextXAlignment = Enum.TextXAlignment.Left,
+			TextTruncate = Enum.TextTruncate.AtEnd
 		}, tb)
-		addBorder(tl, th["Color Stroke"], 1)
+
 		local st = createInstance("TextLabel", {
 			Name = "SubtitleLabel",
-			Size = UDim2.new(1, -20, 0.4, 0),
-			Position = UDim2.new(0, 10, 0.6, 0),
+			Size = UDim2.new(1, -120, 0.4, 0),
+			Position = UDim2.new(0, 20, 0.6, 0),
 			BackgroundTransparency = 1,
 			Text = subTitle,
-			TextColor3 = Color3.fromRGB(150, 150, 150),
+			TextColor3 = Color3.fromRGB(180, 180, 190),
 			Font = Enum.Font.Gotham,
-			TextSize = 14,
-			TextXAlignment = Enum.TextXAlignment.Left
+			TextSize = 13,
+			TextXAlignment = Enum.TextXAlignment.Left,
+			TextTransparency = 0.2
 		}, tb)
-		addBorder(st, th["Color Stroke"], 1)
+
 		return tb
 	end
+
 	local tb = initTopBar()
+
 	local headerSeparator = createInstance("Frame", {
-		Size = UDim2.new(1, 0, 0, 2),
+		Size = UDim2.new(1, 0, 0, 1),
 		Position = UDim2.new(0, 0, 0, 60),
-		BackgroundColor3 = th["Color Stroke"],
+		BackgroundColor3 = Color3.fromRGB(60, 60, 65),
 		BorderSizePixel = 0
 	}, mf)
-	local footerHeight = 30
-	local sbWidth = JustHub.Save.TabSize
+
+	local footerHeight = 36
+	local sbWidth = JustHub.Save.TabSize or 160
 	local sb = createInstance("Frame", {
 		Name = "Sidebar",
-		Size = UDim2.new(0, sbWidth, 1, -(60 + footerHeight)),
-		Position = UDim2.new(0, 0, 0, 60),
-		BackgroundColor3 = th["Color Hub 2"]
+		Size = UDim2.new(0, sbWidth, 1, -(60 + footerHeight + 1)),
+		Position = UDim2.new(0, 0, 0, 61),
+		BackgroundColor3 = Color3.fromRGB(40, 40, 45),
+		BorderColor3 = Color3.fromRGB(60, 60, 65),
+		BorderSizePixel = 1
 	}, mf)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 10)}, sb)
-	addBorder(sb, th["Color Stroke"], 2)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, sb)
+
+	local sbGradient = createInstance("UIGradient", {
+		Color = ColorSequence.new({
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(45, 45, 50)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(40, 40, 45))
+		}),
+		Rotation = 0
+	}, sb)
+
 	createInstance("UIListLayout", {
 		SortOrder = Enum.SortOrder.LayoutOrder,
-		Padding = UDim.new(0, 5),
+		Padding = UDim.new(0, 6),
 		FillDirection = Enum.FillDirection.Vertical,
 		HorizontalAlignment = Enum.HorizontalAlignment.Center,
 		VerticalAlignment = Enum.VerticalAlignment.Top
 	}, sb)
+
 	local verticalSeparator = createInstance("Frame", {
-		Size = UDim2.new(0, 2, 1, -(60 + footerHeight)),
-		Position = UDim2.new(0, sbWidth, 0, 60),
-		BackgroundColor3 = th["Color Stroke"],
+		Size = UDim2.new(0, 1, 1, -(60 + footerHeight + 1)),
+		Position = UDim2.new(0, sbWidth, 0, 61),
+		BackgroundColor3 = Color3.fromRGB(60, 60, 65),
 		BorderSizePixel = 0
 	}, mf)
+
 	local cc = createInstance("Frame", {
 		Name = "ContentContainer",
-		Size = UDim2.new(1, -sbWidth - 2, 1, -(60 + footerHeight)),
-		Position = UDim2.new(0, sbWidth + 2, 0, 60),
-		BackgroundColor3 = th["Color Hub 2"]
+		Size = UDim2.new(1, -sbWidth - 1, 1, -(60 + footerHeight + 1)),
+		Position = UDim2.new(0, sbWidth + 1, 0, 61),
+		BackgroundColor3 = Color3.fromRGB(35, 35, 40),
+		BorderColor3 = Color3.fromRGB(60, 60, 65),
+		BorderSizePixel = 1
 	}, mf)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 10)}, cc)
-	addBorder(cc, th["Color Stroke"], 2)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, cc)
+
+	local ccGradient = createInstance("UIGradient", {
+		Color = ColorSequence.new({
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(40, 40, 45)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(35, 35, 40))
+		}),
+		Rotation = 0
+	}, cc)
+
 	local sf = createInstance("ScrollingFrame", {
-		Size = UDim2.new(1, 0, 1, 0),
+		Size = UDim2.new(1, -16, 1, 0),
+		Position = UDim2.new(0, 8, 0, 0),
 		BackgroundTransparency = 1,
-		ScrollBarThickness = 8,
+		ScrollBarThickness = 6,
+		ScrollBarImageColor3 = Color3.fromRGB(80, 80, 90),
+		BottomImage = "rbxasset://textures/ui/Scroll/scroll-middle.png",
+		MidImage = "rbxasset://textures/ui/Scroll/scroll-middle.png",
+		TopImage = "rbxasset://textures/ui/Scroll/scroll-middle.png",
 		BorderSizePixel = 0
 	}, cc)
+
 	createInstance("UIListLayout", {
 		SortOrder = Enum.SortOrder.LayoutOrder,
-		Padding = UDim.new(0, 10),
+		Padding = UDim.new(0, 12),
 		HorizontalAlignment = Enum.HorizontalAlignment.Left
 	}, sf)
+
 	local footer = createInstance("Frame", {
 		Name = "Footer",
 		Size = UDim2.new(1, 0, 0, footerHeight),
 		Position = UDim2.new(0, 0, 1, -footerHeight),
-		BackgroundColor3 = th["Color Hub 2"]
+		BackgroundColor3 = Color3.fromRGB(35, 35, 40),
+		BorderColor3 = Color3.fromRGB(60, 60, 65),
+		BorderSizePixel = 1
 	}, mf)
-	addBorder(footer, th["Color Stroke"], 2)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, footer)
+
 	local footerSeparator = createInstance("Frame", {
-		Size = UDim2.new(1, 0, 0, 2),
-		Position = UDim2.new(0, 0, 1, -footerHeight - 2),
-		BackgroundColor3 = th["Color Stroke"],
+		Size = UDim2.new(1, 0, 0, 1),
+		Position = UDim2.new(0, 0, 0, -1),
+		BackgroundColor3 = Color3.fromRGB(60, 60, 65),
 		BorderSizePixel = 0
-	}, mf)
+	}, footer)
+
 	local fl = createInstance("TextLabel", {
 		Name = "FPSLabel",
-		Size = UDim2.new(0, 100, 1, 0),
+		Size = UDim2.new(0, 120, 1, 0),
 		BackgroundTransparency = 1,
-		TextColor3 = th["Color Text"],
+		TextColor3 = Color3.fromRGB(200, 200, 210),
 		Font = Enum.Font.Gotham,
-		TextSize = 14,
-		Text = "FPS: Calculating..."
+		TextSize = 13,
+		Text = "FPS: --",
+		TextXAlignment = Enum.TextXAlignment.Right
 	}, footer)
 	fl.AnchorPoint = Vector2.new(1, 0.5)
-	fl.Position = UDim2.new(1, -10, 0.5, 0)
+	fl.Position = UDim2.new(1, -16, 0.5, 0)
+
 	local fpsAccumulator = 0
 	local fpsCount = 0
 	local updateInterval = 0.5
 	spawn(function()
 		while true do
 			wait(updateInterval)
-			local avgFPS = fpsCount / fpsAccumulator
+			local avgFPS = fpsCount > 0 and (fpsCount / fpsAccumulator) or 0
 			fl.Text = "FPS: " .. math.floor(avgFPS)
 			fpsAccumulator = 0
 			fpsCount = 0
 		end
 	end)
+
 	RunService.Heartbeat:Connect(function(d)
 		fpsAccumulator = fpsAccumulator + d
 		fpsCount = fpsCount + 1
 	end)
-	local windowTween = TweenService:Create(mf, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Position = UDim2.new(0.5, 0, 0.5, 0)})
+
+	local windowTween = TweenService:Create(mf, TweenInfo.new(0.6, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2.new(0.5, 0, 0.5, 0)})
 	windowTween:Play()
+
 	local originalSize = mf.Size
 	local originalPosition = mf.Position
-	local isLocked = false
 	local minimized = false
 	local maximized = false
-	local controlButtonSize = UDim2.new(0, 40, 0, 40)
-	local buttonSpacing = 10
-	local basePosX = -30
+
 	local function createControlButton(name, text, pos)
-		return createInstance("TextButton", {
+		local btn = createInstance("TextButton", {
 			Name = name,
 			Text = text,
-			Size = controlButtonSize,
+			Size = UDim2.new(0, 36, 0, 36),
 			Position = pos,
+			BackgroundColor3 = Color3.fromRGB(0, 0, 0),
 			BackgroundTransparency = 1,
-			TextColor3 = th["Color Text"],
+			TextColor3 = Color3.fromRGB(200, 200, 210),
 			Font = Enum.Font.GothamBold,
-			TextSize = 24
+			TextSize = 18,
+			ZIndex = 3
 		}, tb)
+
+		local corner = createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, btn)
+
+		btn.MouseEnter:Connect(function()
+			TweenService:Create(btn, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {
+				BackgroundTransparency = 0.8,
+				BackgroundColor3 = Color3.fromRGB(80, 80, 90)
+			}):Play()
+		end)
+
+		btn.MouseLeave:Connect(function()
+			if not (name == "CloseButton" and btn.Hovered) then
+				TweenService:Create(btn, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {
+					BackgroundTransparency = 1,
+					BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+				}):Play()
+			end
+		end)
+
+		btn.MouseButton1Down:Connect(function()
+			TweenService:Create(btn, TweenInfo.new(0.1, Enum.EasingStyle.Quad), {
+				BackgroundColor3 = Color3.fromRGB(120, 120, 130)
+			}):Play()
+		end)
+
+		btn.MouseButton1Up:Connect(function()
+			TweenService:Create(btn, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {
+				BackgroundColor3 = Color3.fromRGB(80, 80, 90)
+			}):Play()
+			wait(0.2)
+			if not btn.Hovered then
+				TweenService:Create(btn, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {
+					BackgroundTransparency = 1
+				}):Play()
+			end
+		end)
+
+		if name == "CloseButton" then
+			btn.MouseEnter:Connect(function()
+				TweenService:Create(btn, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {
+					TextColor3 = Color3.fromRGB(255, 80, 80)
+				}):Play()
+			end)
+			btn.MouseLeave:Connect(function()
+				TweenService:Create(btn, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {
+					TextColor3 = Color3.fromRGB(200, 200, 210)
+				}):Play()
+			end)
+		end
+
+		return btn
 	end
-	local hb = createControlButton("HideButton", "–", UDim2.new(1, basePosX - (controlButtonSize.X.Offset + buttonSpacing)*2, 0, 10))
-	local xb = createControlButton("MaxButton", "□", UDim2.new(1, basePosX - (controlButtonSize.X.Offset + buttonSpacing), 0, 10))
-	local closeb = createControlButton("CloseButton", "X", UDim2.new(1, basePosX, 0, 10))
+
+	local basePosX = -10
+	local hb = createControlButton("HideButton", "—", UDim2.new(1, basePosX - 80, 0, 12))
+	local xb = createControlButton("MaxButton", "□", UDim2.new(1, basePosX - 40, 0, 12))
+	local closeb = createControlButton("CloseButton", "×", UDim2.new(1, basePosX, 0, 12))
+
 	hb.MouseButton1Click:Connect(function()
 		if not minimized then
-			tweenProperty(mf, {Size = UDim2.new(originalSize.X.Scale, originalSize.X.Offset, 0, 60 + footerHeight)}, 0.3)
+			local tween = TweenService:Create(mf, TweenInfo.new(0.3, Enum.EasingStyle.Quint), {Size = UDim2.new(originalSize.X.Scale, originalSize.X.Offset, 0, 60 + footerHeight)})
+			tween:Play()
 			sb.Visible = false
 			cc.Visible = false
 			footer.Visible = false
 			minimized = true
 		else
-			tweenProperty(mf, {Size = originalSize}, 0.3)
+			local tween = TweenService:Create(mf, TweenInfo.new(0.3, Enum.EasingStyle.Quint), {Size = originalSize})
+			tween:Play()
 			wait(0.3)
 			sb.Visible = true
 			cc.Visible = true
@@ -1575,17 +1654,25 @@ function JustHub:CreateWindow(o)
 			minimized = false
 		end
 	end)
+
 	xb.MouseButton1Click:Connect(function()
 		if not maximized then
-			tweenProperty(mf, {Size = UDim2.new(1, 0, 1, 0), Position = UDim2.new(0.5, 0, 0.5, 0)}, 0.3)
+			tweenProperty(mf, {
+				Size = UDim2.new(1, -40, 1, -40),
+				Position = UDim2.new(0.5, 0, 0.5, 0)
+			}, 0.3)
 			maximized = true
 		else
-			tweenProperty(mf, {Size = originalSize, Position = originalPosition}, 0.3)
+			tweenProperty(mf, {
+				Size = originalSize,
+				Position = originalPosition
+			}, 0.3)
 			maximized = false
 		end
 	end)
+
 	closeb.MouseButton1Click:Connect(function()
-		local closeTween = TweenService:Create(mf, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.In), {Position = UDim2.new(0.5, 0, -0.5, 0)})
+		local closeTween = TweenService:Create(mf, TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.In), {Position = UDim2.new(0.5, 0, -0.5, 0)})
 		closeTween:Play()
 		closeTween.Completed:Connect(function()
 			mf.Visible = false
@@ -1593,39 +1680,49 @@ function JustHub:CreateWindow(o)
 			local showUI = createInstance("ScreenGui", {Name = "ShowUI", ResetOnSpawn = false}, pg2)
 			local showBtn = createInstance("TextButton", {
 				Name = "ShowUIButton",
-				Size = UDim2.new(0, 100, 0, 30),
-				Position = UDim2.new(0.5, -50, 0, 10),
-				BackgroundColor3 = th["Color Hub 2"],
-				Text = "Show UI",
-				TextColor3 = Color3.fromRGB(128, 0, 128),
+				Size = UDim2.new(0, 120, 0, 36),
+				Position = UDim2.new(0.5, -60, 0, 20),
+				BackgroundColor3 = Color3.fromRGB(60, 60, 70),
+				TextColor3 = Color3.fromRGB(240, 240, 245),
 				Font = Enum.Font.GothamBold,
-				TextSize = 20
+				TextSize = 16,
+				Text = "⟲ Show UI",
+				ZIndex = 10
 			}, showUI)
-			createInstance("UICorner", {CornerRadius = UDim.new(0, 25)}, showBtn)
-			createInstance("UIStroke", {Color = th["Color Theme"], Thickness = 1}, showBtn)
+
+			createInstance("UICorner", {CornerRadius = UDim.new(0, 18)}, showBtn)
+			createInstance("UIStroke", {Color = Color3.fromRGB(100, 100, 110), Thickness = 2}, showBtn)
+
+			showBtn.MouseEnter:Connect(function()
+				TweenService:Create(showBtn, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(80, 80, 90)}):Play()
+			end)
+			showBtn.MouseLeave:Connect(function()
+				TweenService:Create(showBtn, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(60, 60, 70)}):Play()
+			end)
+
 			showBtn.MouseButton1Click:Connect(function()
 				mf.Visible = true
-				tweenProperty(mf, {Position = UDim2.new(0.5, 0, 0.5, 0)}, 0.5)
+				TweenService:Create(mf, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {Position = UDim2.new(0.5, 0, 0.5, 0)}):Play()
 				showUI:Destroy()
 			end)
 		end)
 	end)
+
 	mf.Active = true
 	local function enableDrag(frame)
 		local isDragging = false
-		local dragStartPos, startPos
+		local dragStart, startPos
 		frame.InputBegan:Connect(function(input)
-			if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and not isLocked then
+			if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then
 				isDragging = true
-				dragStartPos = input.Position
+				dragStart = input.Position
 				startPos = frame.Position
 			end
 		end)
 		frame.InputChanged:Connect(function(input)
 			if isDragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
-				local delta = input.Position - dragStartPos
+				local delta = input.Position - dragStart
 				local newPos = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-				newPos = clampPosition(newPos, Vector2.new(sg.AbsoluteSize.X, sg.AbsoluteSize.Y))
 				frame.Position = newPos
 			end
 		end)
@@ -1635,22 +1732,35 @@ function JustHub:CreateWindow(o)
 			end
 		end)
 	end
-	enableDrag(mf)
+	enableDrag(tb)
+
+	local resizeGrip = createInstance("Frame", {
+		Name = "ResizeGrip",
+		Size = UDim2.new(0, 18, 0, 18),
+		Position = UDim2.new(1, -18, 1, -18),
+		BackgroundColor3 = Color3.fromRGB(80, 80, 90),
+		BackgroundTransparency = 0.5,
+		BorderColor3 = Color3.fromRGB(150, 150, 160),
+		BorderSizePixel = 1,
+		ZIndex = 5
+	}, mf)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, resizeGrip)
+
 	local function enableResize(frame, grip)
 		local isResizing = false
-		local dragStartPos, startSize
+		local dragStart, startSize
 		grip.InputBegan:Connect(function(input)
 			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
 				isResizing = true
-				dragStartPos = input.Position
+				dragStart = input.Position
 				startSize = frame.Size
 			end
 		end)
 		grip.InputChanged:Connect(function(input)
 			if isResizing and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
-				local delta = input.Position - dragStartPos
-				local newWidth = math.max(300, startSize.X.Offset + delta.X)
-				local newHeight = math.max(200, startSize.Y.Offset + delta.Y)
+				local delta = input.Position - dragStart
+				local newWidth = math.clamp(startSize.X.Offset + delta.X, 320, sg.AbsoluteSize.X * 0.9)
+				local newHeight = math.clamp(startSize.Y.Offset + delta.Y, 240, sg.AbsoluteSize.Y * 0.9)
 				frame.Size = UDim2.new(0, newWidth, 0, newHeight)
 			end
 		end)
@@ -1660,102 +1770,124 @@ function JustHub:CreateWindow(o)
 			end
 		end)
 	end
-	local resizeGrip = createInstance("Frame", {
-		Name = "ResizeGrip",
-		Size = UDim2.new(0, 20, 0, 20),
-		Position = UDim2.new(1, -20, 1, -20),
-		BackgroundColor3 = Color3.fromRGB(50, 50, 50),
-		BackgroundTransparency = 0.3,
-		BorderSizePixel = 0
-	}, mf)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 5)}, resizeGrip)
 	enableResize(mf, resizeGrip)
+
 	local notiContainer = createInstance("Frame", {
 		Name = "NotificationContainer",
 		AnchorPoint = Vector2.new(1, 1),
-		Position = UDim2.new(1, -10, 1, -10),
-		Size = UDim2.new(0, 300, 1, -20),
-		BackgroundTransparency = 1
+		Position = UDim2.new(1, -16, 1, -16),
+		Size = UDim2.new(0, 320, 0, 0),
+		BackgroundTransparency = 1,
+		ZIndex = 10
 	}, sg)
+
 	createInstance("UIListLayout", {
 		Padding = UDim.new(0, 8),
 		HorizontalAlignment = Enum.HorizontalAlignment.Right,
 		VerticalAlignment = Enum.VerticalAlignment.Bottom,
 		SortOrder = Enum.SortOrder.LayoutOrder
 	}, notiContainer)
+
 	self.NotificationContainer = notiContainer
+
 	local wObj = {ScreenGui = sg, MainFrame = mf, TopBar = tb, Sidebar = sb, ContentContainer = cc, Tabs = {}}
+
 	function wObj:addTab(tn)
 		tn = tn or "Tab"
 		local b = createInstance("TextButton", {
 			Name = tn .. "Button",
 			Text = tn,
-			Size = UDim2.new(1, 0, 0, 20),
-			BackgroundColor3 = th["Color Stroke"],
-			TextColor3 = Color3.fromRGB(128, 0, 128),
+			Size = UDim2.new(1, -12, 0, 32),
+			Position = UDim2.new(0, 6, 0, 0),
+			BackgroundColor3 = Color3.fromRGB(55, 55, 60),
+			TextColor3 = Color3.fromRGB(220, 220, 230),
 			Font = Enum.Font.GothamBold,
-			TextSize = 12,
-			TextScaled = true,
-			TextTruncate = Enum.TextTruncate.AtEnd
+			TextSize = 13,
+			TextTruncate = Enum.TextTruncate.AtEnd,
+			AutoButtonColor = false
 		}, sb)
-		createInstance("UICorner", {CornerRadius = UDim.new(0, 10)}, b)
-		createInstance("UIStroke", {Color = th["Color Theme"], Thickness = 1}, b)
+
+		createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, b)
+		createInstance("UIStroke", {Color = Color3.fromRGB(70, 70, 80), Thickness = 1}, b)
+
+		b.MouseEnter:Connect(function()
+			TweenService:Create(b, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(70, 70, 80)}):Play()
+		end)
+		b.MouseLeave:Connect(function()
+			TweenService:Create(b, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(55, 55, 60)}):Play()
+		end)
+
 		local tc = createInstance("Frame", {
 			Name = tn .. "Content",
 			Size = UDim2.new(1, 0, 1, 0),
 			BackgroundTransparency = 1,
 			Visible = false
 		}, sf)
+
 		local tObj = {Name = tn, Button = b, Content = tc, Sections = {}}
 		table.insert(wObj.Tabs, tObj)
+
 		b.MouseButton1Click:Connect(function()
 			for _, tt in ipairs(wObj.Tabs) do
 				tt.Content.Visible = false
+				TweenService:Create(tt.Button, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(55, 55, 60)}):Play()
 			end
 			tObj.Content.Visible = true
+			TweenService:Create(b, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(80, 80, 95)}):Play()
 		end)
+
 		if #wObj.Tabs == 1 then
 			tObj.Content.Visible = true
+			TweenService:Create(b, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(80, 80, 95)}):Play()
 		end
+
 		function tObj:addSection(sn, sh)
 			sn = sn or "Section"
-			sh = sh or 80
+			sh = sh or 100
 			local sframe = createInstance("Frame", {
 				Name = sn,
 				Size = UDim2.new(1, 0, 0, sh),
-				BackgroundColor3 = th["Color Hub 2"],
-				BackgroundTransparency = 0
+				BackgroundColor3 = Color3.fromRGB(45, 45, 50),
+				BorderColor3 = Color3.fromRGB(70, 70, 80),
+				BorderSizePixel = 1
 			}, tc)
 			createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, sframe)
+
 			local st = createInstance("TextLabel", {
 				Name = "SectionTitle",
 				Text = sn,
-				Size = UDim2.new(1, 0, 0, 30),
+				Size = UDim2.new(1, -16, 0, 30),
+				Position = UDim2.new(0, 8, 0, 8),
 				BackgroundTransparency = 1,
-				TextColor3 = th["Color Text"],
+				TextColor3 = Color3.fromRGB(240, 240, 245),
 				Font = Enum.Font.GothamBold,
 				TextSize = 14,
 				TextXAlignment = Enum.TextXAlignment.Left
 			}, sframe)
+
 			local sc = createInstance("Frame", {
 				Name = "SectionContent",
-				Size = UDim2.new(1, 0, 1, -30),
-				Position = UDim2.new(0, 0, 0, 30),
+				Size = UDim2.new(1, -16, 1, -46),
+				Position = UDim2.new(0, 8, 0, 38),
 				BackgroundTransparency = 1
 			}, sframe)
+
 			createInstance("UIListLayout", {
 				FillDirection = Enum.FillDirection.Vertical,
-				Padding = UDim.new(0, 5),
+				Padding = UDim.new(0, 6),
 				SortOrder = Enum.SortOrder.LayoutOrder,
 				HorizontalAlignment = Enum.HorizontalAlignment.Left
 			}, sc)
+
 			local sObj = {Frame = sframe, Title = st, Content = sc}
 			table.insert(tObj.Sections, sObj)
 			setmetatable(sObj, {__index = SectionMethods})
 			return sObj
 		end
+
 		return tObj
 	end
+
 	return wObj
 end
 
