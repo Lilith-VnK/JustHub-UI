@@ -1488,8 +1488,9 @@ function JustHub:CreateWindow(o)
 
 	local bc = createInstance("Frame", {
 		Name = "ButtonContainer",
-		Size = UDim2.new(0, 100, 1, 0),
-		Position = UDim2.new(1, -110, 0, 0),
+		Size = UDim2.new(0, 70, 1, 0),
+		Position = UDim2.new(1, -15, 0, 0),
+		AnchorPoint = Vector2.new(1, 0),
 		BackgroundTransparency = 1
 	}, tb)
 
@@ -1497,33 +1498,34 @@ function JustHub:CreateWindow(o)
 		FillDirection = Enum.FillDirection.Horizontal,
 		HorizontalAlignment = Enum.HorizontalAlignment.Right,
 		VerticalAlignment = Enum.VerticalAlignment.Center,
-		Padding = UDim.new(0, 8)
+		Padding = UDim.new(0, 8),
+		SortOrder = Enum.SortOrder.LayoutOrder
 	}, bc)
 
-	local function createWinBtn(name, hoverColor)
+	local function createWinBtn(name, color, order)
 		local btn = createInstance("TextButton", {
 			Name = name,
 			Text = "",
-			Size = UDim2.new(0, 12, 0, 12),
-			BackgroundColor3 = th["Color Hub 2"],
+			Size = UDim2.new(0, 14, 0, 14),
+			BackgroundColor3 = color,
+			LayoutOrder = order,
 			AutoButtonColor = false,
 			BorderSizePixel = 0
 		}, bc)
 		createInstance("UICorner", {CornerRadius = UDim.new(1, 0)}, btn)
-		createInstance("UIStroke", {Color = th["Color Stroke"], Thickness = 1, Transparency = 0.5}, btn)
 
 		btn.MouseEnter:Connect(function()
-			TweenService:Create(btn, TweenInfo.new(0.25, Enum.EasingStyle.Quad), {BackgroundColor3 = hoverColor}):Play()
+			TweenService:Create(btn, TweenInfo.new(0.2), {BackgroundTransparency = 0.2}):Play()
 		end)
 		btn.MouseLeave:Connect(function()
-			TweenService:Create(btn, TweenInfo.new(0.25, Enum.EasingStyle.Quad), {BackgroundColor3 = th["Color Hub 2"]}):Play()
+			TweenService:Create(btn, TweenInfo.new(0.2), {BackgroundTransparency = 0}):Play()
 		end)
 		return btn
 	end
 
-	local hb = createWinBtn("HideBtn", Color3.fromRGB(255, 189, 46))
-	local xb = createWinBtn("MaxBtn", Color3.fromRGB(39, 201, 63))
-	local closeb = createWinBtn("CloseBtn", Color3.fromRGB(255, 96, 92))
+	local hb = createWinBtn("HideBtn", Color3.fromRGB(255, 189, 46), 1)
+	local xb = createWinBtn("MaxBtn", Color3.fromRGB(39, 201, 63), 2)
+	local closeb = createWinBtn("CloseBtn", Color3.fromRGB(255, 96, 92), 3)
 
 	local headerSeparator = createInstance("Frame", {
 		Size = UDim2.new(1, -40, 0, 1),
@@ -1575,6 +1577,21 @@ function JustHub:CreateWindow(o)
 		TextSize = 10,
 		TextXAlignment = Enum.TextXAlignment.Right
 	}, footer)
+
+	local runService = game:GetService("RunService")
+	local sec = os.clock()
+	local frames = 0
+	runService.RenderStepped:Connect(function()
+		frames = frames + 1
+		local curr = os.clock()
+		if curr - sec >= 1 then
+			if fl and fl.Parent then
+				fl.Text = "FPS: " .. frames
+			end
+			frames = 0
+			sec = curr
+		end
+	end)
 
 	TweenService:Create(mf, TweenInfo.new(0.6, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Position = UDim2.new(0.5, 0, 0.5, 0)}):Play()
 
