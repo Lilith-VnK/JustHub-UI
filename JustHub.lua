@@ -8,145 +8,27 @@ local StarterGui = game:GetService("StarterGui")
 local JustHub = {}
 
 JustHub.Themes = {
-	Darker = {
-		["Color Hub 1"] = Color3.fromRGB(20, 20, 25),
-		["Color Hub 2"] = Color3.fromRGB(30, 30, 35),
-		["Color Stroke"] = Color3.fromRGB(50, 50, 55),
-		["Color Theme"] = Color3.fromRGB(100, 255, 150),
-		["Color Text"] = Color3.fromRGB(240, 240, 245),
-		["Color Dark Text"] = Color3.fromRGB(160, 160, 170)
-	},
-	Dark = {
-		["Color Hub 1"] = Color3.fromRGB(35, 35, 40),
-		["Color Hub 2"] = Color3.fromRGB(45, 45, 50),
-		["Color Stroke"] = Color3.fromRGB(70, 70, 80),
-		["Color Theme"] = Color3.fromRGB(80, 200, 255),
-		["Color Text"] = Color3.fromRGB(245, 245, 250),
-		["Color Dark Text"] = Color3.fromRGB(170, 170, 180)
-	},
-	Purple = {
-		["Color Hub 1"] = Color3.fromRGB(30, 25, 40),
-		["Color Hub 2"] = Color3.fromRGB(40, 35, 50),
-		["Color Stroke"] = Color3.fromRGB(60, 50, 75),
-		["Color Theme"] = Color3.fromRGB(150, 100, 255),
-		["Color Text"] = Color3.fromRGB(240, 240, 245),
-		["Color Dark Text"] = Color3.fromRGB(170, 160, 190)
-	},
-	Light = {
-		["Color Hub 1"] = Color3.fromRGB(220, 220, 225),
-		["Color Hub 2"] = Color3.fromRGB(235, 235, 240),
-		["Color Stroke"] = Color3.fromRGB(190, 190, 200),
-		["Color Theme"] = Color3.fromRGB(0, 140, 255),
-		["Color Text"] = Color3.fromRGB(40, 40, 45),
-		["Color Dark Text"] = Color3.fromRGB(90, 90, 100)
-	},
-	Neon = {
-		["Color Hub 1"] = Color3.fromRGB(5, 5, 10),
-		["Color Hub 2"] = Color3.fromRGB(10, 10, 15),
-		["Color Stroke"] = Color3.fromRGB(0, 255, 255),
-		["Color Theme"] = Color3.fromRGB(0, 255, 100),
-		["Color Text"] = Color3.fromRGB(255, 255, 255),
-		["Color Dark Text"] = Color3.fromRGB(200, 255, 255)
-	},
-	Forest = {
-		["Color Hub 1"] = Color3.fromRGB(0, 40, 20),
-		["Color Hub 2"] = Color3.fromRGB(0, 55, 25),
-		["Color Stroke"] = Color3.fromRGB(0, 90, 40),
-		["Color Theme"] = Color3.fromRGB(50, 205, 50),
-		["Color Text"] = Color3.fromRGB(230, 255, 230),
-		["Color Dark Text"] = Color3.fromRGB(170, 200, 170)
-	},
-	Aqua = {
-		["Color Hub 1"] = Color3.fromRGB(0, 90, 100),
-		["Color Hub 2"] = Color3.fromRGB(0, 120, 130),
-		["Color Stroke"] = Color3.fromRGB(0, 190, 210),
-		["Color Theme"] = Color3.fromRGB(0, 230, 255),
-		["Color Text"] = Color3.fromRGB(250, 255, 255),
-		["Color Dark Text"] = Color3.fromRGB(200, 230, 240)
-	},
-	Crimson = {
-		["Color Hub 1"] = Color3.fromRGB(50, 0, 10),
-		["Color Hub 2"] = Color3.fromRGB(80, 0, 15),
-		["Color Stroke"] = Color3.fromRGB(140, 0, 30),
-		["Color Theme"] = Color3.fromRGB(255, 50, 80),
-		["Color Text"] = Color3.fromRGB(255, 240, 240),
-		["Color Dark Text"] = Color3.fromRGB(220, 180, 180)
-	},
-	Solar = {
-		["Color Hub 1"] = Color3.fromRGB(255, 210, 0),
-		["Color Hub 2"] = Color3.fromRGB(255, 200, 0),
-		["Color Stroke"] = Color3.fromRGB(255, 130, 0),
-		["Color Theme"] = Color3.fromRGB(255, 80, 0),
-		["Color Text"] = Color3.fromRGB(30, 30, 30),
-		["Color Dark Text"] = Color3.fromRGB(70, 70, 70)
-	},
-	Pastel = {
-		["Color Hub 1"] = Color3.fromRGB(220, 200, 230),
-		["Color Hub 2"] = Color3.fromRGB(245, 230, 255),
-		["Color Stroke"] = Color3.fromRGB(190, 170, 210),
-		["Color Theme"] = Color3.fromRGB(170, 210, 240),
-		["Color Text"] = Color3.fromRGB(70, 70, 70),
-		["Color Dark Text"] = Color3.fromRGB(110, 110, 110)
-	},
-	Cyber = {
-		["Color Hub 1"] = Color3.fromRGB(5, 5, 20),
-		["Color Hub 2"] = Color3.fromRGB(15, 15, 35),
-		["Color Stroke"] = Color3.fromRGB(0, 220, 255),
-		["Color Theme"] = Color3.fromRGB(0, 180, 255),
-		["Color Text"] = Color3.fromRGB(250, 255, 255),
-		["Color Dark Text"] = Color3.fromRGB(190, 230, 255)
-	},
-	Ocean = {
-		["Color Hub 1"] = Color3.fromRGB(0, 25, 50),
-		["Color Hub 2"] = Color3.fromRGB(0, 45, 90),
-		["Color Stroke"] = Color3.fromRGB(0, 100, 180),
-		["Color Theme"] = Color3.fromRGB(0, 150, 255),
-		["Color Text"] = Color3.fromRGB(230, 245, 255),
-		["Color Dark Text"] = Color3.fromRGB(180, 210, 230)
-	},
-	Desert = {
-		["Color Hub 1"] = Color3.fromRGB(200, 170, 130),
-		["Color Hub 2"] = Color3.fromRGB(220, 180, 130),
-		["Color Stroke"] = Color3.fromRGB(150, 80, 40),
-		["Color Theme"] = Color3.fromRGB(220, 150, 30),
-		["Color Text"] = Color3.fromRGB(50, 40, 30),
-		["Color Dark Text"] = Color3.fromRGB(90, 80, 70)
-	},
-	Galaxy = {
-		["Color Hub 1"] = Color3.fromRGB(10, 0, 40),
-		["Color Hub 2"] = Color3.fromRGB(20, 0, 50),
-		["Color Stroke"] = Color3.fromRGB(90, 0, 150),
-		["Color Theme"] = Color3.fromRGB(140, 0, 255),
-		["Color Text"] = Color3.fromRGB(245, 245, 255),
-		["Color Dark Text"] = Color3.fromRGB(200, 200, 230)
-	},
-	Vintage = {
-		["Color Hub 1"] = Color3.fromRGB(140, 110, 80),
-		["Color Hub 2"] = Color3.fromRGB(150, 120, 90),
-		["Color Stroke"] = Color3.fromRGB(110, 80, 60),
-		["Color Theme"] = Color3.fromRGB(190, 150, 120),
-		["Color Text"] = Color3.fromRGB(70, 50, 40),
-		["Color Dark Text"] = Color3.fromRGB(100, 90, 80)
-	},
-	Rainbow = {
-		["Color Hub 1"] = Color3.fromRGB(255, 0, 0),
-		["Color Hub 2"] = Color3.fromRGB(230, 230, 230),
-		["Color Stroke"] = Color3.fromRGB(50, 50, 50),
-		["Color Theme"] = Color3.fromRGB(255, 100, 100),
-		["Color Text"] = Color3.fromRGB(30, 30, 30),
-		["Color Dark Text"] = Color3.fromRGB(90, 90, 90)
-	},
-	Midnight = {
-		["Color Hub 1"] = Color3.fromRGB(0, 0, 30),
-		["Color Hub 2"] = Color3.fromRGB(5, 5, 40),
-		["Color Stroke"] = Color3.fromRGB(0, 0, 100),
-		["Color Theme"] = Color3.fromRGB(50, 50, 255),
-		["Color Text"] = Color3.fromRGB(250, 250, 255),
-		["Color Dark Text"] = Color3.fromRGB(190, 190, 220)
-	}
+	Darker = {["Color Hub 1"] = Color3.fromRGB(20, 20, 25), ["Color Hub 2"] = Color3.fromRGB(30, 30, 35), ["Color Stroke"] = Color3.fromRGB(50, 50, 55), ["Color Theme"] = Color3.fromRGB(100, 255, 150), ["Color Text"] = Color3.fromRGB(240, 240, 245), ["Color Dark Text"] = Color3.fromRGB(160, 160, 170)},
+	Dark = {["Color Hub 1"] = Color3.fromRGB(35, 35, 40), ["Color Hub 2"] = Color3.fromRGB(45, 45, 50), ["Color Stroke"] = Color3.fromRGB(70, 70, 80), ["Color Theme"] = Color3.fromRGB(80, 200, 255), ["Color Text"] = Color3.fromRGB(245, 245, 250), ["Color Dark Text"] = Color3.fromRGB(170, 170, 180)},
+	Purple = {["Color Hub 1"] = Color3.fromRGB(30, 25, 40), ["Color Hub 2"] = Color3.fromRGB(40, 35, 50), ["Color Stroke"] = Color3.fromRGB(60, 50, 75), ["Color Theme"] = Color3.fromRGB(150, 100, 255), ["Color Text"] = Color3.fromRGB(240, 240, 245), ["Color Dark Text"] = Color3.fromRGB(170, 160, 190)},
+	Light = {["Color Hub 1"] = Color3.fromRGB(220, 220, 225), ["Color Hub 2"] = Color3.fromRGB(235, 235, 240), ["Color Stroke"] = Color3.fromRGB(190, 190, 200), ["Color Theme"] = Color3.fromRGB(0, 140, 255), ["Color Text"] = Color3.fromRGB(40, 40, 45), ["Color Dark Text"] = Color3.fromRGB(90, 90, 100)},
+	Neon = {["Color Hub 1"] = Color3.fromRGB(5, 5, 10), ["Color Hub 2"] = Color3.fromRGB(10, 10, 15), ["Color Stroke"] = Color3.fromRGB(0, 255, 255), ["Color Theme"] = Color3.fromRGB(0, 255, 100), ["Color Text"] = Color3.fromRGB(255, 255, 255), ["Color Dark Text"] = Color3.fromRGB(200, 255, 255)},
+	Forest = {["Color Hub 1"] = Color3.fromRGB(0, 40, 20), ["Color Hub 2"] = Color3.fromRGB(0, 55, 25), ["Color Stroke"] = Color3.fromRGB(0, 90, 40), ["Color Theme"] = Color3.fromRGB(50, 205, 50), ["Color Text"] = Color3.fromRGB(230, 255, 230), ["Color Dark Text"] = Color3.fromRGB(170, 200, 170)},
+	Aqua = {["Color Hub 1"] = Color3.fromRGB(0, 90, 100), ["Color Hub 2"] = Color3.fromRGB(0, 120, 130), ["Color Stroke"] = Color3.fromRGB(0, 190, 210), ["Color Theme"] = Color3.fromRGB(0, 230, 255), ["Color Text"] = Color3.fromRGB(250, 255, 255), ["Color Dark Text"] = Color3.fromRGB(200, 230, 240)},
+	Crimson = {["Color Hub 1"] = Color3.fromRGB(50, 0, 10), ["Color Hub 2"] = Color3.fromRGB(80, 0, 15), ["Color Stroke"] = Color3.fromRGB(140, 0, 30), ["Color Theme"] = Color3.fromRGB(255, 50, 80), ["Color Text"] = Color3.fromRGB(255, 240, 240), ["Color Dark Text"] = Color3.fromRGB(220, 180, 180)},
+	Solar = {["Color Hub 1"] = Color3.fromRGB(255, 210, 0), ["Color Hub 2"] = Color3.fromRGB(255, 200, 0), ["Color Stroke"] = Color3.fromRGB(255, 130, 0), ["Color Theme"] = Color3.fromRGB(255, 80, 0), ["Color Text"] = Color3.fromRGB(30, 30, 30), ["Color Dark Text"] = Color3.fromRGB(70, 70, 70)},
+	Pastel = {["Color Hub 1"] = Color3.fromRGB(220, 200, 230), ["Color Hub 2"] = Color3.fromRGB(245, 230, 255), ["Color Stroke"] = Color3.fromRGB(190, 170, 210), ["Color Theme"] = Color3.fromRGB(170, 210, 240), ["Color Text"] = Color3.fromRGB(70, 70, 70), ["Color Dark Text"] = Color3.fromRGB(110, 110, 110)},
+	Cyber = {["Color Hub 1"] = Color3.fromRGB(5, 5, 20), ["Color Hub 2"] = Color3.fromRGB(15, 15, 35), ["Color Stroke"] = Color3.fromRGB(0, 220, 255), ["Color Theme"] = Color3.fromRGB(0, 180, 255), ["Color Text"] = Color3.fromRGB(250, 255, 255), ["Color Dark Text"] = Color3.fromRGB(190, 230, 255)},
+	Ocean = {["Color Hub 1"] = Color3.fromRGB(0, 25, 50), ["Color Hub 2"] = Color3.fromRGB(0, 45, 90), ["Color Stroke"] = Color3.fromRGB(0, 100, 180), ["Color Theme"] = Color3.fromRGB(0, 150, 255), ["Color Text"] = Color3.fromRGB(230, 245, 255), ["Color Dark Text"] = Color3.fromRGB(180, 210, 230)},
+	Desert = {["Color Hub 1"] = Color3.fromRGB(200, 170, 130), ["Color Hub 2"] = Color3.fromRGB(220, 180, 130), ["Color Stroke"] = Color3.fromRGB(150, 80, 40), ["Color Theme"] = Color3.fromRGB(220, 150, 30), ["Color Text"] = Color3.fromRGB(50, 40, 30), ["Color Dark Text"] = Color3.fromRGB(90, 80, 70)},
+	Galaxy = {["Color Hub 1"] = Color3.fromRGB(10, 0, 40), ["Color Hub 2"] = Color3.fromRGB(20, 0, 50), ["Color Stroke"] = Color3.fromRGB(90, 0, 150), ["Color Theme"] = Color3.fromRGB(140, 0, 255), ["Color Text"] = Color3.fromRGB(245, 245, 255), ["Color Dark Text"] = Color3.fromRGB(200, 200, 230)},
+	Vintage = {["Color Hub 1"] = Color3.fromRGB(140, 110, 80), ["Color Hub 2"] = Color3.fromRGB(150, 120, 90), ["Color Stroke"] = Color3.fromRGB(110, 80, 60), ["Color Theme"] = Color3.fromRGB(190, 150, 120), ["Color Text"] = Color3.fromRGB(70, 50, 40), ["Color Dark Text"] = Color3.fromRGB(100, 90, 80)},
+	Rainbow = {["Color Hub 1"] = Color3.fromRGB(255, 0, 0), ["Color Hub 2"] = Color3.fromRGB(230, 230, 230), ["Color Stroke"] = Color3.fromRGB(50, 50, 50), ["Color Theme"] = Color3.fromRGB(255, 100, 100), ["Color Text"] = Color3.fromRGB(30, 30, 30), ["Color Dark Text"] = Color3.fromRGB(90, 90, 90)},
+	Midnight = {["Color Hub 1"] = Color3.fromRGB(0, 0, 30), ["Color Hub 2"] = Color3.fromRGB(5, 5, 40), ["Color Stroke"] = Color3.fromRGB(0, 0, 100), ["Color Theme"] = Color3.fromRGB(50, 50, 255), ["Color Text"] = Color3.fromRGB(250, 250, 255), ["Color Dark Text"] = Color3.fromRGB(190, 190, 220)}
 }
-JustHub.Info = {Version="2.1.1"}
-JustHub.Save = {UISize={550,380},TabSize=100,Theme="Darker"}
+
+JustHub.Info = {Version = "2.2.0"}
+JustHub.Save = {UISize = {620, 440}, TabSize = 135, Theme = "Darker"}
 JustHub.ConfigData = {}
 JustHub.ControlRegistry = {}
 JustHub.Localization = {}
@@ -154,427 +36,14 @@ JustHub.CurrentLang = "en"
 JustHub.UserRole = "member"
 JustHub.UndoStack = {}
 JustHub.RedoStack = {}
-JustHub.Sounds = {
-	ButtonClick = 0,
-	SliderMove = 0
-}
+JustHub.Sounds = {ButtonClick = 0, SliderMove = 0}
+
+JustHub.ChromaEnabled = false
+JustHub.ChromaObjects = {}
+
 JustHub.Icons = (function()
 	local iconData = {
-		{"accessibility", 10709751939},
-		{"activity", 10709752035},
-		{"airvent", 10709752131},
-		{"airplay", 10709752254},
-		{"alarmcheck", 10709752405},
-		{"alarmclock", 10709752630},
-		{"alarmclockoff", 10709752508},
-		{"alarmminus", 10709752732},
-		{"alarmplus", 10709752825},
-		{"album", 10709752906},
-		{"alertcircle", 10709752996},
-		{"alertoctagon", 10709753064},
-		{"alerttriangle", 10709753149},
-		{"aligncenter", 10709753570},
-		{"aligncenterhorizontal", 10709753272},
-		{"aligncentervertical", 10709753421},
-		{"alignendhorizontal", 10709753692},
-		{"alignendvertical", 10709753808},
-		{"alignhorizontaldistributecenter", 10747779791},
-		{"alignhorizontaldistributeend", 10747784534},
-		{"alignhorizontaldistributestart", 10709754118},
-		{"alignhorizontaljustifycenter", 10709754204},
-		{"alignhorizontaljustifyend", 10709754317},
-		{"alignhorizontaljustifystart", 10709754436},
-		{"alignhorizontalspacearound", 10709754590},
-		{"alignhorizontalspacebetween", 10709754749},
-		{"alignjustify", 10709759610},
-		{"alignleft", 10709759764},
-		{"alignright", 10709759895},
-		{"alignstarthorizontal", 10709760051},
-		{"alignstartvertical", 10709760244},
-		{"alignverticaldistributecenter", 10709760351},
-		{"alignverticaldistributeend", 10709760434},
-		{"alignverticaldistributestart", 10709760612},
-		{"alignverticaljustifycenter", 10709760814},
-		{"alignverticaljustifyend", 10709761003},
-		{"alignverticaljustifystart", 10709761176},
-		{"alignverticalspacearound", 10709761324},
-		{"alignverticalspacebetween", 10709761434},
-		{"anchor", 10709761530},
-		{"angry", 10709761629},
-		{"annoyed", 10709761722},
-		{"aperture", 10709761813},
-		{"apple", 10709761889},
-		{"archive", 10709762233},
-		{"archiverestore", 10709762058},
-		{"armchair", 10709762327},
-		{"arrowbigdown", 10747796644},
-		{"arrowbigleft", 10709762574},
-		{"arrowbigright", 10709762727},
-		{"arrowbigup", 10709762879},
-		{"arrowdown", 10709767827},
-		{"arrowdowncircle", 10709763034},
-		{"arrowdownleft", 10709767656},
-		{"arrowdownright", 10709767750},
-		{"arrowleft", 10709768114},
-		{"arrowleftcircle", 10709767936},
-		{"arrowleftright", 10709768019},
-		{"arrowright", 10709768347},
-		{"arrowrightcircle", 10709768226},
-		{"arrowup", 10709768939},
-		{"arrowupcircle", 10709768432},
-		{"arrowupdown", 10709768538},
-		{"arrowupleft", 10709768661},
-		{"arrowupright", 10709768787},
-		{"asterisk", 10709769095},
-		{"atsign", 10709769286},
-		{"award", 10709769406},
-		{"axe", 10709769508},
-		{"axis3d", 10709769598},
-		{"baby", 10709769732},
-		{"backpack", 10709769841},
-		{"baggageclaim", 10709769935},
-		{"banana", 10709770005},
-		{"banknote", 10709770178},
-		{"barchart", 10709773755},
-		{"barchart2", 10709770317},
-		{"barchart3", 10709770431},
-		{"barchart4", 10709770560},
-		{"barcharthorizontal", 10709773669},
-		{"barcode", 10747360675},
-		{"baseline", 10709773863},
-		{"bath", 10709773963},
-		{"battery", 10709774640},
-		{"batterycharging", 10709774068},
-		{"batteryfull", 10709774206},
-		{"batterylow", 10709774370},
-		{"batterymedium", 10709774513},
-		{"beaker", 10709774756},
-		{"bed", 10709775036},
-		{"beddouble", 10709774864},
-		{"bedsingle", 10709774968},
-		{"beer", 10709775167},
-		{"bell", 10709775704},
-		{"bellminus", 10709775241},
-		{"belloff", 10709775320},
-		{"bellplus", 10709775448},
-		{"bellring", 10709775560},
-		{"bike", 10709775894},
-		{"binary", 10709776050},
-		{"bitcoin", 10709776126},
-		{"bluetooth", 10709776655},
-		{"bluetoothconnected", 10709776240},
-		{"bluetoothoff", 10709776344},
-		{"bluetoothsearching", 10709776501},
-		{"bold", 10747813908},
-		{"bomb", 10709781460},
-		{"bone", 10709781605},
-		{"book", 10709781824},
-		{"bookopen", 10709781717},
-		{"bookmark", 10709782154},
-		{"bookmarkminus", 10709781919},
-		{"bookmarkplus", 10709782044},
-		{"bot", 10709782230},
-		{"box", 10709782497},
-		{"boxselect", 10709782342},
-		{"boxes", 10709782582},
-		{"briefcase", 10709782662},
-		{"brush", 10709782758},
-		{"bug", 10709782845},
-		{"building", 10709783051},
-		{"building2", 10709782939},
-		{"bus", 10709783137},
-		{"cake", 10709783217},
-		{"calculator", 10709783311},
-		{"calendar", 10709789505},
-		{"calendarcheck", 10709783474},
-		{"calendarcheck2", 10709783392},
-		{"calendarclock", 10709783577},
-		{"calendardays", 10709783673},
-		{"calendarheart", 10709783835},
-		{"calendarminus", 10709783959},
-		{"calendaroff", 10709788784},
-		{"calendarplus", 10709788937},
-		{"calendarrange", 10709789053},
-		{"calendarsearch", 10709789200},
-		{"calendarx", 10709789407},
-		{"calendarx2", 10709789329},
-		{"camera", 10709789686},
-		{"cameraoff", 10747822677},
-		{"car", 10709789810},
-		{"carrot", 10709789960},
-		{"cast", 10709790097},
-		{"charge", 10709790202},
-		{"check", 10709790644},
-		{"checkcircle", 10709790387},
-		{"checkcircle2", 10709790298},
-		{"checksquare", 10709790537},
-		{"chefhat", 10709790757},
-		{"cherry", 10709790875},
-		{"chevrondown", 10709790948},
-		{"chevronfirst", 10709791015},
-		{"chevronlast", 10709791130},
-		{"chevronleft", 10709791281},
-		{"chevronright", 10709791437},
-		{"chevronup", 10709791523},
-		{"chevronsdown", 10709796864},
-		{"chevronsdownup", 10709791632},
-		{"chevronsleft", 10709797151},
-		{"chevronsleftright", 10709797006},
-		{"chevronsright", 10709797382},
-		{"chevronsrightleft", 10709797274},
-		{"chevronsup", 10709797622},
-		{"chevronsupdown", 10709797508},
-		{"chrome", 10709797725},
-		{"circle", 10709798174},
-		{"circledot", 10709797837},
-		{"circleellipsis", 10709797985},
-		{"circleslashed", 10709798100},
-		{"citrus", 10709798276},
-		{"clapperboard", 10709798350},
-		{"clipboard", 10709799288},
-		{"clipboardcheck", 10709798443},
-		{"clipboardcopy", 10709798574},
-		{"clipboardedit", 10709798682},
-		{"clipboardlist", 10709798792},
-		{"clipboardsignature", 10709798890},
-		{"clipboardtype", 10709798999},
-		{"clipboardx", 10709799124},
-		{"clock", 10709805144},
-		{"clock1", 10709799535},
-		{"clock10", 10709799718},
-		{"clock11", 10709799818},
-		{"clock12", 10709799962},
-		{"clock2", 10709803876},
-		{"clock3", 10709803989},
-		{"clock4", 10709804164},
-		{"clock5", 10709804291},
-		{"clock6", 10709804435},
-		{"clock7", 10709804599},
-		{"clock8", 10709804784},
-		{"clock9", 10709804996},
-		{"cloud", 10709806740},
-		{"cloudcog", 10709805262},
-		{"clouddrizzle", 10709805371},
-		{"cloudfog", 10709805477},
-		{"cloudhail", 10709805596},
-		{"cloudlightning", 10709805727},
-		{"cloudmoon", 10709805942},
-		{"cloudmoonrain", 10709805838},
-		{"cloudoff", 10709806060},
-		{"cloudrain", 10709806277},
-		{"cloudrainwind", 10709806166},
-		{"cloudsnow", 10709806374},
-		{"cloudsun", 10709806631},
-		{"cloudsunrain", 10709806475},
-		{"cloudy", 10709806859},
-		{"clover", 10709806995},
-		{"code", 10709810463},
-		{"code2", 10709807111},
-		{"codepen", 10709810534},
-		{"codesandbox", 10709810676},
-		{"coffee", 10709810814},
-		{"cog", 10709810948},
-		{"coins", 10709811110},
-		{"columns", 10709811261},
-		{"command", 10709811365},
-		{"compass", 10709811445},
-		{"component", 10709811595},
-		{"conciergebell", 10709811706},
-		{"connection", 10747361219},
-		{"contact", 10709811834},
-		{"contrast", 10709811939},
-		{"cookie", 10709812067},
-		{"copy", 10709812159},
-		{"copyleft", 10709812251},
-		{"copyright", 10709812311},
-		{"cornerdownleft", 10709812396},
-		{"cornerdownright", 10709812485},
-		{"cornerleftdown", 10709812632},
-		{"cornerleftup", 10709812784},
-		{"cornerrightdown", 10709812939},
-		{"cornerrightup", 10709813094},
-		{"cornerupleft", 10709813185},
-		{"cornerupright", 10709813281},
-		{"cpu", 10709813383},
-		{"croissant", 10709818125},
-		{"crop", 10709818245},
-		{"cross", 10709818399},
-		{"diamond", 10709819149},
-		{"dice1", 10709819266},
-		{"dice2", 10709819361},
-		{"dice3", 10709819508},
-		{"dice4", 10709819670},
-		{"dice5", 10709819801},
-		{"dice6", 10709819896},
-		{"dices", 10723343321},
-		{"diff", 10723343416},
-		{"disc", 10723343537},
-		{"divide", 10723343805},
-		{"dividecircle", 10723343636},
-		{"dividesquare", 10723343737},
-		{"dollarsign", 10723343958},
-		{"download", 10723344270},
-		{"downloadcloud", 10723344088},
-		{"droplet", 10723344432},
-		{"droplets", 10734883356},
-		{"drumstick", 10723344737},
-		{"edit", 10734883598},
-		{"edit2", 10723344885},
-		{"edit3", 10723345088},
-		{"egg", 10723345518},
-		{"eggfried", 10723345347},
-		{"electricity", 10723345749},
-		{"electricityoff", 10723345643},
-		{"equal", 10723345990},
-		{"equalnot", 10723345866},
-		{"eraser", 10723346158},
-		{"euro", 10723346372},
-		{"expand", 10723346553},
-		{"externallink", 10723346684},
-		{"eye", 10723346959},
-		{"eyeoff", 10723346871},
-		{"factory", 10723347051},
-		{"fan", 10723354359},
-		{"fastforward", 10723354521},
-		{"feather", 10723354671},
-		{"figma", 10723354801},
-		{"file", 10723374641},
-		{"filearchive", 10723354921},
-		{"fileaudio", 10723355148},
-		{"fileaudio2", 10723355026},
-		{"fileaxis3d", 10723355272},
-		{"filebadge", 10723355622},
-		{"filebadge2", 10723355451},
-		{"filebarchart", 10723355887},
-		{"filebarchart2", 10723355746},
-		{"filebox", 10723355989},
-		{"filecheck", 10723356210},
-		{"filecheck2", 10723356100},
-		{"fileclock", 10723356329},
-		{"filecode", 10723356507},
-		{"filecog", 10723356830},
-		{"filecog2", 10723356676},
-		{"filediff", 10723357039},
-		{"filedigit", 10723357151},
-		{"filedown", 10723357322},
-		{"fileedit", 10723357495},
-		{"fileheart", 10723357637},
-		{"fileimage", 10723357790},
-		{"fileinput", 10723357933},
-		{"filejson", 10723364435},
-		{"filejson2", 10723364361},
-		{"filekey", 10723364605},
-		{"filekey2", 10723364515},
-		{"filelinechart", 10723364725},
-		{"filelock", 10723364957},
-		{"filelock2", 10723364861},
-		{"fileminus", 10723365254},
-		{"fileminus2", 10723365086},
-		{"fileoutput", 10723365457},
-		{"filepiechart", 10723365598},
-		{"fileplus", 10723365877},
-		{"fileplus2", 10723365766},
-		{"filequestion", 10723365987},
-		{"filescan", 10723366167},
-		{"filesearch", 10723366550},
-		{"filesearch2", 10723366340},
-		{"filesignature", 10723366741},
-		{"filespreadsheet", 10723366962},
-		{"filesymlink", 10723367098},
-		{"fileterminal", 10723367244},
-		{"filetext", 10723367380},
-		{"filetype", 10723367606},
-		{"filetype2", 10723367509},
-		{"fileup", 10723367734},
-		{"filevideo", 10723373884},
-		{"filevideo2", 10723367834},
-		{"filevolume", 10723374172},
-		{"filevolume2", 10723374030},
-		{"filewarning", 10723374276},
-		{"filex", 10723374544},
-		{"filex2", 10723374378},
-		{"files", 10723374759},
-		{"film", 10723374981},
-		{"filter", 10723375128},
-		{"fingerprint", 10723375250},
-		{"flag", 10723375890},
-		{"flagoff", 10723375443},
-		{"flagtriangleleft", 10723375608},
-		{"flagtriangleright", 10723375727},
-		{"flame", 10723376114},
-		{"flashlight", 10723376471},
-		{"flashlightoff", 10723376365},
-		{"flaskconical", 10734883986},
-		{"flaskround", 10723376614},
-		{"fliphorizontal", 10723376884},
-		{"fliphorizontal2", 10723376745},
-		{"flipvertical", 10723377138},
-		{"flipvertical2", 10723377026},
-		{"flower", 10747830374},
-		{"flower2", 10723377305},
-		{"focus", 10723377537},
-		{"folder", 10723387563},
-		{"folderarchive", 10723384478},
-		{"foldercheck", 10723384605},
-		{"folderclock", 10723384731},
-		{"folderclosed", 10723384893},
-		{"foldercog", 10723385213},
-		{"foldercog2", 10723385036},
-		{"folderdown", 10723385338},
-		{"folderedit", 10723385445},
-		{"folderheart", 10723385545},
-		{"folderinput", 10723385721},
-		{"folderkey", 10723385848},
-		{"folderlock", 10723386005},
-		{"folderminus", 10723386127},
-		{"folderopen", 10723386277},
-		{"folderoutput", 10723386386},
-		{"folderplus", 10723386531},
-		{"foldersearch", 10723386787},
-		{"foldersearch2", 10723386674},
-		{"foldersymlink", 10723386930},
-		{"foldertree", 10723387085},
-		{"folderup", 10723387265},
-		{"folderx", 10723387448},
-		{"folders", 10723387721},
-		{"forminput", 10723387841},
-		{"forward", 10723388016},
-		{"frame", 10723394389},
-		{"framer", 10723394565},
-		{"frown", 10723394681},
-		{"fuel", 10723394846},
-		{"functionsquare", 10723395041},
-		{"gamepad", 10723395457},
-		{"gamepad2", 10723395215},
-		{"gauge", 10723395708},
-		{"gavel", 10723395896},
-		{"gem", 10723396000},
-		{"ghost", 10723396107},
-		{"gift", 10723396402},
-		{"giftcard", 10723396225},
-		{"gitbranch", 10723396676},
-		{"gitbranchplus", 10723396542},
-		{"gitcommit", 10723396812},
-		{"gitcompare", 10723396954},
-		{"gitfork", 10723397049},
-		{"gitmerge", 10723397165},
-		{"gitpullrequest", 10723397431},
-		{"gitpullrequestclosed", 10723397268},
-		{"gitpullrequestdraft", 10734884302},
-		{"glass", 10723397788},
-		{"glass2", 10723397529},
-		{"glasswater", 10723397678},
-		{"glasses", 10723397895},
-		{"globe", 10723404337},
-		{"globe2", 10723398002},
-		{"grab", 10723404472},
-		{"graduationcap", 10723404691},
-		{"grape", 10723404822},
-		{"grid", 10723404936},
-		{"griphorizontal", 10723405089},
-		{"gripvertical", 10723405236},
-		{"hammer", 10723405360},
-		{"hand", 10723405649}
+		{"accessibility", 10709751939}, {"activity", 10709752035}, {"airvent", 10709752131}, {"airplay", 10709752254}, {"alarmcheck", 10709752405}, {"alarmclock", 10709752630}, {"alarmclockoff", 10709752508}, {"alarmminus", 10709752732}, {"alarmplus", 10709752825}, {"album", 10709752906}, {"alertcircle", 10709752996}, {"alertoctagon", 10709753064}, {"alerttriangle", 10709753149}, {"aligncenter", 10709753570}, {"aligncenterhorizontal", 10709753272}, {"aligncentervertical", 10709753421}, {"alignendhorizontal", 10709753692}, {"alignendvertical", 10709753808}, {"alignhorizontaldistributecenter", 10747779791}, {"alignhorizontaldistributeend", 10747784534}, {"alignhorizontaldistributestart", 10709754118}, {"alignhorizontaljustifycenter", 10709754204}, {"alignhorizontaljustifyend", 10709754317}, {"alignhorizontaljustifystart", 10709754436}, {"alignhorizontalspacearound", 10709754590}, {"alignhorizontalspacebetween", 10709754749}, {"alignjustify", 10709759610}, {"alignleft", 10709759764}, {"alignright", 10709759895}, {"alignstarthorizontal", 10709760051}, {"alignstartvertical", 10709760244}, {"alignverticaldistributecenter", 10709760351}, {"alignverticaldistributeend", 10709760434}, {"alignverticaldistributestart", 10709760612}, {"alignverticaljustifycenter", 10709760814}, {"alignverticaljustifyend", 10709761003}, {"alignverticaljustifystart", 10709761176}, {"alignverticalspacearound", 10709761324}, {"alignverticalspacebetween", 10709761434}, {"anchor", 10709761530}, {"angry", 10709761629}, {"annoyed", 10709761722}, {"aperture", 10709761813}, {"apple", 10709761889}, {"archive", 10709762233}, {"archiverestore", 10709762058}, {"armchair", 10709762327}, {"arrowbigdown", 10747796644}, {"arrowbigleft", 10709762574}, {"arrowbigright", 10709762727}, {"arrowbigup", 10709762879}, {"arrowdown", 10709767827}, {"arrowdowncircle", 10709763034}, {"arrowdownleft", 10709767656}, {"arrowdownright", 10709767750}, {"arrowleft", 10709768114}, {"arrowleftcircle", 10709767936}, {"arrowleftright", 10709768019}, {"arrowright", 10709768347}, {"arrowrightcircle", 10709768226}, {"arrowup", 10709768939}, {"arrowupcircle", 10709768432}, {"arrowupdown", 10709768538}, {"arrowupleft", 10709768661}, {"arrowupright", 10709768787}, {"asterisk", 10709769095}, {"atsign", 10709769286}, {"award", 10709769406}, {"axe", 10709769508}, {"axis3d", 10709769598}, {"baby", 10709769732}, {"backpack", 10709769841}, {"baggageclaim", 10709769935}, {"banana", 10709770005}, {"banknote", 10709770178}, {"barchart", 10709773755}, {"barchart2", 10709770317}, {"barchart3", 10709770431}, {"barchart4", 10709770560}, {"barcharthorizontal", 10709773669}, {"barcode", 10747360675}, {"baseline", 10709773863}, {"bath", 10709773963}, {"battery", 10709774640}, {"batterycharging", 10709774068}, {"batteryfull", 10709774206}, {"batterylow", 10709774370}, {"batterymedium", 10709774513}, {"beaker", 10709774756}, {"bed", 10709775036}, {"beddouble", 10709774864}, {"bedsingle", 10709774968}, {"beer", 10709775167}, {"bell", 10709775704}, {"bellminus", 10709775241}, {"belloff", 10709775320}, {"bellplus", 10709775448}, {"bellring", 10709775560}, {"bike", 10709775894}, {"binary", 10709776050}, {"bitcoin", 10709776126}, {"bluetooth", 10709776655}, {"bluetoothconnected", 10709776240}, {"bluetoothoff", 10709776344}, {"bluetoothsearching", 10709776501}, {"bold", 10747813908}, {"bomb", 10709781460}, {"bone", 10709781605}, {"book", 10709781824}, {"bookopen", 10709781717}, {"bookmark", 10709782154}, {"bookmarkminus", 10709781919}, {"bookmarkplus", 10709782044}, {"bot", 10709782230}, {"box", 10709782497}, {"boxselect", 10709782342}, {"boxes", 10709782582}, {"briefcase", 10709782662}, {"brush", 10709782758}, {"bug", 10709782845}, {"building", 10709783051}, {"building2", 10709782939}, {"bus", 10709783137}, {"cake", 10709783217}, {"calculator", 10709783311}, {"calendar", 10709789505}, {"calendarcheck", 10709783474}, {"calendarcheck2", 10709783392}, {"calendarclock", 10709783577}, {"calendardays", 10709783673}, {"calendarheart", 10709783835}, {"calendarminus", 10709783959}, {"calendaroff", 10709788784}, {"calendarplus", 10709788937}, {"calendarrange", 10709789053}, {"calendarsearch", 10709789200}, {"calendarx", 10709789407}, {"calendarx2", 10709789329}, {"camera", 10709789686}, {"cameraoff", 10747822677}, {"car", 10709789810}, {"carrot", 10709789960}, {"cast", 10709790097}, {"charge", 10709790202}, {"check", 10709790644}, {"checkcircle", 10709790387}, {"checkcircle2", 10709790298}, {"checksquare", 10709790537}, {"chefhat", 10709790757}, {"cherry", 10709790875}, {"chevrondown", 10709790948}, {"chevronfirst", 10709791015}, {"chevronlast", 10709791130}, {"chevronleft", 10709791281}, {"chevronright", 10709791437}, {"chevronup", 10709791523}, {"chevronsdown", 10709796864}, {"chevronsdownup", 10709791632}, {"chevronsleft", 10709797151}, {"chevronsleftright", 10709797006}, {"chevronsright", 10709797382}, {"chevronsrightleft", 10709797274}, {"chevronsup", 10709797622}, {"chevronsupdown", 10709797508}, {"chrome", 10709797725}, {"circle", 10709798174}, {"circledot", 10709797837}, {"circleellipsis", 10709797985}, {"circleslashed", 10709798100}, {"citrus", 10709798276}, {"clapperboard", 10709798350}, {"clipboard", 10709799288}, {"clipboardcheck", 10709798443}, {"clipboardcopy", 10709798574}, {"clipboardedit", 10709798682}, {"clipboardlist", 10709798792}, {"clipboardsignature", 10709798890}, {"clipboardtype", 10709798999}, {"clipboardx", 10709799124}, {"clock", 10709805144}, {"clock1", 10709799535}, {"clock10", 10709799718}, {"clock11", 10709799818}, {"clock12", 10709799962}, {"clock2", 10709803876}, {"clock3", 10709803989}, {"clock4", 10709804164}, {"clock5", 10709804291}, {"clock6", 10709804435}, {"clock7", 10709804599}, {"clock8", 10709804784}, {"clock9", 10709804996}, {"cloud", 10709806740}, {"cloudcog", 10709805262}, {"clouddrizzle", 10709805371}, {"cloudfog", 10709805477}, {"cloudhail", 10709805596}, {"cloudlightning", 10709805727}, {"cloudmoon", 10709805942}, {"cloudmoonrain", 10709805838}, {"cloudoff", 10709806060}, {"cloudrain", 10709806277}, {"cloudrainwind", 10709806166}, {"cloudsnow", 10709806374}, {"cloudsun", 10709806631}, {"cloudsunrain", 10709806475}, {"cloudy", 10709806859}, {"clover", 10709806995}, {"code", 10709810463}, {"code2", 10709807111}, {"codepen", 10709810534}, {"codesandbox", 10709810676}, {"coffee", 10709810814}, {"cog", 10709810948}, {"coins", 10709811110}, {"columns", 10709811261}, {"command", 10709811365}, {"compass", 10709811445}, {"component", 10709811595}, {"conciergebell", 10709811706}, {"connection", 10747361219}, {"contact", 10709811834}, {"contrast", 10709811939}, {"cookie", 10709812067}, {"copy", 10709812159}, {"copyleft", 10709812251}, {"copyright", 10709812311}, {"cornerdownleft", 10709812396}, {"cornerdownright", 10709812485}, {"cornerleftdown", 10709812632}, {"cornerleftup", 10709812784}, {"cornerrightdown", 10709812939}, {"cornerrightup", 10709813094}, {"cornerupleft", 10709813185}, {"cornerupright", 10709813281}, {"cpu", 10709813383}, {"croissant", 10709818125}, {"crop", 10709818245}, {"cross", 10709818399}, {"diamond", 10709819149}, {"dice1", 10709819266}, {"dice2", 10709819361}, {"dice3", 10709819508}, {"dice4", 10709819670}, {"dice5", 10709819801}, {"dice6", 10709819896}, {"dices", 10723343321}, {"diff", 10723343416}, {"disc", 10723343537}, {"divide", 10723343805}, {"dividecircle", 10723343636}, {"dividesquare", 10723343737}, {"dollarsign", 10723343958}, {"download", 10723344270}, {"downloadcloud", 10723344088}, {"droplet", 10723344432}, {"droplets", 10734883356}, {"drumstick", 10723344737}, {"edit", 10734883598}, {"edit2", 10723344885}, {"edit3", 10723345088}, {"egg", 10723345518}, {"eggfried", 10723345347}, {"electricity", 10723345749}, {"electricityoff", 10723345643}, {"equal", 10723345990}, {"equalnot", 10723345866}, {"eraser", 10723346158}, {"euro", 10723346372}, {"expand", 10723346553}, {"externallink", 10723346684}, {"eye", 10723346959}, {"eyeoff", 10723346871}, {"factory", 10723347051}, {"fan", 10723354359}, {"fastforward", 10723354521}, {"feather", 10723354671}, {"figma", 10723354801}, {"file", 10723374641}, {"filearchive", 10723354921}, {"fileaudio", 10723355148}, {"fileaudio2", 10723355026}, {"fileaxis3d", 10723355272}, {"filebadge", 10723355622}, {"filebadge2", 10723355451}, {"filebarchart", 10723355887}, {"filebarchart2", 10723355746}, {"filebox", 10723355989}, {"filecheck", 10723356210}, {"filecheck2", 10723356100}, {"fileclock", 10723356329}, {"filecode", 10723356507}, {"filecog", 10723356830}, {"filecog2", 10723356676}, {"filediff", 10723357039}, {"filedigit", 10723357151}, {"filedown", 10723357322}, {"fileedit", 10723357495}, {"fileheart", 10723357637}, {"fileimage", 10723357790}, {"fileinput", 10723357933}, {"filejson", 10723364435}, {"filejson2", 10723364361}, {"filekey", 10723364605}, {"filekey2", 10723364515}, {"filelinechart", 10723364725}, {"filelock", 10723364957}, {"filelock2", 10723364861}, {"fileminus", 10723365254}, {"fileminus2", 10723365086}, {"fileoutput", 10723365457}, {"filepiechart", 10723365598}, {"fileplus", 10723365877}, {"fileplus2", 10723365766}, {"filequestion", 10723365987}, {"filescan", 10723366167}, {"filesearch", 10723366550}, {"filesearch2", 10723366340}, {"filesignature", 10723366741}, {"filespreadsheet", 10723366962}, {"filesymlink", 10723367098}, {"fileterminal", 10723367244}, {"filetext", 10723367380}, {"filetype", 10723367606}, {"filetype2", 10723367509}, {"fileup", 10723367734}, {"filevideo", 10723373884}, {"filevideo2", 10723367834}, {"filevolume", 10723374172}, {"filevolume2", 10723374030}, {"filewarning", 10723374276}, {"filex", 10723374544}, {"filex2", 10723374378}, {"files", 10723374759}, {"film", 10723374981}, {"filter", 10723375128}, {"fingerprint", 10723375250}, {"flag", 10723375890}, {"flagoff", 10723375443}, {"flagtriangleleft", 10723375608}, {"flagtriangleright", 10723375727}, {"flame", 10723376114}, {"flashlight", 10723376471}, {"flashlightoff", 10723376365}, {"flaskconical", 10734883986}, {"flaskround", 10723376614}, {"fliphorizontal", 10723376884}, {"fliphorizontal2", 10723376745}, {"flipvertical", 10723377138}, {"flipvertical2", 10723377026}, {"flower", 10747830374}, {"flower2", 10723377305}, {"focus", 10723377537}, {"folder", 10723387563}, {"folderarchive", 10723384478}, {"foldercheck", 10723384605}, {"folderclock", 10723384731}, {"folderclosed", 10723384893}, {"foldercog", 10723385213}, {"foldercog2", 10723385036}, {"folderdown", 10723385338}, {"folderedit", 10723385445}, {"folderheart", 10723385545}, {"folderinput", 10723385721}, {"folderkey", 10723385848}, {"folderlock", 10723386005}, {"folderminus", 10723386127}, {"folderopen", 10723386277}, {"folderoutput", 10723386386}, {"folderplus", 10723386531}, {"foldersearch", 10723386787}, {"foldersearch2", 10723386674}, {"foldersymlink", 10723386930}, {"foldertree", 10723387085}, {"folderup", 10723387265}, {"folderx", 10723387448}, {"folders", 10723387721}, {"forminput", 10723387841}, {"forward", 10723388016}, {"frame", 10723394389}, {"framer", 10723394565}, {"frown", 10723394681}, {"fuel", 10723394846}, {"functionsquare", 10723395041}, {"gamepad", 10723395457}, {"gamepad2", 10723395215}, {"gauge", 10723395708}, {"gavel", 10723395896}, {"gem", 10723396000}, {"ghost", 10723396107}, {"gift", 10723396402}, {"giftcard", 10723396225}, {"gitbranch", 10723396676}, {"gitbranchplus", 10723396542}, {"gitcommit", 10723396812}, {"gitcompare", 10723396954}, {"gitfork", 10723397049}, {"gitmerge", 10723397165}, {"gitpullrequest", 10723397431}, {"gitpullrequestclosed", 10723397268}, {"gitpullrequestdraft", 10734884302}, {"glass", 10723397788}, {"glass2", 10723397529}, {"glasswater", 10723397678}, {"glasses", 10723397895}, {"globe", 10723404337}, {"globe2", 10723398002}, {"grab", 10723404472}, {"graduationcap", 10723404691}, {"grape", 10723404822}, {"grid", 10723404936}, {"griphorizontal", 10723405089}, {"gripvertical", 10723405236}, {"hammer", 10723405360}, {"hand", 10723405649}
 	}
 	local icons = {}
 	for _, pair in ipairs(iconData) do
@@ -583,52 +52,77 @@ JustHub.Icons = (function()
 	return icons
 end)()
 
-local function createInstance(c,p,par)
-	local i=Instance.new(c)
-	if p then
-		for k,v in pairs(p) do
-			i[k]=v
+local function createInstance(className, props, parent)
+	local obj = Instance.new(className)
+	if props then
+		for key, value in pairs(props) do
+			obj[key] = value
 		end
 	end
-	if par then
-		i.Parent=par
+	if parent then
+		obj.Parent = parent
 	end
-	return i
+	return obj
 end
 
-local function tweenProperty(o,t,d)
-	local ti=TweenInfo.new(d,Enum.EasingStyle.Quad,Enum.EasingDirection.Out)
-	local tw=TweenService:Create(o,ti,t)
-	tw:Play()
-	return tw
+local function tweenProperty(guiObject, goal, time, easingStyle, easingDirection)
+	local ti = TweenInfo.new(time, easingStyle or Enum.EasingStyle.Quad, easingDirection or Enum.EasingDirection.Out)
+	local tween = TweenService:Create(guiObject, ti, goal)
+	tween:Play()
+	return tween
 end
 
-local function getCurrentTheme(c)
-	if type(c)=="table" then
-		return c
+local function getCurrentTheme(themeName)
+	if type(themeName) == "table" then
+		return themeName
 	else
-		return JustHub.Themes[c or JustHub.Save.Theme]
+		return JustHub.Themes[themeName or JustHub.Save.Theme] or JustHub.Themes["Darker"]
 	end
 end
 
-local function clampPosition(pos,sz)
-	local x=math.clamp(pos.X.Offset,0,sz.X)
-	local y=math.clamp(pos.Y.Offset,0,sz.Y)
-	return UDim2.new(pos.X.Scale,x,pos.Y.Scale,y)
+local function addBorder(obj, color, thickness)
+	return createInstance("UIStroke", {Color = color, Thickness = thickness}, obj)
 end
 
-local function addBorder(o,col,th)
-	return createInstance("UIStroke",{Color=col,Thickness=th},o)
+local function registerChroma(obj, property)
+	table.insert(JustHub.ChromaObjects, {Instance = obj, Property = property})
 end
 
-function JustHub:RegisterControl(k,u)
-	JustHub.ControlRegistry[k]=u
+RunService.RenderStepped:Connect(function()
+	if JustHub.ChromaEnabled then
+		local hue = (tick() % 5) / 5
+		local color = Color3.fromHSV(hue, 1, 1)
+		for i = #JustHub.ChromaObjects, 1, -1 do
+			local data = JustHub.ChromaObjects[i]
+			if data.Instance and data.Instance.Parent then
+				data.Instance[data.Property] = color
+			else
+				table.remove(JustHub.ChromaObjects, i)
+			end
+		end
+	end
+end)
+
+function JustHub:ToggleChroma(state)
+	self.ChromaEnabled = state
+	if not state then
+		local theme = getCurrentTheme(self.Save.Theme)
+		for _, data in ipairs(self.ChromaObjects) do
+			if data.Instance and data.Instance.Parent then
+				data.Instance[data.Property] = theme["Color Theme"]
+			end
+		end
+	end
 end
 
-function JustHub:ApplyConfig(cf)
-	for k,v in pairs(cf) do
-		if JustHub.ControlRegistry[k] then
-			JustHub.ControlRegistry[k](v)
+function JustHub:RegisterControl(key, updateFunc)
+	JustHub.ControlRegistry[key] = updateFunc
+end
+
+function JustHub:ApplyConfig(configData)
+	for key, val in pairs(configData) do
+		if JustHub.ControlRegistry[key] then
+			JustHub.ControlRegistry[key](val)
 		end
 	end
 end
@@ -638,50 +132,50 @@ function JustHub:SetUserRole(roleName)
 end
 
 function JustHub:CheckRole(requiredRole)
-	return self.UserRole==requiredRole
+	return self.UserRole == requiredRole
 end
 
-function JustHub:AddUndo(controlKey,oldValue,newValue)
-	table.insert(self.UndoStack,{key=controlKey,old=oldValue,new=newValue})
+function JustHub:AddUndo(controlKey, oldValue, newValue)
+	table.insert(self.UndoStack, {key = controlKey, old = oldValue, new = newValue})
 end
 
 function JustHub:Undo()
-	local last=self.UndoStack[#self.UndoStack]
+	local last = self.UndoStack[#self.UndoStack]
 	if not last then return end
-	self.UndoStack[#self.UndoStack]=nil
+	self.UndoStack[#self.UndoStack] = nil
 	if self.ControlRegistry[last.key] then
 		self.ControlRegistry[last.key](last.old)
-		table.insert(self.RedoStack,last)
+		table.insert(self.RedoStack, last)
 	end
 end
 
 function JustHub:Redo()
-	local last=self.RedoStack[#self.RedoStack]
+	local last = self.RedoStack[#self.RedoStack]
 	if not last then return end
-	self.RedoStack[#self.RedoStack]=nil
+	self.RedoStack[#self.RedoStack] = nil
 	if self.ControlRegistry[last.key] then
 		self.ControlRegistry[last.key](last.new)
-		table.insert(self.UndoStack,last)
+		table.insert(self.UndoStack, last)
 	end
 end
 
-function JustHub:RegisterTheme(name,definition)
+function JustHub:RegisterTheme(name, definition)
 	self.Themes[name] = definition
 end
 
 function JustHub:PlaySound(name)
-	if self.Sounds[name] and self.Sounds[name]~=0 then
-		local s=Instance.new("Sound")
-		s.SoundId="rbxassetid://"..tostring(self.Sounds[name])
-		s.Volume=1
-		s.PlayOnRemove=true
-		s.Parent=workspace
+	if self.Sounds[name] and self.Sounds[name] ~= 0 then
+		local s = Instance.new("Sound")
+		s.SoundId = "rbxassetid://" .. tostring(self.Sounds[name])
+		s.Volume = 1
+		s.PlayOnRemove = true
+		s.Parent = workspace
 		s:Destroy()
 	end
 end
 
 function JustHub:SetLanguage(lang)
-	self.CurrentLang=lang
+	self.CurrentLang = lang
 end
 
 function JustHub:LocalizeText(textKey)
@@ -691,202 +185,225 @@ function JustHub:LocalizeText(textKey)
 	return textKey
 end
 
-local SectionMethods={}
+local SectionMethods = {}
 
-function SectionMethods:addMenu(n)
-	local menuName = (n ~= nil) and tostring(n) or "Menu"
+function SectionMethods:addMenu(name)
+	local menuName = (name ~= nil) and tostring(name) or "Menu"
+	local theme = getCurrentTheme(JustHub.Save.Theme)
 	
-	local f = createInstance("Frame", {
+	local frame = createInstance("Frame", {
 		Name = menuName,
 		Size = UDim2.new(1, 0, 0, 44),
-		BackgroundColor3 = Color3.fromRGB(60, 60, 70),
+		BackgroundColor3 = theme["Color Hub 2"],
+		BackgroundTransparency = 0.15,
 		BorderSizePixel = 0,
 		ClipsDescendants = true
 	}, self.Content)
-	
-	createInstance("UICorner", {
-		CornerRadius = UDim.new(0, 12)
-	}, f)
-	
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 10)}, frame)
+	addBorder(frame, theme["Color Stroke"], 1)
+
 	local gradient = createInstance("UIGradient", {
 		Color = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(70, 70, 85)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(50, 50, 60))
+			ColorSequenceKeypoint.new(0, theme["Color Hub 2"]),
+			ColorSequenceKeypoint.new(1, theme["Color Hub 1"])
 		}),
 		Rotation = 90
-	}, f)
-	
-	local shadow = createInstance("TextLabel", {
-		Name = "MenuLabelShadow",
-		Text = menuName,
-		Size = UDim2.new(1, -16, 1, 0),
-		Position = UDim2.new(0, 10, 0, 2),
-		BackgroundTransparency = 1,
-		TextColor3 = Color3.fromRGB(0, 0, 0),
-		TextTransparency = 0.5,
-		Font = Enum.Font.GothamBold,
-		TextSize = 14,
-		TextXAlignment = Enum.TextXAlignment.Left,
-		TextTruncate = Enum.TextTruncate.AtEnd,
-		ZIndex = 1
-	}, f)
-	
+	}, frame)
+
 	local label = createInstance("TextLabel", {
 		Name = "MenuLabel",
 		Text = menuName,
 		Size = UDim2.new(1, -16, 1, 0),
-		Position = UDim2.new(0, 8, 0, 0),
+		Position = UDim2.new(0, 10, 0, 0),
 		BackgroundTransparency = 1,
-		TextColor3 = Color3.fromRGB(255, 255, 255),
+		TextColor3 = theme["Color Text"],
 		Font = Enum.Font.GothamBold,
 		TextSize = 14,
 		TextXAlignment = Enum.TextXAlignment.Left,
 		TextTruncate = Enum.TextTruncate.AtEnd,
 		ZIndex = 2
-	}, f)
-	return f
+	}, frame)
+	
+	return frame
 end
 
-function SectionMethods:addToggle(o)
-	o = o or {}
-	local t = o.Name or "Toggle"
-	local d = o.Default or false
-	local cb = o.Callback or function(x) end
-	local role = o.Role or nil
+function SectionMethods:addChromaToggle()
+	return self:addToggle({
+		Name = "Rainbow Chroma Mode",
+		Default = JustHub.ChromaEnabled,
+		Callback = function(state)
+			JustHub:ToggleChroma(state)
+		end
+	})
+end
+
+function SectionMethods:addToggle(options)
+	options = options or {}
+	local title = options.Name or "Toggle"
+	local default = options.Default or false
+	local callback = options.Callback or function() end
+	local role = options.Role or nil
+	local theme = getCurrentTheme(JustHub.Save.Theme)
+	
 	if role and not JustHub:CheckRole(role) then
-		local hidden = createInstance("Frame", {Size = UDim2.new(1, 0, 0, 0), BackgroundTransparency = 1}, self.Content)
-		return hidden
+		return createInstance("Frame", {Size = UDim2.new(1, 0, 0, 0), BackgroundTransparency = 1}, self.Content)
 	end
-	local f = createInstance("Frame", {Name = t.."Toggle", Size = UDim2.new(1, 0, 0, 36), BackgroundColor3 = Color3.fromRGB(55, 55, 60), BorderSizePixel = 0}, self.Content)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 12)}, f)
-	local l = createInstance("TextLabel", {Size = UDim2.new(0.7, -8, 1, 0), Position = UDim2.new(0, 8, 0, 0), BackgroundTransparency = 1, Text = t, TextColor3 = Color3.fromRGB(230, 230, 240), Font = Enum.Font.GothamBold, TextSize = 13, TextXAlignment = Enum.TextXAlignment.Left}, f)
-	local sep = createInstance("Frame", {Size = UDim2.new(0, 1, 1, 0), Position = UDim2.new(0.7, 0, 0, 0), BackgroundColor3 = Color3.fromRGB(70, 70, 80)}, f)
-	local tc = createInstance("Frame", {Size = UDim2.new(0.3, -8, 1, 0), Position = UDim2.new(0.7, 8, 0, 0), BackgroundTransparency = 1}, f)
-	local sw = createInstance("Frame", {Size = UDim2.new(0, 44, 0, 22), Position = UDim2.new(1, -44, 0.5, -11), BackgroundColor3 = d and Color3.fromRGB(100, 255, 150) or Color3.fromRGB(80, 80, 90), BorderSizePixel = 0}, tc)
-	sw.Active = true
-	sw.Selectable = true
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 11)}, sw)
-	local c = createInstance("Frame", {Size = UDim2.new(0, 18, 0, 18), Position = d and UDim2.new(1, -20, 0.5, -9) or UDim2.new(0, 2, 0.5, -9), BackgroundColor3 = Color3.fromRGB(255, 255, 255), BorderSizePixel = 0}, sw)
-	createInstance("UICorner", {CornerRadius = UDim.new(1, 0)}, c)
-	createInstance("UIStroke", {Color = Color3.fromRGB(60, 60, 70), Thickness = 1}, c)
-	local s = d
-	if d then cb(true) else cb(false) end
-	JustHub.ConfigData[t] = s
-	JustHub:RegisterControl(t, function(v)
-		local old = s
-		s = v
-		if s then
-			TweenService:Create(c, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {Position = UDim2.new(1, -20, 0.5, -9)}):Play()
-			TweenService:Create(sw, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(100, 255, 150)}):Play()
-			TweenService:Create(l, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {TextColor3 = Color3.fromRGB(100, 255, 150)}):Play()
+	
+	local frame = createInstance("Frame", {
+		Name = title .. "Toggle",
+		Size = UDim2.new(1, 0, 0, 36),
+		BackgroundColor3 = theme["Color Hub 2"],
+		BackgroundTransparency = 0.15,
+		BorderSizePixel = 0
+	}, self.Content)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, frame)
+	addBorder(frame, theme["Color Stroke"], 1)
+
+	local label = createInstance("TextLabel", {
+		Size = UDim2.new(0.7, -8, 1, 0),
+		Position = UDim2.new(0, 10, 0, 0),
+		BackgroundTransparency = 1,
+		Text = title,
+		TextColor3 = theme["Color Text"],
+		Font = Enum.Font.GothamMedium,
+		TextSize = 13,
+		TextXAlignment = Enum.TextXAlignment.Left
+	}, frame)
+
+	local switchBg = createInstance("Frame", {
+		Size = UDim2.new(0, 44, 0, 22),
+		Position = UDim2.new(1, -54, 0.5, -11),
+		BackgroundColor3 = default and theme["Color Theme"] or theme["Color Hub 1"],
+		BorderSizePixel = 0,
+		Active = true,
+		Selectable = true
+	}, frame)
+	createInstance("UICorner", {CornerRadius = UDim.new(1, 0)}, switchBg)
+	addBorder(switchBg, theme["Color Stroke"], 1)
+
+	local circle = createInstance("Frame", {
+		Size = UDim2.new(0, 18, 0, 18),
+		Position = default and UDim2.new(1, -20, 0.5, -9) or UDim2.new(0, 2, 0.5, -9),
+		BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+		BorderSizePixel = 0
+	}, switchBg)
+	createInstance("UICorner", {CornerRadius = UDim.new(1, 0)}, circle)
+
+	registerChroma(switchBg, "BackgroundColor3")
+
+	local state = default
+	if default then callback(true) else callback(false) end
+	JustHub.ConfigData[title] = state
+
+	local function toggleVisuals(isActive)
+		local goalPos = isActive and UDim2.new(1, -20, 0.5, -9) or UDim2.new(0, 2, 0.5, -9)
+		local goalCol = isActive and theme["Color Theme"] or theme["Color Hub 1"]
+		tweenProperty(circle, {Position = goalPos}, 0.25)
+		
+		if JustHub.ChromaEnabled and isActive then
 		else
-			TweenService:Create(c, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {Position = UDim2.new(0, 2, 0.5, -9)}):Play()
-			TweenService:Create(sw, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(80, 80, 90)}):Play()
-			TweenService:Create(l, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {TextColor3 = Color3.fromRGB(230, 230, 240)}):Play()
+			tweenProperty(switchBg, {BackgroundColor3 = goalCol}, 0.25)
 		end
-		JustHub:AddUndo(t, old, s)
+	end
+
+	JustHub:RegisterControl(title, function(val)
+		local old = state
+		state = val
+		toggleVisuals(state)
+		JustHub:AddUndo(title, old, state)
 	end)
-	sw.InputBegan:Connect(function(i)
-		if i.UserInputType == Enum.UserInputType.MouseButton1 or i.UserInputType == Enum.UserInputType.Touch then
-			local old = s
-			if not s then
-				TweenService:Create(c, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {Position = UDim2.new(1, -20, 0.5, -9)}):Play()
-				TweenService:Create(sw, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(100, 255, 150)}):Play()
-				TweenService:Create(l, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {TextColor3 = Color3.fromRGB(100, 255, 150)}):Play()
-			else
-				TweenService:Create(c, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {Position = UDim2.new(0, 2, 0.5, -9)}):Play()
-				TweenService:Create(sw, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(80, 80, 90)}):Play()
-				TweenService:Create(l, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {TextColor3 = Color3.fromRGB(230, 230, 240)}):Play()
-			end
-			s = not s
-			JustHub.ConfigData[t] = s
-			cb(s)
-			JustHub:AddUndo(t, old, s)
+
+	switchBg.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			local old = state
+			state = not state
+			JustHub.ConfigData[title] = state
+			toggleVisuals(state)
+			callback(state)
+			JustHub:AddUndo(title, old, state)
 		end
 	end)
-	return f
+	
+	return frame
 end
 
-function SectionMethods:addSlider(o)
-	o = o or {}
-	local t = o.Name or "Slider"
-	local mi = o.Min or 0
-	local ma = o.Max or 100
-	local df = o.Default or mi
-	local cb = o.Callback or function() end
+function SectionMethods:addSlider(options)
+	options = options or {}
+	local title = options.Name or "Slider"
+	local minVal = options.Min or 0
+	local maxVal = options.Max or 100
+	local default = options.Default or minVal
+	local callback = options.Callback or function() end
+	local theme = getCurrentTheme(JustHub.Save.Theme)
 
-	if JustHub.ConfigData then
-		if JustHub.ConfigData[t] ~= nil then df = JustHub.ConfigData[t] else JustHub.ConfigData[t] = df end
+	if JustHub.ConfigData[title] ~= nil then
+		default = JustHub.ConfigData[title]
+	else
+		JustHub.ConfigData[title] = default
 	end
 
-	local bgCol = Color3.fromRGB(35, 35, 40)
-	local elemCol = Color3.fromRGB(45, 45, 50)
-	local hoverCol = Color3.fromRGB(55, 55, 60)
-	local textCol = Color3.fromRGB(240, 240, 240)
-	local strokeCol = Color3.fromRGB(65, 65, 70)
-	local accentCol = Color3.fromRGB(255, 215, 0)
-
-	local f = createInstance("Frame", {
-		Name = t .. "Slider",
-		Size = UDim2.new(1, -4, 0, 36),
-		BackgroundColor3 = bgCol,
-		BackgroundTransparency = 0.4
+	local frame = createInstance("Frame", {
+		Name = title .. "Slider",
+		Size = UDim2.new(1, 0, 0, 42),
+		BackgroundColor3 = theme["Color Hub 2"],
+		BackgroundTransparency = 0.15,
+		BorderSizePixel = 0
 	}, self.Content)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, f)
-	createInstance("UIStroke", {Color = strokeCol, Thickness = 1, Transparency = 0.7}, f)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, frame)
+	addBorder(frame, theme["Color Stroke"], 1)
 
-	local title = createInstance("TextLabel", {
-		Text = t,
-		Size = UDim2.new(0.4, -12, 1, 0),
-		Position = UDim2.new(0, 12, 0, 0),
+	local label = createInstance("TextLabel", {
+		Text = title,
+		Size = UDim2.new(0.5, -10, 0, 20),
+		Position = UDim2.new(0, 10, 0, 2),
 		BackgroundTransparency = 1,
-		TextColor3 = textCol,
+		TextColor3 = theme["Color Text"],
 		Font = Enum.Font.GothamMedium,
 		TextSize = 12,
 		TextXAlignment = Enum.TextXAlignment.Left
-	}, f)
+	}, frame)
 
 	local valBox = createInstance("TextBox", {
-		Size = UDim2.new(0, 32, 0, 22),
-		Position = UDim2.new(1, -12, 0.5, 0),
-		AnchorPoint = Vector2.new(1, 0.5),
-		BackgroundColor3 = elemCol,
-		Text = tostring(math.floor(df)),
-		TextColor3 = textCol,
+		Size = UDim2.new(0, 40, 0, 16),
+		Position = UDim2.new(1, -50, 0, 4),
+		BackgroundColor3 = theme["Color Hub 1"],
+		Text = tostring(math.floor(default)),
+		TextColor3 = theme["Color Text"],
 		Font = Enum.Font.GothamMedium,
 		TextSize = 11,
 		ClearTextOnFocus = false
-	}, f)
+	}, frame)
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, valBox)
-	createInstance("UIStroke", {Color = strokeCol, Thickness = 1, Transparency = 0.5}, valBox)
+	addBorder(valBox, theme["Color Stroke"], 1)
 
 	local trackArea = createInstance("TextButton", {
-		Size = UDim2.new(1, -(title.Size.X.Offset + valBox.Size.X.Offset + 54), 1, 0),
-		Position = UDim2.new(0.4, 0, 0, 0),
+		Size = UDim2.new(1, -20, 0, 14),
+		Position = UDim2.new(0, 10, 0, 24),
 		BackgroundTransparency = 1,
 		Text = ""
-	}, f)
+	}, frame)
 
 	local track = createInstance("Frame", {
 		Size = UDim2.new(1, 0, 0, 4),
 		Position = UDim2.new(0, 0, 0.5, 0),
 		AnchorPoint = Vector2.new(0, 0.5),
-		BackgroundColor3 = elemCol
+		BackgroundColor3 = theme["Color Hub 1"]
 	}, trackArea)
 	createInstance("UICorner", {CornerRadius = UDim.new(1, 0)}, track)
 
-	local ratio = math.clamp((df - mi) / (ma - mi), 0, 1)
+	local ratio = math.clamp((default - minVal) / (maxVal - minVal), 0, 1)
 	local fill = createInstance("Frame", {
 		Size = UDim2.new(ratio, 0, 1, 0),
-		BackgroundColor3 = accentCol
+		BackgroundColor3 = theme["Color Theme"]
 	}, track)
 	createInstance("UICorner", {CornerRadius = UDim.new(1, 0)}, fill)
+	registerChroma(fill, "BackgroundColor3")
 
 	local handle = createInstance("Frame", {
-		Size = UDim2.new(0, 10, 0, 10),
+		Size = UDim2.new(0, 12, 0, 12),
 		Position = UDim2.new(1, 0, 0.5, 0),
 		AnchorPoint = Vector2.new(0.5, 0.5),
-		BackgroundColor3 = textCol
+		BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	}, fill)
 	createInstance("UICorner", {CornerRadius = UDim.new(1, 0)}, handle)
 
@@ -894,244 +411,225 @@ function SectionMethods:addSlider(o)
 
 	local function updateSlider(input)
 		local x = math.clamp((input.Position.X - track.AbsolutePosition.X) / track.AbsoluteSize.X, 0, 1)
-		local val = math.floor(mi + (x * (ma - mi)))
+		local val = math.floor(minVal + (x * (maxVal - minVal)))
 		valBox.Text = tostring(val)
-		TweenService:Create(fill, TweenInfo.new(0.15, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Size = UDim2.new(x, 0, 1, 0)}):Play()
-		if JustHub.ConfigData then JustHub.ConfigData[t] = val end
-		pcall(cb, val)
+		tweenProperty(fill, {Size = UDim2.new(x, 0, 1, 0)}, 0.1)
+		JustHub.ConfigData[title] = val
+		pcall(callback, val)
 	end
 
-	trackArea.InputBegan:Connect(function(i)
-		if i.UserInputType == Enum.UserInputType.MouseButton1 or i.UserInputType == Enum.UserInputType.Touch then
+	trackArea.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
 			dragging = true
-			TweenService:Create(handle, TweenInfo.new(0.25, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 14, 0, 14)}):Play()
-			updateSlider(i)
+			tweenProperty(handle, {Size = UDim2.new(0, 16, 0, 16)}, 0.15)
+			updateSlider(input)
 		end
 	end)
 
-	UserInputService.InputChanged:Connect(function(i)
-		if dragging and (i.UserInputType == Enum.UserInputType.MouseMovement or i.UserInputType == Enum.UserInputType.Touch) then
-			updateSlider(i)
+	UserInputService.InputChanged:Connect(function(input)
+		if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+			updateSlider(input)
 		end
 	end)
 
-	UserInputService.InputEnded:Connect(function(i)
-		if dragging and (i.UserInputType == Enum.UserInputType.MouseButton1 or i.UserInputType == Enum.UserInputType.Touch) then
+	UserInputService.InputEnded:Connect(function(input)
+		if dragging and (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then
 			dragging = false
-			TweenService:Create(handle, TweenInfo.new(0.35, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 10, 0, 10)}):Play()
+			tweenProperty(handle, {Size = UDim2.new(0, 12, 0, 12)}, 0.15)
 		end
-	end)
-
-	trackArea.MouseEnter:Connect(function()
-		if not dragging then TweenService:Create(handle, TweenInfo.new(0.2), {Size = UDim2.new(0, 12, 0, 12)}):Play() end
-	end)
-	trackArea.MouseLeave:Connect(function()
-		if not dragging then TweenService:Create(handle, TweenInfo.new(0.2), {Size = UDim2.new(0, 10, 0, 10)}):Play() end
 	end)
 
 	valBox.FocusLost:Connect(function()
 		local num = tonumber(valBox.Text)
 		if num then
-			num = math.clamp(math.floor(num), mi, ma)
+			num = math.clamp(math.floor(num), minVal, maxVal)
 			valBox.Text = tostring(num)
-			if JustHub.ConfigData then JustHub.ConfigData[t] = num end
-			local r = (num - mi) / (ma - mi)
-			TweenService:Create(fill, TweenInfo.new(0.4, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Size = UDim2.new(r, 0, 1, 0)}):Play()
-			pcall(cb, num)
+			JustHub.ConfigData[title] = num
+			local r = (num - minVal) / (maxVal - minVal)
+			tweenProperty(fill, {Size = UDim2.new(r, 0, 1, 0)}, 0.25)
+			pcall(callback, num)
 		else
-			valBox.Text = tostring(JustHub.ConfigData and JustHub.ConfigData[t] or df)
+			valBox.Text = tostring(JustHub.ConfigData[title] or default)
 		end
 	end)
 
-	valBox.MouseEnter:Connect(function() TweenService:Create(valBox, TweenInfo.new(0.2), {BackgroundColor3 = hoverCol}):Play() end)
-	valBox.MouseLeave:Connect(function() TweenService:Create(valBox, TweenInfo.new(0.2), {BackgroundColor3 = elemCol}):Play() end)
+	JustHub:RegisterControl(title, function(setVal)
+		local nr = math.clamp((setVal - minVal) / (maxVal - minVal), 0, 1)
+		valBox.Text = tostring(math.floor(setVal))
+		tweenProperty(fill, {Size = UDim2.new(nr, 0, 1, 0)}, 0.25)
+	end)
 
-	if JustHub.RegisterControl then
-		JustHub:RegisterControl(t, function(sv)
-			local nr = math.clamp((sv - mi) / (ma - mi), 0, 1)
-			valBox.Text = tostring(math.floor(sv))
-			TweenService:Create(fill, TweenInfo.new(0.4, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Size = UDim2.new(nr, 0, 1, 0)}):Play()
-		end)
-	end
-
-	return f
+	return frame
 end
 
-function SectionMethods:addLabel(o)
-	o = type(o) == "string" and {Text = o} or o or {}
-	local txt = o.Text or o.Name or "Label"
-	local align = o.Align or "Left"
+function SectionMethods:addLabel(options)
+	options = type(options) == "string" and {Text = options} or options or {}
+	local txt = options.Text or options.Name or "Label"
+	local align = options.Align or "Left"
+	local theme = getCurrentTheme(JustHub.Save.Theme)
 
-	local textCol = Color3.fromRGB(240, 240, 240)
-
-	local f = createInstance("Frame", {
+	local frame = createInstance("Frame", {
 		Name = "LabelContainer",
-		Size = UDim2.new(1, -4, 0, 26),
+		Size = UDim2.new(1, 0, 0, 26),
 		BackgroundTransparency = 1
 	}, self.Content)
 
-	local l = createInstance("TextLabel", {
+	local labelObj = createInstance("TextLabel", {
 		Name = "LabelText",
 		Text = txt,
 		Size = UDim2.new(1, 0, 1, 0),
 		BackgroundTransparency = 1,
-		TextColor3 = textCol,
+		TextColor3 = theme["Color Text"],
 		Font = Enum.Font.GothamMedium,
 		TextSize = 12,
 		TextWrapped = true,
 		TextXAlignment = (align == "Center" and Enum.TextXAlignment.Center) or (align == "Right" and Enum.TextXAlignment.Right) or Enum.TextXAlignment.Left
-	}, f)
+	}, frame)
 
 	if align == "Left" then
-		createInstance("UIPadding", {PaddingLeft = UDim.new(0, 12), PaddingRight = UDim.new(0, 12)}, l)
+		createInstance("UIPadding", {PaddingLeft = UDim.new(0, 10), PaddingRight = UDim.new(0, 10)}, labelObj)
 	end
 
-	local lObj = {}
-	function lObj:SetText(newText)
-		l.Text = newText
-	end
-	
-	return lObj
+	return {
+		SetText = function(self, newText)
+			labelObj.Text = newText
+		end
+	}
 end
 
-function SectionMethods:addTextBox(o)
-	o = o or {}
-	local n = o.Name or "TextBox"
-	local d = o.Default or ""
-	local cb = o.Callback or function(x) end
-	local f = createInstance("Frame", {Name = n.."TextBox", Size = UDim2.new(1, 0, 0, 36), BackgroundColor3 = Color3.fromRGB(55, 55, 60), BorderSizePixel = 0}, self.Content)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, f)
-	local l = createInstance("TextLabel", {Name = "Label", Text = n, Size = UDim2.new(0.7, -8, 1, 0), Position = UDim2.new(0, 8, 0, 0), BackgroundTransparency = 1, TextColor3 = Color3.fromRGB(230, 230, 240), Font = Enum.Font.GothamBold, TextSize = 13, TextXAlignment = Enum.TextXAlignment.Left}, f)
-	local tb = createInstance("TextBox", {Name = "Input", Text = d, Size = UDim2.new(0.3, -8, 0.8, 0), Position = UDim2.new(0.7, 8, 0.1, 0), BackgroundColor3 = Color3.fromRGB(70, 70, 80), TextColor3 = Color3.fromRGB(230, 230, 240), Font = Enum.Font.Gotham, TextSize = 13, ClearTextOnFocus = false, PlaceholderText = "Enter text...", TextWrapped = true, MultiLine = false}, f)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, tb)
-	tb.Focused:Connect(function()
-		TweenService:Create(tb, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(90, 90, 105)}):Play()
-	end)
-	tb.FocusLost:Connect(function(e)
-		TweenService:Create(tb, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(70, 70, 80)}):Play()
-		JustHub.ConfigData[n] = tb.Text
-		cb(tb.Text)
-	end)
-	JustHub:RegisterControl(n, function(sv)
-		tb.Text = sv
-	end)
-	return f
-end
+function SectionMethods:addTextBox(options)
+	options = options or {}
+	local title = options.Name or "TextBox"
+	local default = options.Default or ""
+	local callback = options.Callback or function() end
+	local theme = getCurrentTheme(JustHub.Save.Theme)
 
-function SectionMethods:addDropdown(o)
-	o = o or {}
-	local t = o.Name or "Dropdown"
-	local df = o.Default or ""
-	local it = o.Items or {}
-	local presets = o.Presets or {}
-	local cb = o.Callback or function() end
-
-	local bgCol = Color3.fromRGB(35, 35, 40)
-	local elemCol = Color3.fromRGB(45, 45, 50)
-	local hoverCol = Color3.fromRGB(55, 55, 60)
-	local textCol = Color3.fromRGB(240, 240, 240)
-	local darkText = Color3.fromRGB(160, 160, 160)
-	local strokeCol = Color3.fromRGB(65, 65, 70)
-	local accentCol = Color3.fromRGB(255, 215, 0)
-
-	local f = createInstance("Frame", {
-		Name = t .. "Dropdown",
-		Size = UDim2.new(1, -4, 0, 0),
-		BackgroundColor3 = bgCol,
-		BackgroundTransparency = 0.4,
-		AutomaticSize = Enum.AutomaticSize.Y,
-		ClipsDescendants = true
+	local frame = createInstance("Frame", {
+		Name = title .. "TextBox",
+		Size = UDim2.new(1, 0, 0, 36),
+		BackgroundColor3 = theme["Color Hub 2"],
+		BackgroundTransparency = 0.15,
+		BorderSizePixel = 0
 	}, self.Content)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, f)
-	createInstance("UIStroke", {Color = strokeCol, Thickness = 1, Transparency = 0.7}, f)
-	createInstance("UIListLayout", {SortOrder = Enum.SortOrder.LayoutOrder}, f)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, frame)
+	addBorder(frame, theme["Color Stroke"], 1)
 
-	local header = createInstance("TextButton", {
+	local label = createInstance("TextLabel", {
+		Text = title,
+		Size = UDim2.new(0.4, -10, 1, 0),
+		Position = UDim2.new(0, 10, 0, 0),
+		BackgroundTransparency = 1,
+		TextColor3 = theme["Color Text"],
+		Font = Enum.Font.GothamMedium,
+		TextSize = 13,
+		TextXAlignment = Enum.TextXAlignment.Left
+	}, frame)
+
+	local inputBox = createInstance("TextBox", {
+		Text = default,
+		Size = UDim2.new(0.6, -20, 0, 24),
+		Position = UDim2.new(0.4, 10, 0.5, -12),
+		BackgroundColor3 = theme["Color Hub 1"],
+		TextColor3 = theme["Color Text"],
+		Font = Enum.Font.Gotham,
+		TextSize = 12,
+		ClearTextOnFocus = false,
+		PlaceholderText = "Input here...",
+		PlaceholderColor3 = theme["Color Dark Text"],
+		TextWrapped = true
+	}, frame)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, inputBox)
+	addBorder(inputBox, theme["Color Stroke"], 1)
+
+	inputBox.Focused:Connect(function()
+		tweenProperty(inputBox, {BackgroundColor3 = theme["Color Hub 2"]}, 0.2)
+	end)
+
+	inputBox.FocusLost:Connect(function()
+		tweenProperty(inputBox, {BackgroundColor3 = theme["Color Hub 1"]}, 0.2)
+		JustHub.ConfigData[title] = inputBox.Text
+		callback(inputBox.Text)
+	end)
+
+	JustHub:RegisterControl(title, function(setVal)
+		inputBox.Text = setVal
+	end)
+
+	return frame
+end
+
+function SectionMethods:addDropdown(options)
+	options = options or {}
+	local title = options.Name or "Dropdown"
+	local default = options.Default or ""
+	local items = options.Items or {}
+	local presets = options.Presets or {}
+	local callback = options.Callback or function() end
+	local theme = getCurrentTheme(JustHub.Save.Theme)
+
+	local frame = createInstance("Frame", {
+		Name = title .. "Dropdown",
+		Size = UDim2.new(1, 0, 0, 36),
+		BackgroundColor3 = theme["Color Hub 2"],
+		BackgroundTransparency = 0.15,
+		ClipsDescendants = true,
+		BorderSizePixel = 0
+	}, self.Content)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, frame)
+	addBorder(frame, theme["Color Stroke"], 1)
+
+	local headerBtn = createInstance("TextButton", {
 		Size = UDim2.new(1, 0, 0, 36),
 		BackgroundTransparency = 1,
-		Text = "",
-		AutoButtonColor = false
-	}, f)
-	createInstance("UIPadding", {PaddingLeft = UDim.new(0, 12), PaddingRight = UDim.new(0, 12)}, header)
+		Text = ""
+	}, frame)
 
-	local title = createInstance("TextLabel", {
-		Text = t,
-		Size = UDim2.new(0.5, 0, 1, 0),
+	local label = createInstance("TextLabel", {
+		Text = title,
+		Size = UDim2.new(0.5, -10, 1, 0),
+		Position = UDim2.new(0, 10, 0, 0),
 		BackgroundTransparency = 1,
-		TextColor3 = textCol,
+		TextColor3 = theme["Color Text"],
 		Font = Enum.Font.GothamMedium,
-		TextSize = 12,
+		TextSize = 13,
 		TextXAlignment = Enum.TextXAlignment.Left
-	}, header)
+	}, headerBtn)
 
 	local selectedLabel = createInstance("TextLabel", {
-		Text = df ~= "" and df or "Select...",
-		Size = UDim2.new(0.5, -16, 1, 0),
+		Text = default ~= "" and default or "Select...",
+		Size = UDim2.new(0.5, -25, 1, 0),
 		Position = UDim2.new(0.5, 0, 0, 0),
 		BackgroundTransparency = 1,
-		TextColor3 = darkText,
+		TextColor3 = theme["Color Dark Text"],
 		Font = Enum.Font.Gotham,
-		TextSize = 11,
+		TextSize = 12,
 		TextXAlignment = Enum.TextXAlignment.Right
-	}, header)
+	}, headerBtn)
 
 	local arrow = createInstance("TextLabel", {
 		Text = "▼",
-		Size = UDim2.new(0, 12, 1, 0),
-		Position = UDim2.new(1, -12, 0, 0),
+		Size = UDim2.new(0, 15, 1, 0),
+		Position = UDim2.new(1, -20, 0, 0),
 		BackgroundTransparency = 1,
-		TextColor3 = darkText,
+		TextColor3 = theme["Color Dark Text"],
 		Font = Enum.Font.Gotham,
 		TextSize = 10,
 		TextXAlignment = Enum.TextXAlignment.Right
-	}, header)
+	}, headerBtn)
 
 	local body = createInstance("Frame", {
-		Size = UDim2.new(1, 0, 0, 0),
+		Size = UDim2.new(1, 0, 0, 130),
+		Position = UDim2.new(0, 0, 0, 36),
 		BackgroundTransparency = 1,
-		ClipsDescendants = true
-	}, f)
-	createInstance("UIPadding", {PaddingLeft = UDim.new(0, 10), PaddingRight = UDim.new(0, 10), PaddingBottom = UDim.new(0, 10)}, body)
-	createInstance("UIListLayout", {SortOrder = Enum.SortOrder.LayoutOrder, Padding = UDim.new(0, 8)}, body)
-
-	local tools = createInstance("Frame", {
-		Size = UDim2.new(1, 0, 0, 28),
-		BackgroundTransparency = 1
-	}, body)
-
-	local searchBox = createInstance("TextBox", {
-		Size = UDim2.new(1, -34, 1, 0),
-		BackgroundColor3 = elemCol,
-		Text = "",
-		PlaceholderText = "Search...",
-		TextColor3 = textCol,
-		PlaceholderColor3 = darkText,
-		Font = Enum.Font.Gotham,
-		TextSize = 11,
-		ClearTextOnFocus = false
-	}, tools)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, searchBox)
-	createInstance("UIPadding", {PaddingLeft = UDim.new(0, 8), PaddingRight = UDim.new(0, 8)}, searchBox)
-	createInstance("UIStroke", {Color = strokeCol, Thickness = 1, Transparency = 0.5}, searchBox)
-
-	local resetBtn = createInstance("TextButton", {
-		Size = UDim2.new(0, 28, 0, 28),
-		Position = UDim2.new(1, -28, 0, 0),
-		BackgroundColor3 = elemCol,
-		Text = "↺",
-		TextColor3 = textCol,
-		Font = Enum.Font.GothamMedium,
-		TextSize = 14,
-		AutoButtonColor = false
-	}, tools)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, resetBtn)
-	createInstance("UIStroke", {Color = strokeCol, Thickness = 1, Transparency = 0.5}, resetBtn)
+		Visible = false
+	}, frame)
 
 	local scroll = createInstance("ScrollingFrame", {
-		Size = UDim2.new(1, 0, 0, 120),
+		Size = UDim2.new(1, -20, 1, -10),
+		Position = UDim2.new(0, 10, 0, 0),
 		BackgroundTransparency = 1,
 		ScrollBarThickness = 2,
-		ScrollBarImageColor3 = strokeCol,
+		ScrollBarImageColor3 = theme["Color Stroke"],
 		BorderSizePixel = 0,
 		AutomaticCanvasSize = Enum.AutomaticSize.Y,
 		CanvasSize = UDim2.new(0, 0, 0, 0)
@@ -1142,31 +640,34 @@ function SectionMethods:addDropdown(o)
 
 	local function closeDropdown()
 		isOpen = false
-		TweenService:Create(body, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {Size = UDim2.new(1, 0, 0, 0)}):Play()
-		TweenService:Create(arrow, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {Rotation = 0}):Play()
+		tweenProperty(frame, {Size = UDim2.new(1, 0, 0, 36)}, 0.25)
+		tweenProperty(arrow, {Rotation = 0}, 0.25)
+		task.delay(0.25, function() body.Visible = false end)
 	end
 
 	local function createItem(name, isPreset)
 		local btn = createInstance("TextButton", {
 			Name = name,
 			Size = UDim2.new(1, 0, 0, 26),
-			BackgroundColor3 = bgCol,
+			BackgroundColor3 = theme["Color Hub 1"],
 			Text = "  " .. name,
-			TextColor3 = isPreset and accentCol or textCol,
+			TextColor3 = isPreset and theme["Color Theme"] or theme["Color Text"],
 			Font = Enum.Font.Gotham,
-			TextSize = 11,
+			TextSize = 12,
 			TextXAlignment = Enum.TextXAlignment.Left,
 			AutoButtonColor = false
 		}, scroll)
 		createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, btn)
 
-		btn.MouseEnter:Connect(function() TweenService:Create(btn, TweenInfo.new(0.2), {BackgroundColor3 = hoverCol}):Play() end)
-		btn.MouseLeave:Connect(function() TweenService:Create(btn, TweenInfo.new(0.2), {BackgroundColor3 = bgCol}):Play() end)
+		if isPreset then registerChroma(btn, "TextColor3") end
+
+		btn.MouseEnter:Connect(function() tweenProperty(btn, {BackgroundColor3 = theme["Color Stroke"]}, 0.15) end)
+		btn.MouseLeave:Connect(function() tweenProperty(btn, {BackgroundColor3 = theme["Color Hub 1"]}, 0.15) end)
 
 		btn.MouseButton1Click:Connect(function()
 			selectedLabel.Text = name
-			if JustHub.ConfigData then JustHub.ConfigData[t] = name end
-			pcall(cb, name)
+			JustHub.ConfigData[title] = name
+			pcall(callback, name)
 			closeDropdown()
 		end)
 	end
@@ -1176,331 +677,614 @@ function SectionMethods:addDropdown(o)
 			if v:IsA("TextButton") then v:Destroy() end
 		end
 		for _, p in ipairs(presets) do createItem("★ " .. p, true) end
-		for _, i in ipairs(it) do createItem(i, false) end
+		for _, i in ipairs(items) do createItem(i, false) end
 	end
 	renderItems()
 
-	header.MouseButton1Click:Connect(function()
+	headerBtn.MouseButton1Click:Connect(function()
 		isOpen = not isOpen
 		if isOpen then
-			TweenService:Create(body, TweenInfo.new(0.4, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Size = UDim2.new(1, 0, 0, 166)}):Play()
-			TweenService:Create(arrow, TweenInfo.new(0.4, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Rotation = 180}):Play()
+			body.Visible = true
+			tweenProperty(frame, {Size = UDim2.new(1, 0, 0, 166)}, 0.3)
+			tweenProperty(arrow, {Rotation = 180}, 0.3)
 		else
 			closeDropdown()
 		end
 	end)
 
-	searchBox:GetPropertyChangedSignal("Text"):Connect(function()
-		local q = string.lower(searchBox.Text)
-		for _, v in ipairs(scroll:GetChildren()) do
-			if v:IsA("TextButton") then
-				v.Visible = q == "" or string.find(string.lower(v.Name), q, 1, true) ~= nil
+	JustHub.ConfigData[title] = default
+	JustHub:RegisterControl(title, function(val) selectedLabel.Text = val end)
+
+	return {
+		Refresh = function(self, newList)
+			items = newList or {}
+			renderItems()
+		end,
+		Clear = function(self)
+			items = {}
+			renderItems()
+			selectedLabel.Text = "Select..."
+			closeDropdown()
+		end
+	}
+end
+
+function SectionMethods:addMultiDropdown(options)
+	options = options or {}
+	local title = options.Name or "Multi Dropdown"
+	local default = options.Default or {}
+	local items = options.Items or {}
+	local callback = options.Callback or function() end
+	local theme = getCurrentTheme(JustHub.Save.Theme)
+
+	local frame = createInstance("Frame", {
+		Name = title .. "MultiDropdown",
+		Size = UDim2.new(1, 0, 0, 36),
+		BackgroundColor3 = theme["Color Hub 2"],
+		BackgroundTransparency = 0.15,
+		ClipsDescendants = true,
+		BorderSizePixel = 0
+	}, self.Content)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, frame)
+	addBorder(frame, theme["Color Stroke"], 1)
+
+	local headerBtn = createInstance("TextButton", {
+		Size = UDim2.new(1, 0, 0, 36),
+		BackgroundTransparency = 1,
+		Text = ""
+	}, frame)
+
+	local label = createInstance("TextLabel", {
+		Text = title,
+		Size = UDim2.new(0.5, -10, 1, 0),
+		Position = UDim2.new(0, 10, 0, 0),
+		BackgroundTransparency = 1,
+		TextColor3 = theme["Color Text"],
+		Font = Enum.Font.GothamMedium,
+		TextSize = 13,
+		TextXAlignment = Enum.TextXAlignment.Left
+	}, headerBtn)
+
+	local selectedLabel = createInstance("TextLabel", {
+		Text = #default > 0 and table.concat(default, ", ") or "Select...",
+		Size = UDim2.new(0.5, -25, 1, 0),
+		Position = UDim2.new(0.5, 0, 0, 0),
+		BackgroundTransparency = 1,
+		TextColor3 = theme["Color Dark Text"],
+		Font = Enum.Font.Gotham,
+		TextSize = 12,
+		TextXAlignment = Enum.TextXAlignment.Right,
+		TextTruncate = Enum.TextTruncate.AtEnd
+	}, headerBtn)
+
+	local arrow = createInstance("TextLabel", {
+		Text = "▼",
+		Size = UDim2.new(0, 15, 1, 0),
+		Position = UDim2.new(1, -20, 0, 0),
+		BackgroundTransparency = 1,
+		TextColor3 = theme["Color Dark Text"],
+		Font = Enum.Font.Gotham,
+		TextSize = 10,
+		TextXAlignment = Enum.TextXAlignment.Right
+	}, headerBtn)
+
+	local body = createInstance("Frame", {
+		Size = UDim2.new(1, 0, 0, 130),
+		Position = UDim2.new(0, 0, 0, 36),
+		BackgroundTransparency = 1,
+		Visible = false
+	}, frame)
+
+	local scroll = createInstance("ScrollingFrame", {
+		Size = UDim2.new(1, -20, 1, -10),
+		Position = UDim2.new(0, 10, 0, 0),
+		BackgroundTransparency = 1,
+		ScrollBarThickness = 2,
+		ScrollBarImageColor3 = theme["Color Stroke"],
+		BorderSizePixel = 0,
+		AutomaticCanvasSize = Enum.AutomaticSize.Y,
+		CanvasSize = UDim2.new(0, 0, 0, 0)
+	}, body)
+	createInstance("UIListLayout", {SortOrder = Enum.SortOrder.LayoutOrder, Padding = UDim.new(0, 4)}, scroll)
+
+	local isOpen = false
+	local activeItems = {}
+	for _, v in ipairs(default) do activeItems[v] = true end
+	JustHub.ConfigData[title] = default
+
+	local function closeDropdown()
+		isOpen = false
+		tweenProperty(frame, {Size = UDim2.new(1, 0, 0, 36)}, 0.25)
+		tweenProperty(arrow, {Rotation = 0}, 0.25)
+		task.delay(0.25, function() body.Visible = false end)
+	end
+
+	local function updateLabel()
+		local sel = {}
+		for k, v in pairs(activeItems) do if v then table.insert(sel, k) end end
+		selectedLabel.Text = #sel > 0 and table.concat(sel, ", ") or "Select..."
+		JustHub.ConfigData[title] = sel
+		pcall(callback, sel)
+	end
+
+	local function createItem(name)
+		local btn = createInstance("TextButton", {
+			Name = name,
+			Size = UDim2.new(1, 0, 0, 26),
+			BackgroundColor3 = theme["Color Hub 1"],
+			Text = "      " .. name,
+			TextColor3 = theme["Color Text"],
+			Font = Enum.Font.Gotham,
+			TextSize = 12,
+			TextXAlignment = Enum.TextXAlignment.Left,
+			AutoButtonColor = false
+		}, scroll)
+		createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, btn)
+
+		local check = createInstance("Frame", {
+			Size = UDim2.new(0, 14, 0, 14),
+			Position = UDim2.new(0, 6, 0.5, -7),
+			BackgroundColor3 = activeItems[name] and theme["Color Theme"] or theme["Color Hub 2"],
+			BorderSizePixel = 0
+		}, btn)
+		createInstance("UICorner", {CornerRadius = UDim.new(0, 3)}, check)
+		addBorder(check, theme["Color Stroke"], 1)
+
+		if activeItems[name] then registerChroma(check, "BackgroundColor3") end
+
+		btn.MouseEnter:Connect(function() tweenProperty(btn, {BackgroundColor3 = theme["Color Stroke"]}, 0.15) end)
+		btn.MouseLeave:Connect(function() tweenProperty(btn, {BackgroundColor3 = theme["Color Hub 1"]}, 0.15) end)
+
+		btn.MouseButton1Click:Connect(function()
+			activeItems[name] = not activeItems[name]
+			if activeItems[name] then
+				tweenProperty(check, {BackgroundColor3 = theme["Color Theme"]}, 0.15)
+				registerChroma(check, "BackgroundColor3")
+			else
+				tweenProperty(check, {BackgroundColor3 = theme["Color Hub 2"]}, 0.15)
 			end
+			updateLabel()
+		end)
+	end
+
+	local function renderItems()
+		for _, v in ipairs(scroll:GetChildren()) do
+			if v:IsA("TextButton") then v:Destroy() end
+		end
+		for _, i in ipairs(items) do createItem(i) end
+	end
+	renderItems()
+
+	headerBtn.MouseButton1Click:Connect(function()
+		isOpen = not isOpen
+		if isOpen then
+			body.Visible = true
+			tweenProperty(frame, {Size = UDim2.new(1, 0, 0, 166)}, 0.3)
+			tweenProperty(arrow, {Rotation = 180}, 0.3)
+		else
+			closeDropdown()
 		end
 	end)
 
-	resetBtn.MouseEnter:Connect(function() TweenService:Create(resetBtn, TweenInfo.new(0.2), {BackgroundColor3 = hoverCol}):Play() end)
-	resetBtn.MouseLeave:Connect(function() TweenService:Create(resetBtn, TweenInfo.new(0.2), {BackgroundColor3 = elemCol}):Play() end)
-	resetBtn.MouseButton1Click:Connect(function()
-		selectedLabel.Text = df ~= "" and df or "Select..."
-		if JustHub.ConfigData then JustHub.ConfigData[t] = df end
-		pcall(cb, df)
-		searchBox.Text = ""
-		closeDropdown()
+	JustHub:RegisterControl(title, function(val)
+		if type(val) == "table" then
+			activeItems = {}
+			for _, v in ipairs(val) do activeItems[v] = true end
+			updateLabel()
+			renderItems()
+		end
 	end)
 
-	if JustHub.ConfigData then JustHub.ConfigData[t] = df end
-	if JustHub.RegisterControl then
-		JustHub:RegisterControl(t, function(sv) selectedLabel.Text = sv end)
-	end
-
-	local upd = {}
-	function upd:Refresh(newList)
-		it = newList or {}
-		renderItems()
-	end
-	function upd:Clear()
-		it = {}
-		renderItems()
-		selectedLabel.Text = "Select..."
-		closeDropdown()
-	end
-	return upd
+	return {
+		Refresh = function(self, newList)
+			items = newList or {}
+			renderItems()
+		end
+	}
 end
 
-function SectionMethods:addColorPicker(o)
-	o = o or {}
-	local n = o.Name or "ColorPicker"
-	local d = o.Default or Color3.fromRGB(255, 255, 255)
-	local cb = o.Callback or function(x) end
-	local role = o.Role or nil
-	if role and not JustHub:CheckRole(role) then
-		local hidden = createInstance("Frame", {Size = UDim2.new(1, 0, 0, 0), BackgroundTransparency = 1}, self.Content)
-		return hidden
+function SectionMethods:addColorPicker(options)
+	options = options or {}
+	local title = options.Name or "ColorPicker"
+	local default = options.Default or Color3.fromRGB(255, 255, 255)
+	local callback = options.Callback or function() end
+	local theme = getCurrentTheme(JustHub.Save.Theme)
+
+	local frame = createInstance("Frame", {
+		Name = title .. "ColorPicker",
+		Size = UDim2.new(1, 0, 0, 56),
+		BackgroundColor3 = theme["Color Hub 2"],
+		BackgroundTransparency = 0.15,
+		BorderSizePixel = 0
+	}, self.Content)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, frame)
+	addBorder(frame, theme["Color Stroke"], 1)
+
+	local label = createInstance("TextLabel", {
+		Text = title,
+		Size = UDim2.new(1, -20, 0, 24),
+		Position = UDim2.new(0, 10, 0, 2),
+		BackgroundTransparency = 1,
+		TextColor3 = theme["Color Text"],
+		Font = Enum.Font.GothamMedium,
+		TextSize = 13,
+		TextXAlignment = Enum.TextXAlignment.Left
+	}, frame)
+
+	local preview = createInstance("Frame", {
+		Size = UDim2.new(0, 40, 0, 20),
+		Position = UDim2.new(1, -50, 0, 4),
+		BackgroundColor3 = default,
+		BorderSizePixel = 0
+	}, frame)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, preview)
+	addBorder(preview, theme["Color Stroke"], 1)
+
+	local rBox = createInstance("TextBox", {Text = tostring(math.floor(default.R * 255)), Size = UDim2.new(0, 40, 0, 22), Position = UDim2.new(0, 10, 0, 28), BackgroundColor3 = theme["Color Hub 1"], TextColor3 = Color3.fromRGB(255, 100, 100), Font = Enum.Font.GothamMedium, TextSize = 11}, frame)
+	local gBox = createInstance("TextBox", {Text = tostring(math.floor(default.G * 255)), Size = UDim2.new(0, 40, 0, 22), Position = UDim2.new(0, 55, 0, 28), BackgroundColor3 = theme["Color Hub 1"], TextColor3 = Color3.fromRGB(100, 255, 100), Font = Enum.Font.GothamMedium, TextSize = 11}, frame)
+	local bBox = createInstance("TextBox", {Text = tostring(math.floor(default.B * 255)), Size = UDim2.new(0, 40, 0, 22), Position = UDim2.new(0, 100, 0, 28), BackgroundColor3 = theme["Color Hub 1"], TextColor3 = Color3.fromRGB(100, 150, 255), Font = Enum.Font.GothamMedium, TextSize = 11}, frame)
+
+	for _, box in ipairs({rBox, gBox, bBox}) do
+		createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, box)
+		addBorder(box, theme["Color Stroke"], 1)
 	end
-	local f = createInstance("Frame", {Name = n .. "ColorPicker", Size = UDim2.new(1, 0, 0, 60), BackgroundColor3 = Color3.fromRGB(55, 55, 60), BorderSizePixel = 0}, self.Content)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, f)
-	local l = createInstance("TextLabel", {Name = "Label", Text = n, Size = UDim2.new(1, 0, 0, 24), BackgroundTransparency = 1, TextColor3 = Color3.fromRGB(230, 230, 240), Font = Enum.Font.GothamBold, TextSize = 13, TextXAlignment = Enum.TextXAlignment.Left}, f)
-	local preview = createInstance("Frame", {Name = "Preview", Size = UDim2.new(0, 48, 0, 28), Position = UDim2.new(1, -52, 0, 16), BackgroundColor3 = d, BorderSizePixel = 0}, f)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, preview)
-	createInstance("UIStroke", {Color = Color3.fromRGB(100, 100, 110), Thickness = 1}, preview)
-	local r = createInstance("TextBox", {Name = "R", Text = tostring(math.floor(d.R * 255)), Size = UDim2.new(0, 40, 0, 28), Position = UDim2.new(0, 8, 0, 26), BackgroundColor3 = Color3.fromRGB(70, 50, 50), TextColor3 = Color3.fromRGB(255, 200, 200), Font = Enum.Font.GothamBold, TextSize = 13, ClearTextOnFocus = false, PlaceholderText = "R"}, f)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, r)
-	local g = createInstance("TextBox", {Name = "G", Text = tostring(math.floor(d.G * 255)), Size = UDim2.new(0, 40, 0, 28), Position = UDim2.new(0, 52, 0, 26), BackgroundColor3 = Color3.fromRGB(50, 70, 50), TextColor3 = Color3.fromRGB(200, 255, 200), Font = Enum.Font.GothamBold, TextSize = 13, ClearTextOnFocus = false, PlaceholderText = "G"}, f)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, g)
-	local b = createInstance("TextBox", {Name = "B", Text = tostring(math.floor(d.B * 255)), Size = UDim2.new(0, 40, 0, 28), Position = UDim2.new(0, 96, 0, 26), BackgroundColor3 = Color3.fromRGB(50, 50, 70), TextColor3 = Color3.fromRGB(200, 200, 255), Font = Enum.Font.GothamBold, TextSize = 13, ClearTextOnFocus = false, PlaceholderText = "B"}, f)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, b)
+
 	local function updateColor()
-		local rr = tonumber(r.Text) or 0
-		local gg = tonumber(g.Text) or 0
-		local bb = tonumber(b.Text) or 0
-		rr = math.clamp(rr, 0, 255)
-		gg = math.clamp(gg, 0, 255)
-		bb = math.clamp(bb, 0, 255)
+		local rr = math.clamp(tonumber(rBox.Text) or 0, 0, 255)
+		local gg = math.clamp(tonumber(gBox.Text) or 0, 0, 255)
+		local bb = math.clamp(tonumber(bBox.Text) or 0, 0, 255)
 		local c3 = Color3.fromRGB(rr, gg, bb)
 		preview.BackgroundColor3 = c3
-		JustHub.ConfigData[n] = c3
-		cb(c3)
+		JustHub.ConfigData[title] = c3
+		pcall(callback, c3)
 	end
-	r.FocusLost:Connect(updateColor)
-	g.FocusLost:Connect(updateColor)
-	b.FocusLost:Connect(updateColor)
-	JustHub:RegisterControl(n, function(sv)
-		if typeof(sv) == "Color3" then
-			r.Text = tostring(math.floor(sv.R * 255))
-			g.Text = tostring(math.floor(sv.G * 255))
-			b.Text = tostring(math.floor(sv.B * 255))
-			preview.BackgroundColor3 = sv
+
+	rBox.FocusLost:Connect(updateColor)
+	gBox.FocusLost:Connect(updateColor)
+	bBox.FocusLost:Connect(updateColor)
+
+	JustHub:RegisterControl(title, function(val)
+		if typeof(val) == "Color3" then
+			rBox.Text = tostring(math.floor(val.R * 255))
+			gBox.Text = tostring(math.floor(val.G * 255))
+			bBox.Text = tostring(math.floor(val.B * 255))
+			preview.BackgroundColor3 = val
 		end
 	end)
-	return f
+
+	return frame
 end
 
-function SectionMethods:addScriptBox(o)
-	o = o or {}
-	local n = o.Name or "ScriptBox"
-	local d = o.Default or ""
-	local cb = o.Callback or function(scr) end
-	local role = o.Role or nil
-	if role and not JustHub:CheckRole(role) then
-		local hidden = createInstance("Frame", {Size = UDim2.new(1, 0, 0, 0), BackgroundTransparency = 1}, self.Content)
-		return hidden
-	end
-	local f = createInstance("Frame", {Name = n .. "ScriptBox", Size = UDim2.new(1, 0, 0, 80), BackgroundColor3 = Color3.fromRGB(55, 55, 60), BorderSizePixel = 0}, self.Content)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, f)
-	local l = createInstance("TextLabel", {Name = "Label", Text = n, Size = UDim2.new(1, 0, 0, 24), Position = UDim2.new(0, 0, 0, 0), BackgroundTransparency = 1, TextColor3 = Color3.fromRGB(230, 230, 240), Font = Enum.Font.GothamBold, TextSize = 13, TextXAlignment = Enum.TextXAlignment.Left}, f)
-	local tb = createInstance("TextBox", {Name = "ScriptInput", Text = d, Size = UDim2.new(1, -50, 0, 48), Position = UDim2.new(0, 0, 0, 26), BackgroundColor3 = Color3.fromRGB(45, 45, 50), TextColor3 = Color3.fromRGB(220, 220, 230), Font = Enum.Font.Code, TextSize = 13, ClearTextOnFocus = false, MultiLine = true, TextWrapped = true, PlaceholderText = "-- Paste script here"}, f)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, tb)
-	tb.Focused:Connect(function()
-		TweenService:Create(tb, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(60, 60, 70)}):Play()
-	end)
-	tb.FocusLost:Connect(function()
-		TweenService:Create(tb, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(45, 45, 50)}):Play()
-	end)
-	local runBtn = createInstance("TextButton", {Name = "RunButton", Text = "▶ Run", Size = UDim2.new(0, 48, 0, 28), Position = UDim2.new(1, -52, 0, 26), BackgroundColor3 = Color3.fromRGB(80, 80, 95), TextColor3 = Color3.fromRGB(255, 255, 255), Font = Enum.Font.GothamBold, TextSize = 13, AutoButtonColor = false}, f)
+function SectionMethods:addScriptBox(options)
+	options = options or {}
+	local title = options.Name or "ScriptBox"
+	local default = options.Default or ""
+	local callback = options.Callback or function() end
+	local theme = getCurrentTheme(JustHub.Save.Theme)
+
+	local frame = createInstance("Frame", {
+		Name = title .. "ScriptBox",
+		Size = UDim2.new(1, 0, 0, 90),
+		BackgroundColor3 = theme["Color Hub 2"],
+		BackgroundTransparency = 0.15,
+		BorderSizePixel = 0
+	}, self.Content)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, frame)
+	addBorder(frame, theme["Color Stroke"], 1)
+
+	local label = createInstance("TextLabel", {
+		Text = title,
+		Size = UDim2.new(1, -10, 0, 20),
+		Position = UDim2.new(0, 10, 0, 4),
+		BackgroundTransparency = 1,
+		TextColor3 = theme["Color Text"],
+		Font = Enum.Font.GothamMedium,
+		TextSize = 13,
+		TextXAlignment = Enum.TextXAlignment.Left
+	}, frame)
+
+	local inputBox = createInstance("TextBox", {
+		Text = default,
+		Size = UDim2.new(1, -70, 0, 50),
+		Position = UDim2.new(0, 10, 0, 30),
+		BackgroundColor3 = theme["Color Hub 1"],
+		TextColor3 = theme["Color Text"],
+		Font = Enum.Font.Code,
+		TextSize = 12,
+		ClearTextOnFocus = false,
+		MultiLine = true,
+		TextWrapped = true,
+		PlaceholderText = "Paste script here...",
+		TextXAlignment = Enum.TextXAlignment.Left,
+		TextYAlignment = Enum.TextYAlignment.Top
+	}, frame)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, inputBox)
+	addBorder(inputBox, theme["Color Stroke"], 1)
+
+	local runBtn = createInstance("TextButton", {
+		Text = "Run",
+		Size = UDim2.new(0, 45, 0, 30),
+		Position = UDim2.new(1, -55, 0, 40),
+		BackgroundColor3 = theme["Color Theme"],
+		TextColor3 = Color3.fromRGB(20, 20, 20),
+		Font = Enum.Font.GothamBold,
+		TextSize = 12,
+		AutoButtonColor = false
+	}, frame)
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, runBtn)
-	runBtn.MouseEnter:Connect(function()
-		TweenService:Create(runBtn, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(100, 100, 120)}):Play()
-	end)
-	runBtn.MouseLeave:Connect(function()
-		TweenService:Create(runBtn, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(80, 80, 95)}):Play()
-	end)
-	runBtn.MouseButton1Down:Connect(function()
-		TweenService:Create(runBtn, TweenInfo.new(0.1, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(60, 60, 80)}):Play()
-	end)
-	runBtn.MouseButton1Up:Connect(function()
-		TweenService:Create(runBtn, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(100, 100, 120)}):Play()
-		wait(0.15)
-		TweenService:Create(runBtn, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(80, 80, 95)}):Play()
-		cb(tb.Text)
-	end)
-	JustHub:RegisterControl(n, function(sv)
-		tb.Text = sv
-	end)
-	return f
+	registerChroma(runBtn, "BackgroundColor3")
+
+	runBtn.MouseEnter:Connect(function() tweenProperty(runBtn, {BackgroundTransparency = 0.2}, 0.15) end)
+	runBtn.MouseLeave:Connect(function() tweenProperty(runBtn, {BackgroundTransparency = 0}, 0.15) end)
+	runBtn.MouseButton1Click:Connect(function() pcall(callback, inputBox.Text) end)
+
+	JustHub:RegisterControl(title, function(val) inputBox.Text = val end)
+
+	return frame
 end
 
-function SectionMethods:addBind(o)
-	o = o or {}
-	local n = o.Name or "KeyBind"
-	local d = o.Default or "RightShift"
-	local cb = o.Callback or function() end
-	local role = o.Role or nil
-	if role and not JustHub:CheckRole(role) then
-		local hidden = createInstance("Frame", {Size = UDim2.new(1, 0, 0, 0), BackgroundTransparency = 1}, self.Content)
-		return hidden
-	end
-	local c = createInstance("Frame", {Name = n .. "BindControl", Size = UDim2.new(1, 0, 0, 36), BackgroundColor3 = Color3.fromRGB(55, 55, 60), BorderSizePixel = 0}, self.Content)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, c)
-	local l = createInstance("TextLabel", {Name = "Label", Text = n, Size = UDim2.new(0.7, -8, 1, 0), Position = UDim2.new(0, 8, 0, 0), BackgroundTransparency = 1, TextColor3 = Color3.fromRGB(230, 230, 240), Font = Enum.Font.GothamBold, TextSize = 13, TextXAlignment = Enum.TextXAlignment.Left}, c)
-	local tb = createInstance("TextBox", {Name = "BindInput", Text = d, Size = UDim2.new(0.3, -8, 0.8, 0), Position = UDim2.new(0.7, 8, 0.1, 0), BackgroundColor3 = Color3.fromRGB(70, 70, 80), TextColor3 = Color3.fromRGB(255, 255, 255), Font = Enum.Font.GothamBold, TextSize = 13, ClearTextOnFocus = false, PlaceholderText = "Press Key"}, c)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, tb)
-	tb.Focused:Connect(function()
-		TweenService:Create(tb, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(90, 90, 105)}):Play()
-	end)
-	tb.FocusLost:Connect(function(e)
-		TweenService:Create(tb, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(70, 70, 80)}):Play()
-		if e then
-			local str = tb.Text:lower()
-			for _, k in pairs(Enum.KeyCode:GetEnumItems()) do
-				if k.Name:lower() == str then
-					if conn then conn:Disconnect() end
-					currentKey = k
-					conn = UserInputService.InputBegan:Connect(function(i, g)
-						if not g and i.KeyCode == currentKey then
-							pcall(cb)
-						end
-					end)
-					JustHub.ConfigData[n] = k.Name
-					break
-				end
-			end
-		end
-	end)
+function SectionMethods:addBind(options)
+	options = options or {}
+	local title = options.Name or "KeyBind"
+	local default = options.Default or "RightShift"
+	local callback = options.Callback or function() end
+	local theme = getCurrentTheme(JustHub.Save.Theme)
+
+	local frame = createInstance("Frame", {
+		Name = title .. "BindControl",
+		Size = UDim2.new(1, 0, 0, 36),
+		BackgroundColor3 = theme["Color Hub 2"],
+		BackgroundTransparency = 0.15,
+		BorderSizePixel = 0
+	}, self.Content)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, frame)
+	addBorder(frame, theme["Color Stroke"], 1)
+
+	local label = createInstance("TextLabel", {
+		Text = title,
+		Size = UDim2.new(0.6, -10, 1, 0),
+		Position = UDim2.new(0, 10, 0, 0),
+		BackgroundTransparency = 1,
+		TextColor3 = theme["Color Text"],
+		Font = Enum.Font.GothamMedium,
+		TextSize = 13,
+		TextXAlignment = Enum.TextXAlignment.Left
+	}, frame)
+
+	local inputBox = createInstance("TextBox", {
+		Text = default,
+		Size = UDim2.new(0.4, -20, 0, 24),
+		Position = UDim2.new(0.6, 10, 0.5, -12),
+		BackgroundColor3 = theme["Color Hub 1"],
+		TextColor3 = theme["Color Text"],
+		Font = Enum.Font.GothamBold,
+		TextSize = 11,
+		ClearTextOnFocus = false
+	}, frame)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, inputBox)
+	addBorder(inputBox, theme["Color Stroke"], 1)
+
 	local currentKey
 	local conn
-	local function parseKey(str)
-		for _, k in pairs(Enum.KeyCode:GetEnumItems()) do
-			if k.Name:lower() == str:lower() then
-				return k
+
+	local function setKey(kName)
+		for _, kEnum in pairs(Enum.KeyCode:GetEnumItems()) do
+			if kEnum.Name:lower() == kName:lower() then
+				if conn then conn:Disconnect() end
+				currentKey = kEnum
+				conn = UserInputService.InputBegan:Connect(function(input, gameProcessed)
+					if not gameProcessed and input.KeyCode == currentKey then pcall(callback) end
+				end)
+				JustHub.ConfigData[title] = kEnum.Name
+				inputBox.Text = kEnum.Name
+				return
 			end
 		end
-		return nil
 	end
-	local function setKey(k)
-		local kc = parseKey(k)
-		if kc then
-			if conn then conn:Disconnect() end
-			currentKey = kc
-			conn = UserInputService.InputBegan:Connect(function(i, g)
-				if not g and i.KeyCode == currentKey then
-					pcall(cb)
-				end
-			end)
-			JustHub.ConfigData[n] = k
-		end
-	end
-	setKey(d)
-	JustHub:RegisterControl(n, function(sv)
-		tb.Text = sv
-		setKey(sv)
+
+	setKey(default)
+
+	inputBox.FocusLost:Connect(function()
+		setKey(inputBox.Text)
 	end)
-	return c
+
+	JustHub:RegisterControl(title, function(val) setKey(val) end)
+
+	return frame
 end
 
-function SectionMethods:addButton(o)
-	o = o or {}
-	local nm = o.Name or "Button"
-	local bt = o.ButtonText or "Click"
-	local cb = o.Callback or function() end
-	local role = o.Role or nil
-	if role and not JustHub:CheckRole(role) then
-		local hidden = createInstance("Frame", {Size = UDim2.new(1, 0, 0, 0), BackgroundTransparency = 1}, self.Content)
-		return hidden
-	end
-	local c = createInstance("Frame", {Name = nm .. "ButtonControl", Size = UDim2.new(1, 0, 0, 36), BackgroundColor3 = Color3.fromRGB(55, 55, 60), BorderSizePixel = 0}, self.Content)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, c)
-	local l = createInstance("TextLabel", {Name = "Label", Text = nm, Size = UDim2.new(0.7, -8, 1, 0), Position = UDim2.new(0, 8, 0, 0), BackgroundTransparency = 1, TextColor3 = Color3.fromRGB(230, 230, 240), Font = Enum.Font.GothamBold, TextSize = 13, TextXAlignment = Enum.TextXAlignment.Left}, c)
-	local b = createInstance("TextButton", {Name = "ActionButton", Text = bt, Size = UDim2.new(0.3, -8, 0.8, 0), Position = UDim2.new(0.7, 8, 0.1, 0), BackgroundColor3 = Color3.fromRGB(80, 80, 95), TextColor3 = Color3.fromRGB(255, 255, 255), Font = Enum.Font.GothamBold, TextSize = 13, AutoButtonColor = false}, c)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, b)
-	b.MouseEnter:Connect(function()
-		TweenService:Create(b, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(100, 100, 120)}):Play()
+function SectionMethods:addButton(options)
+	options = options or {}
+	local title = options.Name or "Button"
+	local btnText = options.ButtonText or "Click"
+	local callback = options.Callback or function() end
+	local theme = getCurrentTheme(JustHub.Save.Theme)
+
+	local frame = createInstance("Frame", {
+		Name = title .. "ButtonControl",
+		Size = UDim2.new(1, 0, 0, 36),
+		BackgroundColor3 = theme["Color Hub 2"],
+		BackgroundTransparency = 0.15,
+		BorderSizePixel = 0
+	}, self.Content)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, frame)
+	addBorder(frame, theme["Color Stroke"], 1)
+
+	local label = createInstance("TextLabel", {
+		Text = title,
+		Size = UDim2.new(0.6, -10, 1, 0),
+		Position = UDim2.new(0, 10, 0, 0),
+		BackgroundTransparency = 1,
+		TextColor3 = theme["Color Text"],
+		Font = Enum.Font.GothamMedium,
+		TextSize = 13,
+		TextXAlignment = Enum.TextXAlignment.Left
+	}, frame)
+
+	local btn = createInstance("TextButton", {
+		Text = btnText,
+		Size = UDim2.new(0.4, -20, 0, 24),
+		Position = UDim2.new(0.6, 10, 0.5, -12),
+		BackgroundColor3 = theme["Color Hub 1"],
+		TextColor3 = theme["Color Text"],
+		Font = Enum.Font.GothamBold,
+		TextSize = 11,
+		AutoButtonColor = false
+	}, frame)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, btn)
+	addBorder(btn, theme["Color Stroke"], 1)
+
+	btn.MouseEnter:Connect(function() tweenProperty(btn, {BackgroundColor3 = theme["Color Stroke"]}, 0.15) end)
+	btn.MouseLeave:Connect(function() tweenProperty(btn, {BackgroundColor3 = theme["Color Hub 1"]}, 0.15) end)
+	btn.MouseButton1Down:Connect(function() tweenProperty(btn, {Size = UDim2.new(0.4, -22, 0, 22)}, 0.1) end)
+	btn.MouseButton1Up:Connect(function()
+		tweenProperty(btn, {Size = UDim2.new(0.4, -20, 0, 24)}, 0.1)
+		pcall(callback)
 	end)
-	b.MouseLeave:Connect(function()
-		TweenService:Create(b, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(80, 80, 95)}):Play()
-	end)
-	b.MouseButton1Down:Connect(function()
-		TweenService:Create(b, TweenInfo.new(0.1, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(60, 60, 80)}):Play()
-	end)
-	b.MouseButton1Up:Connect(function()
-		TweenService:Create(b, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(100, 100, 120)}):Play()
-		wait(0.15)
-		TweenService:Create(b, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(80, 80, 95)}):Play()
-		pcall(cb)
-	end)
-	return c
+
+	return frame
 end
 
-function JustHub:CreateWindow(o)
-	o = o or {}
-	local wn = o.Name or "JustHub Window"
-	local themeName = o.Theme or "Darker"
-	local subTitle = o.SubTitle or "SubTitle"
-	local pl = Players.LocalPlayer
-	local pg = pl:WaitForChild("PlayerGui")
-	local sg = createInstance("ScreenGui", {Name = "JustHub", ResetOnSpawn = false}, pg)
-	self.ScreenGui = sg
+function SectionMethods:addConfigManager()
+	local theme = getCurrentTheme(JustHub.Save.Theme)
 
-	if not JustHub.save then
-		JustHub.save = {
-			UISize = {600, 400},
-			TabSize = 120,
-			Theme = "Darker"
-		}
-	end
+	local frame = createInstance("Frame", {
+		Name = "ConfigManager",
+		Size = UDim2.new(1, 0, 0, 75),
+		BackgroundColor3 = theme["Color Hub 2"],
+		BackgroundTransparency = 0.15,
+		BorderSizePixel = 0
+	}, self.Content)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, frame)
+	addBorder(frame, theme["Color Stroke"], 1)
 
-	JustHub.save.theme = themeName
-	local th = getCurrentTheme(themeName)
+	local inputBox = createInstance("TextBox", {
+		Text = "DefaultConfig",
+		Size = UDim2.new(1, -20, 0, 26),
+		Position = UDim2.new(0, 10, 0, 10),
+		BackgroundColor3 = theme["Color Hub 1"],
+		TextColor3 = theme["Color Text"],
+		Font = Enum.Font.Gotham,
+		TextSize = 12,
+		ClearTextOnFocus = false,
+		PlaceholderText = "Config Name...",
+	}, frame)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, inputBox)
+	addBorder(inputBox, theme["Color Stroke"], 1)
 
-	local mf = createInstance("Frame", {
+	local saveBtn = createInstance("TextButton", {
+		Text = "Save Profile",
+		Size = UDim2.new(0.48, 0, 0, 26),
+		Position = UDim2.new(0, 10, 0, 42),
+		BackgroundColor3 = theme["Color Theme"],
+		TextColor3 = Color3.fromRGB(20, 20, 20),
+		Font = Enum.Font.GothamBold,
+		TextSize = 11,
+		AutoButtonColor = false
+	}, frame)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, saveBtn)
+	registerChroma(saveBtn, "BackgroundColor3")
+
+	local loadBtn = createInstance("TextButton", {
+		Text = "Load Profile",
+		Size = UDim2.new(0.48, 0, 0, 26),
+		Position = UDim2.new(0.52, -10, 0, 42),
+		BackgroundColor3 = theme["Color Hub 1"],
+		TextColor3 = theme["Color Text"],
+		Font = Enum.Font.GothamBold,
+		TextSize = 11,
+		AutoButtonColor = false
+	}, frame)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, loadBtn)
+	addBorder(loadBtn, theme["Color Stroke"], 1)
+
+	saveBtn.MouseButton1Click:Connect(function()
+		local name = inputBox.Text
+		if name ~= "" then JustHub:SaveConfig(name .. ".json") end
+	end)
+
+	loadBtn.MouseButton1Click:Connect(function()
+		local name = inputBox.Text
+		if name ~= "" then JustHub:LoadConfig(name .. ".json") end
+	end)
+
+	return frame
+end
+
+function JustHub:CreateWindow(options)
+	options = options or {}
+	local winName = options.Name or "JustHub Window"
+	local themeName = options.Theme or "Darker"
+	local subTitle = options.SubTitle or "SubTitle"
+	
+	local player = Players.LocalPlayer
+	local playerGui = player:WaitForChild("PlayerGui")
+	local screenGui = createInstance("ScreenGui", {Name = "JustHub", ResetOnSpawn = false}, playerGui)
+	self.ScreenGui = screenGui
+
+	JustHub.Save.Theme = themeName
+	local theme = getCurrentTheme(themeName)
+
+	local mainFrame = createInstance("Frame", {
 		Name = "MainFrame",
 		AnchorPoint = Vector2.new(0.5, 0.5),
 		Position = UDim2.new(0.5, 0, 0.5, 0),
-		Size = UDim2.new(0, JustHub.save.UISize[1], 0, JustHub.save.UISize[2]),
-		BackgroundColor3 = th["Color Hub 2"],
+		Size = UDim2.new(0, JustHub.Save.UISize[1], 0, JustHub.Save.UISize[2]),
+		BackgroundColor3 = theme["Color Hub 2"],
+		BackgroundTransparency = 0.15,
 		BorderSizePixel = 0,
 		ClipsDescendants = true,
 		Active = true
-	}, sg)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, mf)
-	createInstance("UIStroke", {Color = th["Color Stroke"], Thickness = 1, Transparency = 0.6}, mf)
+	}, screenGui)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, mainFrame)
+	local mainBorder = addBorder(mainFrame, theme["Color Stroke"], 1)
+	registerChroma(mainBorder, "Color")
 
-	local tb = createInstance("Frame", {
+	local topBar = createInstance("Frame", {
 		Name = "TopBar",
 		Size = UDim2.new(1, 0, 0, 45),
 		BackgroundTransparency = 1,
 		BorderSizePixel = 0
-	}, mf)
+	}, mainFrame)
 
-	local tl = createInstance("TextLabel", {
+	local titleLabel = createInstance("TextLabel", {
 		Name = "TitleLabel",
-		Text = wn,
+		Text = winName,
 		Size = UDim2.new(0.5, 0, 1, 0),
 		Position = UDim2.new(0, 20, 0, -5),
 		BackgroundTransparency = 1,
-		TextColor3 = th["Color Text"],
+		TextColor3 = theme["Color Text"],
 		Font = Enum.Font.GothamBold,
 		TextSize = 14,
 		TextXAlignment = Enum.TextXAlignment.Left
-	}, tb)
+	}, topBar)
 
-	local st = createInstance("TextLabel", {
+	local subtitleLabel = createInstance("TextLabel", {
 		Name = "SubtitleLabel",
 		Text = subTitle,
 		Size = UDim2.new(0.5, 0, 1, 0),
 		Position = UDim2.new(0, 20, 0, 10),
 		BackgroundTransparency = 1,
-		TextColor3 = th["Color Dark Text"],
+		TextColor3 = theme["Color Dark Text"],
 		Font = Enum.Font.Gotham,
 		TextSize = 11,
 		TextXAlignment = Enum.TextXAlignment.Left
-	}, tb)
+	}, topBar)
 
-	local bc = createInstance("Frame", {
+	local btnContainer = createInstance("Frame", {
 		Name = "ButtonContainer",
 		Size = UDim2.new(0, 70, 1, 0),
 		Position = UDim2.new(1, -15, 0, 0),
 		AnchorPoint = Vector2.new(1, 0),
 		BackgroundTransparency = 1
-	}, tb)
-
+	}, topBar)
 	createInstance("UIListLayout", {
 		FillDirection = Enum.FillDirection.Horizontal,
 		HorizontalAlignment = Enum.HorizontalAlignment.Right,
 		VerticalAlignment = Enum.VerticalAlignment.Center,
 		Padding = UDim.new(0, 8),
 		SortOrder = Enum.SortOrder.LayoutOrder
-	}, bc)
+	}, btnContainer)
 
 	local function createWinBtn(name, color, order)
 		local btn = createInstance("TextButton", {
@@ -1511,51 +1295,74 @@ function JustHub:CreateWindow(o)
 			LayoutOrder = order,
 			AutoButtonColor = false,
 			BorderSizePixel = 0
-		}, bc)
+		}, btnContainer)
 		createInstance("UICorner", {CornerRadius = UDim.new(1, 0)}, btn)
-
-		btn.MouseEnter:Connect(function()
-			TweenService:Create(btn, TweenInfo.new(0.2), {BackgroundTransparency = 0.2}):Play()
-		end)
-		btn.MouseLeave:Connect(function()
-			TweenService:Create(btn, TweenInfo.new(0.2), {BackgroundTransparency = 0}):Play()
-		end)
+		btn.MouseEnter:Connect(function() tweenProperty(btn, {BackgroundTransparency = 0.2}, 0.2) end)
+		btn.MouseLeave:Connect(function() tweenProperty(btn, {BackgroundTransparency = 0}, 0.2) end)
 		return btn
 	end
 
-	local hb = createWinBtn("HideBtn", Color3.fromRGB(255, 189, 46), 1)
-	local xb = createWinBtn("MaxBtn", Color3.fromRGB(39, 201, 63), 2)
-	local closeb = createWinBtn("CloseBtn", Color3.fromRGB(255, 96, 92), 3)
+	local hideBtn = createWinBtn("HideBtn", Color3.fromRGB(255, 189, 46), 1)
+	local maxBtn = createWinBtn("MaxBtn", Color3.fromRGB(39, 201, 63), 2)
+	local closeBtn = createWinBtn("CloseBtn", Color3.fromRGB(255, 96, 92), 3)
 
-	local headerSeparator = createInstance("Frame", {
+	local headerSep = createInstance("Frame", {
 		Size = UDim2.new(1, -40, 0, 1),
 		Position = UDim2.new(0, 20, 0, 44),
-		BackgroundColor3 = th["Color Stroke"],
-		BackgroundTransparency = 0.7,
+		BackgroundColor3 = theme["Color Stroke"],
+		BackgroundTransparency = 0.5,
 		BorderSizePixel = 0
-	}, mf)
+	}, mainFrame)
 
-	local sbWidth = JustHub.save.TabSize
-	local sb = createInstance("Frame", {
-		Name = "Sidebar",
-		Size = UDim2.new(0, sbWidth, 1, -75),
+	local profileFrame = createInstance("Frame", {
+		Name = "ProfileFrame",
+		Size = UDim2.new(0, JustHub.Save.TabSize, 0, 50),
 		Position = UDim2.new(0, 20, 0, 55),
-		BackgroundTransparency = 1,
-		BorderSizePixel = 0
-	}, mf)
+		BackgroundTransparency = 1
+	}, mainFrame)
 	
-	createInstance("UIListLayout", {
-		SortOrder = Enum.SortOrder.LayoutOrder,
-		Padding = UDim.new(0, 6)
-	}, sb)
+	local avatarImg = createInstance("ImageLabel", {
+		Size = UDim2.new(0, 36, 0, 36),
+		Position = UDim2.new(0, 0, 0.5, -18),
+		BackgroundColor3 = theme["Color Hub 1"],
+		BorderSizePixel = 0,
+		ClipsDescendants = true
+	}, profileFrame)
+	createInstance("UICorner", {CornerRadius = UDim.new(1, 0)}, avatarImg)
+	
+	local pcallSuccess, thumb = pcall(function()
+		return Players:GetUserThumbnailAsync(player.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size100x100)
+	end)
+	if pcallSuccess then avatarImg.Image = thumb end
 
-	local cc = createInstance("Frame", {
-		Name = "ContentContainer",
-		Size = UDim2.new(1, -(sbWidth + 50), 1, -75),
-		Position = UDim2.new(0, sbWidth + 30, 0, 55),
+	local profileName = createInstance("TextLabel", {
+		Text = player.DisplayName,
+		Size = UDim2.new(1, -46, 1, 0),
+		Position = UDim2.new(0, 46, 0, 0),
+		BackgroundTransparency = 1,
+		TextColor3 = theme["Color Text"],
+		Font = Enum.Font.GothamBold,
+		TextSize = 12,
+		TextXAlignment = Enum.TextXAlignment.Left,
+		TextTruncate = Enum.TextTruncate.AtEnd
+	}, profileFrame)
+
+	local sidebar = createInstance("Frame", {
+		Name = "Sidebar",
+		Size = UDim2.new(0, JustHub.Save.TabSize, 1, -135),
+		Position = UDim2.new(0, 20, 0, 115),
 		BackgroundTransparency = 1,
 		BorderSizePixel = 0
-	}, mf)
+	}, mainFrame)
+	createInstance("UIListLayout", {SortOrder = Enum.SortOrder.LayoutOrder, Padding = UDim.new(0, 6)}, sidebar)
+
+	local contentContainer = createInstance("Frame", {
+		Name = "ContentContainer",
+		Size = UDim2.new(1, -(JustHub.Save.TabSize + 50), 1, -75),
+		Position = UDim2.new(0, JustHub.Save.TabSize + 30, 0, 55),
+		BackgroundTransparency = 1,
+		BorderSizePixel = 0
+	}, mainFrame)
 
 	local footer = createInstance("Frame", {
 		Name = "Footer",
@@ -1563,93 +1370,93 @@ function JustHub:CreateWindow(o)
 		Position = UDim2.new(0, 0, 1, -20),
 		BackgroundTransparency = 1,
 		BorderSizePixel = 0
-	}, mf)
+	}, mainFrame)
 
-	local fl = createInstance("TextLabel", {
+	local fpsLabel = createInstance("TextLabel", {
 		Name = "FPSLabel",
 		Text = "FPS: --",
 		Size = UDim2.new(0, 100, 1, 0),
 		Position = UDim2.new(1, -20, 0, 0),
 		AnchorPoint = Vector2.new(1, 0),
 		BackgroundTransparency = 1,
-		TextColor3 = th["Color Dark Text"],
+		TextColor3 = theme["Color Dark Text"],
 		Font = Enum.Font.Gotham,
 		TextSize = 10,
 		TextXAlignment = Enum.TextXAlignment.Right
 	}, footer)
 
-	local runService = game:GetService("RunService")
-	local sec = os.clock()
-	local frames = 0
-	runService.RenderStepped:Connect(function()
-		frames = frames + 1
-		local curr = os.clock()
-		if curr - sec >= 1 then
-			if fl and fl.Parent then
-				fl.Text = "FPS: " .. frames
+	local lastTime = os.clock()
+	local frameCount = 0
+	RunService.RenderStepped:Connect(function()
+		frameCount = frameCount + 1
+		local currentTime = os.clock()
+		if currentTime - lastTime >= 1 then
+			if fpsLabel and fpsLabel.Parent then
+				fpsLabel.Text = "FPS: " .. frameCount
 			end
-			frames = 0
-			sec = curr
+			frameCount = 0
+			lastTime = currentTime
 		end
 	end)
 
-	TweenService:Create(mf, TweenInfo.new(0.6, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Position = UDim2.new(0.5, 0, 0.5, 0)}):Play()
+	tweenProperty(mainFrame, {Position = UDim2.new(0.5, 0, 0.5, 0)}, 0.6, Enum.EasingStyle.Exponential)
 
 	local minimized, maximized = false, false
 	local prevSize, prevPos
 
-	hb.MouseButton1Click:Connect(function()
+	hideBtn.MouseButton1Click:Connect(function()
 		minimized = not minimized
 		if minimized then
-			prevSize = mf.Size
-			TweenService:Create(mf, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, prevSize.X.Offset, 0, 45)}):Play()
-			sb.Visible = false
-			cc.Visible = false
+			prevSize = mainFrame.Size
+			tweenProperty(mainFrame, {Size = UDim2.new(0, prevSize.X.Offset, 0, 45)}, 0.4, Enum.EasingStyle.Exponential)
+			sidebar.Visible = false
+			contentContainer.Visible = false
 			footer.Visible = false
-			headerSeparator.Visible = false
+			headerSep.Visible = false
+			profileFrame.Visible = false
 		else
-			TweenService:Create(mf, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {Size = prevSize}):Play()
+			tweenProperty(mainFrame, {Size = prevSize}, 0.4, Enum.EasingStyle.Exponential)
 			task.wait(0.2)
-			sb.Visible = true
-			cc.Visible = true
+			sidebar.Visible = true
+			contentContainer.Visible = true
 			footer.Visible = true
-			headerSeparator.Visible = true
+			headerSep.Visible = true
+			profileFrame.Visible = true
 		end
 	end)
 
-	xb.MouseButton1Click:Connect(function()
+	maxBtn.MouseButton1Click:Connect(function()
 		maximized = not maximized
 		if maximized then
-			prevSize, prevPos = mf.Size, mf.Position
-			TweenService:Create(mf, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {Size = UDim2.new(1, -40, 1, -40), Position = UDim2.new(0.5, 0, 0.5, 0)}):Play()
+			prevSize, prevPos = mainFrame.Size, mainFrame.Position
+			tweenProperty(mainFrame, {Size = UDim2.new(1, -40, 1, -40), Position = UDim2.new(0.5, 0, 0.5, 0)}, 0.4, Enum.EasingStyle.Exponential)
 		else
-			TweenService:Create(mf, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {Size = prevSize, Position = prevPos}):Play()
+			tweenProperty(mainFrame, {Size = prevSize, Position = prevPos}, 0.4, Enum.EasingStyle.Exponential)
 		end
 	end)
 
-	closeb.MouseButton1Click:Connect(function()
-		local t = TweenService:Create(mf, TweenInfo.new(0.4, Enum.EasingStyle.Exponential, Enum.EasingDirection.In), {Position = UDim2.new(0.5, 0, -0.5, 0), BackgroundTransparency = 1})
-		t:Play()
+	closeBtn.MouseButton1Click:Connect(function()
+		local t = tweenProperty(mainFrame, {Position = UDim2.new(0.5, 0, -0.5, 0), BackgroundTransparency = 1}, 0.4, Enum.EasingStyle.Exponential, Enum.EasingDirection.In)
 		t.Completed:Connect(function()
-			mf.Visible = false
-			local showUI = createInstance("ScreenGui", {Name = "ShowUI", ResetOnSpawn = false}, pg)
+			mainFrame.Visible = false
+			local showUI = createInstance("ScreenGui", {Name = "ShowUI", ResetOnSpawn = false}, playerGui)
 			local showBtn = createInstance("TextButton", {
 				Name = "ShowUIButton",
 				Size = UDim2.new(0, 40, 0, 40),
 				Position = UDim2.new(0.5, -20, 0, 10),
-				BackgroundColor3 = th["Color Hub 2"],
+				BackgroundColor3 = theme["Color Hub 2"],
 				Text = "UI",
-				TextColor3 = th["Color Text"],
+				TextColor3 = theme["Color Text"],
 				Font = Enum.Font.GothamBold,
 				TextSize = 12,
 				AutoButtonColor = false
 			}, showUI)
 			createInstance("UICorner", {CornerRadius = UDim.new(1, 0)}, showBtn)
-			createInstance("UIStroke", {Color = th["Color Stroke"], Thickness = 1, Transparency = 0.5}, showBtn)
+			addBorder(showBtn, theme["Color Stroke"], 1)
 
 			showBtn.MouseButton1Click:Connect(function()
-				mf.Visible = true
-				TweenService:Create(mf, TweenInfo.new(0.5, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Position = UDim2.new(0.5, 0, 0.5, 0), BackgroundTransparency = 0}):Play()
+				mainFrame.Visible = true
+				tweenProperty(mainFrame, {Position = UDim2.new(0.5, 0, 0.5, 0), BackgroundTransparency = 0.15}, 0.5, Enum.EasingStyle.Exponential)
 				showUI:Destroy()
 			end)
 		end)
@@ -1675,12 +1482,11 @@ function JustHub:CreateWindow(o)
 		UserInputService.InputChanged:Connect(function(input)
 			if input == dragInput and dragging then
 				local delta = input.Position - dragStart
-				TweenService:Create(frame, TweenInfo.new(0.1, Enum.EasingStyle.Quad), {Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)}):Play()
+				tweenProperty(frame, {Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)}, 0.1)
 			end
 		end)
 	end
-	
-	enableDrag(mf, tb)
+	enableDrag(mainFrame, topBar)
 
 	local resizeGrip = createInstance("TextButton", {
 		Name = "ResizeGrip",
@@ -1688,10 +1494,10 @@ function JustHub:CreateWindow(o)
 		Position = UDim2.new(1, -20, 1, -20),
 		BackgroundTransparency = 1,
 		Text = "⌟",
-		TextColor3 = th["Color Dark Text"],
+		TextColor3 = theme["Color Dark Text"],
 		Font = Enum.Font.Gotham,
 		TextSize = 14
-	}, mf)
+	}, mainFrame)
 
 	local function enableResize(frame, grip)
 		local resizing, dragStart, startSize
@@ -1708,12 +1514,11 @@ function JustHub:CreateWindow(o)
 		UserInputService.InputChanged:Connect(function(input)
 			if resizing and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
 				local delta = input.Position - dragStart
-				TweenService:Create(frame, TweenInfo.new(0.1, Enum.EasingStyle.Quad), {Size = UDim2.new(0, math.max(450, startSize.X.Offset + delta.X), 0, math.max(300, startSize.Y.Offset + delta.Y))}):Play()
+				tweenProperty(frame, {Size = UDim2.new(0, math.max(500, startSize.X.Offset + delta.X), 0, math.max(350, startSize.Y.Offset + delta.Y))}, 0.1)
 			end
 		end)
 	end
-	
-	enableResize(mf, resizeGrip)
+	enableResize(mainFrame, resizeGrip)
 
 	local notiContainer = createInstance("Frame", {
 		Name = "NotificationContainer",
@@ -1721,7 +1526,7 @@ function JustHub:CreateWindow(o)
 		Position = UDim2.new(1, -20, 1, -20),
 		Size = UDim2.new(0, 280, 1, -40),
 		BackgroundTransparency = 1
-	}, sg)
+	}, screenGui)
 	createInstance("UIListLayout", {
 		Padding = UDim.new(0, 12),
 		HorizontalAlignment = Enum.HorizontalAlignment.Right,
@@ -1730,273 +1535,268 @@ function JustHub:CreateWindow(o)
 	}, notiContainer)
 	self.NotificationContainer = notiContainer
 
-	local wObj = {ScreenGui = sg, MainFrame = mf, TopBar = tb, Sidebar = sb, ContentContainer = cc, Tabs = {}}
+	local windowObj = {ScreenGui = screenGui, MainFrame = mainFrame, TopBar = topBar, Sidebar = sidebar, ContentContainer = contentContainer, Tabs = {}}
 
-	function wObj:addTab(tn)
-		tn = tn or "Tab"
-		local b = createInstance("TextButton", {
-			Name = tn .. "Button",
-			Text = "  " .. tn,
-			Size = UDim2.new(1, 0, 0, 30),
-			BackgroundColor3 = th["Color Hub 2"],
+	function windowObj:addTab(tabName, iconName)
+		tabName = tabName or "Tab"
+		local currentTheme = getCurrentTheme(JustHub.Save.Theme)
+		
+		local btn = createInstance("TextButton", {
+			Name = tabName .. "Button",
+			Text = "",
+			Size = UDim2.new(1, 0, 0, 32),
+			BackgroundColor3 = currentTheme["Color Hub 1"],
 			BackgroundTransparency = 1,
-			TextColor3 = th["Color Dark Text"],
+			AutoButtonColor = false
+		}, sidebar)
+		createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, btn)
+
+		local btnLayout = createInstance("UIListLayout", {
+			FillDirection = Enum.FillDirection.Horizontal,
+			SortOrder = Enum.SortOrder.LayoutOrder,
+			VerticalAlignment = Enum.VerticalAlignment.Center,
+			Padding = UDim.new(0, 8)
+		}, btn)
+		createInstance("UIPadding", {PaddingLeft = UDim.new(0, 10)}, btn)
+
+		local tabIcon
+		if iconName and JustHub.Icons[iconName] then
+			tabIcon = createInstance("ImageLabel", {
+				Size = UDim2.new(0, 16, 0, 16),
+				BackgroundTransparency = 1,
+				Image = JustHub.Icons[iconName],
+				ImageColor3 = currentTheme["Color Dark Text"]
+			}, btn)
+		end
+
+		local tabText = createInstance("TextLabel", {
+			Text = tabName,
+			Size = UDim2.new(1, -24, 1, 0),
+			BackgroundTransparency = 1,
+			TextColor3 = currentTheme["Color Dark Text"],
 			Font = Enum.Font.GothamMedium,
 			TextSize = 12,
-			TextXAlignment = Enum.TextXAlignment.Left,
-			AutoButtonColor = false
-		}, sb)
-		createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, b)
+			TextXAlignment = Enum.TextXAlignment.Left
+		}, btn)
 
-		local tc = createInstance("ScrollingFrame", {
-			Name = tn .. "Content",
+		local tabContent = createInstance("ScrollingFrame", {
+			Name = tabName .. "Content",
 			Size = UDim2.new(1, 0, 1, 0),
 			BackgroundTransparency = 1,
-			ScrollBarThickness = 1,
-			ScrollBarImageColor3 = th["Color Stroke"],
+			ScrollBarThickness = 2,
+			ScrollBarImageColor3 = currentTheme["Color Stroke"],
 			BorderSizePixel = 0,
 			Visible = false
-		}, cc)
+		}, contentContainer)
 		createInstance("UIListLayout", {
 			SortOrder = Enum.SortOrder.LayoutOrder,
 			Padding = UDim.new(0, 10),
 			HorizontalAlignment = Enum.HorizontalAlignment.Center
-		}, tc)
+		}, tabContent)
 
-		local tObj = {Name = tn, Button = b, Content = tc, Sections = {}}
-		table.insert(wObj.Tabs, tObj)
+		local tabObj = {Name = tabName, Button = btn, Content = tabContent, Sections = {}}
+		table.insert(windowObj.Tabs, tabObj)
 
 		local function updateTabs()
-			for _, tt in ipairs(wObj.Tabs) do
-				local isSelected = (tt == tObj)
-				tt.Content.Visible = isSelected
-				TweenService:Create(tt.Button, TweenInfo.new(0.3, Enum.EasingStyle.Quad), {
-					BackgroundTransparency = isSelected and 0.05 or 1,
-					TextColor3 = isSelected and th["Color Text"] or th["Color Dark Text"]
-				}):Play()
+			for _, t in ipairs(windowObj.Tabs) do
+				local active = (t == tabObj)
+				t.Content.Visible = active
+				tweenProperty(t.Button, {BackgroundTransparency = active and 0 or 1}, 0.3)
+				
+				local textObj = t.Button:FindFirstChildOfClass("TextLabel")
+				local imgObj = t.Button:FindFirstChildOfClass("ImageLabel")
+				
+				if textObj then
+					tweenProperty(textObj, {TextColor3 = active and currentTheme["Color Text"] or currentTheme["Color Dark Text"]}, 0.3)
+				end
+				if imgObj then
+					tweenProperty(imgObj, {ImageColor3 = active and currentTheme["Color Text"] or currentTheme["Color Dark Text"]}, 0.3)
+				end
 			end
 		end
 
-		b.MouseButton1Click:Connect(updateTabs)
+		btn.MouseButton1Click:Connect(updateTabs)
 
-		if #wObj.Tabs == 1 then updateTabs() end
+		if #windowObj.Tabs == 1 then updateTabs() end
 
-		function tObj:addSection(sn)
-			sn = sn or "Section"
-			local sframe = createInstance("Frame", {
-				Name = sn,
+		function tabObj:addSection(sectionName)
+			sectionName = sectionName or "Section"
+			local ct = getCurrentTheme(JustHub.Save.Theme)
+			
+			local secFrame = createInstance("Frame", {
+				Name = sectionName,
 				Size = UDim2.new(1, -4, 0, 0),
-				BackgroundColor3 = th["Color Hub 1"],
-				BackgroundTransparency = 0.6,
+				BackgroundColor3 = ct["Color Hub 1"],
+				BackgroundTransparency = 0.4,
 				AutomaticSize = Enum.AutomaticSize.Y
-			}, tc)
-			createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, sframe)
-			createInstance("UIStroke", {Color = th["Color Stroke"], Thickness = 1, Transparency = 0.8}, sframe)
+			}, tabContent)
+			createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, secFrame)
+			addBorder(secFrame, ct["Color Stroke"], 1)
 
-			local st = createInstance("TextLabel", {
+			local secTitle = createInstance("TextLabel", {
 				Name = "SectionTitle",
-				Text = "  " .. sn,
-				Size = UDim2.new(1, 0, 0, 28),
+				Text = "  " .. sectionName,
+				Size = UDim2.new(1, 0, 0, 30),
 				BackgroundTransparency = 1,
-				TextColor3 = th["Color Text"],
+				TextColor3 = ct["Color Text"],
 				Font = Enum.Font.GothamMedium,
 				TextSize = 12,
 				TextXAlignment = Enum.TextXAlignment.Left
-			}, sframe)
+			}, secFrame)
 
-			local sc = createInstance("Frame", {
+			local secContent = createInstance("Frame", {
 				Name = "SectionContent",
 				Size = UDim2.new(1, 0, 0, 0),
-				Position = UDim2.new(0, 0, 0, 28),
+				Position = UDim2.new(0, 0, 0, 30),
 				BackgroundTransparency = 1,
 				AutomaticSize = Enum.AutomaticSize.Y
-			}, sframe)
+			}, secFrame)
 
 			createInstance("UIListLayout", {
 				FillDirection = Enum.FillDirection.Vertical,
-				Padding = UDim.new(0, 6),
+				Padding = UDim.new(0, 8),
 				SortOrder = Enum.SortOrder.LayoutOrder,
 				HorizontalAlignment = Enum.HorizontalAlignment.Center
-			}, sc)
-			
+			}, secContent)
 			createInstance("UIPadding", {
 				PaddingBottom = UDim.new(0, 10),
 				PaddingTop = UDim.new(0, 2),
 				PaddingLeft = UDim.new(0, 10),
 				PaddingRight = UDim.new(0, 10)
-			}, sc)
+			}, secContent)
 
-			local sObj = {Frame = sframe, Title = st, Content = sc}
-			table.insert(tObj.Sections, sObj)
-			if SectionMethods then setmetatable(sObj, {__index = SectionMethods}) end
-			return sObj
+			local secObj = {Frame = secFrame, Title = secTitle, Content = secContent}
+			table.insert(tabObj.Sections, secObj)
+			setmetatable(secObj, {__index = SectionMethods})
+			return secObj
 		end
 
-		return tObj
+		return tabObj
 	end
 
-	return wObj
+	return windowObj
 end
 
-local Players = game:GetService("Players")
-local TweenService = game:GetService("TweenService")
-
-local function createInstance(className, props, parent)
-	local obj = Instance.new(className)
-	for i, v in pairs(props) do
-		obj[i] = v
-	end
-	if parent then
-		obj.Parent = parent
-	end
-	return obj
-end
-
-local function tweenProperty(guiObject, goal, time, easingStyle, easingDirection)
-	local ti = TweenInfo.new(time, easingStyle or Enum.EasingStyle.Quad, easingDirection or Enum.EasingDirection.Out)
-	local tween = TweenService:Create(guiObject, ti, goal)
-	tween:Play()
-	return tween
-end
-
-function JustHub:ShowLoadingScreen(d, cb)
-	d = d or 5
-	cb = cb or function() end
-	local pl = Players.LocalPlayer
-	local pg = pl:WaitForChild("PlayerGui")
-	local lg = createInstance("ScreenGui", {
-		Name = "LoadingScreen",
-		ResetOnSpawn = false,
-		IgnoreGuiInset = true
-	}, pg)
-	local bgImage = createInstance("ImageLabel", {
-		Size = UDim2.new(1, 0, 1, 0),
-		Position = UDim2.new(0, 0, 0, 0),
-		BackgroundTransparency = 1,
-		Image = "rbxassetid://81925509834061",
-		ScaleType = Enum.ScaleType.Crop
-	}, lg)
+function JustHub:ShowLoadingScreen(duration, callback)
+	duration = duration or 5
+	callback = callback or function() end
+	local player = Players.LocalPlayer
+	local playerGui = player:WaitForChild("PlayerGui")
+	local theme = getCurrentTheme(JustHub.Save.Theme)
+	
+	local loadGui = createInstance("ScreenGui", {Name = "LoadingScreen", ResetOnSpawn = false, IgnoreGuiInset = true}, playerGui)
+	
 	local bgOverlay = createInstance("Frame", {
 		Size = UDim2.new(1, 0, 1, 0),
-		BackgroundColor3 = Color3.new(0, 0, 0),
-		BackgroundTransparency = 0.4,
+		BackgroundColor3 = theme["Color Hub 2"],
+		BackgroundTransparency = 0,
 		BorderSizePixel = 0
-	}, lg)
-	local tl = createInstance("TextLabel", {
+	}, loadGui)
+
+	local titleLabel = createInstance("TextLabel", {
 		Text = "JustHub Library",
-		Font = Enum.Font.SourceSansSemibold,
-		TextSize = 20,
-		TextColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Text"],
+		Font = Enum.Font.GothamBold,
+		TextSize = 24,
+		TextColor3 = theme["Color Text"],
 		BackgroundTransparency = 1,
 		Size = UDim2.new(0, 200, 0, 50),
 		AnchorPoint = Vector2.new(0.5, 0.5),
 		Position = UDim2.new(0.5, 0, 0.5, -50)
-	}, lg)
-	local wl = createInstance("TextLabel", {
-		Text = "Welcome, " .. pl.Name,
-		Font = Enum.Font.SourceSansSemibold,
-		TextSize = 16,
-		TextColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Text"],
-		BackgroundTransparency = 1,
-		Size = UDim2.new(0, 200, 0, 30),
-		AnchorPoint = Vector2.new(0.5, 0),
-		Position = UDim2.new(0.5, 0, 0.5, 10)
-	}, lg)
-	local pbc = createInstance("Frame", {
-		Size = UDim2.new(0.5, 0, 0, 20),
-		Position = UDim2.new(0.5, 0, 0.5, 50),
+	}, loadGui)
+
+	local barContainer = createInstance("Frame", {
+		Size = UDim2.new(0, 300, 0, 10),
+		Position = UDim2.new(0.5, 0, 0.5, 20),
 		AnchorPoint = Vector2.new(0.5, 0.5),
-		BackgroundColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Stroke"],
-		BackgroundTransparency = 0.5,
+		BackgroundColor3 = theme["Color Hub 1"],
 		BorderSizePixel = 0
-	}, lg)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, pbc)
-	local pbf = createInstance("Frame", {
+	}, loadGui)
+	createInstance("UICorner", {CornerRadius = UDim.new(1, 0)}, barContainer)
+	addBorder(barContainer, theme["Color Stroke"], 1)
+
+	local barFill = createInstance("Frame", {
 		Size = UDim2.new(0, 0, 1, 0),
-		BackgroundColor3 = getCurrentTheme(JustHub.Save.Theme)["Color Theme"],
+		BackgroundColor3 = theme["Color Theme"],
 		BorderSizePixel = 0
-	}, pbc)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, pbf)
-	local tinfo = TweenInfo.new(d, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-	local pt = TweenService:Create(pbf, tinfo, {Size = UDim2.new(1, 0, 1, 0)})
-	pt:Play()
-	spawn(function()
-		while pt.PlaybackState == Enum.PlaybackState.Playing do
-			tweenProperty(tl, {TextTransparency = 0.5}, 0.5)
-			wait(0.5)
-			tweenProperty(tl, {TextTransparency = 0}, 0.5)
-			wait(0.5)
+	}, barContainer)
+	createInstance("UICorner", {CornerRadius = UDim.new(1, 0)}, barFill)
+
+	local tween = tweenProperty(barFill, {Size = UDim2.new(1, 0, 1, 0)}, duration)
+	
+	task.spawn(function()
+		while tween.PlaybackState == Enum.PlaybackState.Playing do
+			tweenProperty(titleLabel, {TextTransparency = 0.5}, 0.5)
+			task.wait(0.5)
+			tweenProperty(titleLabel, {TextTransparency = 0}, 0.5)
+			task.wait(0.5)
 		end
 	end)
-	pt.Completed:Connect(function()
-		wait(0.5)
-		lg:Destroy()
-		cb()
+
+	tween.Completed:Connect(function()
+		task.wait(0.5)
+		local fade = tweenProperty(bgOverlay, {BackgroundTransparency = 1}, 0.5)
+		tweenProperty(titleLabel, {TextTransparency = 1}, 0.5)
+		tweenProperty(barContainer, {BackgroundTransparency = 1}, 0.5)
+		tweenProperty(barFill, {BackgroundTransparency = 1}, 0.5)
+		fade.Completed:Connect(function()
+			loadGui:Destroy()
+			callback()
+		end)
 	end)
 end
 
-function JustHub:InitializeUI(o)
-	self:ShowLoadingScreen(5, function()
-		local w = self:CreateWindow(o)
-		self.Window = w
+function JustHub:InitializeUI(options)
+	self:ShowLoadingScreen(3, function()
+		self.Window = self:CreateWindow(options)
 	end)
 end
 
-function JustHub:SaveConfig(f)
-	f = f or "JustHub_Config.json"
-	if writefile then
-		local j = HttpService:JSONEncode(JustHub.ConfigData)
-		writefile(f, j)
-		StarterGui:SetCore("SendNotification", {Title = "Save Config", Text = "Config Success Save At " .. f, Duration = 5})
-	else
-		warn("Saving config is not supported in this environment.")
-	end
+function JustHub:SaveConfig(fileName)
+	fileName = fileName or "JustHub_Config.json"
+	local success, err = pcall(function()
+		if writefile then
+			local json = HttpService:JSONEncode(JustHub.ConfigData)
+			writefile(fileName, json)
+			StarterGui:SetCore("SendNotification", {Title = "Save Config", Text = "Success save at " .. fileName, Duration = 5})
+		else
+			warn("Saving config not supported.")
+		end
+	end)
+	if not success then warn("Save error: " .. err) end
 end
 
-function JustHub:LoadConfig(f)
-	f = f or "JustHub_Config.json"
-	if readfile then
-		local d = readfile(f)
-		local c = HttpService:JSONDecode(d)
-		JustHub.ConfigData = c
-		JustHub:ApplyConfig(c)
-		StarterGui:SetCore("SendNotification", {Title = "Load Config", Text = "Config berhasil dimuat dari " .. f, Duration = 5})
-		return c
-	else
-		warn("Loading config is not supported in this environment.")
-		return {}
-	end
+function JustHub:LoadConfig(fileName)
+	fileName = fileName or "JustHub_Config.json"
+	local config = {}
+	local success, err = pcall(function()
+		if readfile then
+			local data = readfile(fileName)
+			config = HttpService:JSONDecode(data)
+			JustHub.ConfigData = config
+			JustHub:ApplyConfig(config)
+			StarterGui:SetCore("SendNotification", {Title = "Load Config", Text = "Success load from " .. fileName, Duration = 5})
+		else
+			warn("Loading config not supported.")
+		end
+	end)
+	if not success then warn("Load error: " .. err) end
+	return config
 end
 
-function JustHub:UpdateTheme(nt)
-	JustHub.Save.Theme = nt
-	local th = getCurrentTheme(nt)
+function JustHub:UpdateTheme(newTheme)
+	JustHub.Save.Theme = newTheme
+	local themeData = getCurrentTheme(newTheme)
 	if self.Window then
 		local mf = self.Window.MainFrame
-		mf.BackgroundColor3 = th["Color Hub 2"]
-		local tb = self.Window.TopBar
-		tb.BackgroundColor3 = th["Color Hub 2"]
-		local tl = tb:FindFirstChild("TitleLabel")
-		if tl then tl.TextColor3 = th["Color Text"] end
-		local sb = self.Window.Sidebar
-		sb.BackgroundColor3 = th["Color Hub 2"]
-		local cc = self.Window.ContentContainer
-		cc.BackgroundColor3 = th["Color Hub 2"]
-		for _, tab in ipairs(self.Window.Tabs) do
-			if tab.Button then
-				tab.Button.BackgroundColor3 = th["Color Stroke"]
-				tab.Button.TextColor3 = th["Color Text"]
-			end
-		end
-		local fl = mf:FindFirstChild("FPSLabel", true)
-		if fl then
-			fl.TextColor3 = th["Color Text"]
-		end
+		mf.BackgroundColor3 = themeData["Color Hub 2"]
+		self.Window.TopBar.BackgroundColor3 = themeData["Color Hub 2"]
+		self.Window.Sidebar.BackgroundColor3 = themeData["Color Hub 2"]
+		self.Window.ContentContainer.BackgroundColor3 = themeData["Color Hub 2"]
 	end
 end
 
-function JustHub:SetTheme(nt)
-	self:UpdateTheme(nt)
+function JustHub:SetTheme(newTheme)
+	self:UpdateTheme(newTheme)
 end
 
 function JustHub:ToggleUIVisibility()
@@ -2005,60 +1805,90 @@ function JustHub:ToggleUIVisibility()
 	end
 end
 
-function JustHub:Notify(o)
-	o = o or {}
-	local t = o.Title or ""
-	local m = o.Message or ""
-	local d = o.Duration or 5
-	local showProgress = o.ShowProgress or false
+function JustHub:Notify(options)
+	options = options or {}
+	local title = options.Title or ""
+	local message = options.Message or ""
+	local duration = options.Duration or 5
+	local showProgress = options.ShowProgress or false
 	local theme = getCurrentTheme(JustHub.Save.Theme)
-	if not self.NotificationContainer then
-		return
-	end
-	local nf = createInstance("Frame", {Size = UDim2.new(0, 300, 0, 0), BackgroundTransparency = 0, ClipsDescendants = true}, self.NotificationContainer)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, nf)
-	addBorder(nf, theme["Color Stroke"], 2)
-	createInstance("UIGradient", {Color = theme["Color Hub 1"]}, nf)
-	local tLabel = createInstance("TextLabel", {Text = t, Size = UDim2.new(1, -10, 0, 20), Position = UDim2.new(0, 5, 0, 5), BackgroundTransparency = 1, TextColor3 = theme["Color Text"], Font = Enum.Font.GothamBold, TextSize = 14, TextXAlignment = Enum.TextXAlignment.Left}, nf)
-	local mLabel = createInstance("TextLabel", {Text = m, Size = UDim2.new(1, -10, 0, 0), Position = UDim2.new(0, 5, 0, 25), BackgroundTransparency = 1, TextColor3 = theme["Color Text"], Font = Enum.Font.Gotham, TextSize = 12, TextWrapped = true, TextXAlignment = Enum.TextXAlignment.Left}, nf)
-	mLabel.Size = UDim2.new(1, -10, 0, mLabel.TextBounds.Y + 5)
-	local fullHeight = mLabel.AbsolutePosition.Y + mLabel.AbsoluteSize.Y - nf.AbsolutePosition.Y + 10
+
+	if not self.NotificationContainer then return end
+
+	local notifFrame = createInstance("Frame", {
+		Size = UDim2.new(0, 300, 0, 0),
+		BackgroundColor3 = theme["Color Hub 2"],
+		BackgroundTransparency = 0.15,
+		ClipsDescendants = true
+	}, self.NotificationContainer)
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, notifFrame)
+	addBorder(notifFrame, theme["Color Stroke"], 1)
+
+	local titleLabel = createInstance("TextLabel", {
+		Text = title,
+		Size = UDim2.new(1, -20, 0, 20),
+		Position = UDim2.new(0, 10, 0, 10),
+		BackgroundTransparency = 1,
+		TextColor3 = theme["Color Text"],
+		Font = Enum.Font.GothamBold,
+		TextSize = 14,
+		TextXAlignment = Enum.TextXAlignment.Left
+	}, notifFrame)
+
+	local msgLabel = createInstance("TextLabel", {
+		Text = message,
+		Size = UDim2.new(1, -20, 0, 0),
+		Position = UDim2.new(0, 10, 0, 35),
+		BackgroundTransparency = 1,
+		TextColor3 = theme["Color Dark Text"],
+		Font = Enum.Font.Gotham,
+		TextSize = 12,
+		TextWrapped = true,
+		TextXAlignment = Enum.TextXAlignment.Left
+	}, notifFrame)
+	
+	msgLabel.Size = UDim2.new(1, -20, 0, msgLabel.TextBounds.Y + 10)
+	local fullHeight = msgLabel.Position.Y.Offset + msgLabel.Size.Y.Offset + 15
 	local progressFrame
+
 	if showProgress then
-		progressFrame = createInstance("Frame", {Size = UDim2.new(1, 0, 0, 5), Position = UDim2.new(0, 0, 1, -5), BackgroundColor3 = theme["Color Theme"]}, nf)
-		createInstance("UICorner", {CornerRadius = UDim.new(0, 3)}, progressFrame)
-		fullHeight = fullHeight + 5
+		progressFrame = createInstance("Frame", {
+			Size = UDim2.new(1, 0, 0, 4),
+			Position = UDim2.new(0, 0, 1, -4),
+			BackgroundColor3 = theme["Color Theme"],
+			BorderSizePixel = 0
+		}, notifFrame)
+		registerChroma(progressFrame, "BackgroundColor3")
+		fullHeight = fullHeight + 4
 	end
-	nf.Size = UDim2.new(0, 300, 0, fullHeight)
-	nf.BackgroundColor3 = theme["Color Hub 2"]
-	nf.BackgroundTransparency = 0.1
-	nf.Position = UDim2.new(1, 0, 1, 0)
-	local inTween = TweenService:Create(nf, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 300, 0, fullHeight)})
-	inTween:Play()
-	spawn(function()
+
+	notifFrame.Size = UDim2.new(0, 300, 0, fullHeight)
+	notifFrame.Position = UDim2.new(1, 0, 1, 0)
+
+	local inTween = tweenProperty(notifFrame, {Position = UDim2.new(0, 0, 0, 0)}, 0.4, Enum.EasingStyle.Exponential)
+	
+	task.spawn(function()
 		inTween.Completed:Wait()
 		if showProgress and progressFrame then
-			local tw = TweenService:Create(progressFrame, TweenInfo.new(d, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Size = UDim2.new(0, 0, 0, 5)})
-			tw:Play()
+			tweenProperty(progressFrame, {Size = UDim2.new(0, 0, 0, 4)}, duration, Enum.EasingStyle.Linear)
 		end
-		wait(d)
-		local outTween = TweenService:Create(nf, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {BackgroundTransparency = 1, Size = UDim2.new(0, 300, 0, 0)})
-		outTween:Play()
+		task.wait(duration)
+		local outTween = tweenProperty(notifFrame, {BackgroundTransparency = 1, Size = UDim2.new(0, 300, 0, 0)}, 0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
 		outTween.Completed:Wait()
-		nf:Destroy()
+		notifFrame:Destroy()
 	end)
 end
 
 function JustHub:PromoNotify()
-	spawn(function()
+	task.spawn(function()
 		while true do
 			self:Notify({
 				Title = "JustHub UI Promotion",
 				Message = "Check out JustHub-UI at:\nhttps://github.com/Lilith-VnK/JustHub-UI/",
 				Duration = 3,
-				ShowProgress = false
+				ShowProgress = true
 			})
-			wait(30)
+			task.wait(30)
 		end
 	end)
 end
