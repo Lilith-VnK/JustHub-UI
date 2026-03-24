@@ -1,320 +1,275 @@
 # JustHub UI Library
 
-**JustHub** is a versatile UI library for Roblox that provides a modern interface with numerous features such as theming, notifications with timers, resizing, color pickers, macros/scripting boxes, role-based permissions, undo/redo functionality, and more. This documentation covers all major components and usage instructions in detail.
+**JustHub** is a versatile and elegant UI library for Roblox that provides a modern, glassmorphism-inspired interface.
+
+## Features
+
+- Theming system  
+- Dynamic user profile panels  
+- Customizable notifications  
+- Window resizing  
+- Color pickers  
+- Script boxes  
+- Role-based permissions  
+- Undo/redo system  
+- And more  
 
 ---
 
 ## Table of Contents
 
-1. [Installation](#installation)
-2. [Quick Start](#quick-start)
-3. [Music Control UI](#music-control-ui)
-4. [Core Concepts](#core-concepts)
-   - [Themes](#themes)
-   - [Sections & Controls](#sections--controls)
-   - [Role-Based Permissions](#role-based-permissions)
-   - [Undo/Redo System](#undoredo-system)
-   - [Localization](#localization)
-   - [Sound Effects](#sound-effects)
-5. [Available Controls](#available-controls)
-6. [Window Resizing](#window-resizing)
-7. [Advanced Example](#advanced-example)
-8. [License](#license)
+1. New Update  
+2. Installation  
+3. Quick Start  
+4. Core Concepts  
+5. Available Controls  
+6. Window Resizing  
+7. Advanced Example  
+8. License  
 
-## New Update
+---
 
-### ✨ [+] Visual & UX Upgrade
-- [+] Main UI (window, sidebar, topbar) redesigned with **modern gradients, soft shadows, and rounded corners**
-- [+] All components now feature **smooth hover & click animations** (using TweenService)
-- [+] Padding & spacing optimized for a **cleaner, more spacious, and professional layout**
-- [+] Font size increased to 13–14pt, using **GothamBold** for visual consistency
-- [+] Text and background colors adjusted for **high contrast and visual comfort**
+## New Update (Version 2.2.0)
 
-### 🧩 [+] UI Components Enhanced
-- [+] `addButton` — modern button with press/hover animations, zero sound
-- [+] `addBind` — keybind input with focus animation and auto-validation
-- [+] `addScriptBox` — script editor with “▶ Run” button and micro-interactions
-- [+] `addColorPicker` — live color preview + R/G/B inputs with channel-based colors
-- [+] `addDropdown` — animated slide-down menu, live search, preset stars, reset button
-- [+] `addTextBox` — clean text input with placeholder and focus feedback
-- [+] `addSlider` — draggable slider with expanding handle and editable value box
-- [+] `addToggle` — iOS-style toggle switch with smooth sliding animation
-- [+] `addMenu` — section header with gradient background and soft text shadow
+### Visual & UX Upgrade
 
-### 🎨 [+] Theme System Refined
-- [+] All 17 themes (Darker, Dark, Purple, Light, Neon, etc.) **visually harmonized** with modern UI
-- [+] Theme, text, and stroke colors optimized for **consistency and accessibility**
-- [+] Background gradients softened for elegance without visual distraction
+- Redesigned UI with gradients, soft shadows, rounded corners, and glassmorphism  
+- Dynamic User Profile Panel (auto headshot + display name)  
+- Smooth hover & click animations (TweenService)  
+- Improved spacing and layout  
+- GothamBold font (13–14pt)  
 
-### 🚫 [-] Removed / Disabled Features
-- [-] **All sound/music systems completely removed** — no background audio or playback
-- [-] Deleted `bgSound`, `currentSoundId`, `fallbackAssetIds`, and `tryPlaySound` functions
-- [-] Music control UI (play/pause/next buttons) **fully removed from codebase**
-- [-] All `JustHub:PlaySound(...)` calls stripped from every component
+### UI Components
 
-### 🧹 [+] Codebase Cleanup
-- [+] All internal comments removed — **pure functional code only**
-- [+] Zero variable, class, or structural name changes — **100% backward compatible**
-- [+] Redundant or legacy code eliminated — **more concise and efficient**
+- `addMultiDropdown` **[NEW]**  
+- `addChromaToggle` **[NEW]**  
+- `addConfigManager` **[NEW]**  
+- Improved `addButton`, `addDropdown`, `addTab`  
+
+### Removed
+
+- All sound/music systems removed for performance  
+- Deprecated sound-related functions deleted  
+
+### Cleanup
+
+- Removed comments  
+- Reduced redundancy (DRY)  
+
+---
 
 ## Installation
 
-1. **Obtain the Module**
+### 1. Place Module
 
-   Place the `JustHub.lua` file in your desired location within **ReplicatedStorage** or **ServerScriptService** (commonly `ReplicatedStorage`).
+Put `JustHub.lua` inside:
 
-3. **Require the Module**  
+- `ReplicatedStorage`  
+- or `ServerScriptService`  
 
-   ```lua
-   local JustHub = loadstring(game:HttpGet('https://raw.githubusercontent.com/Lilith-VnK/JustHub-UI/main/JustHub.lua'))()
-   ```
+### 2. Load via Web (Recommended)
 
-4. Initialize
-Call JustHub:InitializeUI with your preferred settings.
+```lua
+local JustHub = loadstring(game:HttpGet("https://raw.githubusercontent.com/Lilith-VnK/JustHub-UI/main/JustHub.lua"))()
+```
 
+---
 
 ## Quick Start
 
-   ```lua
-local JustHub = loadstring(game:HttpGet('https://raw.githubusercontent.com/Lilith-VnK/JustHub-UI/main/JustHub.lua'))()
+```lua
+local JustHub = loadstring(game:HttpGet("https://raw.githubusercontent.com/Lilith-VnK/JustHub-UI/main/JustHub.lua"))()
 
 JustHub:InitializeUI({
     Name = "JustHub UI",
-    SubTitle = "version 1.0",
+    SubTitle = "Version 2.2",
     Theme = "Darker"
 })
 
 task.spawn(function()
-    while not JustHub.Window do
-        task.wait()
-    end
+    while not JustHub.Window do task.wait() end
 
     local window = JustHub.Window
-    local tab = window:addTab("Main")
+    local tab = window:addTab("Main", "home")
     local section = tab:addSection("Settings")
 
+    section:addChromaToggle()
+
     section:addToggle({
-        Name = "Music",
+        Name = "Enable Feature X",
         Default = true,
         Callback = function(state)
-            if state then
-                JustHub:PlaySound("BackgroundMusic")
-            else
-                JustHub:StopSound("BackgroundMusic")
-            end
+            print("Feature X:", state)
         end
     })
 
     JustHub:Notify({
         Title = "UI Loaded",
         Message = "Welcome to JustHub!",
-        Duration = 5
+        Duration = 5,
+        ShowProgress = true
     })
 end)
-  ```
+```
+
+---
 
 ## Core Concepts
 
-  1.Themes
+### Themes & Glassmorphism
 
-JustHub includes multiple built-in themes (Darker, Dark, Purple, Light, Neon, Forest, Aqua, Crimson, Solar, Pastel, Cyber, Ocean, Desert, Vintage, Rainbow, Midnight). You can switch themes via:
+Available themes:
 
-  ```lua
-
-JustHub:SetTheme("Darker")
-  ```
-
-To register a custom theme:
-
-  ```lua
-JustHub:RegisterTheme("MyCustomTheme", {
-    ["Color Hub 1"]   = ColorSequence.new(...),
-    ["Color Hub 2"]   = Color3.fromRGB(...),
-    ["Color Stroke"]  = Color3.fromRGB(...),
-    ["Color Theme"]   = Color3.fromRGB(...),
-    ["Color Text"]    = Color3.fromRGB(...),
-    ["Color Dark Text"] = Color3.fromRGB(...)
-})
-JustHub:SetTheme("MyCustomTheme")
-  ```
-
-## Sections & Controls
-
-After calling JustHub:InitializeUI, you obtain a window object. You can create tabs using:
+`Darker, Dark, Purple, Light, Neon, Forest, Aqua, Crimson, Solar, Pastel, Cyber, Ocean, Desert, Vintage, Rainbow, Midnight`
 
 ```lua
-local tab = window:addTab("TabName")
+JustHub:SetTheme("Cyber")
 ```
 
-Each tab can contain one or more sections:
+---
+
+### User Profile Panel
+
+- Auto fetch headshot & DisplayName  
+- No setup required  
+
+---
+
+### Tabs & Icons
 
 ```lua
-local section = tab:addSection("SectionName")
+local homeTab = window:addTab("Home", "home")
+local settingsTab = window:addTab("Settings", "cog")
 ```
 
-Inside sections, you can add various controls (toggles, sliders, text boxes, etc.).
+---
 
-
-## Role-Based Permissions
-
-You can restrict controls to specific roles by providing a Role property. For example:
+### Role-Based Permissions
 
 ```lua
+JustHub:SetUserRole("member")
+
 section:addToggle({
-    Name = "Admin Toggle",
+    Name = "Admin Feature",
     Role = "admin",
-    Callback = function(state)
-        print("Admin only toggle:", state)
-    end
+    Callback = function(state) end
 })
-
-If JustHub.UserRole does not match the specified role, the control is hidden.
-
 ```
 
-## Undo/Redo System
+---
 
-Controls automatically register undo states when changed. You can call:
+### Undo / Redo
 
 ```lua
 JustHub:Undo()
 JustHub:Redo()
 ```
 
-This allows you to revert or reapply changes. For added convenience, you might include buttons:
+---
 
-```lua
-section:addButton({
-    Name = "Undo",
-    ButtonText = "Undo",
-    Callback = function()
-        JustHub:Undo()
-    end
-})
-
-section:addButton({
-    Name = "Redo",
-    ButtonText = "Redo",
-    Callback = function()
-        JustHub:Redo()
-    end
-})
-```
-
-## Localization
-
-JustHub supports localization by storing text keys in JustHub.Localization and setting a current language. For example:
+### Localization
 
 ```lua
 JustHub.Localization = {
-    en = { HELLO = "Hello", APPLY = "Apply" },
-    fr = { HELLO = "Bonjour", APPLY = "Appliquer" }
+    en = { HELLO = "Hello" },
+    id = { HELLO = "Halo" }
 }
-JustHub:SetLanguage("fr")
-print(JustHub:LocalizeText("HELLO"))  -- Outputs "Bonjour"
+
+JustHub:SetLanguage("id")
+print(JustHub:LocalizeText("HELLO"))
 ```
-
-## Sound Effects
-
-Define asset IDs for sound effects in JustHub.Sounds:
-
-```lua
-JustHub.Sounds = {
-    ButtonClick = 912345678, -- Replace with your asset ID
-    SliderMove  = 912345679  -- Replace with your asset ID
-} 
-```
-
-You can trigger these sounds automatically via control logic or manually:
-
-```lua
-JustHub:PlaySound("ButtonClick")
-```
-
 
 ---
 
 ## Available Controls
 
-1. Menu (Header-like element)
+### Menu
 
 ```lua
-local menu = section:addMenu("Menu Title")
+section:addMenu("Menu Title")
 ```
 
+### Config Manager
 
-2. Toggle
-A boolean switch.
+```lua
+section:addConfigManager()
+```
+
+### Chroma Toggle
+
+```lua
+section:addChromaToggle()
+```
+
+### Toggle
 
 ```lua
 section:addToggle({
-    Name = "Music",
-    Default = true,
-    Callback = function(state) end,
-    Role = "admin" -- Optional
+    Name = "God Mode",
+    Default = false,
+    Callback = function(state) end
 })
 ```
 
-
-3. Slider
-A numeric slider.
+### Slider
 
 ```lua
 section:addSlider({
-    Name = "Volume",
-    Min = 0,
+    Name = "WalkSpeed",
+    Min = 16,
     Max = 100,
-    Default = 50,
+    Default = 16,
     Callback = function(value) end
 })
 ```
 
-
-4. TextBox
-A single-line text input.
+### TextBox
 
 ```lua
 section:addTextBox({
-    Name = "Username",
-    Default = "Player",
+    Name = "Player Name",
+    Default = "",
     Callback = function(text) end
 })
 ```
 
-
-5. Dropdown
-A dropdown list. For example, to change themes:
+### Dropdown
 
 ```lua
 section:addDropdown({
-    Name = "Theme",
-    Items = {"Darker", "Dark", "Purple", "Light", "Neon", "Forest", "Aqua"},
-    Default = "Darker",
-    Callback = function(choice)
-        JustHub:SetTheme(choice)
-    end
+    Name = "ESP Mode",
+    Items = {"Box", "Skeleton", "Chams"},
+    Default = "Box",
+    Callback = function(choice) end
 })
 ```
 
-6. Button
-A clickable button.
+### Multi Dropdown
+
+```lua
+section:addMultiDropdown({
+    Name = "Aura",
+    Items = {"Fire", "Water", "Lightning"},
+    Default = {"Fire"},
+    Callback = function(selected) end
+})
+```
+
+### Button
 
 ```lua
 section:addButton({
-    Name = "SaveConfig",
-    ButtonText = "Save",
-    Callback = function()
-        JustHub:SaveConfig("MyConfig.json")
-    end
+    Name = "Execute",
+    ButtonText = "Run",
+    Callback = function() end
 })
 ```
 
-7. KeyBind
-A control to assign a key to an action.
+### KeyBind
 
 ```lua
 section:addBind({
-    Name = "UI Key",
+    Name = "Toggle UI",
     Default = "RightShift",
     Callback = function()
         JustHub:ToggleUIVisibility()
@@ -322,140 +277,88 @@ section:addBind({
 })
 ```
 
-8. ColorPicker
-Allows color selection.
+### Color Picker
 
 ```lua
 section:addColorPicker({
-    Name = "Background Color",
-    Default = Color3.fromRGB(128, 128, 255),
-    Callback = function(color3)
-        print("Color picked:", color3)
-    end
+    Name = "Accent",
+    Default = Color3.fromRGB(255, 100, 100),
+    Callback = function(color) end
 })
 ```
 
-9. ScriptBox (Macro/Scripting)
-A multi-line text input with a run button.
+### ScriptBox
 
 ```lua
 section:addScriptBox({
-    Name = "Macro",
-    Default = "-- type script here",
-    Callback = function(scriptText)
-        print("User typed script:", scriptText)
-    end
+    Name = "Executor",
+    Default = "print('Hello World')",
+    Callback = function(code) end
 })
 ```
 
-10. Notifications
-Display notifications using:
+---
+
+## Notifications
 
 ```lua
 JustHub:Notify({
-    Title = "Title",
-    Message = "Your settings have been saved.",
+    Title = "Warning",
+    Message = "Experimental feature",
     Duration = 5,
     ShowProgress = true
 })
 ```
 
-Parameters:
-
-```
-Title: Notification title.
-Message: Main text content.
-Duration: Time (in seconds) the notification stays on screen.
-ShowProgress: Display a progress bar.
-
-```
-
-
-
 ---
 
 ## Window Resizing
 
-The main window can be resized using the small grip in the bottom-right corner. This functionality is built in by default.
-
+- Drag bottom-right corner  
+- Size is clamped to prevent breaking UI  
 
 ---
 
 ## Advanced Example
 
-This example demonstrates using multiple features together:
-
 ```lua
-local JustHub = loadstring(game:HttpGet('https://raw.githubusercontent.com/Lilith-VnK/JustHub-UI/refs/heads/main/JustHub%20(2).lua'))()
+local JustHub = loadstring(game:HttpGet("https://raw.githubusercontent.com/Lilith-VnK/JustHub-UI/main/JustHub.lua"))()
 
 JustHub:SetUserRole("admin")
+
 JustHub:InitializeUI({
-    Name = "JustHub UI",
-    SubTitle = "Version 1.0",
-    Theme = "Rainbow"
+    Name = "Hero Hub UI",
+    SubTitle = "v2.2",
+    Theme = "Darker"
 })
 
 task.spawn(function()
-    while not JustHub.Window do
-        task.wait()
-    end
+    while not JustHub.Window do task.wait() end
 
     local window = JustHub.Window
-    local tab = window:addTab("Main")
-    local section = tab:addSection("Admin Settings", 120)
 
-    section:addToggle({
-        Name = "GodMode",
-        Default = false,
-        Role = "admin",
-        Callback = function(state)
-            print("GodMode changed:", state)
+    local heroTab = window:addTab("Hero", "award")
+    local settingsTab = window:addTab("Settings", "cog")
+
+    local power = heroTab:addSection("Powers")
+    local util = heroTab:addSection("Utilities")
+    local config = settingsTab:addSection("Config")
+
+    power:addMultiDropdown({
+        Name = "Abilities",
+        Items = {"Flight", "Laser", "Invisibility"},
+        Default = {"Flight"},
+        Callback = function(sel)
+            print(table.concat(sel, ", "))
         end
     })
 
-    section:addColorPicker({
-        Name = "Ambient Color",
-        Default = Color3.fromRGB(128, 128, 128),
-        Callback = function(color)
-            print("New ambient color:", color)
-        end
-    })
-
-    section:addScriptBox({
-        Name = "Macro Runner",
-        Default = "-- script here",
-        Callback = function(code)
-            print("Running user code:", code)
-        end
-    })
-
-    section:addBind({
-        Name = "UI Key",
-        Default = "RightShift",
-        Callback = function()
-            JustHub:ToggleUIVisibility()
-        end
-    })
-
-    section:addButton({
-        Name = "Undo",
-        ButtonText = "Undo",
-        Callback = function()
-            JustHub:Undo()
-        end
-    })
-
-    section:addButton({
-        Name = "Redo",
-        ButtonText = "Redo",
-        Callback = function()
-            JustHub:Redo()
-        end
-    })
+    util:addChromaToggle()
+    util:addConfigManager()
 
     JustHub:Notify({
-        Title = "Welcome Admin",
-        Message = "You have full privileges.",
+        Title = "Ready",
+        Message = "System initialized",
         Duration = 5,
         ShowProgress = true
     })
