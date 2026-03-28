@@ -8,26 +8,26 @@ local StarterGui = game:GetService("StarterGui")
 local JustHub = {}
 
 JustHub.Themes = {
-	Darker = {["Color Hub 1"] = Color3.fromRGB(20, 20, 25), ["Color Hub 2"] = Color3.fromRGB(30, 30, 35), ["Color Stroke"] = Color3.fromRGB(50, 50, 55), ["Color Theme"] = Color3.fromRGB(100, 255, 150), ["Color Text"] = Color3.fromRGB(240, 240, 245), ["Color Dark Text"] = Color3.fromRGB(160, 160, 170)},
-	Dark = {["Color Hub 1"] = Color3.fromRGB(35, 35, 40), ["Color Hub 2"] = Color3.fromRGB(45, 45, 50), ["Color Stroke"] = Color3.fromRGB(70, 70, 80), ["Color Theme"] = Color3.fromRGB(80, 200, 255), ["Color Text"] = Color3.fromRGB(245, 245, 250), ["Color Dark Text"] = Color3.fromRGB(170, 170, 180)},
-	Purple = {["Color Hub 1"] = Color3.fromRGB(30, 25, 40), ["Color Hub 2"] = Color3.fromRGB(40, 35, 50), ["Color Stroke"] = Color3.fromRGB(60, 50, 75), ["Color Theme"] = Color3.fromRGB(150, 100, 255), ["Color Text"] = Color3.fromRGB(240, 240, 245), ["Color Dark Text"] = Color3.fromRGB(170, 160, 190)},
-	Light = {["Color Hub 1"] = Color3.fromRGB(220, 220, 225), ["Color Hub 2"] = Color3.fromRGB(235, 235, 240), ["Color Stroke"] = Color3.fromRGB(190, 190, 200), ["Color Theme"] = Color3.fromRGB(0, 140, 255), ["Color Text"] = Color3.fromRGB(40, 40, 45), ["Color Dark Text"] = Color3.fromRGB(90, 90, 100)},
+	Darker = {["Color Hub 1"] = Color3.fromRGB(15, 15, 20), ["Color Hub 2"] = Color3.fromRGB(25, 25, 30), ["Color Stroke"] = Color3.fromRGB(45, 45, 55), ["Color Theme"] = Color3.fromRGB(100, 255, 150), ["Color Text"] = Color3.fromRGB(240, 240, 245), ["Color Dark Text"] = Color3.fromRGB(160, 160, 170)},
+	Dark = {["Color Hub 1"] = Color3.fromRGB(25, 25, 30), ["Color Hub 2"] = Color3.fromRGB(35, 35, 40), ["Color Stroke"] = Color3.fromRGB(60, 60, 70), ["Color Theme"] = Color3.fromRGB(80, 200, 255), ["Color Text"] = Color3.fromRGB(245, 245, 250), ["Color Dark Text"] = Color3.fromRGB(170, 170, 180)},
+	Purple = {["Color Hub 1"] = Color3.fromRGB(20, 15, 30), ["Color Hub 2"] = Color3.fromRGB(30, 25, 40), ["Color Stroke"] = Color3.fromRGB(50, 40, 65), ["Color Theme"] = Color3.fromRGB(150, 100, 255), ["Color Text"] = Color3.fromRGB(240, 240, 245), ["Color Dark Text"] = Color3.fromRGB(170, 160, 190)},
+	Light = {["Color Hub 1"] = Color3.fromRGB(210, 210, 215), ["Color Hub 2"] = Color3.fromRGB(230, 230, 235), ["Color Stroke"] = Color3.fromRGB(180, 180, 190), ["Color Theme"] = Color3.fromRGB(0, 140, 255), ["Color Text"] = Color3.fromRGB(40, 40, 45), ["Color Dark Text"] = Color3.fromRGB(90, 90, 100)},
 	Neon = {["Color Hub 1"] = Color3.fromRGB(5, 5, 10), ["Color Hub 2"] = Color3.fromRGB(10, 10, 15), ["Color Stroke"] = Color3.fromRGB(0, 255, 255), ["Color Theme"] = Color3.fromRGB(0, 255, 100), ["Color Text"] = Color3.fromRGB(255, 255, 255), ["Color Dark Text"] = Color3.fromRGB(200, 255, 255)},
-	Forest = {["Color Hub 1"] = Color3.fromRGB(0, 40, 20), ["Color Hub 2"] = Color3.fromRGB(0, 55, 25), ["Color Stroke"] = Color3.fromRGB(0, 90, 40), ["Color Theme"] = Color3.fromRGB(50, 205, 50), ["Color Text"] = Color3.fromRGB(230, 255, 230), ["Color Dark Text"] = Color3.fromRGB(170, 200, 170)},
-	Aqua = {["Color Hub 1"] = Color3.fromRGB(0, 90, 100), ["Color Hub 2"] = Color3.fromRGB(0, 120, 130), ["Color Stroke"] = Color3.fromRGB(0, 190, 210), ["Color Theme"] = Color3.fromRGB(0, 230, 255), ["Color Text"] = Color3.fromRGB(250, 255, 255), ["Color Dark Text"] = Color3.fromRGB(200, 230, 240)},
-	Crimson = {["Color Hub 1"] = Color3.fromRGB(50, 0, 10), ["Color Hub 2"] = Color3.fromRGB(80, 0, 15), ["Color Stroke"] = Color3.fromRGB(140, 0, 30), ["Color Theme"] = Color3.fromRGB(255, 50, 80), ["Color Text"] = Color3.fromRGB(255, 240, 240), ["Color Dark Text"] = Color3.fromRGB(220, 180, 180)},
-	Solar = {["Color Hub 1"] = Color3.fromRGB(255, 210, 0), ["Color Hub 2"] = Color3.fromRGB(255, 200, 0), ["Color Stroke"] = Color3.fromRGB(255, 130, 0), ["Color Theme"] = Color3.fromRGB(255, 80, 0), ["Color Text"] = Color3.fromRGB(30, 30, 30), ["Color Dark Text"] = Color3.fromRGB(70, 70, 70)},
-	Pastel = {["Color Hub 1"] = Color3.fromRGB(220, 200, 230), ["Color Hub 2"] = Color3.fromRGB(245, 230, 255), ["Color Stroke"] = Color3.fromRGB(190, 170, 210), ["Color Theme"] = Color3.fromRGB(170, 210, 240), ["Color Text"] = Color3.fromRGB(70, 70, 70), ["Color Dark Text"] = Color3.fromRGB(110, 110, 110)},
+	Forest = {["Color Hub 1"] = Color3.fromRGB(0, 30, 15), ["Color Hub 2"] = Color3.fromRGB(0, 45, 25), ["Color Stroke"] = Color3.fromRGB(0, 75, 35), ["Color Theme"] = Color3.fromRGB(50, 205, 50), ["Color Text"] = Color3.fromRGB(230, 255, 230), ["Color Dark Text"] = Color3.fromRGB(170, 200, 170)},
+	Aqua = {["Color Hub 1"] = Color3.fromRGB(0, 70, 80), ["Color Hub 2"] = Color3.fromRGB(0, 100, 110), ["Color Stroke"] = Color3.fromRGB(0, 160, 180), ["Color Theme"] = Color3.fromRGB(0, 230, 255), ["Color Text"] = Color3.fromRGB(250, 255, 255), ["Color Dark Text"] = Color3.fromRGB(200, 230, 240)},
+	Crimson = {["Color Hub 1"] = Color3.fromRGB(35, 0, 5), ["Color Hub 2"] = Color3.fromRGB(60, 0, 10), ["Color Stroke"] = Color3.fromRGB(110, 0, 20), ["Color Theme"] = Color3.fromRGB(255, 50, 80), ["Color Text"] = Color3.fromRGB(255, 240, 240), ["Color Dark Text"] = Color3.fromRGB(220, 180, 180)},
+	Solar = {["Color Hub 1"] = Color3.fromRGB(230, 190, 0), ["Color Hub 2"] = Color3.fromRGB(255, 210, 0), ["Color Stroke"] = Color3.fromRGB(255, 150, 0), ["Color Theme"] = Color3.fromRGB(255, 80, 0), ["Color Text"] = Color3.fromRGB(30, 30, 30), ["Color Dark Text"] = Color3.fromRGB(70, 70, 70)},
+	Pastel = {["Color Hub 1"] = Color3.fromRGB(210, 190, 220), ["Color Hub 2"] = Color3.fromRGB(235, 220, 245), ["Color Stroke"] = Color3.fromRGB(180, 160, 200), ["Color Theme"] = Color3.fromRGB(170, 210, 240), ["Color Text"] = Color3.fromRGB(70, 70, 70), ["Color Dark Text"] = Color3.fromRGB(110, 110, 110)},
 	Cyber = {["Color Hub 1"] = Color3.fromRGB(5, 5, 20), ["Color Hub 2"] = Color3.fromRGB(15, 15, 35), ["Color Stroke"] = Color3.fromRGB(0, 220, 255), ["Color Theme"] = Color3.fromRGB(0, 180, 255), ["Color Text"] = Color3.fromRGB(250, 255, 255), ["Color Dark Text"] = Color3.fromRGB(190, 230, 255)},
-	Ocean = {["Color Hub 1"] = Color3.fromRGB(0, 25, 50), ["Color Hub 2"] = Color3.fromRGB(0, 45, 90), ["Color Stroke"] = Color3.fromRGB(0, 100, 180), ["Color Theme"] = Color3.fromRGB(0, 150, 255), ["Color Text"] = Color3.fromRGB(230, 245, 255), ["Color Dark Text"] = Color3.fromRGB(180, 210, 230)},
-	Desert = {["Color Hub 1"] = Color3.fromRGB(200, 170, 130), ["Color Hub 2"] = Color3.fromRGB(220, 180, 130), ["Color Stroke"] = Color3.fromRGB(150, 80, 40), ["Color Theme"] = Color3.fromRGB(220, 150, 30), ["Color Text"] = Color3.fromRGB(50, 40, 30), ["Color Dark Text"] = Color3.fromRGB(90, 80, 70)},
-	Galaxy = {["Color Hub 1"] = Color3.fromRGB(10, 0, 40), ["Color Hub 2"] = Color3.fromRGB(20, 0, 50), ["Color Stroke"] = Color3.fromRGB(90, 0, 150), ["Color Theme"] = Color3.fromRGB(140, 0, 255), ["Color Text"] = Color3.fromRGB(245, 245, 255), ["Color Dark Text"] = Color3.fromRGB(200, 200, 230)},
-	Vintage = {["Color Hub 1"] = Color3.fromRGB(140, 110, 80), ["Color Hub 2"] = Color3.fromRGB(150, 120, 90), ["Color Stroke"] = Color3.fromRGB(110, 80, 60), ["Color Theme"] = Color3.fromRGB(190, 150, 120), ["Color Text"] = Color3.fromRGB(70, 50, 40), ["Color Dark Text"] = Color3.fromRGB(100, 90, 80)},
-	Rainbow = {["Color Hub 1"] = Color3.fromRGB(255, 0, 0), ["Color Hub 2"] = Color3.fromRGB(230, 230, 230), ["Color Stroke"] = Color3.fromRGB(50, 50, 50), ["Color Theme"] = Color3.fromRGB(255, 100, 100), ["Color Text"] = Color3.fromRGB(30, 30, 30), ["Color Dark Text"] = Color3.fromRGB(90, 90, 90)},
-	Midnight = {["Color Hub 1"] = Color3.fromRGB(0, 0, 30), ["Color Hub 2"] = Color3.fromRGB(5, 5, 40), ["Color Stroke"] = Color3.fromRGB(0, 0, 100), ["Color Theme"] = Color3.fromRGB(50, 50, 255), ["Color Text"] = Color3.fromRGB(250, 250, 255), ["Color Dark Text"] = Color3.fromRGB(190, 190, 220)}
+	Ocean = {["Color Hub 1"] = Color3.fromRGB(0, 20, 40), ["Color Hub 2"] = Color3.fromRGB(0, 35, 70), ["Color Stroke"] = Color3.fromRGB(0, 80, 150), ["Color Theme"] = Color3.fromRGB(0, 150, 255), ["Color Text"] = Color3.fromRGB(230, 245, 255), ["Color Dark Text"] = Color3.fromRGB(180, 210, 230)},
+	Desert = {["Color Hub 1"] = Color3.fromRGB(180, 150, 110), ["Color Hub 2"] = Color3.fromRGB(210, 170, 120), ["Color Stroke"] = Color3.fromRGB(140, 70, 30), ["Color Theme"] = Color3.fromRGB(220, 150, 30), ["Color Text"] = Color3.fromRGB(50, 40, 30), ["Color Dark Text"] = Color3.fromRGB(90, 80, 70)},
+	Galaxy = {["Color Hub 1"] = Color3.fromRGB(10, 0, 30), ["Color Hub 2"] = Color3.fromRGB(20, 0, 40), ["Color Stroke"] = Color3.fromRGB(70, 0, 120), ["Color Theme"] = Color3.fromRGB(140, 0, 255), ["Color Text"] = Color3.fromRGB(245, 245, 255), ["Color Dark Text"] = Color3.fromRGB(200, 200, 230)},
+	Vintage = {["Color Hub 1"] = Color3.fromRGB(120, 90, 60), ["Color Hub 2"] = Color3.fromRGB(140, 110, 80), ["Color Stroke"] = Color3.fromRGB(100, 70, 50), ["Color Theme"] = Color3.fromRGB(190, 150, 120), ["Color Text"] = Color3.fromRGB(70, 50, 40), ["Color Dark Text"] = Color3.fromRGB(100, 90, 80)},
+	Rainbow = {["Color Hub 1"] = Color3.fromRGB(240, 240, 240), ["Color Hub 2"] = Color3.fromRGB(255, 255, 255), ["Color Stroke"] = Color3.fromRGB(200, 200, 200), ["Color Theme"] = Color3.fromRGB(255, 100, 100), ["Color Text"] = Color3.fromRGB(30, 30, 30), ["Color Dark Text"] = Color3.fromRGB(90, 90, 90)},
+	Midnight = {["Color Hub 1"] = Color3.fromRGB(0, 0, 20), ["Color Hub 2"] = Color3.fromRGB(5, 5, 30), ["Color Stroke"] = Color3.fromRGB(0, 0, 80), ["Color Theme"] = Color3.fromRGB(50, 50, 255), ["Color Text"] = Color3.fromRGB(250, 250, 255), ["Color Dark Text"] = Color3.fromRGB(190, 190, 220)}
 }
 
-JustHub.Info = {Version = "2.5.0"}
+JustHub.Info = {Version = "2.6.0"}
 JustHub.Save = {UISize = {620, 440}, TabSize = 135, Theme = "Darker"}
 JustHub.ConfigData = {}
 JustHub.ControlRegistry = {}
@@ -268,7 +268,7 @@ function SectionMethods:addToggle(options)
 	
 	local frame = createInstance("Frame", {
 		Name = title .. "Toggle",
-		Size = UDim2.new(1, 0, 0, 36),
+		Size = UDim2.new(1, 0, 0, 42),
 		BackgroundTransparency = 0.15,
 		BorderSizePixel = 0
 	}, self.Content)
@@ -282,8 +282,9 @@ function SectionMethods:addToggle(options)
 		BackgroundTransparency = 1,
 		Text = title,
 		Font = Enum.Font.GothamMedium,
-		TextSize = 13,
-		TextXAlignment = Enum.TextXAlignment.Left
+		TextSize = 14,
+		TextXAlignment = Enum.TextXAlignment.Left,
+		ZIndex = 2
 	}, frame)
 	applyTheme(label, "TextColor3", "Color Text")
 
@@ -291,8 +292,7 @@ function SectionMethods:addToggle(options)
 		Size = UDim2.new(0, 44, 0, 22),
 		Position = UDim2.new(1, -54, 0.5, -11),
 		BorderSizePixel = 0,
-		Active = true,
-		Selectable = true
+		ZIndex = 2
 	}, frame)
 	applyTheme(switchBg, "BackgroundColor3", default and "Color Theme" or "Color Hub 1")
 	createInstance("UICorner", {CornerRadius = UDim.new(1, 0)}, switchBg)
@@ -302,7 +302,8 @@ function SectionMethods:addToggle(options)
 		Size = UDim2.new(0, 18, 0, 18),
 		Position = default and UDim2.new(1, -20, 0.5, -9) or UDim2.new(0, 2, 0.5, -9),
 		BackgroundColor3 = Color3.fromRGB(255, 255, 255),
-		BorderSizePixel = 0
+		BorderSizePixel = 0,
+		ZIndex = 3
 	}, switchBg)
 	createInstance("UICorner", {CornerRadius = UDim.new(1, 0)}, circle)
 
@@ -311,6 +312,13 @@ function SectionMethods:addToggle(options)
 	local state = default
 	if default then callback(true) else callback(false) end
 	JustHub.ConfigData[title] = state
+
+	local hitButton = createInstance("TextButton", {
+		Size = UDim2.new(1, 0, 1, 0),
+		BackgroundTransparency = 1,
+		Text = "",
+		ZIndex = 5
+	}, frame)
 
 	local function toggleVisuals(isActive)
 		local goalPos = isActive and UDim2.new(1, -20, 0.5, -9) or UDim2.new(0, 2, 0.5, -9)
@@ -336,15 +344,13 @@ function SectionMethods:addToggle(options)
 		JustHub:AddUndo(title, old, state)
 	end)
 
-	local toggleConn = switchBg.InputBegan:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-			local old = state
-			state = not state
-			JustHub.ConfigData[title] = state
-			toggleVisuals(state)
-			callback(state)
-			JustHub:AddUndo(title, old, state)
-		end
+	local toggleConn = hitButton.MouseButton1Click:Connect(function()
+		local old = state
+		state = not state
+		JustHub.ConfigData[title] = state
+		toggleVisuals(state)
+		callback(state)
+		JustHub:AddUndo(title, old, state)
 	end)
 	table.insert(JustHub.Connections, toggleConn)
 	
@@ -375,7 +381,7 @@ function SectionMethods:addSlider(options)
 
 	local frame = createInstance("Frame", {
 		Name = title .. "Slider",
-		Size = UDim2.new(1, 0, 0, 42),
+		Size = UDim2.new(1, 0, 0, 48),
 		BackgroundTransparency = 0.15,
 		BorderSizePixel = 0
 	}, self.Content)
@@ -386,20 +392,20 @@ function SectionMethods:addSlider(options)
 	local label = createInstance("TextLabel", {
 		Text = title,
 		Size = UDim2.new(0.5, -10, 0, 20),
-		Position = UDim2.new(0, 10, 0, 2),
+		Position = UDim2.new(0, 10, 0, 4),
 		BackgroundTransparency = 1,
 		Font = Enum.Font.GothamMedium,
-		TextSize = 12,
+		TextSize = 13,
 		TextXAlignment = Enum.TextXAlignment.Left
 	}, frame)
 	applyTheme(label, "TextColor3", "Color Text")
 
 	local valBox = createInstance("TextBox", {
-		Size = UDim2.new(0, 40, 0, 16),
-		Position = UDim2.new(1, -50, 0, 4),
+		Size = UDim2.new(0, 44, 0, 20),
+		Position = UDim2.new(1, -54, 0, 4),
 		Text = formatVal(default),
 		Font = Enum.Font.GothamMedium,
-		TextSize = 11,
+		TextSize = 12,
 		ClearTextOnFocus = false
 	}, frame)
 	applyTheme(valBox, "BackgroundColor3", "Color Hub 1")
@@ -408,14 +414,15 @@ function SectionMethods:addSlider(options)
 	addBorder(valBox, "Color Stroke", 1)
 
 	local trackArea = createInstance("TextButton", {
-		Size = UDim2.new(1, -20, 0, 14),
+		Size = UDim2.new(1, -20, 0, 24),
 		Position = UDim2.new(0, 10, 0, 24),
 		BackgroundTransparency = 1,
-		Text = ""
+		Text = "",
+		ZIndex = 5
 	}, frame)
 
 	local track = createInstance("Frame", {
-		Size = UDim2.new(1, 0, 0, 4),
+		Size = UDim2.new(1, 0, 0, 6),
 		Position = UDim2.new(0, 0, 0.5, 0),
 		AnchorPoint = Vector2.new(0, 0.5)
 	}, trackArea)
@@ -431,7 +438,7 @@ function SectionMethods:addSlider(options)
 	registerChroma(fill, "BackgroundColor3")
 
 	local handle = createInstance("Frame", {
-		Size = UDim2.new(0, 12, 0, 12),
+		Size = UDim2.new(0, 16, 0, 16),
 		Position = UDim2.new(1, 0, 0.5, 0),
 		AnchorPoint = Vector2.new(0.5, 0.5),
 		BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -454,7 +461,7 @@ function SectionMethods:addSlider(options)
 	local trackConn = trackArea.InputBegan:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
 			dragging = true
-			tweenProperty(handle, {Size = UDim2.new(0, 16, 0, 16)}, 0.15)
+			tweenProperty(handle, {Size = UDim2.new(0, 20, 0, 20)}, 0.15)
 			updateSlider(input)
 		end
 	end)
@@ -470,7 +477,7 @@ function SectionMethods:addSlider(options)
 	local dragConn2 = UserInputService.InputEnded:Connect(function(input)
 		if dragging and (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then
 			dragging = false
-			tweenProperty(handle, {Size = UDim2.new(0, 12, 0, 12)}, 0.15)
+			tweenProperty(handle, {Size = UDim2.new(0, 16, 0, 16)}, 0.15)
 		end
 	end)
 	table.insert(JustHub.Connections, dragConn2)
@@ -506,7 +513,7 @@ function SectionMethods:addLabel(options)
 
 	local frame = createInstance("Frame", {
 		Name = "LabelContainer",
-		Size = UDim2.new(1, 0, 0, 26),
+		Size = UDim2.new(1, 0, 0, 30),
 		BackgroundTransparency = 1
 	}, self.Content)
 
@@ -516,7 +523,7 @@ function SectionMethods:addLabel(options)
 		Size = UDim2.new(1, 0, 1, 0),
 		BackgroundTransparency = 1,
 		Font = Enum.Font.GothamMedium,
-		TextSize = 12,
+		TextSize = 13,
 		TextWrapped = true,
 		TextXAlignment = (align == "Center" and Enum.TextXAlignment.Center) or (align == "Right" and Enum.TextXAlignment.Right) or Enum.TextXAlignment.Left
 	}, frame)
@@ -541,7 +548,7 @@ function SectionMethods:addTextBox(options)
 
 	local frame = createInstance("Frame", {
 		Name = title .. "TextBox",
-		Size = UDim2.new(1, 0, 0, 36),
+		Size = UDim2.new(1, 0, 0, 42),
 		BackgroundTransparency = 0.15,
 		BorderSizePixel = 0
 	}, self.Content)
@@ -555,17 +562,17 @@ function SectionMethods:addTextBox(options)
 		Position = UDim2.new(0, 10, 0, 0),
 		BackgroundTransparency = 1,
 		Font = Enum.Font.GothamMedium,
-		TextSize = 13,
+		TextSize = 14,
 		TextXAlignment = Enum.TextXAlignment.Left
 	}, frame)
 	applyTheme(label, "TextColor3", "Color Text")
 
 	local inputBox = createInstance("TextBox", {
 		Text = default,
-		Size = UDim2.new(0.6, -20, 0, 24),
-		Position = UDim2.new(0.4, 10, 0.5, -12),
+		Size = UDim2.new(0.6, -20, 0, 30),
+		Position = UDim2.new(0.4, 10, 0.5, -15),
 		Font = Enum.Font.Gotham,
-		TextSize = 12,
+		TextSize = 13,
 		ClearTextOnFocus = false,
 		PlaceholderText = "Input here...",
 		TextWrapped = true
@@ -607,7 +614,7 @@ function SectionMethods:addDropdown(options)
 
 	local frame = createInstance("Frame", {
 		Name = title .. "Dropdown",
-		Size = UDim2.new(1, 0, 0, 36),
+		Size = UDim2.new(1, 0, 0, 42),
 		BackgroundTransparency = 0.15,
 		ClipsDescendants = false,
 		BorderSizePixel = 0,
@@ -616,7 +623,7 @@ function SectionMethods:addDropdown(options)
 	applyTheme(frame, "BackgroundColor3", "Color Hub 2")
 	
 	local bgFrame = createInstance("Frame", {
-		Size = UDim2.new(1, 0, 0, 36),
+		Size = UDim2.new(1, 0, 0, 42),
 		BackgroundTransparency = 1,
 		BorderSizePixel = 0,
 		ZIndex = 2
@@ -638,7 +645,7 @@ function SectionMethods:addDropdown(options)
 		Position = UDim2.new(0, 10, 0, 0),
 		BackgroundTransparency = 1,
 		Font = Enum.Font.GothamMedium,
-		TextSize = 13,
+		TextSize = 14,
 		TextXAlignment = Enum.TextXAlignment.Left,
 		ZIndex = 3
 	}, headerBtn)
@@ -650,7 +657,7 @@ function SectionMethods:addDropdown(options)
 		Position = UDim2.new(0.5, 0, 0, 0),
 		BackgroundTransparency = 1,
 		Font = Enum.Font.Gotham,
-		TextSize = 12,
+		TextSize = 13,
 		TextXAlignment = Enum.TextXAlignment.Right,
 		ZIndex = 3
 	}, headerBtn)
@@ -662,7 +669,7 @@ function SectionMethods:addDropdown(options)
 		Position = UDim2.new(1, -20, 0, 0),
 		BackgroundTransparency = 1,
 		Font = Enum.Font.Gotham,
-		TextSize = 10,
+		TextSize = 11,
 		TextXAlignment = Enum.TextXAlignment.Right,
 		ZIndex = 3
 	}, headerBtn)
@@ -670,7 +677,7 @@ function SectionMethods:addDropdown(options)
 
 	local body = createInstance("Frame", {
 		Size = UDim2.new(1, 0, 0, 0),
-		Position = UDim2.new(0, 0, 0, 36),
+		Position = UDim2.new(0, 0, 0, 42),
 		BackgroundTransparency = 0,
 		BorderSizePixel = 0,
 		ClipsDescendants = true,
@@ -698,7 +705,7 @@ function SectionMethods:addDropdown(options)
 	local function closeDropdown()
 		isOpen = false
 		frame.ZIndex = 1
-		tweenProperty(frame, {Size = UDim2.new(1, 0, 0, 36)}, 0.25)
+		tweenProperty(frame, {Size = UDim2.new(1, 0, 0, 42)}, 0.25)
 		tweenProperty(body, {Size = UDim2.new(1, 0, 0, 0)}, 0.25)
 		tweenProperty(arrow, {Rotation = 0}, 0.25)
 	end
@@ -706,10 +713,10 @@ function SectionMethods:addDropdown(options)
 	local function createItem(name, isPreset)
 		local btn = createInstance("TextButton", {
 			Name = name,
-			Size = UDim2.new(1, 0, 0, 26),
+			Size = UDim2.new(1, 0, 0, 32),
 			Text = "  " .. name,
 			Font = Enum.Font.Gotham,
-			TextSize = 12,
+			TextSize = 13,
 			TextXAlignment = Enum.TextXAlignment.Left,
 			AutoButtonColor = false,
 			ZIndex = 12
@@ -754,8 +761,8 @@ function SectionMethods:addDropdown(options)
 		isOpen = not isOpen
 		if isOpen then
 			frame.ZIndex = 50
-			tweenProperty(frame, {Size = UDim2.new(1, 0, 0, 166)}, 0.3)
-			tweenProperty(body, {Size = UDim2.new(1, 0, 0, 130)}, 0.3)
+			tweenProperty(frame, {Size = UDim2.new(1, 0, 0, 182)}, 0.3)
+			tweenProperty(body, {Size = UDim2.new(1, 0, 0, 140)}, 0.3)
 			tweenProperty(arrow, {Rotation = 180}, 0.3)
 		else
 			closeDropdown()
@@ -789,7 +796,7 @@ function SectionMethods:addMultiDropdown(options)
 
 	local frame = createInstance("Frame", {
 		Name = title .. "MultiDropdown",
-		Size = UDim2.new(1, 0, 0, 36),
+		Size = UDim2.new(1, 0, 0, 42),
 		BackgroundTransparency = 0.15,
 		ClipsDescendants = false,
 		BorderSizePixel = 0,
@@ -798,7 +805,7 @@ function SectionMethods:addMultiDropdown(options)
 	applyTheme(frame, "BackgroundColor3", "Color Hub 2")
 	
 	local bgFrame = createInstance("Frame", {
-		Size = UDim2.new(1, 0, 0, 36),
+		Size = UDim2.new(1, 0, 0, 42),
 		BackgroundTransparency = 1,
 		BorderSizePixel = 0,
 		ZIndex = 2
@@ -820,7 +827,7 @@ function SectionMethods:addMultiDropdown(options)
 		Position = UDim2.new(0, 10, 0, 0),
 		BackgroundTransparency = 1,
 		Font = Enum.Font.GothamMedium,
-		TextSize = 13,
+		TextSize = 14,
 		TextXAlignment = Enum.TextXAlignment.Left,
 		ZIndex = 3
 	}, headerBtn)
@@ -832,7 +839,7 @@ function SectionMethods:addMultiDropdown(options)
 		Position = UDim2.new(0.5, 0, 0, 0),
 		BackgroundTransparency = 1,
 		Font = Enum.Font.Gotham,
-		TextSize = 12,
+		TextSize = 13,
 		TextXAlignment = Enum.TextXAlignment.Right,
 		TextTruncate = Enum.TextTruncate.AtEnd,
 		ZIndex = 3
@@ -845,7 +852,7 @@ function SectionMethods:addMultiDropdown(options)
 		Position = UDim2.new(1, -20, 0, 0),
 		BackgroundTransparency = 1,
 		Font = Enum.Font.Gotham,
-		TextSize = 10,
+		TextSize = 11,
 		TextXAlignment = Enum.TextXAlignment.Right,
 		ZIndex = 3
 	}, headerBtn)
@@ -853,7 +860,7 @@ function SectionMethods:addMultiDropdown(options)
 
 	local body = createInstance("Frame", {
 		Size = UDim2.new(1, 0, 0, 0),
-		Position = UDim2.new(0, 0, 0, 36),
+		Position = UDim2.new(0, 0, 0, 42),
 		BackgroundTransparency = 0,
 		BorderSizePixel = 0,
 		ClipsDescendants = true,
@@ -884,7 +891,7 @@ function SectionMethods:addMultiDropdown(options)
 	local function closeDropdown()
 		isOpen = false
 		frame.ZIndex = 1
-		tweenProperty(frame, {Size = UDim2.new(1, 0, 0, 36)}, 0.25)
+		tweenProperty(frame, {Size = UDim2.new(1, 0, 0, 42)}, 0.25)
 		tweenProperty(body, {Size = UDim2.new(1, 0, 0, 0)}, 0.25)
 		tweenProperty(arrow, {Rotation = 0}, 0.25)
 	end
@@ -900,10 +907,10 @@ function SectionMethods:addMultiDropdown(options)
 	local function createItem(name)
 		local btn = createInstance("TextButton", {
 			Name = name,
-			Size = UDim2.new(1, 0, 0, 26),
+			Size = UDim2.new(1, 0, 0, 32),
 			Text = "      " .. name,
 			Font = Enum.Font.Gotham,
-			TextSize = 12,
+			TextSize = 13,
 			TextXAlignment = Enum.TextXAlignment.Left,
 			AutoButtonColor = false,
 			ZIndex = 12
@@ -913,13 +920,13 @@ function SectionMethods:addMultiDropdown(options)
 		createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, btn)
 
 		local check = createInstance("Frame", {
-			Size = UDim2.new(0, 14, 0, 14),
-			Position = UDim2.new(0, 6, 0.5, -7),
+			Size = UDim2.new(0, 16, 0, 16),
+			Position = UDim2.new(0, 6, 0.5, -8),
 			BorderSizePixel = 0,
 			ZIndex = 12
 		}, btn)
 		applyTheme(check, "BackgroundColor3", activeItems[name] and "Color Theme" or "Color Hub 2")
-		createInstance("UICorner", {CornerRadius = UDim.new(0, 3)}, check)
+		createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, check)
 		addBorder(check, "Color Stroke", 1)
 
 		if activeItems[name] then registerChroma(check, "BackgroundColor3") end
@@ -979,8 +986,8 @@ function SectionMethods:addMultiDropdown(options)
 		isOpen = not isOpen
 		if isOpen then
 			frame.ZIndex = 50
-			tweenProperty(frame, {Size = UDim2.new(1, 0, 0, 166)}, 0.3)
-			tweenProperty(body, {Size = UDim2.new(1, 0, 0, 130)}, 0.3)
+			tweenProperty(frame, {Size = UDim2.new(1, 0, 0, 182)}, 0.3)
+			tweenProperty(body, {Size = UDim2.new(1, 0, 0, 140)}, 0.3)
 			tweenProperty(arrow, {Rotation = 180}, 0.3)
 		else
 			closeDropdown()
@@ -1013,7 +1020,7 @@ function SectionMethods:addColorPicker(options)
 
 	local frame = createInstance("Frame", {
 		Name = title .. "ColorPicker",
-		Size = UDim2.new(1, 0, 0, 56),
+		Size = UDim2.new(1, 0, 0, 60),
 		BackgroundTransparency = 0.15,
 		BorderSizePixel = 0
 	}, self.Content)
@@ -1027,24 +1034,24 @@ function SectionMethods:addColorPicker(options)
 		Position = UDim2.new(0, 10, 0, 2),
 		BackgroundTransparency = 1,
 		Font = Enum.Font.GothamMedium,
-		TextSize = 13,
+		TextSize = 14,
 		TextXAlignment = Enum.TextXAlignment.Left
 	}, frame)
 	applyTheme(label, "TextColor3", "Color Text")
 
 	local preview = createInstance("Frame", {
-		Size = UDim2.new(0, 40, 0, 20),
-		Position = UDim2.new(1, -50, 0, 4),
+		Size = UDim2.new(0, 44, 0, 22),
+		Position = UDim2.new(1, -54, 0, 4),
 		BackgroundColor3 = default,
 		BorderSizePixel = 0
 	}, frame)
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, preview)
 	addBorder(preview, "Color Stroke", 1)
 
-	local rBox = createInstance("TextBox", {Text = tostring(math.floor(default.R * 255)), Size = UDim2.new(0, 40, 0, 22), Position = UDim2.new(0, 10, 0, 28), TextColor3 = Color3.fromRGB(255, 100, 100), Font = Enum.Font.GothamMedium, TextSize = 11}, frame)
-	local gBox = createInstance("TextBox", {Text = tostring(math.floor(default.G * 255)), Size = UDim2.new(0, 40, 0, 22), Position = UDim2.new(0, 55, 0, 28), TextColor3 = Color3.fromRGB(100, 255, 100), Font = Enum.Font.GothamMedium, TextSize = 11}, frame)
-	local bBox = createInstance("TextBox", {Text = tostring(math.floor(default.B * 255)), Size = UDim2.new(0, 40, 0, 22), Position = UDim2.new(0, 100, 0, 28), TextColor3 = Color3.fromRGB(100, 150, 255), Font = Enum.Font.GothamMedium, TextSize = 11}, frame)
-	local hexBox = createInstance("TextBox", {Text = "#" .. default:ToHex(), Size = UDim2.new(0, 60, 0, 22), Position = UDim2.new(0, 145, 0, 28), Font = Enum.Font.GothamMedium, TextSize = 11}, frame)
+	local rBox = createInstance("TextBox", {Text = tostring(math.floor(default.R * 255)), Size = UDim2.new(0, 40, 0, 24), Position = UDim2.new(0, 10, 0, 30), TextColor3 = Color3.fromRGB(255, 100, 100), Font = Enum.Font.GothamMedium, TextSize = 12}, frame)
+	local gBox = createInstance("TextBox", {Text = tostring(math.floor(default.G * 255)), Size = UDim2.new(0, 40, 0, 24), Position = UDim2.new(0, 55, 0, 30), TextColor3 = Color3.fromRGB(100, 255, 100), Font = Enum.Font.GothamMedium, TextSize = 12}, frame)
+	local bBox = createInstance("TextBox", {Text = tostring(math.floor(default.B * 255)), Size = UDim2.new(0, 40, 0, 24), Position = UDim2.new(0, 100, 0, 30), TextColor3 = Color3.fromRGB(100, 150, 255), Font = Enum.Font.GothamMedium, TextSize = 12}, frame)
+	local hexBox = createInstance("TextBox", {Text = "#" .. default:ToHex(), Size = UDim2.new(0, 60, 0, 24), Position = UDim2.new(0, 145, 0, 30), Font = Enum.Font.GothamMedium, TextSize = 12}, frame)
 	applyTheme(hexBox, "TextColor3", "Color Text")
 
 	for _, box in ipairs({rBox, gBox, bBox, hexBox}) do
@@ -1105,7 +1112,7 @@ function SectionMethods:addScriptBox(options)
 
 	local frame = createInstance("Frame", {
 		Name = title .. "ScriptBox",
-		Size = UDim2.new(1, 0, 0, 90),
+		Size = UDim2.new(1, 0, 0, 96),
 		BackgroundTransparency = 0.15,
 		BorderSizePixel = 0
 	}, self.Content)
@@ -1119,17 +1126,17 @@ function SectionMethods:addScriptBox(options)
 		Position = UDim2.new(0, 10, 0, 4),
 		BackgroundTransparency = 1,
 		Font = Enum.Font.GothamMedium,
-		TextSize = 13,
+		TextSize = 14,
 		TextXAlignment = Enum.TextXAlignment.Left
 	}, frame)
 	applyTheme(label, "TextColor3", "Color Text")
 
 	local inputBox = createInstance("TextBox", {
 		Text = default,
-		Size = UDim2.new(1, -70, 0, 50),
+		Size = UDim2.new(1, -80, 0, 56),
 		Position = UDim2.new(0, 10, 0, 30),
 		Font = Enum.Font.Code,
-		TextSize = 12,
+		TextSize = 13,
 		ClearTextOnFocus = false,
 		MultiLine = true,
 		TextWrapped = true,
@@ -1144,11 +1151,11 @@ function SectionMethods:addScriptBox(options)
 
 	local runBtn = createInstance("TextButton", {
 		Text = "Run",
-		Size = UDim2.new(0, 45, 0, 30),
-		Position = UDim2.new(1, -55, 0, 40),
+		Size = UDim2.new(0, 50, 0, 34),
+		Position = UDim2.new(1, -60, 0, 40),
 		TextColor3 = Color3.fromRGB(20, 20, 20),
 		Font = Enum.Font.GothamBold,
-		TextSize = 12,
+		TextSize = 13,
 		AutoButtonColor = false
 	}, frame)
 	applyTheme(runBtn, "BackgroundColor3", "Color Theme")
@@ -1178,7 +1185,7 @@ function SectionMethods:addBind(options)
 
 	local frame = createInstance("Frame", {
 		Name = title .. "BindControl",
-		Size = UDim2.new(1, 0, 0, 36),
+		Size = UDim2.new(1, 0, 0, 42),
 		BackgroundTransparency = 0.15,
 		BorderSizePixel = 0
 	}, self.Content)
@@ -1192,17 +1199,17 @@ function SectionMethods:addBind(options)
 		Position = UDim2.new(0, 10, 0, 0),
 		BackgroundTransparency = 1,
 		Font = Enum.Font.GothamMedium,
-		TextSize = 13,
+		TextSize = 14,
 		TextXAlignment = Enum.TextXAlignment.Left
 	}, frame)
 	applyTheme(label, "TextColor3", "Color Text")
 
 	local inputBox = createInstance("TextBox", {
 		Text = default,
-		Size = UDim2.new(0.4, -20, 0, 24),
-		Position = UDim2.new(0.6, 10, 0.5, -12),
+		Size = UDim2.new(0.4, -20, 0, 30),
+		Position = UDim2.new(0.6, 10, 0.5, -15),
 		Font = Enum.Font.GothamBold,
-		TextSize = 11,
+		TextSize = 12,
 		ClearTextOnFocus = false
 	}, frame)
 	applyTheme(inputBox, "BackgroundColor3", "Color Hub 1")
@@ -1269,7 +1276,7 @@ function SectionMethods:addButton(options)
 
 	local frame = createInstance("Frame", {
 		Name = title .. "ButtonControl",
-		Size = UDim2.new(1, 0, 0, 36),
+		Size = UDim2.new(1, 0, 0, 42),
 		BackgroundTransparency = 0.15,
 		BorderSizePixel = 0
 	}, self.Content)
@@ -1283,17 +1290,17 @@ function SectionMethods:addButton(options)
 		Position = UDim2.new(0, 10, 0, 0),
 		BackgroundTransparency = 1,
 		Font = Enum.Font.GothamMedium,
-		TextSize = 13,
+		TextSize = 14,
 		TextXAlignment = Enum.TextXAlignment.Left
 	}, frame)
 	applyTheme(label, "TextColor3", "Color Text")
 
 	local btn = createInstance("TextButton", {
 		Text = btnText,
-		Size = UDim2.new(0.4, -20, 0, 24),
-		Position = UDim2.new(0.6, 10, 0.5, -12),
+		Size = UDim2.new(0.4, -20, 0, 30),
+		Position = UDim2.new(0.6, 10, 0.5, -15),
 		Font = Enum.Font.GothamBold,
-		TextSize = 11,
+		TextSize = 13,
 		AutoButtonColor = false
 	}, frame)
 	applyTheme(btn, "BackgroundColor3", "Color Hub 1")
@@ -1309,9 +1316,9 @@ function SectionMethods:addButton(options)
 		local t = getCurrentTheme(JustHub.Save.Theme)
 		tweenProperty(btn, {BackgroundColor3 = t["Color Hub 1"]}, 0.15) 
 	end))
-	table.insert(JustHub.Connections, btn.MouseButton1Down:Connect(function() tweenProperty(btn, {Size = UDim2.new(0.4, -22, 0, 22)}, 0.1) end))
+	table.insert(JustHub.Connections, btn.MouseButton1Down:Connect(function() tweenProperty(btn, {Size = UDim2.new(0.4, -24, 0, 26), Position = UDim2.new(0.6, 12, 0.5, -13)}, 0.1) end))
 	table.insert(JustHub.Connections, btn.MouseButton1Up:Connect(function()
-		tweenProperty(btn, {Size = UDim2.new(0.4, -20, 0, 24)}, 0.1)
+		tweenProperty(btn, {Size = UDim2.new(0.4, -20, 0, 30), Position = UDim2.new(0.6, 10, 0.5, -15)}, 0.1)
 		pcall(callback)
 	end))
 
@@ -1321,7 +1328,7 @@ end
 function SectionMethods:addConfigManager()
 	local frame = createInstance("Frame", {
 		Name = "ConfigManager",
-		Size = UDim2.new(1, 0, 0, 75),
+		Size = UDim2.new(1, 0, 0, 85),
 		BackgroundTransparency = 0.15,
 		BorderSizePixel = 0
 	}, self.Content)
@@ -1331,10 +1338,10 @@ function SectionMethods:addConfigManager()
 
 	local inputBox = createInstance("TextBox", {
 		Text = "DefaultConfig",
-		Size = UDim2.new(1, -20, 0, 26),
+		Size = UDim2.new(1, -20, 0, 30),
 		Position = UDim2.new(0, 10, 0, 10),
 		Font = Enum.Font.Gotham,
-		TextSize = 12,
+		TextSize = 13,
 		ClearTextOnFocus = false,
 		PlaceholderText = "Config Name...",
 	}, frame)
@@ -1345,11 +1352,11 @@ function SectionMethods:addConfigManager()
 
 	local saveBtn = createInstance("TextButton", {
 		Text = "Save Profile",
-		Size = UDim2.new(0.48, 0, 0, 26),
-		Position = UDim2.new(0, 10, 0, 42),
+		Size = UDim2.new(0.48, 0, 0, 30),
+		Position = UDim2.new(0, 10, 0, 48),
 		TextColor3 = Color3.fromRGB(20, 20, 20),
 		Font = Enum.Font.GothamBold,
-		TextSize = 11,
+		TextSize = 12,
 		AutoButtonColor = false
 	}, frame)
 	applyTheme(saveBtn, "BackgroundColor3", "Color Theme")
@@ -1358,10 +1365,10 @@ function SectionMethods:addConfigManager()
 
 	local loadBtn = createInstance("TextButton", {
 		Text = "Load Profile",
-		Size = UDim2.new(0.48, 0, 0, 26),
-		Position = UDim2.new(0.52, -10, 0, 42),
+		Size = UDim2.new(0.48, 0, 0, 30),
+		Position = UDim2.new(0.52, -10, 0, 48),
 		Font = Enum.Font.GothamBold,
-		TextSize = 11,
+		TextSize = 12,
 		AutoButtonColor = false
 	}, frame)
 	applyTheme(loadBtn, "BackgroundColor3", "Color Hub 1")
@@ -1601,12 +1608,13 @@ function JustHub:CreateWindow(options)
 			profileFrame.Visible = false
 		else
 			tweenProperty(mainFrame, {Size = prevSize}, 0.4, Enum.EasingStyle.Exponential)
-			task.wait(0.2)
-			sidebar.Visible = true
-			contentContainer.Visible = true
-			footer.Visible = true
-			headerSep.Visible = true
-			profileFrame.Visible = true
+			task.delay(0.2, function()
+				sidebar.Visible = true
+				contentContainer.Visible = true
+				footer.Visible = true
+				headerSep.Visible = true
+				profileFrame.Visible = true
+			end)
 		end
 	end))
 
@@ -1627,11 +1635,11 @@ function JustHub:CreateWindow(options)
 			local showUI = createInstance("ScreenGui", {Name = "ShowUI", ResetOnSpawn = false}, playerGui)
 			local showBtn = createInstance("TextButton", {
 				Name = "ShowUIButton",
-				Size = UDim2.new(0, 40, 0, 40),
-				Position = UDim2.new(0.5, -20, 0, 10),
+				Size = UDim2.new(0, 44, 0, 44),
+				Position = UDim2.new(0.5, -22, 0, 10),
 				Text = "UI",
 				Font = Enum.Font.GothamBold,
-				TextSize = 12,
+				TextSize = 13,
 				AutoButtonColor = false
 			}, showUI)
 			applyTheme(showBtn, "BackgroundColor3", "Color Hub 2")
@@ -1679,12 +1687,12 @@ function JustHub:CreateWindow(options)
 
 	local resizeGrip = createInstance("TextButton", {
 		Name = "ResizeGrip",
-		Size = UDim2.new(0, 20, 0, 20),
-		Position = UDim2.new(1, -20, 1, -20),
+		Size = UDim2.new(0, 24, 0, 24),
+		Position = UDim2.new(1, -24, 1, -24),
 		BackgroundTransparency = 1,
 		Text = "⌟",
 		Font = Enum.Font.Gotham,
-		TextSize = 14,
+		TextSize = 16,
 		ZIndex = 50
 	}, mainFrame)
 	applyTheme(resizeGrip, "TextColor3", "Color Dark Text")
@@ -1738,7 +1746,7 @@ function JustHub:CreateWindow(options)
 		local btn = createInstance("TextButton", {
 			Name = tabName .. "Button",
 			Text = "",
-			Size = UDim2.new(1, 0, 0, 32),
+			Size = UDim2.new(1, 0, 0, 36),
 			BackgroundTransparency = 1,
 			AutoButtonColor = false,
 			ZIndex = 2
@@ -1757,7 +1765,7 @@ function JustHub:CreateWindow(options)
 		local tabIcon
 		if iconName and JustHub.Icons[iconName] then
 			tabIcon = createInstance("ImageLabel", {
-				Size = UDim2.new(0, 16, 0, 16),
+				Size = UDim2.new(0, 18, 0, 18),
 				BackgroundTransparency = 1,
 				Image = JustHub.Icons[iconName],
 				ZIndex = 2
@@ -1767,10 +1775,10 @@ function JustHub:CreateWindow(options)
 
 		local tabText = createInstance("TextLabel", {
 			Text = tabName,
-			Size = UDim2.new(1, -24, 1, 0),
+			Size = UDim2.new(1, -26, 1, 0),
 			BackgroundTransparency = 1,
 			Font = Enum.Font.GothamMedium,
-			TextSize = 12,
+			TextSize = 13,
 			TextXAlignment = Enum.TextXAlignment.Left,
 			ZIndex = 2
 		}, btn)
@@ -1841,10 +1849,10 @@ function JustHub:CreateWindow(options)
 			local secTitle = createInstance("TextLabel", {
 				Name = "SectionTitle",
 				Text = "  " .. sectionName,
-				Size = UDim2.new(1, 0, 0, 30),
+				Size = UDim2.new(1, 0, 0, 34),
 				BackgroundTransparency = 1,
 				Font = Enum.Font.GothamMedium,
-				TextSize = 12,
+				TextSize = 13,
 				TextXAlignment = Enum.TextXAlignment.Left,
 				ZIndex = 2
 			}, secFrame)
@@ -1853,7 +1861,7 @@ function JustHub:CreateWindow(options)
 			local secContent = createInstance("Frame", {
 				Name = "SectionContent",
 				Size = UDim2.new(1, 0, 0, 0),
-				Position = UDim2.new(0, 0, 0, 30),
+				Position = UDim2.new(0, 0, 0, 34),
 				BackgroundTransparency = 1,
 				AutomaticSize = Enum.AutomaticSize.Y,
 				ZIndex = 2
