@@ -27,7 +27,7 @@ JustHub.Themes = {
 	Midnight = {["Color Hub 1"] = Color3.fromRGB(0, 0, 30), ["Color Hub 2"] = Color3.fromRGB(5, 5, 40), ["Color Stroke"] = Color3.fromRGB(0, 0, 100), ["Color Theme"] = Color3.fromRGB(50, 50, 255), ["Color Text"] = Color3.fromRGB(250, 250, 255), ["Color Dark Text"] = Color3.fromRGB(190, 190, 220)}
 }
 
-JustHub.Info = {Version = "2.2.0"}
+JustHub.Info = {Version = "2.5.0"}
 JustHub.Save = {UISize = {620, 440}, TabSize = 135, Theme = "Darker"}
 JustHub.ConfigData = {}
 JustHub.ControlRegistry = {}
@@ -37,6 +37,8 @@ JustHub.UserRole = "member"
 JustHub.UndoStack = {}
 JustHub.RedoStack = {}
 JustHub.Sounds = {ButtonClick = 0, SliderMove = 0}
+JustHub.Connections = {}
+JustHub.ThemeObjects = {}
 
 JustHub.ChromaEnabled = false
 JustHub.ChromaObjects = {}
@@ -80,15 +82,25 @@ local function getCurrentTheme(themeName)
 	end
 end
 
-local function addBorder(obj, color, thickness)
-	return createInstance("UIStroke", {Color = color, Thickness = thickness}, obj)
+local function applyTheme(obj, prop, themeKey)
+	table.insert(JustHub.ThemeObjects, {Instance = obj, Property = prop, ThemeKey = themeKey})
+	local currentTheme = getCurrentTheme(JustHub.Save.Theme)
+	if currentTheme[themeKey] then
+		obj[prop] = currentTheme[themeKey]
+	end
+end
+
+local function addBorder(obj, themeKey, thickness)
+	local stroke = createInstance("UIStroke", {Thickness = thickness}, obj)
+	applyTheme(stroke, "Color", themeKey)
+	return stroke
 end
 
 local function registerChroma(obj, property)
 	table.insert(JustHub.ChromaObjects, {Instance = obj, Property = property})
 end
 
-RunService.RenderStepped:Connect(function()
+local chromaRenderConn = RunService.RenderStepped:Connect(function()
 	if JustHub.ChromaEnabled then
 		local hue = (tick() % 5) / 5
 		local color = Color3.fromHSV(hue, 1, 1)
@@ -102,6 +114,7 @@ RunService.RenderStepped:Connect(function()
 		end
 	end
 end)
+table.insert(JustHub.Connections, chromaRenderConn)
 
 function JustHub:ToggleChroma(state)
 	self.ChromaEnabled = state
@@ -137,6 +150,9 @@ end
 
 function JustHub:AddUndo(controlKey, oldValue, newValue)
 	table.insert(self.UndoStack, {key = controlKey, old = oldValue, new = newValue})
+	if #self.UndoStack > 50 then
+		table.remove(self.UndoStack, 1)
+	end
 end
 
 function JustHub:Undo()
@@ -189,26 +205,28 @@ local SectionMethods = {}
 
 function SectionMethods:addMenu(name)
 	local menuName = (name ~= nil) and tostring(name) or "Menu"
-	local theme = getCurrentTheme(JustHub.Save.Theme)
 	
 	local frame = createInstance("Frame", {
 		Name = menuName,
 		Size = UDim2.new(1, 0, 0, 44),
-		BackgroundColor3 = theme["Color Hub 2"],
 		BackgroundTransparency = 0.15,
 		BorderSizePixel = 0,
 		ClipsDescendants = true
 	}, self.Content)
+	applyTheme(frame, "BackgroundColor3", "Color Hub 2")
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 10)}, frame)
-	addBorder(frame, theme["Color Stroke"], 1)
+	addBorder(frame, "Color Stroke", 1)
 
-	local gradient = createInstance("UIGradient", {
-		Color = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, theme["Color Hub 2"]),
-			ColorSequenceKeypoint.new(1, theme["Color Hub 1"])
-		}),
-		Rotation = 90
-	}, frame)
+	local gradient = createInstance("UIGradient", {Rotation = 90}, frame)
+	local function updateGradient()
+		local ct = getCurrentTheme(JustHub.Save.Theme)
+		gradient.Color = ColorSequence.new({
+			ColorSequenceKeypoint.new(0, ct["Color Hub 2"]),
+			ColorSequenceKeypoint.new(1, ct["Color Hub 1"])
+		})
+	end
+	updateGradient()
+	table.insert(JustHub.ThemeObjects, {Instance = gradient, Property = "Color", ThemeKey = "GradientSpecial", CustomFunc = updateGradient})
 
 	local label = createInstance("TextLabel", {
 		Name = "MenuLabel",
@@ -216,13 +234,13 @@ function SectionMethods:addMenu(name)
 		Size = UDim2.new(1, -16, 1, 0),
 		Position = UDim2.new(0, 10, 0, 0),
 		BackgroundTransparency = 1,
-		TextColor3 = theme["Color Text"],
 		Font = Enum.Font.GothamBold,
 		TextSize = 14,
 		TextXAlignment = Enum.TextXAlignment.Left,
 		TextTruncate = Enum.TextTruncate.AtEnd,
 		ZIndex = 2
 	}, frame)
+	applyTheme(label, "TextColor3", "Color Text")
 	
 	return frame
 end
@@ -243,7 +261,6 @@ function SectionMethods:addToggle(options)
 	local default = options.Default or false
 	local callback = options.Callback or function() end
 	local role = options.Role or nil
-	local theme = getCurrentTheme(JustHub.Save.Theme)
 	
 	if role and not JustHub:CheckRole(role) then
 		return createInstance("Frame", {Size = UDim2.new(1, 0, 0, 0), BackgroundTransparency = 1}, self.Content)
@@ -252,34 +269,34 @@ function SectionMethods:addToggle(options)
 	local frame = createInstance("Frame", {
 		Name = title .. "Toggle",
 		Size = UDim2.new(1, 0, 0, 36),
-		BackgroundColor3 = theme["Color Hub 2"],
 		BackgroundTransparency = 0.15,
 		BorderSizePixel = 0
 	}, self.Content)
+	applyTheme(frame, "BackgroundColor3", "Color Hub 2")
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, frame)
-	addBorder(frame, theme["Color Stroke"], 1)
+	addBorder(frame, "Color Stroke", 1)
 
 	local label = createInstance("TextLabel", {
 		Size = UDim2.new(0.7, -8, 1, 0),
 		Position = UDim2.new(0, 10, 0, 0),
 		BackgroundTransparency = 1,
 		Text = title,
-		TextColor3 = theme["Color Text"],
 		Font = Enum.Font.GothamMedium,
 		TextSize = 13,
 		TextXAlignment = Enum.TextXAlignment.Left
 	}, frame)
+	applyTheme(label, "TextColor3", "Color Text")
 
 	local switchBg = createInstance("Frame", {
 		Size = UDim2.new(0, 44, 0, 22),
 		Position = UDim2.new(1, -54, 0.5, -11),
-		BackgroundColor3 = default and theme["Color Theme"] or theme["Color Hub 1"],
 		BorderSizePixel = 0,
 		Active = true,
 		Selectable = true
 	}, frame)
+	applyTheme(switchBg, "BackgroundColor3", default and "Color Theme" or "Color Hub 1")
 	createInstance("UICorner", {CornerRadius = UDim.new(1, 0)}, switchBg)
-	addBorder(switchBg, theme["Color Stroke"], 1)
+	addBorder(switchBg, "Color Stroke", 1)
 
 	local circle = createInstance("Frame", {
 		Size = UDim2.new(0, 18, 0, 18),
@@ -297,12 +314,18 @@ function SectionMethods:addToggle(options)
 
 	local function toggleVisuals(isActive)
 		local goalPos = isActive and UDim2.new(1, -20, 0.5, -9) or UDim2.new(0, 2, 0.5, -9)
-		local goalCol = isActive and theme["Color Theme"] or theme["Color Hub 1"]
 		tweenProperty(circle, {Position = goalPos}, 0.25)
+		local currentTheme = getCurrentTheme(JustHub.Save.Theme)
 		
-		if JustHub.ChromaEnabled and isActive then
-		else
-			tweenProperty(switchBg, {BackgroundColor3 = goalCol}, 0.25)
+		if not (JustHub.ChromaEnabled and isActive) then
+			tweenProperty(switchBg, {BackgroundColor3 = isActive and currentTheme["Color Theme"] or currentTheme["Color Hub 1"]}, 0.25)
+		end
+		
+		for _, data in ipairs(JustHub.ThemeObjects) do
+			if data.Instance == switchBg and data.Property == "BackgroundColor3" then
+				data.ThemeKey = isActive and "Color Theme" or "Color Hub 1"
+				break
+			end
 		end
 	end
 
@@ -313,7 +336,7 @@ function SectionMethods:addToggle(options)
 		JustHub:AddUndo(title, old, state)
 	end)
 
-	switchBg.InputBegan:Connect(function(input)
+	local toggleConn = switchBg.InputBegan:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
 			local old = state
 			state = not state
@@ -323,6 +346,7 @@ function SectionMethods:addToggle(options)
 			JustHub:AddUndo(title, old, state)
 		end
 	end)
+	table.insert(JustHub.Connections, toggleConn)
 	
 	return frame
 end
@@ -332,9 +356,9 @@ function SectionMethods:addSlider(options)
 	local title = options.Name or "Slider"
 	local minVal = options.Min or 0
 	local maxVal = options.Max or 100
+	local step = options.Step or options.Float or 1
 	local default = options.Default or minVal
 	local callback = options.Callback or function() end
-	local theme = getCurrentTheme(JustHub.Save.Theme)
 
 	if JustHub.ConfigData[title] ~= nil then
 		default = JustHub.ConfigData[title]
@@ -342,39 +366,46 @@ function SectionMethods:addSlider(options)
 		JustHub.ConfigData[title] = default
 	end
 
+	local function formatVal(v)
+		if step == math.floor(step) then return tostring(math.floor(v)) end
+		local str = tostring(step)
+		local dec = str:find("%.") and #str - str:find("%.") or 0
+		return string.format("%." .. dec .. "f", v)
+	end
+
 	local frame = createInstance("Frame", {
 		Name = title .. "Slider",
 		Size = UDim2.new(1, 0, 0, 42),
-		BackgroundColor3 = theme["Color Hub 2"],
 		BackgroundTransparency = 0.15,
 		BorderSizePixel = 0
 	}, self.Content)
+	applyTheme(frame, "BackgroundColor3", "Color Hub 2")
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, frame)
-	addBorder(frame, theme["Color Stroke"], 1)
+	addBorder(frame, "Color Stroke", 1)
 
 	local label = createInstance("TextLabel", {
 		Text = title,
 		Size = UDim2.new(0.5, -10, 0, 20),
 		Position = UDim2.new(0, 10, 0, 2),
 		BackgroundTransparency = 1,
-		TextColor3 = theme["Color Text"],
 		Font = Enum.Font.GothamMedium,
 		TextSize = 12,
 		TextXAlignment = Enum.TextXAlignment.Left
 	}, frame)
+	applyTheme(label, "TextColor3", "Color Text")
 
 	local valBox = createInstance("TextBox", {
 		Size = UDim2.new(0, 40, 0, 16),
 		Position = UDim2.new(1, -50, 0, 4),
-		BackgroundColor3 = theme["Color Hub 1"],
-		Text = tostring(math.floor(default)),
-		TextColor3 = theme["Color Text"],
+		Text = formatVal(default),
 		Font = Enum.Font.GothamMedium,
 		TextSize = 11,
 		ClearTextOnFocus = false
 	}, frame)
+	applyTheme(valBox, "BackgroundColor3", "Color Hub 1")
+	applyTheme(valBox, "TextColor3", "Color Text")
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, valBox)
-	addBorder(valBox, theme["Color Stroke"], 1)
+	addBorder(valBox, "Color Stroke", 1)
 
 	local trackArea = createInstance("TextButton", {
 		Size = UDim2.new(1, -20, 0, 14),
@@ -386,16 +417,16 @@ function SectionMethods:addSlider(options)
 	local track = createInstance("Frame", {
 		Size = UDim2.new(1, 0, 0, 4),
 		Position = UDim2.new(0, 0, 0.5, 0),
-		AnchorPoint = Vector2.new(0, 0.5),
-		BackgroundColor3 = theme["Color Hub 1"]
+		AnchorPoint = Vector2.new(0, 0.5)
 	}, trackArea)
+	applyTheme(track, "BackgroundColor3", "Color Hub 1")
 	createInstance("UICorner", {CornerRadius = UDim.new(1, 0)}, track)
 
 	local ratio = math.clamp((default - minVal) / (maxVal - minVal), 0, 1)
 	local fill = createInstance("Frame", {
-		Size = UDim2.new(ratio, 0, 1, 0),
-		BackgroundColor3 = theme["Color Theme"]
+		Size = UDim2.new(ratio, 0, 1, 0)
 	}, track)
+	applyTheme(fill, "BackgroundColor3", "Color Theme")
 	createInstance("UICorner", {CornerRadius = UDim.new(1, 0)}, fill)
 	registerChroma(fill, "BackgroundColor3")
 
@@ -411,51 +442,57 @@ function SectionMethods:addSlider(options)
 
 	local function updateSlider(input)
 		local x = math.clamp((input.Position.X - track.AbsolutePosition.X) / track.AbsoluteSize.X, 0, 1)
-		local val = math.floor(minVal + (x * (maxVal - minVal)))
-		valBox.Text = tostring(val)
-		tweenProperty(fill, {Size = UDim2.new(x, 0, 1, 0)}, 0.1)
+		local exactVal = minVal + (x * (maxVal - minVal))
+		local val = math.clamp(math.floor((exactVal / step) + 0.5) * step, minVal, maxVal)
+		valBox.Text = formatVal(val)
+		local renderRatio = (val - minVal) / (maxVal - minVal)
+		tweenProperty(fill, {Size = UDim2.new(renderRatio, 0, 1, 0)}, 0.1)
 		JustHub.ConfigData[title] = val
 		pcall(callback, val)
 	end
 
-	trackArea.InputBegan:Connect(function(input)
+	local trackConn = trackArea.InputBegan:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
 			dragging = true
 			tweenProperty(handle, {Size = UDim2.new(0, 16, 0, 16)}, 0.15)
 			updateSlider(input)
 		end
 	end)
+	table.insert(JustHub.Connections, trackConn)
 
-	UserInputService.InputChanged:Connect(function(input)
+	local dragConn1 = UserInputService.InputChanged:Connect(function(input)
 		if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
 			updateSlider(input)
 		end
 	end)
+	table.insert(JustHub.Connections, dragConn1)
 
-	UserInputService.InputEnded:Connect(function(input)
+	local dragConn2 = UserInputService.InputEnded:Connect(function(input)
 		if dragging and (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then
 			dragging = false
 			tweenProperty(handle, {Size = UDim2.new(0, 12, 0, 12)}, 0.15)
 		end
 	end)
+	table.insert(JustHub.Connections, dragConn2)
 
-	valBox.FocusLost:Connect(function()
+	local boxConn = valBox.FocusLost:Connect(function()
 		local num = tonumber(valBox.Text)
 		if num then
-			num = math.clamp(math.floor(num), minVal, maxVal)
-			valBox.Text = tostring(num)
+			num = math.clamp(math.floor((num / step) + 0.5) * step, minVal, maxVal)
+			valBox.Text = formatVal(num)
 			JustHub.ConfigData[title] = num
 			local r = (num - minVal) / (maxVal - minVal)
 			tweenProperty(fill, {Size = UDim2.new(r, 0, 1, 0)}, 0.25)
 			pcall(callback, num)
 		else
-			valBox.Text = tostring(JustHub.ConfigData[title] or default)
+			valBox.Text = formatVal(JustHub.ConfigData[title] or default)
 		end
 	end)
+	table.insert(JustHub.Connections, boxConn)
 
 	JustHub:RegisterControl(title, function(setVal)
 		local nr = math.clamp((setVal - minVal) / (maxVal - minVal), 0, 1)
-		valBox.Text = tostring(math.floor(setVal))
+		valBox.Text = formatVal(setVal)
 		tweenProperty(fill, {Size = UDim2.new(nr, 0, 1, 0)}, 0.25)
 	end)
 
@@ -466,7 +503,6 @@ function SectionMethods:addLabel(options)
 	options = type(options) == "string" and {Text = options} or options or {}
 	local txt = options.Text or options.Name or "Label"
 	local align = options.Align or "Left"
-	local theme = getCurrentTheme(JustHub.Save.Theme)
 
 	local frame = createInstance("Frame", {
 		Name = "LabelContainer",
@@ -479,12 +515,12 @@ function SectionMethods:addLabel(options)
 		Text = txt,
 		Size = UDim2.new(1, 0, 1, 0),
 		BackgroundTransparency = 1,
-		TextColor3 = theme["Color Text"],
 		Font = Enum.Font.GothamMedium,
 		TextSize = 12,
 		TextWrapped = true,
 		TextXAlignment = (align == "Center" and Enum.TextXAlignment.Center) or (align == "Right" and Enum.TextXAlignment.Right) or Enum.TextXAlignment.Left
 	}, frame)
+	applyTheme(labelObj, "TextColor3", "Color Text")
 
 	if align == "Left" then
 		createInstance("UIPadding", {PaddingLeft = UDim.new(0, 10), PaddingRight = UDim.new(0, 10)}, labelObj)
@@ -502,54 +538,57 @@ function SectionMethods:addTextBox(options)
 	local title = options.Name or "TextBox"
 	local default = options.Default or ""
 	local callback = options.Callback or function() end
-	local theme = getCurrentTheme(JustHub.Save.Theme)
 
 	local frame = createInstance("Frame", {
 		Name = title .. "TextBox",
 		Size = UDim2.new(1, 0, 0, 36),
-		BackgroundColor3 = theme["Color Hub 2"],
 		BackgroundTransparency = 0.15,
 		BorderSizePixel = 0
 	}, self.Content)
+	applyTheme(frame, "BackgroundColor3", "Color Hub 2")
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, frame)
-	addBorder(frame, theme["Color Stroke"], 1)
+	addBorder(frame, "Color Stroke", 1)
 
 	local label = createInstance("TextLabel", {
 		Text = title,
 		Size = UDim2.new(0.4, -10, 1, 0),
 		Position = UDim2.new(0, 10, 0, 0),
 		BackgroundTransparency = 1,
-		TextColor3 = theme["Color Text"],
 		Font = Enum.Font.GothamMedium,
 		TextSize = 13,
 		TextXAlignment = Enum.TextXAlignment.Left
 	}, frame)
+	applyTheme(label, "TextColor3", "Color Text")
 
 	local inputBox = createInstance("TextBox", {
 		Text = default,
 		Size = UDim2.new(0.6, -20, 0, 24),
 		Position = UDim2.new(0.4, 10, 0.5, -12),
-		BackgroundColor3 = theme["Color Hub 1"],
-		TextColor3 = theme["Color Text"],
 		Font = Enum.Font.Gotham,
 		TextSize = 12,
 		ClearTextOnFocus = false,
 		PlaceholderText = "Input here...",
-		PlaceholderColor3 = theme["Color Dark Text"],
 		TextWrapped = true
 	}, frame)
+	applyTheme(inputBox, "BackgroundColor3", "Color Hub 1")
+	applyTheme(inputBox, "TextColor3", "Color Text")
+	applyTheme(inputBox, "PlaceholderColor3", "Color Dark Text")
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, inputBox)
-	addBorder(inputBox, theme["Color Stroke"], 1)
+	addBorder(inputBox, "Color Stroke", 1)
 
-	inputBox.Focused:Connect(function()
-		tweenProperty(inputBox, {BackgroundColor3 = theme["Color Hub 2"]}, 0.2)
+	local focusConn = inputBox.Focused:Connect(function()
+		local t = getCurrentTheme(JustHub.Save.Theme)
+		tweenProperty(inputBox, {BackgroundColor3 = t["Color Hub 2"]}, 0.2)
 	end)
+	table.insert(JustHub.Connections, focusConn)
 
-	inputBox.FocusLost:Connect(function()
-		tweenProperty(inputBox, {BackgroundColor3 = theme["Color Hub 1"]}, 0.2)
+	local blurConn = inputBox.FocusLost:Connect(function()
+		local t = getCurrentTheme(JustHub.Save.Theme)
+		tweenProperty(inputBox, {BackgroundColor3 = t["Color Hub 1"]}, 0.2)
 		JustHub.ConfigData[title] = inputBox.Text
 		callback(inputBox.Text)
 	end)
+	table.insert(JustHub.Connections, blurConn)
 
 	JustHub:RegisterControl(title, function(setVal)
 		inputBox.Text = setVal
@@ -565,111 +604,141 @@ function SectionMethods:addDropdown(options)
 	local items = options.Items or {}
 	local presets = options.Presets or {}
 	local callback = options.Callback or function() end
-	local theme = getCurrentTheme(JustHub.Save.Theme)
 
 	local frame = createInstance("Frame", {
 		Name = title .. "Dropdown",
 		Size = UDim2.new(1, 0, 0, 36),
-		BackgroundColor3 = theme["Color Hub 2"],
 		BackgroundTransparency = 0.15,
-		ClipsDescendants = true,
-		BorderSizePixel = 0
+		ClipsDescendants = false,
+		BorderSizePixel = 0,
+		ZIndex = 1
 	}, self.Content)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, frame)
-	addBorder(frame, theme["Color Stroke"], 1)
-
-	local headerBtn = createInstance("TextButton", {
+	applyTheme(frame, "BackgroundColor3", "Color Hub 2")
+	
+	local bgFrame = createInstance("Frame", {
 		Size = UDim2.new(1, 0, 0, 36),
 		BackgroundTransparency = 1,
-		Text = ""
+		BorderSizePixel = 0,
+		ZIndex = 2
 	}, frame)
+	applyTheme(bgFrame, "BackgroundColor3", "Color Hub 2")
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, bgFrame)
+	local bd = addBorder(bgFrame, "Color Stroke", 1)
+
+	local headerBtn = createInstance("TextButton", {
+		Size = UDim2.new(1, 0, 1, 0),
+		BackgroundTransparency = 1,
+		Text = "",
+		ZIndex = 3
+	}, bgFrame)
 
 	local label = createInstance("TextLabel", {
 		Text = title,
 		Size = UDim2.new(0.5, -10, 1, 0),
 		Position = UDim2.new(0, 10, 0, 0),
 		BackgroundTransparency = 1,
-		TextColor3 = theme["Color Text"],
 		Font = Enum.Font.GothamMedium,
 		TextSize = 13,
-		TextXAlignment = Enum.TextXAlignment.Left
+		TextXAlignment = Enum.TextXAlignment.Left,
+		ZIndex = 3
 	}, headerBtn)
+	applyTheme(label, "TextColor3", "Color Text")
 
 	local selectedLabel = createInstance("TextLabel", {
 		Text = default ~= "" and default or "Select...",
 		Size = UDim2.new(0.5, -25, 1, 0),
 		Position = UDim2.new(0.5, 0, 0, 0),
 		BackgroundTransparency = 1,
-		TextColor3 = theme["Color Dark Text"],
 		Font = Enum.Font.Gotham,
 		TextSize = 12,
-		TextXAlignment = Enum.TextXAlignment.Right
+		TextXAlignment = Enum.TextXAlignment.Right,
+		ZIndex = 3
 	}, headerBtn)
+	applyTheme(selectedLabel, "TextColor3", "Color Dark Text")
 
 	local arrow = createInstance("TextLabel", {
 		Text = "▼",
 		Size = UDim2.new(0, 15, 1, 0),
 		Position = UDim2.new(1, -20, 0, 0),
 		BackgroundTransparency = 1,
-		TextColor3 = theme["Color Dark Text"],
 		Font = Enum.Font.Gotham,
 		TextSize = 10,
-		TextXAlignment = Enum.TextXAlignment.Right
+		TextXAlignment = Enum.TextXAlignment.Right,
+		ZIndex = 3
 	}, headerBtn)
+	applyTheme(arrow, "TextColor3", "Color Dark Text")
 
 	local body = createInstance("Frame", {
-		Size = UDim2.new(1, 0, 0, 130),
+		Size = UDim2.new(1, 0, 0, 0),
 		Position = UDim2.new(0, 0, 0, 36),
-		BackgroundTransparency = 1,
-		Visible = false
+		BackgroundTransparency = 0,
+		BorderSizePixel = 0,
+		ClipsDescendants = true,
+		ZIndex = 10
 	}, frame)
+	applyTheme(body, "BackgroundColor3", "Color Hub 2")
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, body)
+	addBorder(body, "Color Stroke", 1)
 
 	local scroll = createInstance("ScrollingFrame", {
 		Size = UDim2.new(1, -20, 1, -10),
-		Position = UDim2.new(0, 10, 0, 0),
+		Position = UDim2.new(0, 10, 0, 5),
 		BackgroundTransparency = 1,
 		ScrollBarThickness = 2,
-		ScrollBarImageColor3 = theme["Color Stroke"],
 		BorderSizePixel = 0,
 		AutomaticCanvasSize = Enum.AutomaticSize.Y,
-		CanvasSize = UDim2.new(0, 0, 0, 0)
+		CanvasSize = UDim2.new(0, 0, 0, 0),
+		ZIndex = 11
 	}, body)
+	applyTheme(scroll, "ScrollBarImageColor3", "Color Stroke")
 	createInstance("UIListLayout", {SortOrder = Enum.SortOrder.LayoutOrder, Padding = UDim.new(0, 4)}, scroll)
 
 	local isOpen = false
 
 	local function closeDropdown()
 		isOpen = false
+		frame.ZIndex = 1
 		tweenProperty(frame, {Size = UDim2.new(1, 0, 0, 36)}, 0.25)
+		tweenProperty(body, {Size = UDim2.new(1, 0, 0, 0)}, 0.25)
 		tweenProperty(arrow, {Rotation = 0}, 0.25)
-		task.delay(0.25, function() body.Visible = false end)
 	end
 
 	local function createItem(name, isPreset)
 		local btn = createInstance("TextButton", {
 			Name = name,
 			Size = UDim2.new(1, 0, 0, 26),
-			BackgroundColor3 = theme["Color Hub 1"],
 			Text = "  " .. name,
-			TextColor3 = isPreset and theme["Color Theme"] or theme["Color Text"],
 			Font = Enum.Font.Gotham,
 			TextSize = 12,
 			TextXAlignment = Enum.TextXAlignment.Left,
-			AutoButtonColor = false
+			AutoButtonColor = false,
+			ZIndex = 12
 		}, scroll)
+		applyTheme(btn, "BackgroundColor3", "Color Hub 1")
+		applyTheme(btn, "TextColor3", isPreset and "Color Theme" or "Color Text")
 		createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, btn)
 
 		if isPreset then registerChroma(btn, "TextColor3") end
 
-		btn.MouseEnter:Connect(function() tweenProperty(btn, {BackgroundColor3 = theme["Color Stroke"]}, 0.15) end)
-		btn.MouseLeave:Connect(function() tweenProperty(btn, {BackgroundColor3 = theme["Color Hub 1"]}, 0.15) end)
+		local enterConn = btn.MouseEnter:Connect(function()
+			local t = getCurrentTheme(JustHub.Save.Theme)
+			tweenProperty(btn, {BackgroundColor3 = t["Color Stroke"]}, 0.15)
+		end)
+		local leaveConn = btn.MouseLeave:Connect(function()
+			local t = getCurrentTheme(JustHub.Save.Theme)
+			tweenProperty(btn, {BackgroundColor3 = t["Color Hub 1"]}, 0.15)
+		end)
+		
+		table.insert(JustHub.Connections, enterConn)
+		table.insert(JustHub.Connections, leaveConn)
 
-		btn.MouseButton1Click:Connect(function()
+		local clickConn = btn.MouseButton1Click:Connect(function()
 			selectedLabel.Text = name
 			JustHub.ConfigData[title] = name
 			pcall(callback, name)
 			closeDropdown()
 		end)
+		table.insert(JustHub.Connections, clickConn)
 	end
 
 	local function renderItems()
@@ -681,16 +750,18 @@ function SectionMethods:addDropdown(options)
 	end
 	renderItems()
 
-	headerBtn.MouseButton1Click:Connect(function()
+	local mainClickConn = headerBtn.MouseButton1Click:Connect(function()
 		isOpen = not isOpen
 		if isOpen then
-			body.Visible = true
+			frame.ZIndex = 50
 			tweenProperty(frame, {Size = UDim2.new(1, 0, 0, 166)}, 0.3)
+			tweenProperty(body, {Size = UDim2.new(1, 0, 0, 130)}, 0.3)
 			tweenProperty(arrow, {Rotation = 180}, 0.3)
 		else
 			closeDropdown()
 		end
 	end)
+	table.insert(JustHub.Connections, mainClickConn)
 
 	JustHub.ConfigData[title] = default
 	JustHub:RegisterControl(title, function(val) selectedLabel.Text = val end)
@@ -715,76 +786,94 @@ function SectionMethods:addMultiDropdown(options)
 	local default = options.Default or {}
 	local items = options.Items or {}
 	local callback = options.Callback or function() end
-	local theme = getCurrentTheme(JustHub.Save.Theme)
 
 	local frame = createInstance("Frame", {
 		Name = title .. "MultiDropdown",
 		Size = UDim2.new(1, 0, 0, 36),
-		BackgroundColor3 = theme["Color Hub 2"],
 		BackgroundTransparency = 0.15,
-		ClipsDescendants = true,
-		BorderSizePixel = 0
+		ClipsDescendants = false,
+		BorderSizePixel = 0,
+		ZIndex = 1
 	}, self.Content)
-	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, frame)
-	addBorder(frame, theme["Color Stroke"], 1)
-
-	local headerBtn = createInstance("TextButton", {
+	applyTheme(frame, "BackgroundColor3", "Color Hub 2")
+	
+	local bgFrame = createInstance("Frame", {
 		Size = UDim2.new(1, 0, 0, 36),
 		BackgroundTransparency = 1,
-		Text = ""
+		BorderSizePixel = 0,
+		ZIndex = 2
 	}, frame)
+	applyTheme(bgFrame, "BackgroundColor3", "Color Hub 2")
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, bgFrame)
+	addBorder(bgFrame, "Color Stroke", 1)
+
+	local headerBtn = createInstance("TextButton", {
+		Size = UDim2.new(1, 0, 1, 0),
+		BackgroundTransparency = 1,
+		Text = "",
+		ZIndex = 3
+	}, bgFrame)
 
 	local label = createInstance("TextLabel", {
 		Text = title,
 		Size = UDim2.new(0.5, -10, 1, 0),
 		Position = UDim2.new(0, 10, 0, 0),
 		BackgroundTransparency = 1,
-		TextColor3 = theme["Color Text"],
 		Font = Enum.Font.GothamMedium,
 		TextSize = 13,
-		TextXAlignment = Enum.TextXAlignment.Left
+		TextXAlignment = Enum.TextXAlignment.Left,
+		ZIndex = 3
 	}, headerBtn)
+	applyTheme(label, "TextColor3", "Color Text")
 
 	local selectedLabel = createInstance("TextLabel", {
 		Text = #default > 0 and table.concat(default, ", ") or "Select...",
 		Size = UDim2.new(0.5, -25, 1, 0),
 		Position = UDim2.new(0.5, 0, 0, 0),
 		BackgroundTransparency = 1,
-		TextColor3 = theme["Color Dark Text"],
 		Font = Enum.Font.Gotham,
 		TextSize = 12,
 		TextXAlignment = Enum.TextXAlignment.Right,
-		TextTruncate = Enum.TextTruncate.AtEnd
+		TextTruncate = Enum.TextTruncate.AtEnd,
+		ZIndex = 3
 	}, headerBtn)
+	applyTheme(selectedLabel, "TextColor3", "Color Dark Text")
 
 	local arrow = createInstance("TextLabel", {
 		Text = "▼",
 		Size = UDim2.new(0, 15, 1, 0),
 		Position = UDim2.new(1, -20, 0, 0),
 		BackgroundTransparency = 1,
-		TextColor3 = theme["Color Dark Text"],
 		Font = Enum.Font.Gotham,
 		TextSize = 10,
-		TextXAlignment = Enum.TextXAlignment.Right
+		TextXAlignment = Enum.TextXAlignment.Right,
+		ZIndex = 3
 	}, headerBtn)
+	applyTheme(arrow, "TextColor3", "Color Dark Text")
 
 	local body = createInstance("Frame", {
-		Size = UDim2.new(1, 0, 0, 130),
+		Size = UDim2.new(1, 0, 0, 0),
 		Position = UDim2.new(0, 0, 0, 36),
-		BackgroundTransparency = 1,
-		Visible = false
+		BackgroundTransparency = 0,
+		BorderSizePixel = 0,
+		ClipsDescendants = true,
+		ZIndex = 10
 	}, frame)
+	applyTheme(body, "BackgroundColor3", "Color Hub 2")
+	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, body)
+	addBorder(body, "Color Stroke", 1)
 
 	local scroll = createInstance("ScrollingFrame", {
 		Size = UDim2.new(1, -20, 1, -10),
-		Position = UDim2.new(0, 10, 0, 0),
+		Position = UDim2.new(0, 10, 0, 5),
 		BackgroundTransparency = 1,
 		ScrollBarThickness = 2,
-		ScrollBarImageColor3 = theme["Color Stroke"],
 		BorderSizePixel = 0,
 		AutomaticCanvasSize = Enum.AutomaticSize.Y,
-		CanvasSize = UDim2.new(0, 0, 0, 0)
+		CanvasSize = UDim2.new(0, 0, 0, 0),
+		ZIndex = 11
 	}, body)
+	applyTheme(scroll, "ScrollBarImageColor3", "Color Stroke")
 	createInstance("UIListLayout", {SortOrder = Enum.SortOrder.LayoutOrder, Padding = UDim.new(0, 4)}, scroll)
 
 	local isOpen = false
@@ -794,9 +883,10 @@ function SectionMethods:addMultiDropdown(options)
 
 	local function closeDropdown()
 		isOpen = false
+		frame.ZIndex = 1
 		tweenProperty(frame, {Size = UDim2.new(1, 0, 0, 36)}, 0.25)
+		tweenProperty(body, {Size = UDim2.new(1, 0, 0, 0)}, 0.25)
 		tweenProperty(arrow, {Rotation = 0}, 0.25)
-		task.delay(0.25, function() body.Visible = false end)
 	end
 
 	local function updateLabel()
@@ -811,40 +901,70 @@ function SectionMethods:addMultiDropdown(options)
 		local btn = createInstance("TextButton", {
 			Name = name,
 			Size = UDim2.new(1, 0, 0, 26),
-			BackgroundColor3 = theme["Color Hub 1"],
 			Text = "      " .. name,
-			TextColor3 = theme["Color Text"],
 			Font = Enum.Font.Gotham,
 			TextSize = 12,
 			TextXAlignment = Enum.TextXAlignment.Left,
-			AutoButtonColor = false
+			AutoButtonColor = false,
+			ZIndex = 12
 		}, scroll)
+		applyTheme(btn, "BackgroundColor3", "Color Hub 1")
+		applyTheme(btn, "TextColor3", "Color Text")
 		createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, btn)
 
 		local check = createInstance("Frame", {
 			Size = UDim2.new(0, 14, 0, 14),
 			Position = UDim2.new(0, 6, 0.5, -7),
-			BackgroundColor3 = activeItems[name] and theme["Color Theme"] or theme["Color Hub 2"],
-			BorderSizePixel = 0
+			BorderSizePixel = 0,
+			ZIndex = 12
 		}, btn)
+		applyTheme(check, "BackgroundColor3", activeItems[name] and "Color Theme" or "Color Hub 2")
 		createInstance("UICorner", {CornerRadius = UDim.new(0, 3)}, check)
-		addBorder(check, theme["Color Stroke"], 1)
+		addBorder(check, "Color Stroke", 1)
 
 		if activeItems[name] then registerChroma(check, "BackgroundColor3") end
 
-		btn.MouseEnter:Connect(function() tweenProperty(btn, {BackgroundColor3 = theme["Color Stroke"]}, 0.15) end)
-		btn.MouseLeave:Connect(function() tweenProperty(btn, {BackgroundColor3 = theme["Color Hub 1"]}, 0.15) end)
+		local entConn = btn.MouseEnter:Connect(function() 
+			local t = getCurrentTheme(JustHub.Save.Theme)
+			tweenProperty(btn, {BackgroundColor3 = t["Color Stroke"]}, 0.15) 
+		end)
+		local levConn = btn.MouseLeave:Connect(function() 
+			local t = getCurrentTheme(JustHub.Save.Theme)
+			tweenProperty(btn, {BackgroundColor3 = t["Color Hub 1"]}, 0.15) 
+		end)
+		
+		table.insert(JustHub.Connections, entConn)
+		table.insert(JustHub.Connections, levConn)
 
-		btn.MouseButton1Click:Connect(function()
+		local clkConn = btn.MouseButton1Click:Connect(function()
 			activeItems[name] = not activeItems[name]
+			local t = getCurrentTheme(JustHub.Save.Theme)
 			if activeItems[name] then
-				tweenProperty(check, {BackgroundColor3 = theme["Color Theme"]}, 0.15)
+				tweenProperty(check, {BackgroundColor3 = t["Color Theme"]}, 0.15)
 				registerChroma(check, "BackgroundColor3")
+				for _, data in ipairs(JustHub.ThemeObjects) do
+					if data.Instance == check and data.Property == "BackgroundColor3" then
+						data.ThemeKey = "Color Theme"
+						break
+					end
+				end
 			else
-				tweenProperty(check, {BackgroundColor3 = theme["Color Hub 2"]}, 0.15)
+				tweenProperty(check, {BackgroundColor3 = t["Color Hub 2"]}, 0.15)
+				for i = #JustHub.ChromaObjects, 1, -1 do
+					if JustHub.ChromaObjects[i].Instance == check then
+						table.remove(JustHub.ChromaObjects, i)
+					end
+				end
+				for _, data in ipairs(JustHub.ThemeObjects) do
+					if data.Instance == check and data.Property == "BackgroundColor3" then
+						data.ThemeKey = "Color Hub 2"
+						break
+					end
+				end
 			end
 			updateLabel()
 		end)
+		table.insert(JustHub.Connections, clkConn)
 	end
 
 	local function renderItems()
@@ -855,16 +975,18 @@ function SectionMethods:addMultiDropdown(options)
 	end
 	renderItems()
 
-	headerBtn.MouseButton1Click:Connect(function()
+	local hdrConn = headerBtn.MouseButton1Click:Connect(function()
 		isOpen = not isOpen
 		if isOpen then
-			body.Visible = true
+			frame.ZIndex = 50
 			tweenProperty(frame, {Size = UDim2.new(1, 0, 0, 166)}, 0.3)
+			tweenProperty(body, {Size = UDim2.new(1, 0, 0, 130)}, 0.3)
 			tweenProperty(arrow, {Rotation = 180}, 0.3)
 		else
 			closeDropdown()
 		end
 	end)
+	table.insert(JustHub.Connections, hdrConn)
 
 	JustHub:RegisterControl(title, function(val)
 		if type(val) == "table" then
@@ -888,28 +1010,27 @@ function SectionMethods:addColorPicker(options)
 	local title = options.Name or "ColorPicker"
 	local default = options.Default or Color3.fromRGB(255, 255, 255)
 	local callback = options.Callback or function() end
-	local theme = getCurrentTheme(JustHub.Save.Theme)
 
 	local frame = createInstance("Frame", {
 		Name = title .. "ColorPicker",
 		Size = UDim2.new(1, 0, 0, 56),
-		BackgroundColor3 = theme["Color Hub 2"],
 		BackgroundTransparency = 0.15,
 		BorderSizePixel = 0
 	}, self.Content)
+	applyTheme(frame, "BackgroundColor3", "Color Hub 2")
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, frame)
-	addBorder(frame, theme["Color Stroke"], 1)
+	addBorder(frame, "Color Stroke", 1)
 
 	local label = createInstance("TextLabel", {
 		Text = title,
 		Size = UDim2.new(1, -20, 0, 24),
 		Position = UDim2.new(0, 10, 0, 2),
 		BackgroundTransparency = 1,
-		TextColor3 = theme["Color Text"],
 		Font = Enum.Font.GothamMedium,
 		TextSize = 13,
 		TextXAlignment = Enum.TextXAlignment.Left
 	}, frame)
+	applyTheme(label, "TextColor3", "Color Text")
 
 	local preview = createInstance("Frame", {
 		Size = UDim2.new(0, 40, 0, 20),
@@ -918,36 +1039,57 @@ function SectionMethods:addColorPicker(options)
 		BorderSizePixel = 0
 	}, frame)
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, preview)
-	addBorder(preview, theme["Color Stroke"], 1)
+	addBorder(preview, "Color Stroke", 1)
 
-	local rBox = createInstance("TextBox", {Text = tostring(math.floor(default.R * 255)), Size = UDim2.new(0, 40, 0, 22), Position = UDim2.new(0, 10, 0, 28), BackgroundColor3 = theme["Color Hub 1"], TextColor3 = Color3.fromRGB(255, 100, 100), Font = Enum.Font.GothamMedium, TextSize = 11}, frame)
-	local gBox = createInstance("TextBox", {Text = tostring(math.floor(default.G * 255)), Size = UDim2.new(0, 40, 0, 22), Position = UDim2.new(0, 55, 0, 28), BackgroundColor3 = theme["Color Hub 1"], TextColor3 = Color3.fromRGB(100, 255, 100), Font = Enum.Font.GothamMedium, TextSize = 11}, frame)
-	local bBox = createInstance("TextBox", {Text = tostring(math.floor(default.B * 255)), Size = UDim2.new(0, 40, 0, 22), Position = UDim2.new(0, 100, 0, 28), BackgroundColor3 = theme["Color Hub 1"], TextColor3 = Color3.fromRGB(100, 150, 255), Font = Enum.Font.GothamMedium, TextSize = 11}, frame)
+	local rBox = createInstance("TextBox", {Text = tostring(math.floor(default.R * 255)), Size = UDim2.new(0, 40, 0, 22), Position = UDim2.new(0, 10, 0, 28), TextColor3 = Color3.fromRGB(255, 100, 100), Font = Enum.Font.GothamMedium, TextSize = 11}, frame)
+	local gBox = createInstance("TextBox", {Text = tostring(math.floor(default.G * 255)), Size = UDim2.new(0, 40, 0, 22), Position = UDim2.new(0, 55, 0, 28), TextColor3 = Color3.fromRGB(100, 255, 100), Font = Enum.Font.GothamMedium, TextSize = 11}, frame)
+	local bBox = createInstance("TextBox", {Text = tostring(math.floor(default.B * 255)), Size = UDim2.new(0, 40, 0, 22), Position = UDim2.new(0, 100, 0, 28), TextColor3 = Color3.fromRGB(100, 150, 255), Font = Enum.Font.GothamMedium, TextSize = 11}, frame)
+	local hexBox = createInstance("TextBox", {Text = "#" .. default:ToHex(), Size = UDim2.new(0, 60, 0, 22), Position = UDim2.new(0, 145, 0, 28), Font = Enum.Font.GothamMedium, TextSize = 11}, frame)
+	applyTheme(hexBox, "TextColor3", "Color Text")
 
-	for _, box in ipairs({rBox, gBox, bBox}) do
+	for _, box in ipairs({rBox, gBox, bBox, hexBox}) do
+		applyTheme(box, "BackgroundColor3", "Color Hub 1")
 		createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, box)
-		addBorder(box, theme["Color Stroke"], 1)
+		addBorder(box, "Color Stroke", 1)
 	end
 
-	local function updateColor()
+	local function updateColorRGB()
 		local rr = math.clamp(tonumber(rBox.Text) or 0, 0, 255)
 		local gg = math.clamp(tonumber(gBox.Text) or 0, 0, 255)
 		local bb = math.clamp(tonumber(bBox.Text) or 0, 0, 255)
 		local c3 = Color3.fromRGB(rr, gg, bb)
 		preview.BackgroundColor3 = c3
+		hexBox.Text = "#" .. c3:ToHex():upper()
 		JustHub.ConfigData[title] = c3
 		pcall(callback, c3)
 	end
+	
+	local function updateColorHex()
+		local hx = hexBox.Text:gsub("#", "")
+		local success, c3 = pcall(function() return Color3.fromHex(hx) end)
+		if success and c3 then
+			preview.BackgroundColor3 = c3
+			rBox.Text = tostring(math.floor(c3.R * 255))
+			gBox.Text = tostring(math.floor(c3.G * 255))
+			bBox.Text = tostring(math.floor(c3.B * 255))
+			JustHub.ConfigData[title] = c3
+			pcall(callback, c3)
+		else
+			hexBox.Text = "#" .. preview.BackgroundColor3:ToHex():upper()
+		end
+	end
 
-	rBox.FocusLost:Connect(updateColor)
-	gBox.FocusLost:Connect(updateColor)
-	bBox.FocusLost:Connect(updateColor)
+	table.insert(JustHub.Connections, rBox.FocusLost:Connect(updateColorRGB))
+	table.insert(JustHub.Connections, gBox.FocusLost:Connect(updateColorRGB))
+	table.insert(JustHub.Connections, bBox.FocusLost:Connect(updateColorRGB))
+	table.insert(JustHub.Connections, hexBox.FocusLost:Connect(updateColorHex))
 
 	JustHub:RegisterControl(title, function(val)
 		if typeof(val) == "Color3" then
 			rBox.Text = tostring(math.floor(val.R * 255))
 			gBox.Text = tostring(math.floor(val.G * 255))
 			bBox.Text = tostring(math.floor(val.B * 255))
+			hexBox.Text = "#" .. val:ToHex():upper()
 			preview.BackgroundColor3 = val
 		end
 	end)
@@ -960,35 +1102,32 @@ function SectionMethods:addScriptBox(options)
 	local title = options.Name or "ScriptBox"
 	local default = options.Default or ""
 	local callback = options.Callback or function() end
-	local theme = getCurrentTheme(JustHub.Save.Theme)
 
 	local frame = createInstance("Frame", {
 		Name = title .. "ScriptBox",
 		Size = UDim2.new(1, 0, 0, 90),
-		BackgroundColor3 = theme["Color Hub 2"],
 		BackgroundTransparency = 0.15,
 		BorderSizePixel = 0
 	}, self.Content)
+	applyTheme(frame, "BackgroundColor3", "Color Hub 2")
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, frame)
-	addBorder(frame, theme["Color Stroke"], 1)
+	addBorder(frame, "Color Stroke", 1)
 
 	local label = createInstance("TextLabel", {
 		Text = title,
 		Size = UDim2.new(1, -10, 0, 20),
 		Position = UDim2.new(0, 10, 0, 4),
 		BackgroundTransparency = 1,
-		TextColor3 = theme["Color Text"],
 		Font = Enum.Font.GothamMedium,
 		TextSize = 13,
 		TextXAlignment = Enum.TextXAlignment.Left
 	}, frame)
+	applyTheme(label, "TextColor3", "Color Text")
 
 	local inputBox = createInstance("TextBox", {
 		Text = default,
 		Size = UDim2.new(1, -70, 0, 50),
 		Position = UDim2.new(0, 10, 0, 30),
-		BackgroundColor3 = theme["Color Hub 1"],
-		TextColor3 = theme["Color Text"],
 		Font = Enum.Font.Code,
 		TextSize = 12,
 		ClearTextOnFocus = false,
@@ -998,25 +1137,27 @@ function SectionMethods:addScriptBox(options)
 		TextXAlignment = Enum.TextXAlignment.Left,
 		TextYAlignment = Enum.TextYAlignment.Top
 	}, frame)
+	applyTheme(inputBox, "BackgroundColor3", "Color Hub 1")
+	applyTheme(inputBox, "TextColor3", "Color Text")
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, inputBox)
-	addBorder(inputBox, theme["Color Stroke"], 1)
+	addBorder(inputBox, "Color Stroke", 1)
 
 	local runBtn = createInstance("TextButton", {
 		Text = "Run",
 		Size = UDim2.new(0, 45, 0, 30),
 		Position = UDim2.new(1, -55, 0, 40),
-		BackgroundColor3 = theme["Color Theme"],
 		TextColor3 = Color3.fromRGB(20, 20, 20),
 		Font = Enum.Font.GothamBold,
 		TextSize = 12,
 		AutoButtonColor = false
 	}, frame)
+	applyTheme(runBtn, "BackgroundColor3", "Color Theme")
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, runBtn)
 	registerChroma(runBtn, "BackgroundColor3")
 
-	runBtn.MouseEnter:Connect(function() tweenProperty(runBtn, {BackgroundTransparency = 0.2}, 0.15) end)
-	runBtn.MouseLeave:Connect(function() tweenProperty(runBtn, {BackgroundTransparency = 0}, 0.15) end)
-	runBtn.MouseButton1Click:Connect(function() pcall(callback, inputBox.Text) end)
+	table.insert(JustHub.Connections, runBtn.MouseEnter:Connect(function() tweenProperty(runBtn, {BackgroundTransparency = 0.2}, 0.15) end))
+	table.insert(JustHub.Connections, runBtn.MouseLeave:Connect(function() tweenProperty(runBtn, {BackgroundTransparency = 0}, 0.15) end))
+	table.insert(JustHub.Connections, runBtn.MouseButton1Click:Connect(function() pcall(callback, inputBox.Text) end))
 
 	JustHub:RegisterControl(title, function(val) inputBox.Text = val end)
 
@@ -1028,67 +1169,94 @@ function SectionMethods:addBind(options)
 	local title = options.Name or "KeyBind"
 	local default = options.Default or "RightShift"
 	local callback = options.Callback or function() end
-	local theme = getCurrentTheme(JustHub.Save.Theme)
+
+	local blacklist = {
+		[Enum.KeyCode.W] = true, [Enum.KeyCode.A] = true, [Enum.KeyCode.S] = true, [Enum.KeyCode.D] = true,
+		[Enum.KeyCode.Space] = true, [Enum.KeyCode.Escape] = true, [Enum.KeyCode.Tab] = true,
+		[Enum.KeyCode.Backspace] = true, [Enum.KeyCode.Return] = true, [Enum.KeyCode.Unknown] = true
+	}
 
 	local frame = createInstance("Frame", {
 		Name = title .. "BindControl",
 		Size = UDim2.new(1, 0, 0, 36),
-		BackgroundColor3 = theme["Color Hub 2"],
 		BackgroundTransparency = 0.15,
 		BorderSizePixel = 0
 	}, self.Content)
+	applyTheme(frame, "BackgroundColor3", "Color Hub 2")
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, frame)
-	addBorder(frame, theme["Color Stroke"], 1)
+	addBorder(frame, "Color Stroke", 1)
 
 	local label = createInstance("TextLabel", {
 		Text = title,
 		Size = UDim2.new(0.6, -10, 1, 0),
 		Position = UDim2.new(0, 10, 0, 0),
 		BackgroundTransparency = 1,
-		TextColor3 = theme["Color Text"],
 		Font = Enum.Font.GothamMedium,
 		TextSize = 13,
 		TextXAlignment = Enum.TextXAlignment.Left
 	}, frame)
+	applyTheme(label, "TextColor3", "Color Text")
 
 	local inputBox = createInstance("TextBox", {
 		Text = default,
 		Size = UDim2.new(0.4, -20, 0, 24),
 		Position = UDim2.new(0.6, 10, 0.5, -12),
-		BackgroundColor3 = theme["Color Hub 1"],
-		TextColor3 = theme["Color Text"],
 		Font = Enum.Font.GothamBold,
 		TextSize = 11,
 		ClearTextOnFocus = false
 	}, frame)
+	applyTheme(inputBox, "BackgroundColor3", "Color Hub 1")
+	applyTheme(inputBox, "TextColor3", "Color Text")
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, inputBox)
-	addBorder(inputBox, theme["Color Stroke"], 1)
+	addBorder(inputBox, "Color Stroke", 1)
 
 	local currentKey
 	local conn
 
-	local function setKey(kName)
-		for _, kEnum in pairs(Enum.KeyCode:GetEnumItems()) do
-			if kEnum.Name:lower() == kName:lower() then
-				if conn then conn:Disconnect() end
-				currentKey = kEnum
-				conn = UserInputService.InputBegan:Connect(function(input, gameProcessed)
-					if not gameProcessed and input.KeyCode == currentKey then pcall(callback) end
-				end)
-				JustHub.ConfigData[title] = kEnum.Name
-				inputBox.Text = kEnum.Name
-				return
-			end
+	local function setKey(kEnum)
+		if blacklist[kEnum] then
+			inputBox.Text = currentKey and currentKey.Name or "None"
+			return
+		end
+		
+		if conn then conn:Disconnect() end
+		currentKey = kEnum
+		conn = UserInputService.InputBegan:Connect(function(input, gameProcessed)
+			if not gameProcessed and input.KeyCode == currentKey then pcall(callback) end
+		end)
+		table.insert(JustHub.Connections, conn)
+		JustHub.ConfigData[title] = kEnum.Name
+		inputBox.Text = kEnum.Name
+	end
+
+	for _, kEnum in pairs(Enum.KeyCode:GetEnumItems()) do
+		if kEnum.Name:lower() == default:lower() then
+			setKey(kEnum)
+			break
 		end
 	end
 
-	setKey(default)
-
-	inputBox.FocusLost:Connect(function()
-		setKey(inputBox.Text)
+	local capConn = inputBox.Focused:Connect(function()
+		inputBox.Text = "Press Key..."
+		local waitConn
+		waitConn = UserInputService.InputBegan:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.Keyboard then
+				setKey(input.KeyCode)
+				inputBox:ReleaseFocus()
+				waitConn:Disconnect()
+			end
+		end)
 	end)
+	table.insert(JustHub.Connections, capConn)
 
-	JustHub:RegisterControl(title, function(val) setKey(val) end)
+	JustHub:RegisterControl(title, function(val)
+		for _, kEnum in pairs(Enum.KeyCode:GetEnumItems()) do
+			if kEnum.Name:lower() == val:lower() then
+				setKey(kEnum)
+				break
+			end
+		end
+	end)
 
 	return frame
 end
@@ -1098,90 +1266,93 @@ function SectionMethods:addButton(options)
 	local title = options.Name or "Button"
 	local btnText = options.ButtonText or "Click"
 	local callback = options.Callback or function() end
-	local theme = getCurrentTheme(JustHub.Save.Theme)
 
 	local frame = createInstance("Frame", {
 		Name = title .. "ButtonControl",
 		Size = UDim2.new(1, 0, 0, 36),
-		BackgroundColor3 = theme["Color Hub 2"],
 		BackgroundTransparency = 0.15,
 		BorderSizePixel = 0
 	}, self.Content)
+	applyTheme(frame, "BackgroundColor3", "Color Hub 2")
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, frame)
-	addBorder(frame, theme["Color Stroke"], 1)
+	addBorder(frame, "Color Stroke", 1)
 
 	local label = createInstance("TextLabel", {
 		Text = title,
 		Size = UDim2.new(0.6, -10, 1, 0),
 		Position = UDim2.new(0, 10, 0, 0),
 		BackgroundTransparency = 1,
-		TextColor3 = theme["Color Text"],
 		Font = Enum.Font.GothamMedium,
 		TextSize = 13,
 		TextXAlignment = Enum.TextXAlignment.Left
 	}, frame)
+	applyTheme(label, "TextColor3", "Color Text")
 
 	local btn = createInstance("TextButton", {
 		Text = btnText,
 		Size = UDim2.new(0.4, -20, 0, 24),
 		Position = UDim2.new(0.6, 10, 0.5, -12),
-		BackgroundColor3 = theme["Color Hub 1"],
-		TextColor3 = theme["Color Text"],
 		Font = Enum.Font.GothamBold,
 		TextSize = 11,
 		AutoButtonColor = false
 	}, frame)
+	applyTheme(btn, "BackgroundColor3", "Color Hub 1")
+	applyTheme(btn, "TextColor3", "Color Text")
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, btn)
-	addBorder(btn, theme["Color Stroke"], 1)
+	addBorder(btn, "Color Stroke", 1)
 
-	btn.MouseEnter:Connect(function() tweenProperty(btn, {BackgroundColor3 = theme["Color Stroke"]}, 0.15) end)
-	btn.MouseLeave:Connect(function() tweenProperty(btn, {BackgroundColor3 = theme["Color Hub 1"]}, 0.15) end)
-	btn.MouseButton1Down:Connect(function() tweenProperty(btn, {Size = UDim2.new(0.4, -22, 0, 22)}, 0.1) end)
-	btn.MouseButton1Up:Connect(function()
+	table.insert(JustHub.Connections, btn.MouseEnter:Connect(function() 
+		local t = getCurrentTheme(JustHub.Save.Theme)
+		tweenProperty(btn, {BackgroundColor3 = t["Color Stroke"]}, 0.15) 
+	end))
+	table.insert(JustHub.Connections, btn.MouseLeave:Connect(function() 
+		local t = getCurrentTheme(JustHub.Save.Theme)
+		tweenProperty(btn, {BackgroundColor3 = t["Color Hub 1"]}, 0.15) 
+	end))
+	table.insert(JustHub.Connections, btn.MouseButton1Down:Connect(function() tweenProperty(btn, {Size = UDim2.new(0.4, -22, 0, 22)}, 0.1) end))
+	table.insert(JustHub.Connections, btn.MouseButton1Up:Connect(function()
 		tweenProperty(btn, {Size = UDim2.new(0.4, -20, 0, 24)}, 0.1)
 		pcall(callback)
-	end)
+	end))
 
 	return frame
 end
 
 function SectionMethods:addConfigManager()
-	local theme = getCurrentTheme(JustHub.Save.Theme)
-
 	local frame = createInstance("Frame", {
 		Name = "ConfigManager",
 		Size = UDim2.new(1, 0, 0, 75),
-		BackgroundColor3 = theme["Color Hub 2"],
 		BackgroundTransparency = 0.15,
 		BorderSizePixel = 0
 	}, self.Content)
+	applyTheme(frame, "BackgroundColor3", "Color Hub 2")
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, frame)
-	addBorder(frame, theme["Color Stroke"], 1)
+	addBorder(frame, "Color Stroke", 1)
 
 	local inputBox = createInstance("TextBox", {
 		Text = "DefaultConfig",
 		Size = UDim2.new(1, -20, 0, 26),
 		Position = UDim2.new(0, 10, 0, 10),
-		BackgroundColor3 = theme["Color Hub 1"],
-		TextColor3 = theme["Color Text"],
 		Font = Enum.Font.Gotham,
 		TextSize = 12,
 		ClearTextOnFocus = false,
 		PlaceholderText = "Config Name...",
 	}, frame)
+	applyTheme(inputBox, "BackgroundColor3", "Color Hub 1")
+	applyTheme(inputBox, "TextColor3", "Color Text")
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, inputBox)
-	addBorder(inputBox, theme["Color Stroke"], 1)
+	addBorder(inputBox, "Color Stroke", 1)
 
 	local saveBtn = createInstance("TextButton", {
 		Text = "Save Profile",
 		Size = UDim2.new(0.48, 0, 0, 26),
 		Position = UDim2.new(0, 10, 0, 42),
-		BackgroundColor3 = theme["Color Theme"],
 		TextColor3 = Color3.fromRGB(20, 20, 20),
 		Font = Enum.Font.GothamBold,
 		TextSize = 11,
 		AutoButtonColor = false
 	}, frame)
+	applyTheme(saveBtn, "BackgroundColor3", "Color Theme")
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, saveBtn)
 	registerChroma(saveBtn, "BackgroundColor3")
 
@@ -1189,24 +1360,24 @@ function SectionMethods:addConfigManager()
 		Text = "Load Profile",
 		Size = UDim2.new(0.48, 0, 0, 26),
 		Position = UDim2.new(0.52, -10, 0, 42),
-		BackgroundColor3 = theme["Color Hub 1"],
-		TextColor3 = theme["Color Text"],
 		Font = Enum.Font.GothamBold,
 		TextSize = 11,
 		AutoButtonColor = false
 	}, frame)
+	applyTheme(loadBtn, "BackgroundColor3", "Color Hub 1")
+	applyTheme(loadBtn, "TextColor3", "Color Text")
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 4)}, loadBtn)
-	addBorder(loadBtn, theme["Color Stroke"], 1)
+	addBorder(loadBtn, "Color Stroke", 1)
 
-	saveBtn.MouseButton1Click:Connect(function()
+	table.insert(JustHub.Connections, saveBtn.MouseButton1Click:Connect(function()
 		local name = inputBox.Text
 		if name ~= "" then JustHub:SaveConfig(name .. ".json") end
-	end)
+	end))
 
-	loadBtn.MouseButton1Click:Connect(function()
+	table.insert(JustHub.Connections, loadBtn.MouseButton1Click:Connect(function()
 		local name = inputBox.Text
 		if name ~= "" then JustHub:LoadConfig(name .. ".json") end
-	end)
+	end))
 
 	return frame
 end
@@ -1219,32 +1390,33 @@ function JustHub:CreateWindow(options)
 	
 	local player = Players.LocalPlayer
 	local playerGui = player:WaitForChild("PlayerGui")
-	local screenGui = createInstance("ScreenGui", {Name = "JustHub", ResetOnSpawn = false}, playerGui)
+	local screenGui = createInstance("ScreenGui", {Name = "JustHub", ResetOnSpawn = false, ZIndexBehavior = Enum.ZIndexBehavior.Global}, playerGui)
 	self.ScreenGui = screenGui
 
 	JustHub.Save.Theme = themeName
-	local theme = getCurrentTheme(themeName)
 
 	local mainFrame = createInstance("Frame", {
 		Name = "MainFrame",
 		AnchorPoint = Vector2.new(0.5, 0.5),
 		Position = UDim2.new(0.5, 0, 0.5, 0),
 		Size = UDim2.new(0, JustHub.Save.UISize[1], 0, JustHub.Save.UISize[2]),
-		BackgroundColor3 = theme["Color Hub 2"],
 		BackgroundTransparency = 0.15,
 		BorderSizePixel = 0,
 		ClipsDescendants = true,
-		Active = true
+		Active = true,
+		ZIndex = 1
 	}, screenGui)
+	applyTheme(mainFrame, "BackgroundColor3", "Color Hub 2")
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, mainFrame)
-	local mainBorder = addBorder(mainFrame, theme["Color Stroke"], 1)
+	local mainBorder = addBorder(mainFrame, "Color Stroke", 1)
 	registerChroma(mainBorder, "Color")
 
 	local topBar = createInstance("Frame", {
 		Name = "TopBar",
 		Size = UDim2.new(1, 0, 0, 45),
 		BackgroundTransparency = 1,
-		BorderSizePixel = 0
+		BorderSizePixel = 0,
+		ZIndex = 2
 	}, mainFrame)
 
 	local titleLabel = createInstance("TextLabel", {
@@ -1253,11 +1425,12 @@ function JustHub:CreateWindow(options)
 		Size = UDim2.new(0.5, 0, 1, 0),
 		Position = UDim2.new(0, 20, 0, -5),
 		BackgroundTransparency = 1,
-		TextColor3 = theme["Color Text"],
 		Font = Enum.Font.GothamBold,
 		TextSize = 14,
-		TextXAlignment = Enum.TextXAlignment.Left
+		TextXAlignment = Enum.TextXAlignment.Left,
+		ZIndex = 2
 	}, topBar)
+	applyTheme(titleLabel, "TextColor3", "Color Text")
 
 	local subtitleLabel = createInstance("TextLabel", {
 		Name = "SubtitleLabel",
@@ -1265,18 +1438,20 @@ function JustHub:CreateWindow(options)
 		Size = UDim2.new(0.5, 0, 1, 0),
 		Position = UDim2.new(0, 20, 0, 10),
 		BackgroundTransparency = 1,
-		TextColor3 = theme["Color Dark Text"],
 		Font = Enum.Font.Gotham,
 		TextSize = 11,
-		TextXAlignment = Enum.TextXAlignment.Left
+		TextXAlignment = Enum.TextXAlignment.Left,
+		ZIndex = 2
 	}, topBar)
+	applyTheme(subtitleLabel, "TextColor3", "Color Dark Text")
 
 	local btnContainer = createInstance("Frame", {
 		Name = "ButtonContainer",
 		Size = UDim2.new(0, 70, 1, 0),
 		Position = UDim2.new(1, -15, 0, 0),
 		AnchorPoint = Vector2.new(1, 0),
-		BackgroundTransparency = 1
+		BackgroundTransparency = 1,
+		ZIndex = 2
 	}, topBar)
 	createInstance("UIListLayout", {
 		FillDirection = Enum.FillDirection.Horizontal,
@@ -1294,11 +1469,12 @@ function JustHub:CreateWindow(options)
 			BackgroundColor3 = color,
 			LayoutOrder = order,
 			AutoButtonColor = false,
-			BorderSizePixel = 0
+			BorderSizePixel = 0,
+			ZIndex = 2
 		}, btnContainer)
 		createInstance("UICorner", {CornerRadius = UDim.new(1, 0)}, btn)
-		btn.MouseEnter:Connect(function() tweenProperty(btn, {BackgroundTransparency = 0.2}, 0.2) end)
-		btn.MouseLeave:Connect(function() tweenProperty(btn, {BackgroundTransparency = 0}, 0.2) end)
+		table.insert(JustHub.Connections, btn.MouseEnter:Connect(function() tweenProperty(btn, {BackgroundTransparency = 0.2}, 0.2) end))
+		table.insert(JustHub.Connections, btn.MouseLeave:Connect(function() tweenProperty(btn, {BackgroundTransparency = 0}, 0.2) end))
 		return btn
 	end
 
@@ -1309,25 +1485,28 @@ function JustHub:CreateWindow(options)
 	local headerSep = createInstance("Frame", {
 		Size = UDim2.new(1, -40, 0, 1),
 		Position = UDim2.new(0, 20, 0, 44),
-		BackgroundColor3 = theme["Color Stroke"],
 		BackgroundTransparency = 0.5,
-		BorderSizePixel = 0
+		BorderSizePixel = 0,
+		ZIndex = 2
 	}, mainFrame)
+	applyTheme(headerSep, "BackgroundColor3", "Color Stroke")
 
 	local profileFrame = createInstance("Frame", {
 		Name = "ProfileFrame",
 		Size = UDim2.new(0, JustHub.Save.TabSize, 0, 50),
 		Position = UDim2.new(0, 20, 0, 55),
-		BackgroundTransparency = 1
+		BackgroundTransparency = 1,
+		ZIndex = 2
 	}, mainFrame)
 	
 	local avatarImg = createInstance("ImageLabel", {
 		Size = UDim2.new(0, 36, 0, 36),
 		Position = UDim2.new(0, 0, 0.5, -18),
-		BackgroundColor3 = theme["Color Hub 1"],
 		BorderSizePixel = 0,
-		ClipsDescendants = true
+		ClipsDescendants = true,
+		ZIndex = 2
 	}, profileFrame)
+	applyTheme(avatarImg, "BackgroundColor3", "Color Hub 1")
 	createInstance("UICorner", {CornerRadius = UDim.new(1, 0)}, avatarImg)
 	
 	local pcallSuccess, thumb = pcall(function()
@@ -1340,19 +1519,21 @@ function JustHub:CreateWindow(options)
 		Size = UDim2.new(1, -46, 1, 0),
 		Position = UDim2.new(0, 46, 0, 0),
 		BackgroundTransparency = 1,
-		TextColor3 = theme["Color Text"],
 		Font = Enum.Font.GothamBold,
 		TextSize = 12,
 		TextXAlignment = Enum.TextXAlignment.Left,
-		TextTruncate = Enum.TextTruncate.AtEnd
+		TextTruncate = Enum.TextTruncate.AtEnd,
+		ZIndex = 2
 	}, profileFrame)
+	applyTheme(profileName, "TextColor3", "Color Text")
 
 	local sidebar = createInstance("Frame", {
 		Name = "Sidebar",
 		Size = UDim2.new(0, JustHub.Save.TabSize, 1, -135),
 		Position = UDim2.new(0, 20, 0, 115),
 		BackgroundTransparency = 1,
-		BorderSizePixel = 0
+		BorderSizePixel = 0,
+		ZIndex = 2
 	}, mainFrame)
 	createInstance("UIListLayout", {SortOrder = Enum.SortOrder.LayoutOrder, Padding = UDim.new(0, 6)}, sidebar)
 
@@ -1361,7 +1542,8 @@ function JustHub:CreateWindow(options)
 		Size = UDim2.new(1, -(JustHub.Save.TabSize + 50), 1, -75),
 		Position = UDim2.new(0, JustHub.Save.TabSize + 30, 0, 55),
 		BackgroundTransparency = 1,
-		BorderSizePixel = 0
+		BorderSizePixel = 0,
+		ZIndex = 2
 	}, mainFrame)
 
 	local footer = createInstance("Frame", {
@@ -1369,7 +1551,8 @@ function JustHub:CreateWindow(options)
 		Size = UDim2.new(1, 0, 0, 20),
 		Position = UDim2.new(0, 0, 1, -20),
 		BackgroundTransparency = 1,
-		BorderSizePixel = 0
+		BorderSizePixel = 0,
+		ZIndex = 2
 	}, mainFrame)
 
 	local fpsLabel = createInstance("TextLabel", {
@@ -1379,15 +1562,16 @@ function JustHub:CreateWindow(options)
 		Position = UDim2.new(1, -20, 0, 0),
 		AnchorPoint = Vector2.new(1, 0),
 		BackgroundTransparency = 1,
-		TextColor3 = theme["Color Dark Text"],
 		Font = Enum.Font.Gotham,
 		TextSize = 10,
-		TextXAlignment = Enum.TextXAlignment.Right
+		TextXAlignment = Enum.TextXAlignment.Right,
+		ZIndex = 2
 	}, footer)
+	applyTheme(fpsLabel, "TextColor3", "Color Dark Text")
 
 	local lastTime = os.clock()
 	local frameCount = 0
-	RunService.RenderStepped:Connect(function()
+	local fpsConn = RunService.RenderStepped:Connect(function()
 		frameCount = frameCount + 1
 		local currentTime = os.clock()
 		if currentTime - lastTime >= 1 then
@@ -1398,13 +1582,14 @@ function JustHub:CreateWindow(options)
 			lastTime = currentTime
 		end
 	end)
+	table.insert(JustHub.Connections, fpsConn)
 
 	tweenProperty(mainFrame, {Position = UDim2.new(0.5, 0, 0.5, 0)}, 0.6, Enum.EasingStyle.Exponential)
 
 	local minimized, maximized = false, false
 	local prevSize, prevPos
 
-	hideBtn.MouseButton1Click:Connect(function()
+	table.insert(JustHub.Connections, hideBtn.MouseButton1Click:Connect(function()
 		minimized = not minimized
 		if minimized then
 			prevSize = mainFrame.Size
@@ -1423,9 +1608,9 @@ function JustHub:CreateWindow(options)
 			headerSep.Visible = true
 			profileFrame.Visible = true
 		end
-	end)
+	end))
 
-	maxBtn.MouseButton1Click:Connect(function()
+	table.insert(JustHub.Connections, maxBtn.MouseButton1Click:Connect(function()
 		maximized = not maximized
 		if maximized then
 			prevSize, prevPos = mainFrame.Size, mainFrame.Position
@@ -1433,9 +1618,9 @@ function JustHub:CreateWindow(options)
 		else
 			tweenProperty(mainFrame, {Size = prevSize, Position = prevPos}, 0.4, Enum.EasingStyle.Exponential)
 		end
-	end)
+	end))
 
-	closeBtn.MouseButton1Click:Connect(function()
+	table.insert(JustHub.Connections, closeBtn.MouseButton1Click:Connect(function()
 		local t = tweenProperty(mainFrame, {Position = UDim2.new(0.5, 0, -0.5, 0), BackgroundTransparency = 1}, 0.4, Enum.EasingStyle.Exponential, Enum.EasingDirection.In)
 		t.Completed:Connect(function()
 			mainFrame.Visible = false
@@ -1444,47 +1629,51 @@ function JustHub:CreateWindow(options)
 				Name = "ShowUIButton",
 				Size = UDim2.new(0, 40, 0, 40),
 				Position = UDim2.new(0.5, -20, 0, 10),
-				BackgroundColor3 = theme["Color Hub 2"],
 				Text = "UI",
-				TextColor3 = theme["Color Text"],
 				Font = Enum.Font.GothamBold,
 				TextSize = 12,
 				AutoButtonColor = false
 			}, showUI)
+			applyTheme(showBtn, "BackgroundColor3", "Color Hub 2")
+			applyTheme(showBtn, "TextColor3", "Color Text")
 			createInstance("UICorner", {CornerRadius = UDim.new(1, 0)}, showBtn)
-			addBorder(showBtn, theme["Color Stroke"], 1)
+			addBorder(showBtn, "Color Stroke", 1)
 
-			showBtn.MouseButton1Click:Connect(function()
+			table.insert(JustHub.Connections, showBtn.MouseButton1Click:Connect(function()
 				mainFrame.Visible = true
 				tweenProperty(mainFrame, {Position = UDim2.new(0.5, 0, 0.5, 0), BackgroundTransparency = 0.15}, 0.5, Enum.EasingStyle.Exponential)
 				showUI:Destroy()
-			end)
+			end))
 		end)
-	end)
+	end))
 
 	local function enableDrag(frame, trigger)
 		local dragging, dragInput, dragStart, startPos
-		trigger.InputBegan:Connect(function(input)
+		table.insert(JustHub.Connections, trigger.InputBegan:Connect(function(input)
 			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
 				dragging = true
 				dragStart = input.Position
 				startPos = frame.Position
-				input.Changed:Connect(function()
-					if input.UserInputState == Enum.UserInputState.End then dragging = false end
+				local chgConn
+				chgConn = input.Changed:Connect(function()
+					if input.UserInputState == Enum.UserInputState.End then
+						dragging = false
+						chgConn:Disconnect()
+					end
 				end)
 			end
-		end)
-		trigger.InputChanged:Connect(function(input)
+		end))
+		table.insert(JustHub.Connections, trigger.InputChanged:Connect(function(input)
 			if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
 				dragInput = input
 			end
-		end)
-		UserInputService.InputChanged:Connect(function(input)
+		end))
+		table.insert(JustHub.Connections, UserInputService.InputChanged:Connect(function(input)
 			if input == dragInput and dragging then
 				local delta = input.Position - dragStart
 				tweenProperty(frame, {Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)}, 0.1)
 			end
-		end)
+		end))
 	end
 	enableDrag(mainFrame, topBar)
 
@@ -1494,29 +1683,34 @@ function JustHub:CreateWindow(options)
 		Position = UDim2.new(1, -20, 1, -20),
 		BackgroundTransparency = 1,
 		Text = "⌟",
-		TextColor3 = theme["Color Dark Text"],
 		Font = Enum.Font.Gotham,
-		TextSize = 14
+		TextSize = 14,
+		ZIndex = 50
 	}, mainFrame)
+	applyTheme(resizeGrip, "TextColor3", "Color Dark Text")
 
 	local function enableResize(frame, grip)
 		local resizing, dragStart, startSize
-		grip.InputBegan:Connect(function(input)
+		table.insert(JustHub.Connections, grip.InputBegan:Connect(function(input)
 			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
 				resizing = true
 				dragStart = input.Position
 				startSize = frame.Size
-				input.Changed:Connect(function()
-					if input.UserInputState == Enum.UserInputState.End then resizing = false end
+				local chgConn
+				chgConn = input.Changed:Connect(function()
+					if input.UserInputState == Enum.UserInputState.End then 
+						resizing = false 
+						chgConn:Disconnect()
+					end
 				end)
 			end
-		end)
-		UserInputService.InputChanged:Connect(function(input)
+		end))
+		table.insert(JustHub.Connections, UserInputService.InputChanged:Connect(function(input)
 			if resizing and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
 				local delta = input.Position - dragStart
 				tweenProperty(frame, {Size = UDim2.new(0, math.max(500, startSize.X.Offset + delta.X), 0, math.max(350, startSize.Y.Offset + delta.Y))}, 0.1)
 			end
-		end)
+		end))
 	end
 	enableResize(mainFrame, resizeGrip)
 
@@ -1525,7 +1719,8 @@ function JustHub:CreateWindow(options)
 		AnchorPoint = Vector2.new(1, 1),
 		Position = UDim2.new(1, -20, 1, -20),
 		Size = UDim2.new(0, 280, 1, -40),
-		BackgroundTransparency = 1
+		BackgroundTransparency = 1,
+		ZIndex = 100
 	}, screenGui)
 	createInstance("UIListLayout", {
 		Padding = UDim.new(0, 12),
@@ -1539,19 +1734,19 @@ function JustHub:CreateWindow(options)
 
 	function windowObj:addTab(tabName, iconName)
 		tabName = tabName or "Tab"
-		local currentTheme = getCurrentTheme(JustHub.Save.Theme)
 		
 		local btn = createInstance("TextButton", {
 			Name = tabName .. "Button",
 			Text = "",
 			Size = UDim2.new(1, 0, 0, 32),
-			BackgroundColor3 = currentTheme["Color Hub 1"],
 			BackgroundTransparency = 1,
-			AutoButtonColor = false
+			AutoButtonColor = false,
+			ZIndex = 2
 		}, sidebar)
+		applyTheme(btn, "BackgroundColor3", "Color Hub 1")
 		createInstance("UICorner", {CornerRadius = UDim.new(0, 6)}, btn)
 
-		local btnLayout = createInstance("UIListLayout", {
+		createInstance("UIListLayout", {
 			FillDirection = Enum.FillDirection.Horizontal,
 			SortOrder = Enum.SortOrder.LayoutOrder,
 			VerticalAlignment = Enum.VerticalAlignment.Center,
@@ -1565,29 +1760,32 @@ function JustHub:CreateWindow(options)
 				Size = UDim2.new(0, 16, 0, 16),
 				BackgroundTransparency = 1,
 				Image = JustHub.Icons[iconName],
-				ImageColor3 = currentTheme["Color Dark Text"]
+				ZIndex = 2
 			}, btn)
+			applyTheme(tabIcon, "ImageColor3", "Color Dark Text")
 		end
 
 		local tabText = createInstance("TextLabel", {
 			Text = tabName,
 			Size = UDim2.new(1, -24, 1, 0),
 			BackgroundTransparency = 1,
-			TextColor3 = currentTheme["Color Dark Text"],
 			Font = Enum.Font.GothamMedium,
 			TextSize = 12,
-			TextXAlignment = Enum.TextXAlignment.Left
+			TextXAlignment = Enum.TextXAlignment.Left,
+			ZIndex = 2
 		}, btn)
+		applyTheme(tabText, "TextColor3", "Color Dark Text")
 
 		local tabContent = createInstance("ScrollingFrame", {
 			Name = tabName .. "Content",
 			Size = UDim2.new(1, 0, 1, 0),
 			BackgroundTransparency = 1,
 			ScrollBarThickness = 2,
-			ScrollBarImageColor3 = currentTheme["Color Stroke"],
 			BorderSizePixel = 0,
-			Visible = false
+			Visible = false,
+			ZIndex = 2
 		}, contentContainer)
+		applyTheme(tabContent, "ScrollBarImageColor3", "Color Stroke")
 		createInstance("UIListLayout", {
 			SortOrder = Enum.SortOrder.LayoutOrder,
 			Padding = UDim.new(0, 10),
@@ -1605,51 +1803,60 @@ function JustHub:CreateWindow(options)
 				
 				local textObj = t.Button:FindFirstChildOfClass("TextLabel")
 				local imgObj = t.Button:FindFirstChildOfClass("ImageLabel")
+				local ct = getCurrentTheme(JustHub.Save.Theme)
 				
 				if textObj then
-					tweenProperty(textObj, {TextColor3 = active and currentTheme["Color Text"] or currentTheme["Color Dark Text"]}, 0.3)
+					tweenProperty(textObj, {TextColor3 = active and ct["Color Text"] or ct["Color Dark Text"]}, 0.3)
+					for _, data in ipairs(JustHub.ThemeObjects) do
+						if data.Instance == textObj then data.ThemeKey = active and "Color Text" or "Color Dark Text" end
+					end
 				end
 				if imgObj then
-					tweenProperty(imgObj, {ImageColor3 = active and currentTheme["Color Text"] or currentTheme["Color Dark Text"]}, 0.3)
+					tweenProperty(imgObj, {ImageColor3 = active and ct["Color Text"] or ct["Color Dark Text"]}, 0.3)
+					for _, data in ipairs(JustHub.ThemeObjects) do
+						if data.Instance == imgObj then data.ThemeKey = active and "Color Text" or "Color Dark Text" end
+					end
 				end
 			end
 		end
 
-		btn.MouseButton1Click:Connect(updateTabs)
+		table.insert(JustHub.Connections, btn.MouseButton1Click:Connect(updateTabs))
 
 		if #windowObj.Tabs == 1 then updateTabs() end
 
 		function tabObj:addSection(sectionName)
 			sectionName = sectionName or "Section"
-			local ct = getCurrentTheme(JustHub.Save.Theme)
 			
 			local secFrame = createInstance("Frame", {
 				Name = sectionName,
 				Size = UDim2.new(1, -4, 0, 0),
-				BackgroundColor3 = ct["Color Hub 1"],
 				BackgroundTransparency = 0.4,
-				AutomaticSize = Enum.AutomaticSize.Y
+				AutomaticSize = Enum.AutomaticSize.Y,
+				ZIndex = 2
 			}, tabContent)
+			applyTheme(secFrame, "BackgroundColor3", "Color Hub 1")
 			createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, secFrame)
-			addBorder(secFrame, ct["Color Stroke"], 1)
+			addBorder(secFrame, "Color Stroke", 1)
 
 			local secTitle = createInstance("TextLabel", {
 				Name = "SectionTitle",
 				Text = "  " .. sectionName,
 				Size = UDim2.new(1, 0, 0, 30),
 				BackgroundTransparency = 1,
-				TextColor3 = ct["Color Text"],
 				Font = Enum.Font.GothamMedium,
 				TextSize = 12,
-				TextXAlignment = Enum.TextXAlignment.Left
+				TextXAlignment = Enum.TextXAlignment.Left,
+				ZIndex = 2
 			}, secFrame)
+			applyTheme(secTitle, "TextColor3", "Color Text")
 
 			local secContent = createInstance("Frame", {
 				Name = "SectionContent",
 				Size = UDim2.new(1, 0, 0, 0),
 				Position = UDim2.new(0, 0, 0, 30),
 				BackgroundTransparency = 1,
-				AutomaticSize = Enum.AutomaticSize.Y
+				AutomaticSize = Enum.AutomaticSize.Y,
+				ZIndex = 2
 			}, secFrame)
 
 			createInstance("UIListLayout", {
@@ -1682,43 +1889,46 @@ function JustHub:ShowLoadingScreen(duration, callback)
 	callback = callback or function() end
 	local player = Players.LocalPlayer
 	local playerGui = player:WaitForChild("PlayerGui")
-	local theme = getCurrentTheme(JustHub.Save.Theme)
 	
-	local loadGui = createInstance("ScreenGui", {Name = "LoadingScreen", ResetOnSpawn = false, IgnoreGuiInset = true}, playerGui)
+	local loadGui = createInstance("ScreenGui", {Name = "LoadingScreen", ResetOnSpawn = false, IgnoreGuiInset = true, ZIndexBehavior = Enum.ZIndexBehavior.Global}, playerGui)
 	
 	local bgOverlay = createInstance("Frame", {
 		Size = UDim2.new(1, 0, 1, 0),
-		BackgroundColor3 = theme["Color Hub 2"],
 		BackgroundTransparency = 0,
-		BorderSizePixel = 0
+		BorderSizePixel = 0,
+		ZIndex = 100
 	}, loadGui)
+	applyTheme(bgOverlay, "BackgroundColor3", "Color Hub 2")
 
 	local titleLabel = createInstance("TextLabel", {
 		Text = "JustHub Library",
 		Font = Enum.Font.GothamBold,
 		TextSize = 24,
-		TextColor3 = theme["Color Text"],
 		BackgroundTransparency = 1,
 		Size = UDim2.new(0, 200, 0, 50),
 		AnchorPoint = Vector2.new(0.5, 0.5),
-		Position = UDim2.new(0.5, 0, 0.5, -50)
+		Position = UDim2.new(0.5, 0, 0.5, -50),
+		ZIndex = 101
 	}, loadGui)
+	applyTheme(titleLabel, "TextColor3", "Color Text")
 
 	local barContainer = createInstance("Frame", {
 		Size = UDim2.new(0, 300, 0, 10),
 		Position = UDim2.new(0.5, 0, 0.5, 20),
 		AnchorPoint = Vector2.new(0.5, 0.5),
-		BackgroundColor3 = theme["Color Hub 1"],
-		BorderSizePixel = 0
+		BorderSizePixel = 0,
+		ZIndex = 101
 	}, loadGui)
+	applyTheme(barContainer, "BackgroundColor3", "Color Hub 1")
 	createInstance("UICorner", {CornerRadius = UDim.new(1, 0)}, barContainer)
-	addBorder(barContainer, theme["Color Stroke"], 1)
+	addBorder(barContainer, "Color Stroke", 1)
 
 	local barFill = createInstance("Frame", {
 		Size = UDim2.new(0, 0, 1, 0),
-		BackgroundColor3 = theme["Color Theme"],
-		BorderSizePixel = 0
+		BorderSizePixel = 0,
+		ZIndex = 102
 	}, barContainer)
+	applyTheme(barFill, "BackgroundColor3", "Color Theme")
 	createInstance("UICorner", {CornerRadius = UDim.new(1, 0)}, barFill)
 
 	local tween = tweenProperty(barFill, {Size = UDim2.new(1, 0, 1, 0)}, duration)
@@ -1786,12 +1996,17 @@ end
 function JustHub:UpdateTheme(newTheme)
 	JustHub.Save.Theme = newTheme
 	local themeData = getCurrentTheme(newTheme)
-	if self.Window then
-		local mf = self.Window.MainFrame
-		mf.BackgroundColor3 = themeData["Color Hub 2"]
-		self.Window.TopBar.BackgroundColor3 = themeData["Color Hub 2"]
-		self.Window.Sidebar.BackgroundColor3 = themeData["Color Hub 2"]
-		self.Window.ContentContainer.BackgroundColor3 = themeData["Color Hub 2"]
+	for i = #self.ThemeObjects, 1, -1 do
+		local data = self.ThemeObjects[i]
+		if data.Instance and data.Instance.Parent then
+			if data.CustomFunc then
+				data.CustomFunc()
+			elseif not (self.ChromaEnabled and data.ThemeKey == "Color Theme" and data.Instance:IsA("Frame")) then
+				data.Instance[data.Property] = themeData[data.ThemeKey]
+			end
+		else
+			table.remove(self.ThemeObjects, i)
+		end
 	end
 end
 
@@ -1811,41 +2026,40 @@ function JustHub:Notify(options)
 	local message = options.Message or ""
 	local duration = options.Duration or 5
 	local showProgress = options.ShowProgress or false
-	local theme = getCurrentTheme(JustHub.Save.Theme)
 
 	if not self.NotificationContainer then return end
 
 	local notifFrame = createInstance("Frame", {
 		Size = UDim2.new(0, 300, 0, 0),
-		BackgroundColor3 = theme["Color Hub 2"],
 		BackgroundTransparency = 0.15,
 		ClipsDescendants = true
 	}, self.NotificationContainer)
+	applyTheme(notifFrame, "BackgroundColor3", "Color Hub 2")
 	createInstance("UICorner", {CornerRadius = UDim.new(0, 8)}, notifFrame)
-	addBorder(notifFrame, theme["Color Stroke"], 1)
+	addBorder(notifFrame, "Color Stroke", 1)
 
 	local titleLabel = createInstance("TextLabel", {
 		Text = title,
 		Size = UDim2.new(1, -20, 0, 20),
 		Position = UDim2.new(0, 10, 0, 10),
 		BackgroundTransparency = 1,
-		TextColor3 = theme["Color Text"],
 		Font = Enum.Font.GothamBold,
 		TextSize = 14,
 		TextXAlignment = Enum.TextXAlignment.Left
 	}, notifFrame)
+	applyTheme(titleLabel, "TextColor3", "Color Text")
 
 	local msgLabel = createInstance("TextLabel", {
 		Text = message,
 		Size = UDim2.new(1, -20, 0, 0),
 		Position = UDim2.new(0, 10, 0, 35),
 		BackgroundTransparency = 1,
-		TextColor3 = theme["Color Dark Text"],
 		Font = Enum.Font.Gotham,
 		TextSize = 12,
 		TextWrapped = true,
 		TextXAlignment = Enum.TextXAlignment.Left
 	}, notifFrame)
+	applyTheme(msgLabel, "TextColor3", "Color Dark Text")
 	
 	msgLabel.Size = UDim2.new(1, -20, 0, msgLabel.TextBounds.Y + 10)
 	local fullHeight = msgLabel.Position.Y.Offset + msgLabel.Size.Y.Offset + 15
@@ -1855,9 +2069,9 @@ function JustHub:Notify(options)
 		progressFrame = createInstance("Frame", {
 			Size = UDim2.new(1, 0, 0, 4),
 			Position = UDim2.new(0, 0, 1, -4),
-			BackgroundColor3 = theme["Color Theme"],
 			BorderSizePixel = 0
 		}, notifFrame)
+		applyTheme(progressFrame, "BackgroundColor3", "Color Theme")
 		registerChroma(progressFrame, "BackgroundColor3")
 		fullHeight = fullHeight + 4
 	end
@@ -1881,7 +2095,7 @@ end
 
 function JustHub:PromoNotify()
 	task.spawn(function()
-		while true do
+		while self.ScreenGui and self.ScreenGui.Parent do
 			self:Notify({
 				Title = "JustHub UI Promotion",
 				Message = "Check out JustHub-UI at:\nhttps://github.com/Lilith-VnK/JustHub-UI/",
@@ -1891,6 +2105,21 @@ function JustHub:PromoNotify()
 			task.wait(30)
 		end
 	end)
+end
+
+function JustHub:Destroy()
+	for _, conn in ipairs(self.Connections) do
+		if conn then
+			conn:Disconnect()
+		end
+	end
+	self.Connections = {}
+	self.ThemeObjects = {}
+	self.ChromaObjects = {}
+	
+	if self.ScreenGui then
+		self.ScreenGui:Destroy()
+	end
 end
 
 return JustHub
