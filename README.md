@@ -1,55 +1,53 @@
 # JustHub UI Library
 
-**JustHub** is a versatile and elegant UI library for Roblox that provides a modern, glassmorphism-inspired interface.
+**JustHub** is a versatile, highly-optimized, and elegant UI library for Roblox that provides a modern, glassmorphism-inspired interface with zero memory leaks.
 
 ## Features
 
-- Theming system  
-- Dynamic user profile panels  
-- Customizable notifications  
-- Window resizing  
-- Color pickers  
-- Script boxes  
-- Role-based permissions  
-- Undo/redo system  
-- And more  
+- **[NEW]** Leak-Free Memory Management (:Destroy() method)
+- **[NEW]** Dynamic Theme Engine 2.0 (Instantly updates all UI elements)
+- ​Glassmorphism-inspired visual design
+- ​Dynamic user profile panels
+- ​Global Z-Index Dropdowns (No more clipping)
+- ​Advanced Color Pickers (RGB & HEX support)
+- ​Float/Decimal support for Sliders
+- ​Smart KeyBinds with System Key Blacklist
+- ​Role-based permissions
+- ​Undo/redo system
+- ​And more
 
 ---
 
 ## Table of Contents
 
-1. New Update  
-2. Installation  
-3. Quick Start  
-4. Core Concepts  
-5. Available Controls  
-6. Window Resizing  
-7. Advanced Example  
-8. License  
+- [New Update (Version 2.5.0)](#new-update-version-250)
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Core Concepts](#core-concepts)
+- [Available Controls](#available-controls)
+- [Notifications](#notifications)
+- [Window Resizing & Memory Cleanup](#window-resizing--memory-cleanup)
+- [Advanced Example](#advanced-example)
 
 ---
 
-## New Update (Version 2.2.0)
+## New Update (Version 2.5.0)
 
-### Visual & UX Upgrade
+### 🚀 Performance & Memory
 
-- Redesigned UI with gradients, soft shadows, rounded corners, and glassmorphism  
-- Dynamic User Profile Panel (auto headshot + display name)  
-- Smooth hover & click animations (TweenService)  
-- Improved spacing and layout  
-- GothamBold font (13–14pt)  
+- Complete Memory Leak Protection: Introduced JustHub:Destroy() to safely disconnect all RenderStepped, InputBegan, and InputChanged events.
+-​Cleaned up internal redundancies for max FPS stability.
 
-### UI Components
+### ​🎨 Visual & UX Upgrade
 
-- `addMultiDropdown` **[NEW]**  
-- `addChromaToggle` **[NEW]**  
-- `addConfigManager` **[NEW]**  
-- Improved `addButton`, `addDropdown`, `addTab`  
+- `Theme Engine 2.0: Calling JustHub:SetTheme() now dynamically updates all existing UI elements (buttons, toggles, strokes) instantly, not just the background.`
+- `Global Dropdowns: Fixed Z-Index issues. Dropdowns now correctly overlap all other UI elements below them.`
 
-### Removed
+### ⚙️ Component Enhancements
 
-- All sound/music systems removed for performance  
-- Deprecated sound-related functions deleted  
+- Sliders: Now support decimal/float values via the Step parameter (e.g., Step = 0.1).
+- Color Picker: Added a built-in HEX code text box alongside RGB inputs.
+- KeyBind: Upgraded with a "Press Key..." capture mode and a strict blacklist to prevent binding movement keys (W, A, S, D, Space).
 
 ### Cleanup
 
@@ -80,9 +78,18 @@ local JustHub = loadstring(game:HttpGet("https://raw.githubusercontent.com/Lilit
 ```lua
 local JustHub = loadstring(game:HttpGet("https://raw.githubusercontent.com/Lilith-VnK/JustHub-UI/main/JustHub.lua"))()
 
+-- [1] CLEANUP PREVIOUS INSTANCE
+if getgenv().JustHubInstance then
+    getgenv().JustHubInstance:Destroy()
+end
+
+-- [2] SAVE NEW INSTANCE TO GLOBAL
+getgenv().JustHubInstance = JustHub
+
+-- [3] INITIALIZE
 JustHub:InitializeUI({
     Name = "JustHub UI",
-    SubTitle = "Version 2.2",
+    SubTitle = "Version 3.0.0",
     Theme = "Darker"
 })
 
@@ -105,7 +112,7 @@ task.spawn(function()
 
     JustHub:Notify({
         Title = "UI Loaded",
-        Message = "Welcome to JustHub!",
+        Message = "Welcome to JustHub V3!",
         Duration = 5,
         ShowProgress = true
     })
@@ -151,7 +158,7 @@ JustHub:SetUserRole("member")
 
 section:addToggle({
     Name = "Admin Feature",
-    Role = "admin",
+    Role = "admin", -- Only renders if UserRole is "admin"
     Callback = function(state) end
 })
 ```
@@ -218,6 +225,7 @@ section:addSlider({
     Name = "WalkSpeed",
     Min = 16,
     Max = 100,
+    Step = 0.5, -- Use decimals for precise control
     Default = 16,
     Callback = function(value) end
 })
@@ -244,6 +252,18 @@ section:addDropdown({
 })
 ```
 
+### Dropdown (Global Z-Index)
+
+```
+section:addDropdown({
+    Name = "ESP Mode",
+    Items = {"Box", "Skeleton", "Chams"},
+    Presets = {"All"}, -- Highlights in theme color
+    Default = "Box",
+    Callback = function(choice) end
+})
+```
+
 ### Multi Dropdown
 
 ```lua
@@ -265,7 +285,7 @@ section:addButton({
 })
 ```
 
-### KeyBind
+### KeyBind (Smart Capture & Blacklisted System Keys)
 
 ```lua
 section:addBind({
@@ -277,13 +297,15 @@ section:addBind({
 })
 ```
 
-### Color Picker
+### Color Picker (RGB & HEX)
 
 ```lua
 section:addColorPicker({
     Name = "Accent",
     Default = Color3.fromRGB(255, 100, 100),
-    Callback = function(color) end
+    Callback = function(color) 
+        -- color is a Color3 value
+    end
 })
 ```
 
@@ -312,10 +334,11 @@ JustHub:Notify({
 
 ---
 
-## Window Resizing
+## Window Resizing & Memory Cleanup
 
-- Drag bottom-right corner  
-- Size is clamped to prevent breaking UI  
+​Resize: Drag the bottom-right corner. Size is clamped to prevent breaking UI.
+​Drag: Drag via the top bar.
+​Cleanup: Always use :Destroy() when closing or reloading the script to maintain perfect game FPS.
 
 ---
 
@@ -324,11 +347,14 @@ JustHub:Notify({
 ```lua
 local JustHub = loadstring(game:HttpGet("https://raw.githubusercontent.com/Lilith-VnK/JustHub-UI/main/JustHub.lua"))()
 
+if getgenv().JustHubInstance then getgenv().JustHubInstance:Destroy() end
+getgenv().JustHubInstance = JustHub
+
 JustHub:SetUserRole("admin")
 
 JustHub:InitializeUI({
     Name = "Hero Hub UI",
-    SubTitle = "v2.2",
+    SubTitle = "v3.0.0",
     Theme = "Darker"
 })
 
@@ -344,6 +370,15 @@ task.spawn(function()
     local util = heroTab:addSection("Utilities")
     local config = settingsTab:addSection("Config")
 
+    power:addSlider({
+        Name = "Flight Speed",
+        Min = 10,
+        Max = 200,
+        Step = 1.5,
+        Default = 50,
+        Callback = function(val) print(val) end
+    })
+
     power:addMultiDropdown({
         Name = "Abilities",
         Items = {"Flight", "Laser", "Invisibility"},
@@ -358,7 +393,7 @@ task.spawn(function()
 
     JustHub:Notify({
         Title = "Ready",
-        Message = "System initialized",
+        Message = "System initialized safely.",
         Duration = 5,
         ShowProgress = true
     })
